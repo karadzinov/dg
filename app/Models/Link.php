@@ -14,6 +14,6 @@ class Link extends Model
 
     public function guests()
     {
-        return $this->hasMany('DragiGosti\Guests', 'link_id');
+        return $this->hasMany(Guests::class, 'link_id');
     }
 }
