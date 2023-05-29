@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <title>Драги Гости</title>
-    <meta name="description" content="Покана за свадбата на Тилиа и Мартин">
+    <meta name="description" content="Покана за свадбата на Бобан и Елена">
     <meta name="author" content="Martin Karadzinov">
 
 
@@ -19,18 +19,18 @@
 
 
 
-    <meta name="description" content="Покана за свадбата на Тилиа и Мартин" />
+    <meta name="description" content="Покана за свадбата на Бобан и Елена" />
     <meta name="Author" content="Martin Karadzinov"/>
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="Драги гости">
-    <meta itemprop="description" content="Покана за свадбата на Тилиа и Мартин">
+    <meta itemprop="description" content="Покана за свадбата на Бобан и Елена">
     <meta itemprop="image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="https://dragigosti.com">
     <meta name="twitter:title" content="Драги гости">
-    <meta name="twitter:description" content="Покана за свадбата на Тилиа и Мартин">
+    <meta name="twitter:description" content="Покана за свадбата на Бобан и Елена">
     <meta name="twitter:creator" content="@tiggaz">
     <meta name="twitter:image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}">
 
@@ -40,7 +40,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://dragigosti.com" />
     <meta property="og:image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}" />
-    <meta property="og:description" content="Покана за свадбата на Тилиа и Мартин" />
+    <meta property="og:description" content="Покана за свадбата на Бобан и Елена" />
     <meta property="og:site_name" content="Драги гости" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
@@ -126,7 +126,7 @@
 
     <!-- banner start -->
     <!-- ================ -->
-    <div class="pv-40 dark-translucent-bg" style="background-image: url(/images/udarna.jpg);background-position: 80% 40%;">
+    <div class="pv-40 dark-translucent-bg" style="background-image: url(/images/0.jpg);background-position: 80% 40%;">
         <div class="container pv-40">
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
