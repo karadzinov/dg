@@ -19,6 +19,6 @@ class Guests extends Model
 
     public function link()
     {
-       return $this->belongsTo('DragiGosti\Link', 'link_id');
+       return $this->belongsTo(Link::class, 'link_id');
     }
 }
