@@ -279,7 +279,8 @@
             <div class="separator"></div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="/images/Slider_3.jpg" class="img-responsive">
+                    <!--  <img src="/images/Slider_3.jpg" class="img-responsive"> -->
+                    <iframe width="315" height="560" src="https://www.youtube.com/embed/ZWCuUmiaKxU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                 </div>
                 <div class="col-md-6">
