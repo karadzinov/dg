@@ -218,7 +218,7 @@
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <h2 class="logo-font">Elena ...</h2>
+            <h2 class="logo-font">Elena ... (TBD)</h2>
             <div class="separator-2 visible-lg"></div>
             <p> Како секоја принцеза, така и јас сонував за принцот на бел коњ. Но, за кратко време сфатив дека
                 реалноста е
