@@ -7,7 +7,8 @@
     @endslot
 
     {{-- Body --}}
-    <iframe src="https://drive.google.com/file/d/1he9dVG16Nlx4NZgoVZSEN6419eNW-w4j/preview" width="640" height="480" allow="autoplay"></iframe>
+    <img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81r61B-dlrKIcJ0LLf3t6eYT-sy3I0BLR0vgNTKVGnBwqlx3um42-AumIB39JxXdrFJgFSd2EACl3Kvd3OjSplR31v1w=s1600" />
+
     {{-- Subcopy --}}
     @isset($subcopy)
         @slot('subcopy')
