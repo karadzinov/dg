@@ -66,7 +66,7 @@ class FrontEndController extends Controller
         {
             $guest->email = $request->get('email');
             $message = 'Еј фала!';
-          //  Mail::to($guest->email)->send(new ConfirmInvitation($message));
+            Mail::to($guest->email)->send(new ConfirmInvitation($message));
         }
         $guest->save();
 

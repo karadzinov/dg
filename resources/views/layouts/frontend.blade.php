@@ -252,37 +252,16 @@
 
         <div class="container">
             <div class="row">
-                <h2 class="text-center space-top text-default logo-font">Events</h2>
+                <h2 class="text-center space-top text-default logo-font">Програма</h2>
                 <div class="separator"></div>
-                <div class="col-md-4">
-                    <div class="image-box text-center style-2 mb-20">
-                        <img src="/images/matichno.png" alt="" class="img-circle img-thumbnail">
-                        <div class="body padding-horizontal-clear">
-                            <h4 class="logo-font title">Exchange of Wedding Vows</h4>
-                            <p class="lead text-default">18:30 - 19:00</p>
-                        </div>
+                <div class="col-md-12">
+                    <div class="image-box text-center">
+                        <img src="/images/programa.jpg" alt="" class="img-responsive" style="display: inline-block;">
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="image-box text-center style-2 mb-20">
-                        <img src="/images/wedding.jpg" alt="" class="img-circle img-thumbnail">
-                        <div class="body padding-horizontal-clear">
-                            <h4 class="logo-font title">The Wedding</h4>
-                            <p class="lead text-default">19:00 - 22:30</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="image-box text-center style-2 mb-20">
-                        <img src="/images/dancing.jpg" alt="" class="img-circle img-thumbnail">
-                        <div class="body padding-horizontal-clear">
-                            <h4 class="logo-font title">Party</h4>
-                            <p class="lead text-default">22:30 - 00:30</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-            <h3 class="text-default text-center space-top logo-font"><span class="text-muted">Restaurant</span> Alikas
+            <h3 class="text-default text-center space-top logo-font"><span class="text-muted">Ресторан</span> Аликас
             </h3>
             <div class="separator"></div>
             <div class="row">
