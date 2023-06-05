@@ -7,8 +7,7 @@
     @endslot
 
     {{-- Body --}}
-    <img src="https://dragigosti.com/images/pokana.jpg' }}" />
-
+    <iframe src="https://drive.google.com/file/d/1he9dVG16Nlx4NZgoVZSEN6419eNW-w4j/preview" width="640" height="480" allow="autoplay"></iframe>
     {{-- Subcopy --}}
     @isset($subcopy)
         @slot('subcopy')
