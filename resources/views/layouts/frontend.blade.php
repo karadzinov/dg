@@ -103,14 +103,14 @@
 
                             <!-- logo -->
                             <div id="logo" class="logo">
-                                <h2 class="text-center logo-font margin-clear"><a href="#" class="text-muted">Boban<span
-                                            class="text-default"><i class="pl-10 pr-10 fa fa-heart"></i></span>Elena</a>
+                                <h2 class="text-center logo-font margin-clear"><a href="#" class="text-muted">Бобан<span
+                                            class="text-default"><i class="pl-10 pr-10 fa fa-heart"></i></span>Елена</a>
                                 </h2>
                             </div>
 
                             <!-- name-and-slogan -->
                             <div class="site-slogan text-center">
-                                Invite You to Celebrate their Wedding
+                                Ве покануваат на нивната венчавка
                             </div>
 
                         </div>
@@ -128,15 +128,16 @@
 
     <!-- banner start -->
     <!-- ================ -->
-    <div class="pv-40 dark-translucent-bg" style="background-image: url(/images/boban-elena.jpg);background-position: 80% 40%;">
+    <div class="pv-40 dark-translucent-bg"
+         style="background-image: url(/images/boban-elena.jpg);background-position: 80% 40%;">
         <div class="container pv-40">
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
                     <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
                         <h1 class="page-title text-center logo-font">Здраво @yield('guests')!</h1>
-                        <h1 class="page-title text-center logo-font">We’re Getting Married</h1>
+                        <h1 class="page-title text-center logo-font">Време е за нашата венчавка</h1>
                         <div class="separator"></div>
-                        <h3 class="text-center"><em>June 21st, Restaurant Alikas, Skopje</em></h3>
+                        <h3 class="text-center"><em>21ви Јуни, Ресторан Аликас, Скопје</em></h3>
                         <!-- countdown start -->
                         <div class="countdown clearfix"></div>
                         <!-- countdown end -->
@@ -157,12 +158,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">Boban &amp; <span class="text-default">Elena</span>
+                    <h2 class="text-center logo-font text-muted">Бобан и <span class="text-default">Елена</span>
                     </h2>
                     <div class="separator"></div>
-                    <p class="text-center">Со огромна чест и задоволство Ве покануваме заедно да ја прославиме една од
-                        нашите најважни вечери во животот. Од Вас очекуваме да донесете само позитивна енергија и удобни
-                        чевли за играње. Се гледаме!
+                    <p class="text-center">Нашата венчавка… наше време на насмевки, наше време на танц, наше време на љубов, наше време на вечност...
+                        Ќе ни биде особено драго ако еден од најсреќните моменти од нашиот живот го споделите со нас ….
+                        Од вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!
                     </p>
                 </div>
             </div>
@@ -173,13 +174,21 @@
     <!-- ================ -->
     <section class="full-width-section">
         <div class="full-text-container left light-gray-bg border-clear text-right">
-            <h2 class="logo-font">Boban Nikolovski</h2>
+            <h2 class="logo-font">Бобан Николовски</h2>
             <div class="separator-3 visible-lg"></div>
-            <p>На секој човек му е потребен животен сопатник, многу љубов и разбирање. <br/>Ако сонцето ја има
-                месечината, денот ја има ноќта, планината го има морето, животот ја има смртта, длабочината ја има
-                висината, галамата ја има тишината, среќата ја има тагата, доброто го има злото - јас ја имам Елена. Таа
-                е сè што недостасуваше во мојот живот, а заедно сме енергијата, земјата, водата, воздухот и огнот. Ви
-                благодарам што сте дел од нашиот живот. <br/> Дојдете да си поминеме убаво!</p>
+            <p>На секој патник му е потребна дестинација, на верник му е потребна молитва, на писателот му е
+                потребна муза. Слично на тоа, мене ми недостасуваше љубов и
+                разбирање, сè додека не дојде Елена. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
+                планината што ја обгрнува мојата душа, песната што ја исполнува моето срце.</p>
+
+            <p>
+                Во постела ладна веќе нема да се лежи.<br>
+                Елена ми дојде на перниче бело.<br>
+                Ќе ме грее со топло тело.<br>
+                Ќе ме грее со раце нежни.<br>
+                Ќе ги издржиме заедно сите долги, ноќи зимски и снежни.
+            </p>
+
             <div class="separator-2 visible-lg"></div>
         </div>
         <div class="full-image-container light-gray-bg border-clear">
@@ -218,14 +227,16 @@
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <h2 class="logo-font">Elena Mitreska</h2>
+            <h2 class="logo-font">Елена Митреска</h2>
             <div class="separator-2 visible-lg"></div>
-            <p>... а велев дека Бобан ми е само симпатијата од средно :) , а потоа пријател во мојот живот ... Од денес  велам животен пријател и животен сопатник.
-                До вчера ЈАС и ТИ, од денеска НИЕ.
-                За НАС нов ден, нов почеток, нов живот.
-                Љубовта ги овековечува моментите, моментите го исполнуваат животот, животот е почеток на вечноста, а нашата вечност започнува со крунисувањето на нашата љубов …
-                Соновите и љубовта ќе ги споделиме еден со друг, а радоста и веселбата со ВАС - Денеска камбаните ќе бијат за НАС.
-                Бидете дел од почетокот на нашата приказна … </p>
+            <p>... а велев дека Бобан ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
+
+            <p>    Од денес  велам животен пријател и животен сопатник.</p>
+            <p>   До вчера ЈАС и ТИ, од денеска НИЕ.</p>
+            <p>    За НАС нов ден, нов почеток, нов живот.</p>
+            <p>   Љубовта ги овековечува моментите, моментите го исполнуваат животот, животот е почеток на вечноста, а нашата вечност започнува со крунисувањето на нашата љубов …</p>
+            <p>   Соновите и љубовта ќе ги споделиме еден со друг, а радоста и веселбата со ВАС - Денеска камбаните ќе бијат за НАС.</p>
+            <p>    Бидете дел од почетокот на нашата приказна …</p>
             <div class="separator-3 visible-lg"></div>
         </div>
     </section>
@@ -277,7 +288,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <!--  <img src="/images/Slider_3.jpg" class="img-responsive"> -->
-                    <iframe width="315" height="560" src="https://www.youtube.com/embed/ZWCuUmiaKxU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe width="315" height="560" src="https://www.youtube.com/embed/ZWCuUmiaKxU"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
 
                 </div>
                 <div class="col-md-6">
