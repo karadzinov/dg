@@ -7,7 +7,7 @@
     @endslot
 
     {{-- Body --}}
-    <img src="{{ env('SITE_NAME').'/images/pokana.jpg' }}" />
+    <img src="https://dragigosti.com/images/pokana.jpg' }}" />
 
     {{-- Subcopy --}}
     @isset($subcopy)
