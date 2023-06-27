@@ -11,35 +11,35 @@
 <head>
     <meta charset="utf-8">
     <title>Драги Гости</title>
-    <meta name="description" content="Покана за свадбата на Бобан и Елена">
+    <meta name="description" content="Покана за свадбата на Зоки и Ане">
     <meta name="author" content="Martin Karadzinov">
 
 
     <meta charset="utf-8"/>
 
 
-    <meta name="description" content="Покана за свадбата на Бобан и Елена"/>
+    <meta name="description" content="Покана за свадбата на Зоки и Ане"/>
     <meta name="Author" content="Martin Karadzinov"/>
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="Драги гости">
-    <meta itemprop="description" content="Покана за свадбата на Бобан и Елена">
-    <meta itemprop="image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}">
+    <meta itemprop="description" content="Покана за свадбата на Зоки и Ане">
+    <meta itemprop="image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="https://dragigosti.com">
     <meta name="twitter:title" content="Драги гости">
-    <meta name="twitter:description" content="Покана за свадбата на Бобан и Елена">
+    <meta name="twitter:description" content="Покана за свадбата на Зоки и Ане">
     <meta name="twitter:creator" content="@tiggaz">
-    <meta name="twitter:image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}">
+    <meta name="twitter:image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}">
 
     <!-- Open Graph data -->
 
     <meta property="og:title" content="Драги гости"/>
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="https://dragigosti.com"/>
-    <meta property="og:image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}"/>
-    <meta property="og:description" content="Покана за свадбата на Бобан и Елена"/>
+    <meta property="og:image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}"/>
+    <meta property="og:description" content="Покана за свадбата на Зоки и Ане"/>
     <meta property="og:site_name" content="Драги гости"/>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
@@ -103,8 +103,8 @@
 
                             <!-- logo -->
                             <div id="logo" class="logo">
-                                <h2 class="text-center logo-font margin-clear"><a href="#" class="text-muted">Бобан<span
-                                            class="text-default"><i class="pl-10 pr-10 fa fa-heart"></i></span>Елена</a>
+                                <h2 class="text-center logo-font margin-clear"><a href="#" class="text-muted">Зоки<span
+                                            class="text-default"><i class="pl-10 pr-10 fa fa-heart"></i></span>Ане</a>
                                 </h2>
                             </div>
 
@@ -129,7 +129,7 @@
     <!-- banner start -->
     <!-- ================ -->
     <div class="pv-40 dark-translucent-bg"
-         style="background-image: url(/images/boban-elena.jpg);background-position: 80% 40%;">
+         style="background-image: url(/images/couple.jpg);background-position: 80% 40%;">
         <div class="container pv-40">
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
@@ -158,7 +158,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">Бобан и <span class="text-default">Елена</span>
+                    <h2 class="text-center logo-font text-muted">Зоки и <span class="text-default">Ане</span>
                     </h2>
                     <div class="separator"></div>
                     <p class="text-center">Нашата венчавка… наше време на насмевки, наше време на танц, наше време на љубов, наше време на вечност...
@@ -174,16 +174,16 @@
     <!-- ================ -->
     <section class="full-width-section">
         <div class="full-text-container left light-gray-bg border-clear text-right">
-            <h2 class="logo-font">Бобан Николовски</h2>
+            <h2 class="logo-font">Зоки</h2>
             <div class="separator-3 visible-lg"></div>
             <p>На секој патник му е потребна дестинација, на верник му е потребна молитва, на писателот му е
                 потребна муза. Слично на тоа, мене ми недостасуваше љубов и
-                разбирање, сè додека не дојде Елена. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
+                разбирање, сè додека не дојде Ане. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
                 планината што ја обгрнува мојата душа, песната што ја исполнува моето срце.</p>
 
             <p>
                 Во постела ладна веќе нема да се лежи.<br>
-                Елена ми дојде на перниче бело.<br>
+                Ане ми дојде на перниче бело.<br>
                 Ќе ме грее со топло тело.<br>
                 Ќе ме грее со раце нежни.<br>
                 Ќе ги издржиме заедно сите долги, ноќи зимски и снежни.
@@ -192,7 +192,7 @@
             <div class="separator-2 visible-lg"></div>
         </div>
         <div class="full-image-container light-gray-bg border-clear">
-            <img src="/images/boban.jpg" alt="">
+            <img src="/images/man.jpg" alt="">
             <div class="full-image-overlay text-center">
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
                 <p>Доста време ерген одев, доста лични моми водев, дојде време да се женам, овој живот да го сменам.</p>
@@ -212,7 +212,7 @@
     <!-- ================ -->
     <section class="full-width-section">
         <div class="full-image-container default-bg">
-            <img class="to-right-block" src="/images/elena.jpg" alt="">
+            <img class="to-right-block" src="/images/woman.jpg" alt="">
             <div class="full-image-overlay text-center">
                 <h3>Yes <i class="fa fa-heart"></i></h3>
                 <p>"We mature in knowledge and wisdom but never leave the playground of our hearts."</p>
@@ -227,9 +227,9 @@
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <h2 class="logo-font">Елена Митреска</h2>
+            <h2 class="logo-font">Ане</h2>
             <div class="separator-2 visible-lg"></div>
-            <p>... а велев дека Бобан ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
+            <p>... а велев дека Зоки ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
 
             <p>    Од денес  велам животен пријател и животен сопатник.</p>
             <p>   До вчера ЈАС и ТИ, од денеска НИЕ.</p>
@@ -251,16 +251,18 @@
 
 
         <div class="container">
-            <div class="row">
-                <h2 class="text-center space-top text-default logo-font">Програма</h2>
-                <div class="separator"></div>
-                <div class="col-md-12">
-                    <div class="image-box text-center">
-                        <img src="/images/programa.jpg" alt="" class="img-responsive" style="display: inline-block;">
+            <!--
+           <div class="row">
+               <h2 class="text-center space-top text-default logo-font">Програма</h2>
+               <div class="separator"></div>
+               <div class="col-md-12">
+                   <div class="image-box text-center">
+                     <img src="/images/programa.jpg" alt="" class="img-responsive" style="display: inline-block;">
                     </div>
                 </div>
 
             </div>
+            -->
             <h3 class="text-default text-center space-top logo-font"><span class="text-muted">Ресторан</span> Аликас
             </h3>
             <div class="separator"></div>
