@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend');
+Route::get('/profile/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/{link}',  [\App\Http\Controllers\FrontEndController::class, 'link'])->name('bylink');

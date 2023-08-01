@@ -17,8 +17,15 @@ class FrontEndController extends Controller
 
 
         $data = ["images" => $images];
-        return view('welcome')->with($data);
+        return view('main')->with($data);
 
+    }
+
+
+    public function profile($slug)
+    {
+        $data = ["slug" => $slug, "name" => "Аликас"];
+        return view('profile')->with($data);
     }
 
     public function link($link)
