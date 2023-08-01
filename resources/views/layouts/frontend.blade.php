@@ -848,6 +848,8 @@
 <script src="/dist/js/apps/chat.js"></script>
 <script src="/dist/js/moment.js"></script>
 <script src="/dist/js/datepicker.min.js"></script>
+<script src="/dist/js/index.global.min.js"></script>
+<script src="/dist/js/calendar.init.js"></script>
 
 <script>
     // Date Picker
