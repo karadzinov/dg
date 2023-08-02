@@ -29,19 +29,9 @@
                     <div class="col-lg-4 order-lg-1 order-2">
                         <div class="d-flex align-items-center justify-content-around m-4">
                             <div class="text-center">
-                                <i class="ti ti-file-description fs-6 d-block mb-2"></i>
-                                <h4 class="mb-0 fw-semibold lh-1">938</h4>
-                                <p class="mb-0 fs-4">Posts</p>
-                            </div>
-                            <div class="text-center">
-                                <i class="ti ti-user-circle fs-6 d-block mb-2"></i>
-                                <h4 class="mb-0 fw-semibold lh-1">3,586</h4>
-                                <p class="mb-0 fs-4">Followers</p>
-                            </div>
-                            <div class="text-center">
-                                <i class="ti ti-user-check fs-6 d-block mb-2"></i>
-                                <h4 class="mb-0 fw-semibold lh-1">2,659</h4>
-                                <p class="mb-0 fs-4">Following</p>
+                                <i class="ti ti-phone-call fs-6 d-block mb-2"></i>
+                                <h4 class="mb-0 fw-semibold lh-1">+389 78 600-444</h4>
+
                             </div>
                         </div>
                     </div>
@@ -91,7 +81,7 @@
                                 </a>
                             </li>
                             <li>
-                                <button class="btn btn-primary">Add To Story</button>
+                                <button class="btn btn-primary">Закажи состанок</button>
                             </li>
                         </ul>
                     </div>
@@ -138,24 +128,23 @@
                         <div class="card shadow-none border">
                             <div class="card-body">
                                 <h4 class="fw-semibold mb-3">Контакт</h4>
-                                <p>Hello, I am Mathew Anderson. I love making websites and graphics. Lorem ipsum dolor
-                                    sit amet, consectetur adipiscing elit.</p>
+                                <p>Здраво Мартин јас сум Демијен Дроца. Генерален менаџер во ресторанот Аликаст. Ви стојам на располагање за било какви прашања.</p>
                                 <ul class="list-unstyled mb-0">
                                     <li class="d-flex align-items-center gap-3 mb-4">
                                         <i class="ti ti-briefcase text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">Sir, P P Institute Of Science</h6>
+                                        <h6 class="fs-4 fw-semibold mb-0">Генерален менаџер</h6>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 mb-4">
                                         <i class="ti ti-mail text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">xyzjonathan@gmail.com</h6>
+                                        <h6 class="fs-4 fw-semibold mb-0">demijen@allikas.mk</h6>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 mb-4">
                                         <i class="ti ti-device-desktop text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">www.xyz.com</h6>
+                                        <h6 class="fs-4 fw-semibold mb-0">https://alikas.mk</h6>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 mb-2">
                                         <i class="ti ti-map-pin text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">Newyork, USA - 100001</h6>
+                                        <h6 class="fs-4 fw-semibold mb-0">Скопје</h6>
                                     </li>
                                 </ul>
                             </div>

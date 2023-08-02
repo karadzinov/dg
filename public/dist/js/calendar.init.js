@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var calendarEventClick = function (info) {
         var eventObj = info.event;
 
+        console.log(eventObj);
         if (eventObj.url) {
             window.open(eventObj.url);
 
@@ -159,6 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update Calender Event
     /*=====================*/
     getModalUpdateBtnEl.addEventListener("click", function () {
+
+
         var getPublicID = this.dataset.fcEventPublicId;
         var getTitleUpdatedValue = getModalTitleEl.value;
         var getEvent = calendar.getEventById(getPublicID);
@@ -173,6 +176,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         getEvent.setProp("title", getTitleUpdatedValue);
         getEvent.setExtendedProp("calendar", getModalUpdatedCheckedRadioBtnValue);
+
+
+
+        console.log(getEvent);
         myModal.hide();
     });
     /*=====================*/
