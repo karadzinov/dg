@@ -24,8 +24,20 @@ class FrontEndController extends Controller
 
     public function profile($slug)
     {
-        $data = ["slug" => $slug, "name" => "Аликас"];
+
+        if($slug === "alikas") {
+            $data = ["slug" => $slug, "name" => "Аликас"];
+        } else if($slug === "ksantika") {
+            $data = ["slug" => $slug, "name" => "Ксантика"];
+            return view('ksantika')->with($data);
+        } else {
+            $data = ["slug" => $slug, "name" => "Аликас"];
+        }
+
+
         return view('profile')->with($data);
+
+
     }
 
     public function link($link)
