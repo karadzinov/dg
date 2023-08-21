@@ -58,3 +58,25 @@
 .italic {
     font-style: italic;
 }
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .carousel-caption h5  {
+        font-size:  28px;
+        color: #ffffff;
+
+    }
+
+    .carousel-caption h4  {
+        font-size:  60px;
+        color: #ffffff;
+        font-family: 'Poiret One', cursive;
+    }
+
+}
+
+

@@ -17,7 +17,7 @@
                         <div class="slider-image"
                              style="background-image: url('/dist/images/flowers.png');"></div>
 
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-md-block">
                             <h4>Драги Гости</h4>
                             <h5>вашиот единствен свадбен планер</h5>
 
