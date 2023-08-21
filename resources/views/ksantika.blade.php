@@ -129,7 +129,7 @@
                     <div class="card shadow-none border">
                         <div class="card-body">
                             <h4 class="fw-semibold mb-3">Контакт</h4>
-                            <p>Здраво Мартин јас сум Иџе. Генерален менаџер во ресторанот Ксантика. Ви стојам
+                            <p>Здраво Мартин јас сум Иже. Генерален менаџер во ресторанот Ксантика. Ви стојам
                                 на располагање за било какви прашања.</p>
                             <ul class="list-unstyled mb-0">
                                 <li class="d-flex align-items-center gap-3 mb-4">
