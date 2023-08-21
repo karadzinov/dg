@@ -142,7 +142,7 @@
                                 </li>
                                 <li class="d-flex align-items-center gap-3 mb-4">
                                     <i class="ti ti-device-desktop text-dark fs-6"></i>
-                                    <h6 class="fs-4 fw-semibold mb-0">https://santika.mk</h6>
+                                    <h6 class="fs-4 fw-semibold mb-0">https://ksantika.mk</h6>
                                 </li>
                                 <li class="d-flex align-items-center gap-3 mb-2">
                                     <i class="ti ti-map-pin text-dark fs-6"></i>
