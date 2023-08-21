@@ -407,9 +407,7 @@
 <!-- --------------------------------------------------- -->
 <!-- Customizer -->
 <!-- --------------------------------------------------- -->
-<button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-    <i class="ti ti-settings fs-7" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Settings"></i>
-</button>
+
 
 
 <!-- ---------------------------------------------- -->
