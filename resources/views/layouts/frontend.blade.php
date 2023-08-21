@@ -99,7 +99,7 @@
             </ul>
             <div class="d-block d-lg-none">
                 <a href="index.html" class="text-nowrap nav-link">
-                    <img src="/dist/images/logo.png" width="180" alt="" />
+                    <img src="/dist/images/logo.svg" width="180" alt="" />
                 </a>
             </div>
             <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
