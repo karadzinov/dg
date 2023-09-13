@@ -18,6 +18,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/guests', \App\Http\Controllers\GuestController::class);
 });
 
+Route::prefix('restorani')->group(function () {
+    Route::get('/', [\App\Http\Controllers\RestaurantController::class, 'index'])->name('restaurants.index');
+});
+
 Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend');
 Route::get('/profile/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
