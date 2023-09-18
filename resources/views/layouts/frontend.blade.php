@@ -441,6 +441,9 @@
 <script src="/dist/js/index.global.min.js"></script>
 <script src="/dist/js/calendar.init.js"></script>
 
+<script src="/dist/libs/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="/dist/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/dist/js/forms/form-wizard.js"></script>
 <script>
     // Date Picker
     jQuery(".mydatepicker, #datepicker, .input-group.date").datepicker();

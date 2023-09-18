@@ -43,7 +43,14 @@
 
     <!-- Page Start -->
     <div class="container-fluid">
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-end">
+                    <a href="{{ route('restaurants.create') }}" class="btn-primary btn">Додади нов ресторан</a>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-md-6 col-lg-8">
                 <div class="card blog position-relative overflow-hidden hover-img"
@@ -119,7 +126,7 @@
                 <div class="card rounded-2 overflow-hidden hover-img">
                     <div class="position-relative">
                         <a href="/profile/ksantika"><img src="/dist/images/ksantika.jpg" class="card-img-top rounded-0"
-                                                          alt="..."></a>
+                                                         alt="..."></a>
                         <span
                             class="badge bg-white text-dark fs-2 rounded-4 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">20% намалување</span>
 
