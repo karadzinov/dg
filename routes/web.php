@@ -18,9 +18,15 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/guests', \App\Http\Controllers\GuestController::class);
 });
 
+Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
+    Route::get('/' , [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+});
+
 Route::prefix('restaurants')->group(function () {
     Route::get('/', [\App\Http\Controllers\RestaurantController::class, 'index'])->name('restaurants.index');
     Route::get('/create', [\App\Http\Controllers\RestaurantController::class, 'create'])->name('restaurants.create');
+    Route::post('/', [\App\Http\Controllers\RestaurantController::class, 'store'])->name('restaurants.store');
+    Route::get('/{slug}', [\App\Http\Controllers\RestaurantController::class, 'show'])->name('restaurants.show');
 });
 
 Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend');

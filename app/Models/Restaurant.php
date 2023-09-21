@@ -14,9 +14,26 @@ class Restaurant extends Model
     protected $fillable = [
         'name',
         'slug',
-        'cover-img',
+        'coverImg',
         'logo',
         'phone',
-        'description'
+        'description',
+        'address',
+        'city_id',
+        'capacity',
+        'menuDiscount',
+        'menuMin',
+        'menuMax',
+        'user_id'
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class, 'restaurant_id');
+    }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class, 'city_id');
+    }
 }

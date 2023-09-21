@@ -5,12 +5,12 @@
             <div class="card-body px-4 py-3">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h4 class="fw-semibold mb-8">{{ $name }}</h4>
+                        <h4 class="fw-semibold mb-8">{{ $restaurant->name }}</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-muted " href="./index.html">Ресторани</a>
+                                <li class="breadcrumb-item"><a class="text-muted " href="{{ route('frontend') }}">Ресторани</a>
                                 </li>
-                                <li class="breadcrumb-item" aria-current="page">{{ $name }}</li>
+                                <li class="breadcrumb-item" aria-current="page">{{ $restaurant->name }}</li>
                             </ol>
                         </nav>
                     </div>
@@ -24,13 +24,13 @@
         </div>
         <div class="card overflow-hidden">
             <div class="card-body p-0">
-                <img src="/dist/images/alikas.jpg" alt="" class="img-fluid">
+                <img src="/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }}" alt="" class="img-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-4 order-lg-1 order-2">
                         <div class="d-flex align-items-center justify-content-around m-4">
                             <div class="text-center">
                                 <i class="ti ti-phone-call fs-6 d-block mb-2"></i>
-                                <h4 class="mb-0 fw-semibold lh-1">+389 78 600-444</h4>
+                                <h4 class="mb-0 fw-semibold lh-1">{{ $restaurant->phone }}</h4>
 
                             </div>
                         </div>
@@ -44,12 +44,12 @@
                                     <div
                                         class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                         style="width: 100px; height: 100px;" ;="">
-                                        <img src="/dist/images/alikas-logo.jpg" alt="" class="w-100 h-100">
+                                        <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}" alt="" class="w-100 h-100">
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <h5 class="fs-5 mb-0 fw-semibold">Alikas</h5>
+                                <h5 class="fs-5 mb-0 fw-semibold">{{ $restaurant->name }}</h5>
                                 <p class="mb-0 fs-4">Wedding & Event center</p>
                             </div>
                         </div>
@@ -128,19 +128,19 @@
                         <div class="card shadow-none border">
                             <div class="card-body">
                                 <h4 class="fw-semibold mb-3">Контакт</h4>
-                                <p>Здраво Мартин јас сум Демијен Дроца. Генерален менаџер во ресторанот Аликаст. Ви стојам на располагање за било какви прашања.</p>
+                                <p>{!! $contact->contactDescription !!}</p>
                                 <ul class="list-unstyled mb-0">
                                     <li class="d-flex align-items-center gap-3 mb-4">
                                         <i class="ti ti-briefcase text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">Генерален менаџер</h6>
+                                        <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPosition }}</h6>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 mb-4">
                                         <i class="ti ti-mail text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">demijen@allikas.mk</h6>
+                                        <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactEmail }}</h6>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 mb-4">
-                                        <i class="ti ti-device-desktop text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">https://alikas.mk</h6>
+                                        <i class="ti ti-phone-call text-dark fs-6"></i>
+                                        <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPhone }}</h6>
                                     </li>
                                     <li class="d-flex align-items-center gap-3 mb-2">
                                         <i class="ti ti-map-pin text-dark fs-6"></i>
@@ -157,35 +157,7 @@
                         <div class="card">
                             <div class="card-body border-bottom">
                                 <div class="col-12">
-                                    <p>
-                                        <b>ЗОШТО ALLIKAS?</b><br/>
-                                        За да овозможиме вашата бајка да биде прераскажувана ја создадовме приказната
-                                        која се вика Аllikas (извор). Затоа што од тука сѐ започнува, затоа што од тука
-                                        извира вашата љубов, слога… вашата среќа. Затоа што овде го одигра првиот танц
-                                        со својата сродна душа и зачекори по патеката која се вика брак. Затоа ние сме
-                                        тука, твојот ден да го направиме бајка и со насмевка да те испратиме на твоето
-                                        брачно патување…
-                                    </p>
-                                    <p><b>ЗА НАС</b><br/>
-                                        Алликас е ресторан кој се наоѓа на 5 километри од центарот на градот во пријатна
-                                        и тивка околина. Се протега на голема зелена површина, каде ресторанскиот дел
-                                        изнесува 600 м2 и е со капацитет од 250 до 400 гости. На зеленилото е превидено
-                                        да се прават свадби и прослави под отворено небо, а исто така е организирано
-                                        одржување на матично на отворено. Ресторанот обезбедува паркинг-места за 100
-                                        возила, кој ќе биде под постојан видео-надзор, како и игротека за најмалите
-                                        гости. Салата за свечености е предвидена за летни и зимски свадби, што значи
-                                        дека во лето се отвора од сите три страни и има подно ладење, а во зима се
-                                        затвора од сите три страни со стаклена фасада и има подно греење.</p>
-                                    <p><b>ТИМ</b><br/>
-                                        Нашиот тим од професионалци воден од проф. Небојша Вуковиќ создаде менија коишто
-                                        содржат уникатни јадења, создадени за потребите на нашиот ресторан, а кои ќе ви
-                                        овозможат незаборавно гастрономско уживање.
-                                        ДЕМИЈЕН ДРОЦА
-                                        General manager
-                                        АГРИФИНА ПЛУЖНИКОВА-ДРОЦА
-                                        Food and baverage manager
-                                        АНАСТАСИЈА ПЛУЖНИКОВА
-                                        Sales and marketing manager</p>
+                                   {!! $restaurant->description !!}
                                 </div>
                             </div>
                         </div>
