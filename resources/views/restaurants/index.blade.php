@@ -36,14 +36,6 @@
     <!-- Page Start -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div class="text-end">
-                    <a href="{{ route('restaurants.create') }}" class="btn-primary btn">Додади нов ресторан</a>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
             @foreach($restaurants as $restaurant)
             <div class="col-md-6 col-lg-4">
                 <div class="card blog position-relative overflow-hidden hover-img"

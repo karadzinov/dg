@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('contactPosition');
             $table->string('contactEmail');
             $table->string('contactPhone');
-            $table->longText('contactDescription');
+            $table->longText('desc');
             $table->unsignedBigInteger('restaurant_id');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->cascadeOnDelete();
             $table->timestamps();
         });
     }

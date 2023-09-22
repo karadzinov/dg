@@ -32,8 +32,13 @@ class Restaurant extends Model
         return $this->hasMany(Contact::class, 'restaurant_id');
     }
 
-    public function cities()
+    public function city()
     {
-        return $this->hasMany(City::class, 'city_id');
+        return $this->belongsTo(City::class, 'city_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

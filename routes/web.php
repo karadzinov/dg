@@ -19,14 +19,29 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
+    //User Profile
     Route::get('/' , [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+
+    //Restaurants CRUD
+    Route::get('/restaurants/create', [\App\Http\Controllers\RestaurantController::class, 'create'])->name('restaurants.create');
+    Route::post('/restaurants/', [\App\Http\Controllers\RestaurantController::class, 'store'])->name('restaurants.store');
+    Route::get('/restaurants/{slug}', [\App\Http\Controllers\RestaurantController::class, 'show'])->name('restaurants.show');
+    Route::get('/restaurants/{restaurant}/edit', [\App\Http\Controllers\RestaurantController::class, 'edit'])->name('restaurants.edit');
+    Route::put('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'update'])->name('restaurants.update');
+    Route::delete('/restaurants /{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'destroy'])->name('restaurants.destroy');
+
+    //Contacts CRUD
+    Route::get('/{slug}/contacts', [\App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/{slug}/contacts/create', [\App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
+    Route::post('/{slug}/contacts', [\App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
+    Route::get('/contacts/{contact}/edit', [\App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit');
+    Route::put('/contacts/{contact}', [\App\Http\Controllers\ContactController::class, 'update'])->name('contacts.update');
+    Route::delete('/contacts/{contact}', [\App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
 });
 
 Route::prefix('restaurants')->group(function () {
     Route::get('/', [\App\Http\Controllers\RestaurantController::class, 'index'])->name('restaurants.index');
-    Route::get('/create', [\App\Http\Controllers\RestaurantController::class, 'create'])->name('restaurants.create');
-    Route::post('/', [\App\Http\Controllers\RestaurantController::class, 'store'])->name('restaurants.store');
-    Route::get('/{slug}', [\App\Http\Controllers\RestaurantController::class, 'show'])->name('restaurants.show');
+
 });
 
 Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend');

@@ -24,7 +24,8 @@
         </div>
         <div class="card overflow-hidden">
             <div class="card-body p-0">
-                <img src="/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }}" alt="" class="img-fluid">
+                <img src="/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }}" alt=""
+                     class="img-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-4 order-lg-1 order-2">
                         <div class="d-flex align-items-center justify-content-around m-4">
@@ -44,7 +45,8 @@
                                     <div
                                         class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                         style="width: 100px; height: 100px;" ;="">
-                                        <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}" alt="" class="w-100 h-100">
+                                        <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}" alt=""
+                                             class="w-100 h-100">
                                     </div>
                                 </div>
                             </div>
@@ -127,42 +129,46 @@
                     <div class="col-lg-4">
                         <div class="card shadow-none border">
                             <div class="card-body">
-                                <h4 class="fw-semibold mb-3">Контакт</h4>
-                                <p>{!! $contact->contactDescription !!}</p>
-                                <ul class="list-unstyled mb-0">
-                                    <li class="d-flex align-items-center gap-3 mb-4">
-                                        <i class="ti ti-briefcase text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPosition }}</h6>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-3 mb-4">
-                                        <i class="ti ti-mail text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactEmail }}</h6>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-3 mb-4">
-                                        <i class="ti ti-phone-call text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPhone }}</h6>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-3 mb-2">
-                                        <i class="ti ti-map-pin text-dark fs-6"></i>
-                                        <h6 class="fs-4 fw-semibold mb-0">Скопје</h6>
-                                    </li>
-                                </ul>
+                                @if(isset($contact->contactName))
+                                    <h4 class="fw-semibold mb-3">Контакт</h4>
+                                    <br>
+                                    <p><strong>{{ $contact->contactName }}</strong></p>
+                                    <p>{!! $contact->desc !!}</p>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="d-flex align-items-center gap-3 mb-4">
+                                            <i class="ti ti-briefcase text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPosition }}</h6>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-4">
+                                            <i class="ti ti-mail text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactEmail }}</h6>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-4">
+                                            <i class="ti ti-phone-call text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPhone }}</h6>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-2">
+                                            <i class="ti ti-map-pin text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">Скопје</h6>
+                                        </li>
+                                    </ul>
+                                @else
+                                    <div class="text-center">
+                                        <p><strong>Нема наведено лице за контакт???</strong></p>
+                                    </div>
+                                @endif
                             </div>
                         </div>
 
                     </div>
                     <div class="col-lg-8">
-
-
                         <div class="card">
                             <div class="card-body border-bottom">
                                 <div class="col-12">
-                                   {!! $restaurant->description !!}
+                                    {!! $restaurant->description !!}
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="row">
@@ -177,10 +183,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
             <div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab"
                  tabindex="0">
                 <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">

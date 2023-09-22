@@ -52,7 +52,7 @@ class RestaurantController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('restaurants.create')
+            return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -102,7 +102,7 @@ class RestaurantController extends Controller
         $contactPosition = $request->get('contactPosition');
         $contactEmail = $request->get('contactEmail');
         $contactPhone = $request->get('contactPhone');
-        $contactDescription = $request->get('contactDescription');
+        $contactDescription = $request->get('desc');
         $count = count($contactName);
 
         for ($i = 0; $i < $count; $i++) {
@@ -112,21 +112,21 @@ class RestaurantController extends Controller
                 'contactPosition' => $contactPosition[$i],
                 'contactEmail' => $contactEmail[$i],
                 'contactPhone' => $contactPhone[$i],
-                'contactDescription' => $contactDescription[$i],
+                'desc' => $contactDescription[$i],
                 'restaurant_id' => $restaurant->id,
             ]);
 
         };
 
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::where('user_id', Auth::user()->id)->get();
 
         $data = [
             'restaurants' => $restaurants
         ];
-
-        return view('restaurants.index')->with($data);
+        return view('users.index')->with($data);
     }
 
+    //  TO DO  could be moved to frontend controller
     public function show($slug)
     {
         $restaurant = Restaurant::where('slug', $slug)->latest()->first();
@@ -138,5 +138,80 @@ class RestaurantController extends Controller
         ];
 
         return view('restaurants.profile')->with($data);
+    }
+
+    public function edit($id)
+    {
+        $restaurant = Restaurant::FindorFail($id);
+        $cities = City::all();
+        $contacts = Contact::where('restaurant_id', $id)->get();
+
+        $data = [
+            'restaurant' => $restaurant,
+            'cities' => $cities,
+            'contacts' => $contacts
+        ];
+
+        return view('restaurants.edit')->with($data);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'coverImg' => 'required',
+            'logo' => 'required',
+            'phone' => 'required',
+            'description' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'capacity' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $restaurant = Restaurant::FindorFail($id);
+
+        if ($request->hasFile('logo')) {
+            $logo = $request['logo'];
+            $imageObj = new ImageStoreLogo($request, 'restaurants');
+            $logo = $imageObj->imageStore();
+        }
+        if ($request->hasFile('coverImg')) {
+            $coverImg = $request['coverImg'];
+            $imageObj = new ImageStoreCover($request, 'restaurants');
+            $coverImg = $imageObj->imageStore();
+        }
+
+        $input = $request->all();
+        $input['logo'] = $logo;
+        $input['coverImg'] = $coverImg;
+
+        $restaurant->fill($input)->save();
+
+        $restaurants = Restaurant::where('user_id', Auth::user()->id)->get();
+
+        $data = [
+            'restaurants' => $restaurants
+        ];
+        return view('users.index')->with($data);
+    }
+
+    public function destroy($id)
+    {
+        $restaurant = Restaurant::FindorFail($id);
+        $restaurant->delete();
+
+        $restaurants = Restaurant::where('user_id', Auth::user()->id)->get();
+
+        $data = [
+            'restaurants' => $restaurants
+        ];
+        return view('users.index')->with($data);
     }
 }

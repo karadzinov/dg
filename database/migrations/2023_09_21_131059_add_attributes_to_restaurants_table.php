@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('restaurants', function (Blueprint $table) {
             $table->string('address');
             $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities')->cascadeOnDelete();
             $table->integer('capacity');
             $table->integer('menuDiscount')->nullable();
             $table->integer('menuMin')->nullable();

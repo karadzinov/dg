@@ -10,7 +10,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend') }}"><i
                                             class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Креирај ресторан</li>
+                                <li class="breadcrumb-item" aria-current="page">Уреди ресторан</li>
                             </ol>
                         </nav>
                     </div>
@@ -22,7 +22,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title text-center">Ве молиме внесете ги следните информации</h4>
-                    <form action="{{ route('restaurants.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('restaurants.update', $restaurant->id) }}" method="POST" enctype="multipart/form-data">
+                        @method('put')
                         @csrf
                         <p><strong>Општи информации</strong></p>
                         <section>
@@ -32,7 +33,7 @@
                                         <label for="name"> Име на ресторанот : <span class="danger">*</span>
                                         </label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror form-horizontal required" id="name"
-                                               name="name"/>
+                                               name="name" value="{{ $restaurant->name }}"/>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -45,7 +46,7 @@
                                         <label for="phone"> Телефон : <span class="danger">*</span>
                                         </label>
                                         <input type="text" class="form-control form-horizontal required @error('phone') is-invalid @enderror" id="phone"
-                                               name="phone"/>
+                                               name="phone" value="{{ $restaurant->phone }}"/>
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -60,7 +61,7 @@
                                         <label for="address"> Адреса : <span class="danger">*</span>
                                         </label>
                                         <input type="text" class="form-control form-horizontal required  @error('address') is-invalid @enderror" id="address"
-                                               name="address"/>
+                                               name="address" value="{{ $restaurant->address }}"/>
                                         @error('address')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -85,8 +86,8 @@
                                     <div class="mb-3">
                                         <label for="description"> Повеќе за ресторанот : <span class="danger">*</span>
                                         </label>
-                                        <textarea class="quill-editor @error('description') is-invalid @enderror" rows="3" placeholder="Text Here..."
-                                                  name="description" id="description"></textarea>
+                                        <textarea class="quill-editor @error('description') is-invalid @enderror" rows="3"
+                                                  name="description" id="description" >{{ $restaurant->description }}</textarea>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -108,7 +109,7 @@
                                         <input type="file"
                                                class="form-control custom-file-input form-horizontal required @error('coverImg') is-invalid @enderror"
                                                id="coverImg"
-                                               name="coverImg"/>
+                                               name="coverImg" />
                                         @error('coverImg')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -136,7 +137,9 @@
                         <br>
                         <div>
                             <div id="clonedInput1" class="clonedInput">
+                                @foreach($contacts as $contact)
                                 <p><strong>Личност за контакт</strong></p>
+                                <br>
                                 <section>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -145,7 +148,7 @@
                                                 </label>
                                                 <input type="text" class="form-control form-horizontal required @error('contactName') is-invalid @enderror"
                                                        id="contactName"
-                                                       name="contactName[]"/>
+                                                       name="contactName[]" value="{{ $contact->contactName }}"/>
                                                 @error('contactName')
                                                 <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -159,7 +162,7 @@
                                                 </label>
                                                 <input type="text" class="form-control form-horizontal required @error('contactPosition') is-invalid @enderror"
                                                        id="contactPosition"
-                                                       name="contactPosition[]"/>
+                                                       name="contactPosition[]" value="{{ $contact->contactPosition }}"/>
                                                 @error('contactPosition')
                                                 <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -174,7 +177,7 @@
                                                 <label for="contactEmail"> Е-маил : <span class="danger">*</span>
                                                 </label>
                                                 <input type="text" class="form-control form-horizontal required @error('contactEmail') is-invalid @enderror"
-                                                       id="contactEmail" name="contactEmail[]"/>
+                                                       id="contactEmail" name="contactEmail[]" value="{{ $contact->contactEmail }}"/>
                                                 @error('contactEmail')
                                                 <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -187,7 +190,7 @@
                                                 <label for="contactPhone"> Телефон : <span class="danger">*</span>
                                                 </label>
                                                 <input type="text" class="form-control form-horizontal required @error('contactPhone') is-invalid @enderror"
-                                                       id="contactPhone" name="contactPhone[]"/>
+                                                       id="contactPhone" name="contactPhone[]" value="{{ $contact->contactPhone }}"/>
                                                 @error('contactPhone')
                                                 <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -199,12 +202,12 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="mb-3">
-                                                <label for="desc"> Повеќе инфомации за контактот : <span
+                                                <label for="contactDescription"> Повеќе инфомации за контактот : <span
                                                         class="danger">*</span>
                                                 </label>
-                                                <textarea type="text" class="form-control form-horizontal @error('desc') is-invalid @enderror" rows="10"
-                                                          name="desc[]" id="desc"></textarea>
-                                                @error('desc')
+                                                <input type="text" class="form-control form-horizontal @error('contactDescription') is-invalid @enderror"
+                                                          name="contactDescription[]" id="contactDescription" value="{{ $contact->contactDescription }}">
+                                                @error('contactDescription')
                                                 <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -215,6 +218,7 @@
                                     <br>
                                     <div class="showHere"></div>
                                 </section>
+                                @endforeach
                             </div>
                             <div class="actions  text-center">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -236,7 +240,7 @@
                                         <label for="capacity"> Капацитет на гости : <span class="danger">*</span>
                                         </label>
                                         <input type="number" class="form-control form-horizontal required @error('capacity') is-invalid @enderror" id="capacity"
-                                               name="capacity"/>
+                                               name="capacity"  value="{{ $restaurant->capacity }}"/>
                                         @error('capacity')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -251,7 +255,7 @@
                                         <label for="menuDiscount"> Акциско мени (во <i class="ti ti-currency-euro fs-5 align-middle"></i>): <span class="danger">*</span>
                                         </label>
                                         <input type="number" class="form-control form-horizontal" id="menuDiscount"
-                                               name="menuDiscount"/>
+                                               name="menuDiscount" value="{{ $restaurant->menuDiscount }}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -260,7 +264,7 @@
                                         </label>
                                         <input type="number" class="form-control form-horizontal"
                                                id="menuMin"
-                                               name="menuMin"/>
+                                               name="menuMin" value="{{ $restaurant->menuMin }}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -269,7 +273,7 @@
                                         </label>
                                         <input type="number" class="form-control form-horizontal"
                                                id="menuMax"
-                                               name="menuMax"/>
+                                               name="menuMax" value="{{ $restaurant->menuMax }}"/>
                                     </div>
                                 </div>
                             </div>

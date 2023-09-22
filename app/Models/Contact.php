@@ -16,7 +16,7 @@ class Contact extends Model
         'contactPosition',
         'contactEmail',
         'contactPhone',
-        'contactDescription',
+        'desc',
         'restaurant_id'
     ];
 
