@@ -25,7 +25,6 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     //Restaurants CRUD
     Route::get('/restaurants/create', [\App\Http\Controllers\RestaurantController::class, 'create'])->name('restaurants.create');
     Route::post('/restaurants/', [\App\Http\Controllers\RestaurantController::class, 'store'])->name('restaurants.store');
-    Route::get('/restaurants/{slug}', [\App\Http\Controllers\RestaurantController::class, 'show'])->name('restaurants.show');
     Route::get('/restaurants/{restaurant}/edit', [\App\Http\Controllers\RestaurantController::class, 'edit'])->name('restaurants.edit');
     Route::put('/restaurants/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'update'])->name('restaurants.update');
     Route::delete('/restaurants /{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'destroy'])->name('restaurants.destroy');
@@ -40,9 +39,9 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
 });
 
 
-Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend');
+Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
 Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
-Route::get('/profile/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
+Route::get('/restaurants/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profile'])->name('restaurants.profile');
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/{link}',  [\App\Http\Controllers\FrontEndController::class, 'link'])->name('bylink');

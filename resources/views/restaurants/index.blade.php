@@ -42,12 +42,11 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
                                      data-bs-title="Mollie Underwood">
-
                                 </div>
                                 <span class="badge text-bg-primary rounded-3 fs-2 fw-semibold">Топ понуда</span>
                             </div>
                             <div>
-                                <a href="{{ route('restaurants.show', $restaurant->slug) }}" class="fs-7 my-4 fw-semibold text-white d-block lh-sm"><h1
+                                <a href="{{ route('restaurants.profile', $restaurant->slug) }}" class="fs-7 my-4 fw-semibold text-white d-block lh-sm"><h1
                                         class="text-white">25ти Август</h1>
                                     <p> {{ $restaurant->name }}</p></a>
                                 <div class="d-flex align-items-center gap-4">

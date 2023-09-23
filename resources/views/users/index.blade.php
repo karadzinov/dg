@@ -8,7 +8,7 @@
                         <h4 class="fw-semibold mb-8">{{ Auth::user()->name }}</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend') }}"><i
+                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend.index') }}"><i
                                             class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
                                 <li class="breadcrumb-item" aria-current="page">Информации за профилот</li>
                             </ol>
@@ -31,9 +31,8 @@
                     </div>
                 </div>
             </div>
-            <!-- ---------------------
-                            end Contact
-                        ---------------- -->
+            <!-- --------------------- -->
+
             <!-- Modal -->
             <div class="card card-body">
                 <h4 class="card-title text-center">Ресторани</h4>
@@ -54,11 +53,11 @@
                                     <div class="d-flex align-items-center">
                                         <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}"
                                              alt="avatar" class="rounded-circle"
-                                             width="35"/>
-                                        <div class="ms-3">
-                                            <div class="user-meta-info">
-                                                <h6 class="user-name mb-0"
-                                                    data-name="Emma Adams">{{ $restaurant->name }}</h6>
+                                             width="40"/>
+                                        <div class="ms-3 align-items-middle">
+                                            <div class="user-meta">
+                                                <a href="{{ route('restaurants.profile', $restaurant->slug) }}" class="title mb-0">{{ $restaurant->name }}</a>
+                                                <p class="fw-normal">{{ $restaurant->subtitle }}</p>
                                             </div>
                                         </div>
                                     </div>

@@ -8,7 +8,7 @@
                         <h4 class="fw-semibold mb-8">{{ $contact->contactName }}</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend') }}"><i
+                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend.index') }}"><i
                                             class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
                                 <li class="breadcrumb-item" aria-current="page">Промени го контактот</li>
                             </ol>

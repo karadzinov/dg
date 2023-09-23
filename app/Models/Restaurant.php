@@ -14,6 +14,7 @@ class Restaurant extends Model
     protected $fillable = [
         'name',
         'slug',
+        'subtitle',
         'coverImg',
         'logo',
         'phone',
@@ -24,7 +25,12 @@ class Restaurant extends Model
         'menuDiscount',
         'menuMin',
         'menuMax',
-        'user_id'
+        'user_id',
+        'facebook',
+        'instagram',
+        'twitter',
+        'youtube',
+        'weblink',
     ];
 
     public function contacts()

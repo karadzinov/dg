@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ConfirmInvitation;
+use App\Models\Contact;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Models\Link;
@@ -36,18 +37,15 @@ class FrontEndController extends Controller
     public function profile($slug)
     {
 
-        if ($slug === "alikas") {
-            $data = ["slug" => $slug, "name" => "Аликас"];
-        } else if ($slug === "ksantika") {
-            $data = ["slug" => $slug, "name" => "Ксантика"];
-            return view('ksantika')->with($data);
-        } else {
-            $data = ["slug" => $slug, "name" => "Аликас"];
-        }
+        $restaurant = Restaurant::where('slug', $slug)->latest()->first();
+        $contact = Contact::where('restaurant_id', $restaurant->id)->first();
 
+        $data = [
+            'restaurant' => $restaurant,
+            'contact' => $contact
+        ];
 
-        return view('profile')->with($data);
-
+        return view('restaurants.profile')->with($data);
 
     }
 

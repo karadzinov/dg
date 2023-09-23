@@ -34,6 +34,7 @@ class RestaurantController extends Controller
             'coverImg' => 'required',
             'logo' => 'required',
             'phone' => 'required',
+            'subtitle' => 'required',
             'description' => 'required',
             'address' => 'required',
             'city' => 'required',
@@ -50,12 +51,18 @@ class RestaurantController extends Controller
         $slug = Str::slug($request->get('name'));
         $phone = $request->get('phone');
         $description = $request->get('description');
+        $subtitle = $request->get('subtitle');
         $address = $request->get('address');
         $city = $request->get('city');
         $capacity = $request->get('capacity');
         $menuDiscount = $request->get('menuDiscount');
         $menuMin = $request->get('menuMin');
         $menuMax = $request->get('menuMax');
+        $facebook = $request->get('facebook');
+        $instagram = $request->get('instagram');
+        $twitter = $request->get('twitter');
+        $youtube = $request->get('youtube');
+        $weblink = $request->get('weblink');
 
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
@@ -75,6 +82,7 @@ class RestaurantController extends Controller
             'slug' => $slug,
             'phone' => $phone,
             'description' => $description,
+            'subtitle' => $subtitle,
             'address' => $address,
             'city_id' => $city,
             'capacity' => $capacity,
@@ -83,7 +91,12 @@ class RestaurantController extends Controller
             'menuDiscount' => $menuDiscount,
             'menuMin' => $menuMin,
             'menuMax' => $menuMax,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'facebook' => $facebook,
+            'instagram' => $instagram,
+            'twitter' => $twitter,
+            'youtube' => $youtube,
+            'weblink' => $weblink,
         ]);
 
         $restaurant = Restaurant::where('logo', $logo)->first();
@@ -115,19 +128,6 @@ class RestaurantController extends Controller
         return view('users.index')->with($data);
     }
 
-    //  TO DO  could be moved to frontend controller
-    public function show($slug)
-    {
-        $restaurant = Restaurant::where('slug', $slug)->latest()->first();
-        $contact = Contact::where('restaurant_id', $restaurant->id)->first();
-
-        $data = [
-            'restaurant' => $restaurant,
-            'contact' => $contact
-        ];
-
-        return view('restaurants.profile')->with($data);
-    }
 
     public function edit($id)
     {
@@ -153,6 +153,7 @@ class RestaurantController extends Controller
             'logo' => 'required',
             'phone' => 'required',
             'description' => 'required',
+            'subtitle' => 'required',
             'address' => 'required',
             'city' => 'required',
             'capacity' => 'required',

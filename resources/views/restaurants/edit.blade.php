@@ -8,7 +8,7 @@
                         <h4 class="fw-semibold mb-8">{{ Auth::user()->name }}</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend') }}"><i
+                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend.index') }}"><i
                                             class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
                                 <li class="breadcrumb-item" aria-current="page">Уреди ресторан</li>
                             </ol>
@@ -278,6 +278,67 @@
                                 </div>
                             </div>
 
+                        </section>
+                        <br>
+                        <br>
+                        <p><strong>Линкови</strong></p>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="facebook"> Facebook : <span class="danger">*</span>
+                                        </label>
+                                        <input type="text"
+                                               class="form-control form-horizontal"
+                                               id="facebook"
+                                               name="facebook" value="{{ $restaurant->facebook }}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="instagram"> Instagram : <span class="danger">*</span>
+                                        </label>
+                                        <input type="text"
+                                               class="form-control form-horizontal"
+                                               id="instagram"
+                                               name="instagram" value="{{ $restaurant->instagram }}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="twitter"> Twitter : <span class="danger">*</span>
+                                        </label>
+                                        <input type="text"
+                                               class="form-control form-horizontal"
+                                               id="twitter"
+                                               name="twitter" value="{{ $restaurant->twitter }}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="youtube"> Youtube : <span class="danger">*</span>
+                                        </label>
+                                        <input type="text"
+                                               class="form-control form-horizontal"
+                                               id="youtube"
+                                               name="youtube" value="{{ $restaurant->youtube }}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="weblink"> Web : <span class="danger">*</span>
+                                        </label>
+                                        <input type="text"
+                                               class="form-control form-horizontal"
+                                               id="weblink"
+                                               name="weblink" value="{{ $restaurant->weblink }}"/>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
                         <br>
                         <div class="text-end">

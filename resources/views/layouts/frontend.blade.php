@@ -56,23 +56,27 @@
     data-sidebar-position="fixed"
     data-header-position="fixed"
 >
-
-
     <!-- Header Start -->
-    <header class="app-header">
+    <header class="app-header" style="background-color: white">
         <nav class="navbar navbar-expand-lg navbar-light">
             <ul class="navbar-nav quick-links d-none d-lg-flex">
                 <li class="nav-item d-none d-lg-block">
-                    <a href="{{ route('frontend') }}" class="text-nowrap nav-link">
+                    <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
                         <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
                         <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
                     </a>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="{{ route('frontend') }}">Почетна</a>
+                    <a class="nav-link " href="/" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal">
+                        <i class="ti ti-search"></i>
+                    </a>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="app-chat.html">Креирајте покани</a>
+                    <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="/">Креирајте покани</a>
                 </li>
                 <li class="nav-item dropdown hover-dd d-none d-lg-block">
                     <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
@@ -131,10 +135,10 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="app-chat.html">За нас</a>
+                    <a class="nav-link" href="/">За нас</a>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="app-calendar.html">Контакт</a>
+                    <a class="nav-link" href="/">Контакт</a>
                 </li>
             </ul>
 
@@ -170,10 +174,9 @@
                                                  width="80" height="80"
                                                  alt=""/>
                                             <div class="ms-3">
-                                                <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                                                <span class="mb-1 d-block text-dark">Designer</span>
+                                                <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
                                                 <p class="mb-0 d-flex text-dark align-items-center gap-2">
-                                                    <i class="ti ti-mail fs-4"></i> info@modernize.com
+                                                    <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
                                                 </p>
                                             </div>
                                         </div>
@@ -220,13 +223,15 @@
 
 
     <!-- Main wrapper -->
-
     <div class="body-wrapper">
         @yield('content')
     </div>
+    <!-- Main wrapper End -->
+
 </div>
 
 <!--  Shopping Cart -->
+<!--
 <div class="offcanvas offcanvas-end shopping-cart" tabindex="-1" id="offcanvasRight"
      aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header py-4">
@@ -328,7 +333,8 @@
         </div>
     </div>
 </div>
-
+-->
+<!--  Shopping Cart End -->
 
 <!--  Search Bar -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
@@ -343,48 +349,6 @@
             <div class="modal-body message-body" data-simplebar="">
                 <h5 class="mb-0 fs-5 p-1">Quick Page Links</h5>
                 <ul class="list mb-0 py-2">
-                    <li class="p-1 mb-1 bg-hover-light-black">
-                        <a href="#">
-                            <span class="fs-3 text-black fw-normal d-block">Modern</span>
-                            <span class="fs-3 text-muted d-block">/dashboards/dashboard1</span>
-                        </a>
-                    </li>
-                    <li class="p-1 mb-1 bg-hover-light-black">
-                        <a href="#">
-                            <span class="fs-3 text-black fw-normal d-block">Dashboard</span>
-                            <span class="fs-3 text-muted d-block">/dashboards/dashboard2</span>
-                        </a>
-                    </li>
-                    <li class="p-1 mb-1 bg-hover-light-black">
-                        <a href="#">
-                            <span class="fs-3 text-black fw-normal d-block">Contacts</span>
-                            <span class="fs-3 text-muted d-block">/apps/contacts</span>
-                        </a>
-                    </li>
-                    <li class="p-1 mb-1 bg-hover-light-black">
-                        <a href="#">
-                            <span class="fs-3 text-black fw-normal d-block">Posts</span>
-                            <span class="fs-3 text-muted d-block">/apps/blog/posts</span>
-                        </a>
-                    </li>
-                    <li class="p-1 mb-1 bg-hover-light-black">
-                        <a href="#">
-                            <span class="fs-3 text-black fw-normal d-block">Detail</span>
-                            <span class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
-                        </a>
-                    </li>
-                    <li class="p-1 mb-1 bg-hover-light-black">
-                        <a href="#">
-                            <span class="fs-3 text-black fw-normal d-block">Shop</span>
-                            <span class="fs-3 text-muted d-block">/apps/ecommerce/shop</span>
-                        </a>
-                    </li>
-                    <li class="p-1 mb-1 bg-hover-light-black">
-                        <a href="#">
-                            <span class="fs-3 text-black fw-normal d-block">Modern</span>
-                            <span class="fs-3 text-muted d-block">/dashboards/dashboard1</span>
-                        </a>
-                    </li>
                     <li class="p-1 mb-1 bg-hover-light-black">
                         <a href="#">
                             <span class="fs-3 text-black fw-normal d-block">Dashboard</span>
@@ -421,22 +385,12 @@
     </div>
 </div>
 
-<!-- --------------------------------------------------- -->
-<!-- Customizer -->
-<!-- --------------------------------------------------- -->
-
-
-<!-- ---------------------------------------------- -->
-<!-- Customizer -->
-<!-- ---------------------------------------------- -->
-
 <!-- ---------------------------------------------- -->
 <!-- Import Js Files -->
 <!-- ---------------------------------------------- -->
 <script src="/dist/libs/jquery/dist/jquery.min.js"></script>
 <script src="/dist/libs/simplebar/dist/simplebar.min.js"></script>
 <script src="/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
 <!-- ---------------------------------------------- -->
 <!-- core files -->
 <!-- ---------------------------------------------- -->
@@ -444,10 +398,8 @@
 <script src="/dist/js/app.horizontal.init.js"></script>
 <script src="/dist/js/app-style-switcher.js"></script>
 <script src="/dist/js/sidebarmenu.js"></script>
-
 <script src="/dist/js/custom.js"></script>
 <script src="/dist/libs/prismjs/prism.js"></script>
-
 <!-- ---------------------------------------------- -->
 <!-- current page js files -->
 <!-- ---------------------------------------------- -->
@@ -456,13 +408,12 @@
 <script src="/dist/js/datepicker.min.js"></script>
 <script src="/dist/js/index.global.min.js"></script>
 <script src="/dist/js/calendar.init.js"></script>
-
 <script src="/dist/libs/jquery-steps/build/jquery.steps.min.js"></script>
 <script src="/dist/libs/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="/dist/js/forms/form-wizard.js"></script>
-
 <script src="/dist/libs/quill/dist/quill.min.js"></script>
 <script src="/dist/libs/quill/quill.min.js"></script>
+<!-- ---------------------------------------------- -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Datatables Responsive
@@ -498,7 +449,6 @@
         $('.clone').on('click', function (e) {
             e.preventDefault();
         });
-
         $('.remove').on('click', function (e) {
             e.preventDefault();
         });
@@ -506,7 +456,6 @@
         var cloneIndex = $(".clonedInput").length;
 
         function clone() {
-            console.log('ok');
             $(".clonedInput").last().clone()
                 .appendTo(".showHere")
                 .attr("id", "clonedInput" + cloneIndex)
@@ -528,7 +477,6 @@
         }
 
         $("button.clone").on("click", clone);
-
         $("button.remove").on("click", remove);
 
     });

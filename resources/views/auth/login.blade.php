@@ -11,7 +11,7 @@
                     <div class="col-md-8 col-lg-6 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="{{ route('frontend') }}" class="text-nowrap logo-img text-center d-block mb-5 w-100">
+                                <a href="{{ route('frontend.index') }}" class="text-nowrap logo-img text-center d-block mb-5 w-100">
                                     <img src="/dist/images/logo.svg" width="180" alt="">
                                 </a>
                                 <div class="position-relative text-center my-4">

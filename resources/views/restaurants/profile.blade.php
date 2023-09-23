@@ -8,7 +8,9 @@
                         <h4 class="fw-semibold mb-8">{{ $restaurant->name }}</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-muted " href="{{ route('frontend') }}">Ресторани</a>
+                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend.index') }}"><i
+                                            class="ti ti-home-2 text-dark me-1 fs-5"></i></a></li>
+                                <li class="breadcrumb-item"><a class="text-muted" href="{{ route('frontend.restaurants') }}">Ресторани</a>
                                 </li>
                                 <li class="breadcrumb-item" aria-current="page">{{ $restaurant->name }}</li>
                             </ol>
@@ -52,7 +54,7 @@
                             </div>
                             <div class="text-center">
                                 <h5 class="fs-5 mb-0 fw-semibold">{{ $restaurant->name }}</h5>
-                                <p class="mb-0 fs-4">Wedding & Event center</p>
+                                <p class="mb-0 fs-4">{{ $restaurant->subtitle }}</p>
                             </div>
                         </div>
                     </div>
@@ -60,25 +62,25 @@
                         <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-start my-3 gap-3">
                             <li class="position-relative">
                                 <a class="text-white d-flex align-items-center justify-content-center bg-primary p-2 fs-4 rounded-circle"
-                                   href="javascript:void(0)" width="30" height="30">
+                                   href="{{ $restaurant->facebook }}" width="30" height="30"  target="_blank">
                                     <i class="ti ti-brand-facebook"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="javascript:void(0)">
-                                    <i class="ti ti-brand-twitter"></i>
+                                   href="{{ $restaurant->instagram }}"  target="_blank">
+                                    <i class="ti ti-brand-instagram"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="javascript:void(0)">
-                                    <i class="ti ti-brand-dribbble"></i>
+                                   href="{{ $restaurant->weblink }}"  target="_blank">
+                                    <i class="ti ti-brand"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-danger d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="javascript:void(0)">
+                                   href="{{ $restaurant->youtube }}"  target="_blank">
                                     <i class="ti ti-brand-youtube"></i>
                                 </a>
                             </li>
