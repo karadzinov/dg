@@ -16,17 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
-    public function index()
-    {
-        $restaurants = Restaurant::all();
-
-        $data = [
-            'restaurants' => $restaurants
-        ];
-
-        return view('restaurants.index')->with($data);
-    }
-
     public function create()
     {
         $cities = City::all();

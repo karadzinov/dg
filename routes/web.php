@@ -39,12 +39,9 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     Route::delete('/contacts/{contact}', [\App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
 });
 
-Route::prefix('restaurants')->group(function () {
-    Route::get('/', [\App\Http\Controllers\RestaurantController::class, 'index'])->name('restaurants.index');
-
-});
 
 Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend');
+Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
 Route::get('/profile/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

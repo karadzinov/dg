@@ -56,97 +56,162 @@
     data-sidebar-position="fixed"
     data-header-position="fixed"
 >
-
-
     <!-- Header Start -->
+
     <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <ul class="navbar-nav quick-links d-none d-lg-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link sidebartoggler ms-n3" id="sidebarCollapse" href="javascript:void(0)">
+                        <i class="ti ti-menu-2"></i>
+                    </a>
+                </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a href="{{ route('frontend') }}" class="text-nowrap nav-link">
+                    <a href="/" class="text-nowrap nav-link">
                         <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
                         <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
                     </a>
                 </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="{{ route('frontend') }}">Почетна</a>
-                </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="app-chat.html">Креирајте покани</a>
-                </li>
-                <li class="nav-item dropdown hover-dd d-none d-lg-block">
-                    <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
-                                class="ti ti-chevron-down"></i></span></a>
-                    <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0"
-                         style="max-width: 250px;">
-                        <div class="col-12">
-                            <div class=" ps-7 pt-7">
-                                <div class="border-bottom">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="position-relative">
-                                                <a href="{{ route('frontend.restaurants') }}"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-home-2"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Ресторани</span></h6>
-                                                    </div>
-                                                </a>
-                                                <a href="./app-calendar.html"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-music"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Музичари</span></h6>
-                                                    </div>
-                                                </a>
-                                                <a href="./app-contact.html"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-camera"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Фотографи</span></h6>
-                                                    </div>
-                                                </a>
-                                                <a href="./app-notes.html"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-hotel-service"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Останато</span></h6>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="app-chat.html">За нас</a>
-                </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="app-calendar.html">Контакт</a>
+                <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal">
+                        <i class="ti ti-search"></i>
+                    </a>
                 </li>
             </ul>
+            <ul class="navbar-nav quick-links d-none d-lg-flex">
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="/">Почетна</a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="mt-3 btn btn-danger" href="/">Креирајте покани</a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="/">Услуги</a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="{{ route('frontend.restaurants') }}">За нас</a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="/">Контакт</a>
+                </li>
 
+            </ul>
+            <div class="d-block d-lg-none">
+                <a href="index.html" class="text-nowrap nav-link">
+                    <img src="/dist/images/logo.svg" width="180" alt=""/>
+                </a>
+            </div>
+            <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+            <span class="p-2">
+              <i class="ti ti-dots fs-7"></i>
+            </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="d-flex align-items-center justify-content-between px-0 px-lg-8">
+                    <a href="javascript:void(0)"
+                       class="nav-link round-40 p-1 ps-0 d-flex d-lg-none align-items-center justify-content-center"
+                       type="button" data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar"
+                       aria-controls="offcanvasWithBothOptions">
+                        <i class="ti ti-align-justified fs-7"></i>
+                    </a>
+
+                </div>
+            </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="javascript:void(0)"
-                       class="nav-link d-flex d-lg-none align-items-center justify-content-center" type="button"
-                       data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar"
+                       class="nav-link d-flex d-lg-none align-items-center justify-content-center"
+                       type="button" data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar"
                        aria-controls="offcanvasWithBothOptions">
                         <i class="ti ti-align-justified fs-7"></i>
                     </a>
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+
+                        <!-- CHAT -->
+                        <!-- CHAT
+                         <li class="nav-item dropdown">
+                             <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                 <i class="ti ti-bell-ringing"></i>
+                                 <div class="notification bg-primary rounded-circle"></div>
+                             </a>
+                             <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up"
+                                  aria-labelledby="drop2">
+                                 <div class="d-flex align-items-center justify-content-between py-3 px-7">
+                                     <h5 class="mb-0 fs-5 fw-semibold">Notifications</h5>
+                                     <span class="badge bg-primary rounded-4 px-3 py-1 lh-sm">5 new</span>
+                                 </div>
+                                 <div class="message-body" data-simplebar>
+                                     <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
+                         <span class="me-3">
+                           <img src="../../dist/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="48"
+                                height="48" />
+                         </span>
+                                         <div class="w-75 d-inline-block v-middle">
+                                             <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
+                                             <span class="d-block">Congratulate him</span>
+                                         </div>
+                                     </a>
+                                     <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
+                         <span class="me-3">
+                           <img src="../../dist/images/profile/user-2.jpg" alt="user" class="rounded-circle" width="48"
+                                height="48" />
+                         </span>
+                                         <div class="w-75 d-inline-block v-middle">
+                                             <h6 class="mb-1 fw-semibold">New message</h6>
+                                             <span class="d-block">Salma sent you new message</span>
+                                         </div>
+                                     </a>
+                                     <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
+                         <span class="me-3">
+                           <img src="../../dist/images/profile/user-3.jpg" alt="user" class="rounded-circle" width="48"
+                                height="48" />
+                         </span>
+                                         <div class="w-75 d-inline-block v-middle">
+                                             <h6 class="mb-1 fw-semibold">Bianca sent payment</h6>
+                                             <span class="d-block">Check your earnings</span>
+                                         </div>
+                                     </a>
+                                     <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
+                         <span class="me-3">
+                           <img src="../../dist/images/profile/user-4.jpg" alt="user" class="rounded-circle" width="48"
+                                height="48" />
+                         </span>
+                                         <div class="w-75 d-inline-block v-middle">
+                                             <h6 class="mb-1 fw-semibold">Jolly completed tasks</h6>
+                                             <span class="d-block">Assign her new tasks</span>
+                                         </div>
+                                     </a>
+                                     <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
+                         <span class="me-3">
+                           <img src="../../dist/images/profile/user-5.jpg" alt="user" class="rounded-circle" width="48"
+                                height="48" />
+                         </span>
+                                         <div class="w-75 d-inline-block v-middle">
+                                             <h6 class="mb-1 fw-semibold">John received payment</h6>
+                                             <span class="d-block">$230 deducted from account</span>
+                                         </div>
+                                     </a>
+                                     <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
+                         <span class="me-3">
+                           <img src="../../dist/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="48"
+                                height="48" />
+                         </span>
+                                         <div class="w-75 d-inline-block v-middle">
+                                             <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
+                                             <span class="d-block">Congratulate him</span>
+                                         </div>
+                                     </a>
+                                 </div>
+                                 <div class="py-6 px-7 mb-1">
+                                     <button class="btn btn-outline-primary w-100"> See All Notifications </button>
+                                 </div>
+                             </div>
+                         </li>
+                         -->
                         <li class="nav-item dropdown">
                             <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown"
                                aria-expanded="false">
@@ -216,7 +281,116 @@
             </div>
         </nav>
     </header>
+
     <!-- Header End -->
+
+
+    <!-- Sidebar Start -->
+
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div>
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav scroll-sidebar">
+                <ul id="sidebarnav">
+                    <!-- ============================= -->
+                    <!-- Home -->
+                    <!-- ============================= -->
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Home</span>
+                    </li>
+                    <!-- =================== -->
+                    <!-- Dashboard -->
+                    <!-- =================== -->
+
+                    <!-- ============================= -->
+                    <!-- Apps -->
+                    <!-- ============================= -->
+
+                    <!-- ============================= -->
+                    <!-- PAGES -->
+                    <!-- ============================= -->
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Почетна</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('frontend.restaurants') }}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-home-2"></i>
+                  </span>
+                            <span class="hide-menu">Ресторани</span>
+                        </a>
+
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-music"></i>
+                  </span>
+                            <span class="hide-menu">Музичари</span>
+                        </a>
+
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-camera"></i>
+                  </span>
+                            <span class="hide-menu">Фотографи</span>
+                        </a>
+
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-hotel-service"></i>
+                  </span>
+                            <span class="hide-menu">Останато</span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+                <div
+                    class="unlimited-access hide-menu bg-light-primary position-relative my-7 rounded d-block d-lg-none">
+                    <div class="d-flex">
+                        <div class="unlimited-access-title">
+                            <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Unlimited Access</h6>
+                            <button class="btn btn-primary fs-2 fw-semibold lh-sm">Signup</button>
+                        </div>
+                        <div class="unlimited-access-img">
+                            <img src="/dist/images/backgrounds/rocket.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+        <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3 mx-9 d-block d-lg-none">
+            <div class="hstack gap-3 justify-content-between">
+                <div class="john-img">
+                    <img src="/dist/images/profile/user-1.jpg" class="rounded-circle" width="42" height="42" alt="">
+                </div>
+                <div class="john-title">
+                    <h6 class="mb-0 fs-4">John Doe</h6>
+                    <span class="fs-2">Designer</span>
+                </div>
+                <button class="border-0 bg-transparent text-primary ms-2" tabindex="0" type="button" aria-label="logout"
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                    <i class="ti ti-power fs-6"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Sidebar End -->
 
 
     <!-- Main wrapper -->
