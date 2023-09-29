@@ -79,4 +79,39 @@
 
 }
 
+#map-canvas {
+    width: 100%;
+    min-height: 200px;
+}
+
+@media (min-width: 576px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+@media (min-width: 768px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+
+@media (min-width: 992px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 500px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 500px;
+    }
+}
+
 

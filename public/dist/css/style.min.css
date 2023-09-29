@@ -46225,14 +46225,13 @@ html[dir=rtl] .welcome-bg-img {
 .sidebar-nav ul .sidebar-item .three-level .sidebar-item .sidebar-link {
     padding: 8px 10px 8px 60px
 }
-
-.sidebar-nav ul .sidebar-item.selected > .sidebar-link, .sidebar-nav ul .sidebar-item.selected > .sidebar-link.active, .sidebar-nav ul .sidebar-item > .sidebar-link.active {
+.sidebar-nav ul .sidebar-item.selected > .sidebar-link, .sidebar-nav ul .sidebar-item.selected > .sidebar-link.active, .sidebar-nav ul .sidebar-item >  {
     background-color: #5d87ff;
     color: #fff
 }
 
 .sidebar-nav ul .sidebar-item.selected .sidebar-link.has-arrow::after {
-    border-color: #fff
+    border-color: black
 }
 
 .sidebar-nav .sidebar-list .sidebar-list-item {
@@ -54115,3 +54114,39 @@ ul {
 .title-part-padding {
     padding: 15px 30px
 }
+
+#map-canvas {
+    width: 100%;
+    min-height: 200px;
+}
+
+@media (min-width: 576px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+@media (min-width: 768px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+
+@media (min-width: 992px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 500px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    #map-canvas {
+        width: 100%;
+        min-height: 500px;
+    }
+}
+

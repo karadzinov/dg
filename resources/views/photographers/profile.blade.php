@@ -5,38 +5,32 @@
             <div class="card-body px-4 py-3">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h4 class="fw-semibold mb-8">{{ $restaurant->name }}</h4>
+                        <h4 class="fw-semibold mb-8">{{ $photographer->name }}</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a class="text-muted"
                                                                href="{{ route('frontend.index') }}"><i
                                             class="ti ti-home-2 text-dark me-1 fs-5"></i></a></li>
                                 <li class="breadcrumb-item"><a class="text-muted"
-                                                               href="{{ route('frontend.restaurants') }}">Ресторани</a>
+                                                               href="{{ route('frontend.photographers') }}">Музичари/Бендови</a>
                                 </li>
-                                <li class="breadcrumb-item" aria-current="page">{{ $restaurant->name }}</li>
+                                <li class="breadcrumb-item" aria-current="page">{{ $photographer->name }}</li>
                             </ol>
                         </nav>
-                    </div>
-                    <div class="col-3">
-                        <div class="text-center mb-n5">
-
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card overflow-hidden">
             <div class="card-body p-0">
-                <img src="/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }}" alt=""
+                <img src="/images/cover_images/photographers/originals/{{ $photographer->coverImg }}" alt=""
                      class="img-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-4 order-lg-1 order-2">
                         <div class="d-flex align-items-center justify-content-around m-4">
                             <div class="text-center">
                                 <i class="ti ti-phone-call fs-6 d-block mb-2"></i>
-                                <h4 class="mb-0 fw-semibold lh-1">{{ $restaurant->phone }}</h4>
-
+                                <h4 class="mb-0 fw-semibold lh-1">{{ $photographer->phone }}</h4>
                             </div>
                         </div>
                     </div>
@@ -49,14 +43,14 @@
                                     <div
                                         class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                         style="width: 100px; height: 100px;" ;="">
-                                        <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}" alt=""
+                                        <img src="/images/logos/photographers/thumbnails/{{ $photographer->logo }}" alt=""
                                              class="w-100 h-100">
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <h5 class="fs-5 mb-0 fw-semibold">{{ $restaurant->name }}</h5>
-                                <p class="mb-0 fs-4">{{ $restaurant->subtitle }}</p>
+                                <h5 class="fs-5 mb-0 fw-semibold">{{ $photographer->name }}</h5>
+                                <p class="mb-0 fs-4">{{ $photographer->subtitle }}</p>
                             </div>
                         </div>
                     </div>
@@ -64,25 +58,25 @@
                         <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-center my-3 gap-3">
                             <li class="position-relative">
                                 <a class="text-white d-flex align-items-center justify-content-center bg-primary p-2 fs-4 rounded-circle"
-                                   href="{{ $restaurant->facebook }}" width="30" height="30" target="_blank">
+                                   href="{{ $photographer->facebook }}" width="30" height="30" target="_blank">
                                     <i class="ti ti-brand-facebook"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="{{ $restaurant->instagram }}" target="_blank">
+                                   href="{{ $photographer->instagram }}" target="_blank">
                                     <i class="ti ti-brand-instagram"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="{{ $restaurant->weblink }}" target="_blank">
+                                   href="{{ $photographer->weblink }}" target="_blank">
                                     <i class="ti ti-brand"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-danger d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="{{ $restaurant->youtube }}" target="_blank">
+                                   href="{{ $photographer->youtube }}" target="_blank">
                                     <i class="ti ti-brand-youtube"></i>
                                 </a>
                             </li>
@@ -136,11 +130,46 @@
             <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
                  aria-labelledby="pills-profile-tab" tabindex="0">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-4">
+                        <div class="card shadow-none border">
+                            <div class="card-body">
+                                @if(isset($contact->contactName))
+                                    <h4 class="fw-semibold mb-3">Контакт</h4>
+                                    <br>
+                                    <p><strong>{{ $contact->contactName }}</strong></p>
+                                    <p>{!! $contact->desc !!}</p>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="d-flex align-items-center gap-3 mb-4">
+                                            <i class="ti ti-briefcase text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPosition }}</h6>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-4">
+                                            <i class="ti ti-mail text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactEmail }}</h6>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-4">
+                                            <i class="ti ti-phone-call text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">{{ $contact->contactPhone }}</h6>
+                                        </li>
+                                        <li class="d-flex align-items-center gap-3 mb-2">
+                                            <i class="ti ti-map-pin text-dark fs-6"></i>
+                                            <h6 class="fs-4 fw-semibold mb-0">Скопје</h6>
+                                        </li>
+                                    </ul>
+                                @else
+                                    <div class="text-center">
+                                        <p><strong>Нема наведено лице за контакт???</strong></p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body border-bottom">
                                 <div class="col-12">
-                                    {!! $restaurant->description !!}
+                                    {!! $photographer->description !!}
                                 </div>
                             </div>
                         </div>
@@ -314,6 +343,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab"
@@ -329,6 +359,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- BEGIN MODAL -->
                 <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -412,6 +443,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- END MODAL -->
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                  aria-labelledby="pills-contact-tab" tabindex="0">
@@ -444,12 +476,12 @@
                                         <div class="modal-body">
                                             <div class="text-center mt-2 mb-4">
                                                 <a href="" class="text-success"><span><img
-                                                            src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}"
+                                                            src="/images/logos/photographers/thumbnails/{{ $photographer->logo }}"
                                                             class="me-3" width="80"
                                                             alt=""/></span></a>
                                             </div>
                                             <h5 class="mb-3 text-center">Пратете ни ја вашата порака!!!</h5>
-                                            <form action="{{ route('messages.store', $restaurant->id) }}" method="post">
+                                            <form action="{{ route('messages.store', $photographer->id) }}" method="post">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-md-8">
@@ -551,7 +583,7 @@
                                         <button
                                             class="btn btn-primary  btn-lg px-4 fs-4 font-medium">
                                             <i class="ti ti-phone-call fs-5 text-center d-block"></i>
-                                            {{ $restaurant->phone }}
+                                            {{ $photographer->phone }}
                                         </button>
                                     </div>
                                 </div>
@@ -577,12 +609,12 @@
 // Google Maps
 
             map = new google.maps.Map(document.getElementById('map-canvas'), {
-                center: {lat: {{ $restaurant->lat }}, lng: {{ $restaurant->lng }}},
+                center: {lat: {{ $photographer->lat }}, lng: {{ $photographer->lng }}},
                 zoom: 15
             });
 
             var marker = new google.maps.Marker({
-                position: {lat: {{ $restaurant->lat }}, lng: {{ $restaurant->lng }}},
+                position: {lat: {{ $photographer->lat }}, lng: {{ $photographer->lng }}},
                 map: map,
                 draggable: false
             });

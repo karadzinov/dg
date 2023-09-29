@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('contactName');
             $table->string('contactPosition');
-            $table->string('contactEmail');
+            $table->string('contactEmail')->nullable();
             $table->string('contactPhone');
             $table->longText('desc');
-            $table->unsignedBigInteger('restaurant_id');
+            $table->unsignedBigInteger('restaurant_id')->nullable();
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->cascadeOnDelete();
             $table->timestamps();
         });

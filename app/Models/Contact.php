@@ -17,7 +17,9 @@ class Contact extends Model
         'contactEmail',
         'contactPhone',
         'desc',
-        'restaurant_id'
+        'restaurant_id',
+        'musician_id',
+        'photographer_id'
     ];
 
 }

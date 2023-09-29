@@ -10,13 +10,11 @@ use App\Models\Musician;
 use App\Models\Photographer;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use App\Http\Controllers\Helpers\ImageStore;
-use Illuminate\Support\Facades\Auth;
 
-
-class RestaurantController extends Controller
+class PhotographerController extends Controller
 {
     public function create()
     {
@@ -25,7 +23,7 @@ class RestaurantController extends Controller
         $data = [
             'cities' => $cities
         ];
-        return view('restaurants.create')->with($data);
+        return view('photographers.create')->with($data);
     }
 
     public function store(Request $request)
@@ -37,10 +35,7 @@ class RestaurantController extends Controller
             'logo' => 'required',
             'phone' => 'required',
             'subtitle' => 'required',
-            'description' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'capacity' => 'required',
+            'description' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -52,14 +47,9 @@ class RestaurantController extends Controller
         $name = $request->get('name');
         $slug = Str::slug($request->get('name'));
         $phone = $request->get('phone');
+        $email = $request->get('email');
         $description = $request->get('description');
         $subtitle = $request->get('subtitle');
-        $address = $request->get('address');
-        $city = $request->get('city');
-        $capacity = $request->get('capacity');
-        $menuDiscount = $request->get('menuDiscount');
-        $menuMin = $request->get('menuMin');
-        $menuMax = $request->get('menuMax');
         $facebook = $request->get('facebook');
         $instagram = $request->get('instagram');
         $twitter = $request->get('twitter');
@@ -70,31 +60,26 @@ class RestaurantController extends Controller
 
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
-            $imageObj = new ImageStoreLogo($request, 'restaurants');
+            $imageObj = new ImageStoreLogo($request, 'photographers');
             $logo = $imageObj->imageStore();
         }
         if ($request->hasFile('coverImg')) {
             $coverImg = $request['coverImg'];
-            $imageObj = new ImageStoreCover($request, 'restaurants');
+            $imageObj = new ImageStoreCover($request, 'photographers');
             $coverImg = $imageObj->imageStore();
         }
 
         $user = Auth::user();
 
-        Restaurant::create([
+        Photographer::create([
             'name' => $name,
             'slug' => $slug,
             'phone' => $phone,
+            'email' => $email,
             'description' => $description,
             'subtitle' => $subtitle,
-            'address' => $address,
-            'city_id' => $city,
-            'capacity' => $capacity,
             'coverImg' => $coverImg,
             'logo' => $logo,
-            'menuDiscount' => $menuDiscount,
-            'menuMin' => $menuMin,
-            'menuMax' => $menuMax,
             'user_id' => $user->id,
             'facebook' => $facebook,
             'instagram' => $instagram,
@@ -105,7 +90,7 @@ class RestaurantController extends Controller
             'lng' => $lng,
         ]);
 
-        $restaurant = Restaurant::where('logo', $logo)->first();
+        $photographer = Photographer::where('logo', $logo)->first();
         $contactName = $request->get('contactName');
         $contactPosition = $request->get('contactPosition');
         $contactEmail = $request->get('contactEmail');
@@ -113,15 +98,17 @@ class RestaurantController extends Controller
         $contactDescription = $request->get('desc');
         $count = count($contactName);
 
+
         for ($i = 0; $i < $count; $i++) {
 
+            $photographer_id = $photographer->id;
             Contact::create([
                 'contactName' => $contactName[$i],
                 'contactPosition' => $contactPosition[$i],
                 'contactEmail' => $contactEmail[$i],
                 'contactPhone' => $contactPhone[$i],
                 'desc' => $contactDescription[$i],
-                'restaurant_id' => $restaurant->id,
+                'photographer_id' => $photographer_id,
             ]);
 
         };
@@ -138,20 +125,18 @@ class RestaurantController extends Controller
         return view('users.index')->with($data);
     }
 
-
     public function edit($id)
     {
-        $restaurant = Restaurant::FindorFail($id);
-        $cities = City::all();
-        $contacts = Contact::where('restaurant_id', $id)->get();
+        $photographer = Photographer::FindorFail($id);
+        $contacts = Contact::where('photographer_id', $id)->get();
+
 
         $data = [
-            'restaurant' => $restaurant,
-            'cities' => $cities,
+            'photographer' => $photographer,
             'contacts' => $contacts
         ];
 
-        return view('restaurants.edit')->with($data);
+        return view('photographers.edit')->with($data);
     }
 
     public function update(Request $request, $id)
@@ -162,11 +147,8 @@ class RestaurantController extends Controller
             'coverImg' => 'required',
             'logo' => 'required',
             'phone' => 'required',
-            'description' => 'required',
             'subtitle' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'capacity' => 'required',
+            'description' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -175,16 +157,16 @@ class RestaurantController extends Controller
                 ->withInput();
         }
 
-        $restaurant = Restaurant::FindorFail($id);
+        $photographer = Photographer::FindorFail($id);
 
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
-            $imageObj = new ImageStoreLogo($request, 'restaurants');
+            $imageObj = new ImageStoreLogo($request, 'photographers');
             $logo = $imageObj->imageStore();
         }
         if ($request->hasFile('coverImg')) {
             $coverImg = $request['coverImg'];
-            $imageObj = new ImageStoreCover($request, 'restaurants');
+            $imageObj = new ImageStoreCover($request, 'photographers');
             $coverImg = $imageObj->imageStore();
         }
 
@@ -192,7 +174,7 @@ class RestaurantController extends Controller
         $input['logo'] = $logo;
         $input['coverImg'] = $coverImg;
 
-        $restaurant->fill($input)->save();
+        $photographer->fill($input)->save();
 
         $restaurants = Restaurant::where('user_id', Auth::user()->id)->get();
         $musicians = Musician::where('user_id', Auth::user()->id)->get();
@@ -208,8 +190,8 @@ class RestaurantController extends Controller
 
     public function destroy($id)
     {
-        $restaurant = Restaurant::FindorFail($id);
-        $restaurant->delete();
+        $photographer = Photographer::FindorFail($id);
+        $photographer->delete();
 
         $restaurants = Restaurant::where('user_id', Auth::user()->id)->get();
         $musicians = Musician::where('user_id', Auth::user()->id)->get();

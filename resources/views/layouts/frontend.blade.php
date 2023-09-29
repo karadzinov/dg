@@ -37,10 +37,12 @@
     <!-- --------------------------------------------------- -->
     <!-- Core Css -->
     <!-- --------------------------------------------------- -->
-
     <link id="themeColors" rel="stylesheet" href="/dist/css/style.min.css"/>
     <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
     <link rel="stylesheet" href="/dist/css/custom.css"/>
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -98,7 +100,7 @@
                                                             <span class="hide-menu">&nbsp;Ресторани</span></h6>
                                                     </div>
                                                 </a>
-                                                <a href="./app-calendar.html"
+                                                <a href="{{ route('frontend.musicians') }}"
                                                    class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                                                     <div class="d-inline-block">
                                                         <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
@@ -107,7 +109,7 @@
                                                             <span class="hide-menu">&nbsp;Музичари</span></h6>
                                                     </div>
                                                 </a>
-                                                <a href="./app-contact.html"
+                                                <a href="{{ route('frontend.photographers') }}"
                                                    class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                                                     <div class="d-inline-block">
                                                         <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
@@ -141,7 +143,17 @@
                     <a class="nav-link" href="/">Контакт</a>
                 </li>
             </ul>
-
+            <div class="d-block d-lg-none">
+                <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
+                <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
+            </div>
+            <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+              <span class="p-2">
+                <i class="ti ti-dots fs-7"></i>
+              </span>
+            </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="javascript:void(0)"
@@ -220,121 +232,113 @@
         </nav>
     </header>
     <!-- Header End -->
-
+    <!--  Mobilenavbar -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar"
+         aria-labelledby="offcanvasWithBothOptionsLabel">
+        <nav class="sidebar-nav scroll-sidebar">
+            <div class="offcanvas-header justify-content-between">
+                <img src="/dist/images/logo.svg" width="160" alt="" class="img-fluid">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar="" data-simplebar>
+                <ul id="sidebarnav">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('frontend.index') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-home"></i>
+                </span>
+                            <span class="hide-menu">Почетна</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="app-chat.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-photo"></i>
+                </span>
+                            <span class="hide-menu">Креирајте покани</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow"  aria-expanded="false">
+                <span>
+                  <i class="ti ti-apps"></i>
+                </span>
+                            <span class="hide-menu">Услуги</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level my-3">
+                            <li class="sidebar-item py-2">
+                                <a href="{{ route('frontend.restaurants') }}"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-home-2"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Ресторани</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-item py-2">
+                                <a href="{{ route('frontend.musicians') }}"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-music"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Музичари</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-item py-2">
+                                <a href="{{ route('frontend.photographers') }}"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-camera"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Фотографи</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-item py-2">
+                                <a href="./app-notes.html"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-hotel-service"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Останато</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="app-chat.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-message-dots"></i>
+                </span>
+                            <span class="hide-menu">Контакт</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="app-calendar.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-info-square"></i>
+                </span>
+                            <span class="hide-menu">За над</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
     <!-- Main wrapper -->
     <div class="body-wrapper">
         @yield('content')
     </div>
     <!-- Main wrapper End -->
-
 </div>
-
-<!--  Shopping Cart -->
-<!--
-<div class="offcanvas offcanvas-end shopping-cart" tabindex="-1" id="offcanvasRight"
-     aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header py-4">
-        <h5 class="offcanvas-title fs-5 fw-semibold" id="offcanvasRightLabel">Shopping Cart</h5>
-        <span class="badge bg-primary rounded-4 px-3 py-1 lh-sm">5 new</span>
-    </div>
-    <div class="offcanvas-body h-100 px-4 pt-0" data-simplebar>
-        <ul class="mb-0">
-            <li class="pb-7">
-                <div class="d-flex align-items-center">
-                    <img src="/dist/images/products/product-1.jpg" width="95" height="75"
-                         class="rounded-1 me-9 flex-shrink-0" alt=""/>
-                    <div>
-                        <h6 class="mb-1">Supreme toys cooker</h6>
-                        <p class="mb-0 text-muted fs-2">Kitchenware Item</p>
-                        <div class="d-flex align-items-center justify-content-between mt-2">
-                            <h6 class="fs-2 fw-semibold mb-0 text-muted">$250</h6>
-                            <div class="input-group input-group-sm w-50">
-                                <button class="btn border-0 round-20 minus p-0 bg-light-success text-success "
-                                        type="button" id="add1"> -
-                                </button>
-                                <input type="text"
-                                       class="form-control round-20 bg-transparent text-muted fs-2 border-0  text-center qty"
-                                       placeholder="" aria-label="Example text with button addon"
-                                       aria-describedby="add1" value="1"/>
-                                <button class="btn text-success bg-light-success  p-0 round-20 border-0 add"
-                                        type="button" id="addo2"> +
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="pb-7">
-                <div class="d-flex align-items-center">
-                    <img src="/dist/images/products/product-2.jpg" width="95" height="75"
-                         class="rounded-1 me-9 flex-shrink-0" alt=""/>
-                    <div>
-                        <h6 class="mb-1">Supreme toys cooker</h6>
-                        <p class="mb-0 text-muted fs-2">Kitchenware Item</p>
-                        <div class="d-flex align-items-center justify-content-between mt-2">
-                            <h6 class="fs-2 fw-semibold mb-0 text-muted">$250</h6>
-                            <div class="input-group input-group-sm w-50">
-                                <button class="btn border-0 round-20 minus p-0 bg-light-success text-success "
-                                        type="button" id="add2"> -
-                                </button>
-                                <input type="text"
-                                       class="form-control round-20 bg-transparent text-muted fs-2 border-0  text-center qty"
-                                       placeholder="" aria-label="Example text with button addon"
-                                       aria-describedby="add2" value="1"/>
-                                <button class="btn text-success bg-light-success  p-0 round-20 border-0 add"
-                                        type="button" id="addon34"> +
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="pb-7">
-                <div class="d-flex align-items-center">
-                    <img src="/dist/images/products/product-3.jpg" width="95" height="75"
-                         class="rounded-1 me-9 flex-shrink-0" alt=""/>
-                    <div>
-                        <h6 class="mb-1">Supreme toys cooker</h6>
-                        <p class="mb-0 text-muted fs-2">Kitchenware Item</p>
-                        <div class="d-flex align-items-center justify-content-between mt-2">
-                            <h6 class="fs-2 fw-semibold mb-0 text-muted">$250</h6>
-                            <div class="input-group input-group-sm w-50">
-                                <button class="btn border-0 round-20 minus p-0 bg-light-success text-success "
-                                        type="button" id="add3"> -
-                                </button>
-                                <input type="text"
-                                       class="form-control round-20 bg-transparent text-muted fs-2 border-0  text-center qty"
-                                       placeholder="" aria-label="Example text with button addon"
-                                       aria-describedby="add3" value="1"/>
-                                <button class="btn text-success bg-light-success  p-0 round-20 border-0 add"
-                                        type="button" id="addon3"> +
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div class="align-bottom">
-            <div class="d-flex align-items-center pb-7">
-                <span class="text-dark fs-3">Sub Total</span>
-                <div class="ms-auto">
-                    <span class="text-dark fw-semibold fs-3">$2530</span>
-                </div>
-            </div>
-            <div class="d-flex align-items-center pb-7">
-                <span class="text-dark fs-3">Total</span>
-                <div class="ms-auto">
-                    <span class="text-dark fw-semibold fs-3">$6830</span>
-                </div>
-            </div>
-            <a href="./eco-checkout.html" class="btn btn-outline-primary w-100">Go to shopping cart</a>
-        </div>
-    </div>
-</div>
--->
-<!--  Shopping Cart End -->
 
 <!--  Search Bar -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
@@ -393,6 +397,7 @@
 <script src="/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- ---------------------------------------------- -->
 <!-- core files -->
+<script src="/dist/libs/owl.carousel/dist/owl.carousel.min.js"></script>
 <!-- ---------------------------------------------- -->
 <script src="/dist/js/app.min.js"></script>
 <script src="/dist/js/app.horizontal.init.js"></script>
@@ -496,5 +501,8 @@
         todayHighlight: true,
     });
 </script>
+
+@yield('scripts')
+
 </body>
 </html>

@@ -4,21 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Mail\ConfirmInvitation;
 use App\Models\Contact;
+use App\Models\Musician;
+use App\Models\Photographer;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use App\Models\Guests;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class FrontEndController extends Controller
 {
     public function index()
     {
         $images = \File::allFiles(public_path('images/guests'));
 
+        $photographers = Photographer::all();
 
-        $data = ["images" => $images];
+        $data = [
+            "images" => $images,
+            "photographers" => $photographers,
+            ];
         return view('main')->with($data);
 
     }
@@ -34,18 +41,69 @@ class FrontEndController extends Controller
         return view('restaurants.index')->with($data);
     }
 
-    public function profile($slug)
+    public function musicians()
+    {
+        $musicians = Musician::all();
+
+        $data = [
+            'musicians' => $musicians
+        ];
+
+        return view('musicians.index')->with($data);
+    }
+
+    public function photographers()
+    {
+        $photographers = Photographer::all();
+
+        $data = [
+            'photographers' => $photographers
+        ];
+
+        return view('photographers.index')->with($data);
+    }
+
+    public function profileRestaurants($slug)
     {
 
         $restaurant = Restaurant::where('slug', $slug)->latest()->first();
-        $contact = Contact::where('restaurant_id', $restaurant->id)->first();
+        $contacts = Contact::where('restaurant_id', $restaurant->id)->get();
 
         $data = [
             'restaurant' => $restaurant,
-            'contact' => $contact
+            'contacts' => $contacts
         ];
 
         return view('restaurants.profile')->with($data);
+
+    }
+
+    public function profileMusician($slug)
+    {
+
+        $musician = Musician::where('slug', $slug)->latest()->first();
+        $contacts = Contact::where('musician_id', $musician->id)->get();
+
+        $data = [
+            'musician' => $musician,
+            'contacts' => $contacts
+        ];
+
+        return view('musicians.profile')->with($data);
+
+    }
+    public function profilePhotographer($slug)
+    {
+
+        $photographer = Photographer::where('slug', $slug)->latest()->first();
+        $contacts = Contact::where('photographer_id', $photographer->id)->get();
+
+        $data = [
+            'photographer' => $photographer,
+            'contacts' => $contacts
+        ];
+
+        return view('photographers.profile')->with($data);
 
     }
 

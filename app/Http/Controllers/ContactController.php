@@ -20,7 +20,7 @@ class ContactController extends Controller
             'restaurant' => $restaurant,
             'contacts' => $contacts
         ];
-        return view('contacts.index')->with($data);
+        return view('restaurants.contacts.index')->with($data);
     }
 
     public function create($slug)
@@ -30,7 +30,7 @@ class ContactController extends Controller
         $data = [
             'restaurant' => $restaurant,
         ];
-        return view('contacts.create')->with($data);
+        return view('restaurants.contacts.create')->with($data);
     }
 
     public function store(Request $request, $slug)
@@ -73,7 +73,7 @@ class ContactController extends Controller
             'restaurant' => $restaurant,
             'contacts' => $contacts
         ];
-        return view('contacts.index')->with($data);
+        return view('restaurants.contacts.index')->with($data);
     }
 
     public function edit($id)
@@ -83,7 +83,7 @@ class ContactController extends Controller
         $data = [
             'contact' => $contact
         ];
-        return view('contacts.edit')->with($data);
+        return view('restaurants.contacts.edit')->with($data);
     }
 
     public function update(Request $request , $id)
@@ -101,7 +101,7 @@ class ContactController extends Controller
             'restaurant' => $restaurant,
             'contacts' => $contacts
         ];
-        return view('contacts.index')->with($data);
+        return view('restaurants.contacts.index')->with($data);
     }
 
     public function destroy($id)

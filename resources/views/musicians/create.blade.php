@@ -11,7 +11,7 @@
                                 <li class="breadcrumb-item"><a class="text-muted"
                                                                href="{{ route('frontend.index') }}"><i
                                             class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Креирај ресторан</li>
+                                <li class="breadcrumb-item" aria-current="page">Креирај бенд</li>
                             </ol>
                         </nav>
                     </div>
@@ -23,14 +23,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title text-center">Ве молиме внесете ги следните информации</h4>
-                    <form action="{{ route('restaurants.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('musicians.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <p><strong>Општи информации</strong></p>
                         <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="name"> Име на ресторанот : <span class="danger">*</span>
+                                        <label for="name"> Име на бендот : <span class="danger">*</span>
                                         </label>
                                         <input type="text"
                                                class="form-control @error('name') is-invalid @enderror form-horizontal required"
@@ -75,41 +75,11 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="address"> Адреса : <span class="danger">*</span>
-                                        </label>
-                                        <input type="text"
-                                               class="form-control form-horizontal required  @error('address') is-invalid @enderror"
-                                               id="address"
-                                               name="address"/>
-                                        @error('address')
-                                        <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="city"> Град : <span class="danger">*</span>
-                                            </label>
-                                            <select class="form-select form-horizontal required" id="city" name="city">
-                                                @foreach($cities as $city)
-                                                    <option value="{{ $city->id }}">{{ $city->admin_name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="description"> Повеќе за ресторанот : <span class="danger">*</span>
+                                        <label for="description"> Повеќе за бендот : <span class="danger">*</span>
                                         </label>
                                         <textarea class="quill-editor @error('description') is-invalid @enderror"
                                                   rows="3" placeholder="Text Here..."
@@ -145,7 +115,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="logo"> Лого на ресторанот : <span class="danger">*</span>
+                                        <label for="logo"> Лого на бендот : <span class="danger">*</span>
                                         </label>
                                         <input type="file"
                                                class="form-control custom-file-input form-horizontal required @error('logo') is-invalid @enderror"
@@ -163,7 +133,7 @@
                         <br>
                         <div>
                             <div id="clonedInput1" class="clonedInput">
-                                <p><strong>Личност за контакт</strong></p>
+                                <p><strong>Членови на бендот</strong></p>
                                 <section>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -261,63 +231,6 @@
                         </div>
                         <br>
                         <br>
-                        <p><strong>Дополнителни информации</strong></p>
-                        <section>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="capacity"> Капацитет на гости : <span class="danger">*</span>
-                                        </label>
-                                        <input type="number"
-                                               class="form-control form-horizontal required @error('capacity') is-invalid @enderror"
-                                               id="capacity"
-                                               name="capacity"/>
-                                        @error('capacity')
-                                        <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="menuDiscount"> Акциско мени (во <i
-                                                class="ti ti-currency-euro fs-5 align-middle"></i>): <span
-                                                class="danger">*</span>
-                                        </label>
-                                        <input type="number" class="form-control form-horizontal" id="menuDiscount"
-                                               name="menuDiscount"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="menuMin"> Мени min (во <i
-                                                class="ti ti-currency-euro fs-5 align-middle"></i>): <span
-                                                class="danger">*</span>
-                                        </label>
-                                        <input type="number" class="form-control form-horizontal"
-                                               id="menuMin"
-                                               name="menuMin"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="menuMax"> Мени max (во <i
-                                                class="ti ti-currency-euro fs-5 align-middle"></i>): <span
-                                                class="danger">*</span>
-                                        </label>
-                                        <input type="number" class="form-control form-horizontal"
-                                               id="menuMax"
-                                               name="menuMax"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </section>
-                        <br>
-                        <br>
                         <p><strong>Линкови</strong></p>
                         <section>
                             <div class="row">
@@ -398,6 +311,7 @@
     </div>
 
 @endsection
+
 @section('scripts')
     <!-- Google Maps -->
     <script type="text/javascript"
@@ -455,6 +369,6 @@
             });
 
         });
-    </script>
 
+    </script>
 @endsection

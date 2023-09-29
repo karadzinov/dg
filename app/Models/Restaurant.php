@@ -31,6 +31,8 @@ class Restaurant extends Model
         'twitter',
         'youtube',
         'weblink',
+        'lat',
+        'lng'
     ];
 
     public function contacts()
