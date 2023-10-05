@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Helpers\ImageStoreCover;
 use App\Http\Controllers\Helpers\ImageStoreLogo;
+use App\Models\Album;
 use App\Models\City;
 use App\Models\Contact;
 use App\Models\Musician;
 use App\Models\Photographer;
+use App\Models\Picture;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -221,5 +223,147 @@ class RestaurantController extends Controller
             'photographers' => $photographers
         ];
         return view('users.index')->with($data);
+    }
+
+    public function gallery($id)
+    {
+
+        $restaurant = Restaurant::FindorFail($id);
+        $albums = Album::where('restaurant_id', $restaurant->id)->get();
+        $data = [
+            'restaurant' => $restaurant,
+            'albums' => $albums,
+        ];
+        return view('restaurants.gallery.index')->with($data);
+    }
+
+    public function createGallery($id)
+    {
+        $restaurant = Restaurant::FindorFail($id);
+
+        $data = [
+            'restaurant' => $restaurant,
+        ];
+
+        return view('restaurants.gallery.create')->with($data);
+    }
+
+    public function storeGallery(Request $request, $id)
+    {
+
+        $albumName = $request->get('name');
+        $slug = Str::slug($request->get('name'));
+        $restaurant = Restaurant::FindorFail($id);
+
+        $album = Album::create([
+            'restaurant_id' => $id,
+            'name' => $albumName,
+            'slug' => $slug,
+        ]);
+        $album_id = $album->id;
+
+        $this->validate($request, [
+            'image' => 'required',
+            'image.*' => 'image'
+        ]);
+
+        $files = [];
+        if ($request->hasfile('image')) {
+            foreach ($request->file('image') as $file) {
+                $tempName = $file->getClientOriginalName();
+                $name = rand(1000, 100000) . '-' . $tempName;
+                $file->move(public_path('images/gallery/restaurants/' . $restaurant->name . '/'), $name);
+                $files[] = $name;
+            }
+        }
+
+        foreach ($files as $file) {
+            Picture::create([
+                'album_id' => $album_id,
+                'image' => $file,
+                'restaurant_id' => $id,
+            ]);
+        }
+
+        $restaurant = Restaurant::FindorFail($id);
+        $albums = Album::where('restaurant_id', $restaurant->id)->get();
+        $pictures = Picture::where('restaurant_id', $restaurant->id)->get();
+
+        $data = [
+            'restaurant' => $restaurant,
+            'albums' => $albums,
+            'pictures' => $pictures,
+        ];
+
+        return view('restaurants.gallery.index')->with($data);
+    }
+
+    public function destroyGallery($id)
+    {
+
+        $album = Album::FindorFail($id);
+        $albumRestaurantID = $album->restaurant_id;
+        $album->delete();
+
+
+        $restaurant = Restaurant::FindorFail($albumRestaurantID);
+        $albums = Album::where('restaurant_id', $restaurant->id)->get();
+        $pictures = Picture::where('restaurant_id', $restaurant->id)->get();
+
+        $data = [
+            'restaurant' => $restaurant,
+            'albums' => $albums,
+            'pictures' => $pictures,
+        ];
+
+        return view('restaurants.gallery.index')->with($data);
+
+    }
+
+    public function createVideo($id)
+    {
+        $restaurant = Restaurant::FindorFail($id);
+
+        $data = [
+            'restaurant' => $restaurant,
+        ];
+
+        return view('restaurants.gallery.video')->with($data);
+    }
+
+    public function storeVideo(Request $request, $id)
+    {
+
+        $albumName = $request->get('name');
+        $slug = Str::slug($request->get('name'));
+        $restaurant = Restaurant::FindorFail($id);
+
+        $album = Album::create([
+            'restaurant_id' => $id,
+            'name' => $albumName,
+            'slug' => $slug,
+        ]);
+        $album_id = $album->id;
+
+        $youtube_link = $request->get('youtube_link');
+
+            Picture::create([
+                'album_id' => $album_id,
+                'youtube_link' => $youtube_link,
+                'restaurant_id' => $id,
+            ]);
+
+
+        $restaurant = Restaurant::FindorFail($id);
+        $albums = Album::where('restaurant_id', $restaurant->id)->get();
+        $pictures = Picture::where('restaurant_id', $restaurant->id)->get();
+
+        $data = [
+            'restaurant' => $restaurant,
+            'albums' => $albums,
+            'pictures' => $pictures,
+        ];
+
+        return view('restaurants.gallery.index')->with($data);
     }
 }

@@ -22,4 +22,6 @@ class City extends Model
         'population',
         'population_proper'
     ];
+
+
 }

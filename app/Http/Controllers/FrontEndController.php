@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ConfirmInvitation;
+use App\Models\Album;
 use App\Models\Contact;
 use App\Models\Musician;
 use App\Models\Photographer;
+use App\Models\Picture;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Models\Link;
@@ -66,12 +68,17 @@ class FrontEndController extends Controller
     public function profileRestaurants($slug)
     {
 
-        $restaurant = Restaurant::where('slug', $slug)->latest()->first();
+        $restaurant = Restaurant::where('slug', $slug)->first();
+
         $contacts = Contact::where('restaurant_id', $restaurant->id)->get();
+        $albums = Album::where('restaurant_id', $restaurant->id)->get();
+        $pictures = Picture::where('restaurant_id', $restaurant->id)->get();
 
         $data = [
             'restaurant' => $restaurant,
-            'contacts' => $contacts
+            'contacts' => $contacts,
+            'albums' => $albums,
+            'pictures' => $pictures,
         ];
 
         return view('restaurants.profile')->with($data);

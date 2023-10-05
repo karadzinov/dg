@@ -119,7 +119,7 @@
                                         </label>
                                         <input type="file"
                                                class="form-control custom-file-input form-horizontal required @error('coverImg') is-invalid @enderror"
-                                               id="coverImg"
+                                               id="coverImg" multiple
                                                name="coverImg"/>
                                         @error('coverImg')
                                         <span class="invalid-feedback" role="alert">

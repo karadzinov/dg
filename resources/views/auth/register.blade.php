@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.frontendLight')
 @section('content')
 
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
@@ -62,6 +62,14 @@
                                                class="form-label">Повторете ја лозинката</label>
                                         <input id="password-confirm" type="password" class="form-control"
                                                name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="category" class="form-label">Одбери категорија</label>
+                                        <select id="category" class="form-control" name="category" required>
+                                            <option value="restaurant">Ресторани</option>
+                                            <option value="music">Музичари/Бендови</option>
+                                            <option value="photo">Фотографи/Фотостудио</option>
+                                        </select>
                                     </div>
                                     <button type="submit"
                                         class="btn btn-primary w-100 py-8 mb-4 rounded-2">Регистрирај се</button>

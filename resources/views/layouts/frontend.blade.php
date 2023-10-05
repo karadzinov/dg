@@ -168,7 +168,7 @@
                                aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <div class="user-profile-img">
-                                        <img src="../../dist/images/profile/user-1.jpg" class="rounded-circle"
+                                        <img src="/dist/images/profile/user-1.jpg" class="rounded-circle"
                                              width="35" height="35"
                                              alt=""/>
                                     </div>
@@ -418,6 +418,8 @@
 <script src="/dist/js/forms/form-wizard.js"></script>
 <script src="/dist/libs/quill/dist/quill.min.js"></script>
 <script src="/dist/libs/quill/quill.min.js"></script>
+<script src="/dist/js/productDetail.js"></script>
+<script src="/dist/js/app.init.js"></script>
 <!-- ---------------------------------------------- -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

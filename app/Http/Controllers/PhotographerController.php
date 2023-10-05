@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Helpers\ImageStoreCover;
 use App\Http\Controllers\Helpers\ImageStoreLogo;
+use App\Models\Album;
 use App\Models\City;
 use App\Models\Contact;
 use App\Models\Musician;
 use App\Models\Photographer;
+use App\Models\Picture;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -203,5 +205,146 @@ class PhotographerController extends Controller
             'photographers' => $photographers
         ];
         return view('users.index')->with($data);
+    }
+
+    public function gallery($id)
+    {
+
+        $photographer = Photographer::FindorFail($id);
+        $albums = Album::where('photographer_id', $photographer->id)->get();
+        $data = [
+            'photographer' => $photographer,
+            'albums' => $albums,
+        ];
+        return view('photographers.gallery.index')->with($data);
+    }
+
+    public function createGallery($id)
+    {
+        $photographer = Photographer::FindorFail($id);
+
+        $data = [
+            'photographer' => $photographer,
+        ];
+
+        return view('photographers.gallery.create')->with($data);
+    }
+
+    public function storeGallery(Request $request, $id)
+    {
+
+        $albumName = $request->get('name');
+        $slug = Str::slug($request->get('name'));
+        $photographer = Photographer::FindorFail($id);
+
+        $album = Album::create([
+            'photographer_id' => $id,
+            'name' => $albumName,
+            'slug' => $slug,
+        ]);
+        $album_id = $album->id;
+
+        $this->validate($request, [
+            'image' => 'required',
+            'image.*' => 'image'
+        ]);
+
+        $files = [];
+        if ($request->hasfile('image')) {
+            foreach ($request->file('image') as $file) {
+                $tempName = $file->getClientOriginalName();
+                $name = rand(1000, 100000) . '-' . $tempName;
+                $file->move(public_path('images/gallery/photographers/' . $photographer->name . '/'), $name);
+                $files[] = $name;
+            }
+        }
+
+        foreach ($files as $file) {
+            Picture::create([
+                'album_id' => $album_id,
+                'image' => $file,
+                'photographer_id' => $id,
+            ]);
+        }
+
+        $photographer = Photographer::FindorFail($id);
+        $albums = Album::where('photographer_id', $photographer->id)->get();
+        $pictures = Picture::where('photographer_id', $photographer->id)->get();
+
+        $data = [
+            'photographer' => $photographer,
+            'albums' => $albums,
+            'pictures' => $pictures,
+        ];
+
+        return view('photographers.gallery.index')->with($data);
+    }
+
+    public function destroyGallery($id)
+    {
+
+        $album = Album::FindorFail($id);
+        $albumPhotographerID = $album->photographer_id;
+        $album->delete();
+
+
+        $photographer = Photographer::FindorFail($albumPhotographerID);
+        $albums = Album::where('photographer_id', $photographer->id)->get();
+        $pictures = Picture::where('photographer_id', $photographer->id)->get();
+
+        $data = [
+            'photographer' => $photographer,
+            'albums' => $albums,
+            'pictures' => $pictures,
+        ];
+
+        return view('photographers.gallery.index')->with($data);
+
+    }
+    public function createVideo($id)
+    {
+        $photographer = Photographer::FindorFail($id);
+
+        $data = [
+            'photographer' => $photographer,
+        ];
+
+        return view('photographers.gallery.video')->with($data);
+    }
+
+    public function storeVideo(Request $request, $id)
+    {
+
+        $albumName = $request->get('name');
+        $slug = Str::slug($request->get('name'));
+        $photographer = Photographer::FindorFail($id);
+
+        $album = Album::create([
+            'photographer_id' => $id,
+            'name' => $albumName,
+            'slug' => $slug,
+        ]);
+        $album_id = $album->id;
+
+        $youtube_link = $request->get('youtube_link');
+
+        Picture::create([
+            'album_id' => $album_id,
+            'youtube_link' => $youtube_link,
+            'photographer_id' => $id,
+        ]);
+
+
+        $photographer = Photographer::FindorFail($id);
+        $albums = Album::where('photographer_id', $photographer->id)->get();
+        $pictures = Picture::where('photographer_id', $photographer->id)->get();
+
+        $data = [
+            'photographer' => $photographer,
+            'albums' => $albums,
+            'pictures' => $pictures,
+        ];
+
+        return view('photographers.gallery.index')->with($data);
     }
 }
