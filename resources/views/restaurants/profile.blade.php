@@ -166,7 +166,7 @@
                             <div class="card hover-img overflow-hidden rounded-2">
                                 <div class="position-relative">
                                     <a href="{{ route('restaurants.album.view', $album->id) }}"><img src="/images/cover_images/restaurants/thumbnails/{{ $album->coverImg }}"
-                                                                      class="card-img-top rounded-0" alt="..."></a>
+                                                                      class="card-img-top rounded-0" alt="..." style="max-height: 400px"></a>
                                     <a
                                        class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
                                        data-bs-toggle="tooltip" data-bs-placement="top"><i
