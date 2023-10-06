@@ -45,4 +45,6 @@ class Picture extends Model
     {
         return $this->belongsTo(Photographer::class, 'photographer_id', 'id');
     }
+
+
 }

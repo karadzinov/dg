@@ -236,11 +236,15 @@ class PhotographerController extends Controller
         $albumName = $request->get('name');
         $slug = Str::slug($request->get('name'));
         $photographer = Photographer::FindorFail($id);
+        $coverImg = $request['coverImg'];
+        $imageObj = new ImageStoreCover($request, 'photographers');
+        $coverImg = $imageObj->imageStore();
 
         $album = Album::create([
             'photographer_id' => $id,
             'name' => $albumName,
             'slug' => $slug,
+            'coverImg' => $coverImg
         ]);
         $album_id = $album->id;
 
@@ -318,19 +322,42 @@ class PhotographerController extends Controller
         $albumName = $request->get('name');
         $slug = Str::slug($request->get('name'));
         $photographer = Photographer::FindorFail($id);
+        $coverImg = $request['coverImg'];
+        $imageObj = new ImageStoreCover($request, 'photographers');
+        $coverImg = $imageObj->imageStore();
+
+        $link = $request->get('youtube_link');
+
+        function getYoutubeEmbedUrl($link){
+            $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+            $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+
+            if (preg_match($longUrlRegex, $link, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+
+            if (preg_match($shortUrlRegex, $link, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+            return 'https://www.youtube.com/embed/' . $youtube_id ;
+        }
+
+
+        $embed_url = getYoutubeEmbedUrl($link);
 
         $album = Album::create([
             'photographer_id' => $id,
             'name' => $albumName,
             'slug' => $slug,
+            'coverImg' => $coverImg,
         ]);
         $album_id = $album->id;
 
-        $youtube_link = $request->get('youtube_link');
+
 
         Picture::create([
             'album_id' => $album_id,
-            'youtube_link' => $youtube_link,
+            'youtube_link' => $embed_url,
             'photographer_id' => $id,
         ]);
 
@@ -346,5 +373,20 @@ class PhotographerController extends Controller
         ];
 
         return view('photographers.gallery.index')->with($data);
+    }
+
+    public function albumView($id)
+    {
+        $album = Album::FindorFail($id);
+        $photographer = Photographer::FindorFail($album->photographer_id);
+        $pictures = Picture::where('album_id', $id)->get();
+
+        $data = [
+            'photographer' => $photographer,
+            'album' => $album,
+            'pictures' => $pictures,
+        ];
+
+        return view('photographers.gallery.album')->with($data);
     }
 }

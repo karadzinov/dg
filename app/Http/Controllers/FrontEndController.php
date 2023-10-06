@@ -89,11 +89,13 @@ class FrontEndController extends Controller
     {
 
         $musician = Musician::where('slug', $slug)->latest()->first();
+        $albums = Album::where('musician_id', $musician->id)->get();
         $contacts = Contact::where('musician_id', $musician->id)->get();
 
         $data = [
             'musician' => $musician,
-            'contacts' => $contacts
+            'contacts' => $contacts,
+            'albums' => $albums
         ];
 
         return view('musicians.profile')->with($data);
@@ -104,10 +106,12 @@ class FrontEndController extends Controller
 
         $photographer = Photographer::where('slug', $slug)->latest()->first();
         $contacts = Contact::where('photographer_id', $photographer->id)->get();
+        $albums = Album::where('photographer_id', $photographer->id)->get();
 
         $data = [
             'photographer' => $photographer,
-            'contacts' => $contacts
+            'contacts' => $contacts,
+            'albums' => $albums
         ];
 
         return view('photographers.profile')->with($data);

@@ -62,10 +62,17 @@
                         @foreach($albums as $album)
                             <tr class="search-items">
                                 <td class="text-start">
-                                    <h6 class="user-name mb-0"
-                                        data-name="Emma Adams">{{ $album->name }}</h6>
-                                    <span class="user-work fs-3"
-                                    >2</span>
+                                    <div class="d-flex align-items-center">
+                                        <img
+                                            src="/images/cover_images/restaurants/thumbnails/{{ $album->coverImg }}"
+                                            alt="avatar" class="rounded-circle"
+                                            width="40"/>
+                                        <div class="ms-3 align-items-center">
+                                            <div class="user-meta">
+                                                <p class="fw-normal">{{ $album->name }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="text-center">
                                     <span class="usr-location"

@@ -233,12 +233,16 @@ class MusicianController extends Controller
 
         $albumName = $request->get('name');
         $slug = Str::slug($request->get('name'));
+        $coverImg = $request['coverImg'];
+        $imageObj = new ImageStoreCover($request, 'musicians');
+        $coverImg = $imageObj->imageStore();
         $musician = Musician::FindorFail($id);
 
         $album = Album::create([
             'musician_id' => $id,
             'name' => $albumName,
             'slug' => $slug,
+            'coverImg' => $coverImg
         ]);
         $album_id = $album->id;
 
@@ -318,18 +322,41 @@ class MusicianController extends Controller
         $slug = Str::slug($request->get('name'));
         $musician = Musician::FindorFail($id);
 
+        $coverImg = $request['coverImg'];
+        $imageObj = new ImageStoreCover($request, 'musicians');
+        $coverImg = $imageObj->imageStore();
+
+        $link = $request->get('youtube_link');
+
+        function getYoutubeEmbedUrl($link){
+            $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+            $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+
+            if (preg_match($longUrlRegex, $link, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+
+            if (preg_match($shortUrlRegex, $link, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+            return 'https://www.youtube.com/embed/' . $youtube_id ;
+        }
+
+
+        $embed_url = getYoutubeEmbedUrl($link);
+
         $album = Album::create([
             'musician_id' => $id,
             'name' => $albumName,
             'slug' => $slug,
+            'coverImg' => $coverImg,
         ]);
         $album_id = $album->id;
 
-        $youtube_link = $request->get('youtube_link');
 
         Picture::create([
             'album_id' => $album_id,
-            'youtube_link' => $youtube_link,
+            'youtube_link' => $embed_url,
             'musician_id' => $id,
         ]);
 
@@ -345,5 +372,20 @@ class MusicianController extends Controller
         ];
 
         return view('musicians.gallery.index')->with($data);
+    }
+
+    public function albumView($id)
+    {
+        $album = Album::FindorFail($id);
+        $musician = Musician::FindorFail($album->musician_id);
+        $pictures = Picture::where('album_id', $id)->get();
+
+        $data = [
+            'musician' => $musician,
+            'album' => $album,
+            'pictures' => $pictures,
+        ];
+
+        return view('musicians.gallery.album')->with($data);
     }
 }

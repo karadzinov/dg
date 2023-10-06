@@ -253,12 +253,16 @@ class RestaurantController extends Controller
 
         $albumName = $request->get('name');
         $slug = Str::slug($request->get('name'));
+        $coverImg = $request['coverImg'];
+        $imageObj = new ImageStoreCover($request, 'restaurants');
+        $coverImg = $imageObj->imageStore();
         $restaurant = Restaurant::FindorFail($id);
 
         $album = Album::create([
             'restaurant_id' => $id,
             'name' => $albumName,
             'slug' => $slug,
+            'coverImg' => $coverImg
         ]);
         $album_id = $album->id;
 
@@ -337,19 +341,42 @@ class RestaurantController extends Controller
         $albumName = $request->get('name');
         $slug = Str::slug($request->get('name'));
         $restaurant = Restaurant::FindorFail($id);
+        $coverImg = $request['coverImg'];
+        $imageObj = new ImageStoreCover($request, 'restaurants');
+        $coverImg = $imageObj->imageStore();
+
+        $link = $request->get('youtube_link');
+
+        function getYoutubeEmbedUrl($link){
+            $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+            $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+
+            if (preg_match($longUrlRegex, $link, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+
+            if (preg_match($shortUrlRegex, $link, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+            return 'https://www.youtube.com/embed/' . $youtube_id ;
+        }
+
+
+        $embed_url = getYoutubeEmbedUrl($link);
 
         $album = Album::create([
             'restaurant_id' => $id,
             'name' => $albumName,
             'slug' => $slug,
+            'coverImg' => $coverImg,
         ]);
         $album_id = $album->id;
 
-        $youtube_link = $request->get('youtube_link');
+
 
             Picture::create([
                 'album_id' => $album_id,
-                'youtube_link' => $youtube_link,
+                'youtube_link' => $embed_url,
                 'restaurant_id' => $id,
             ]);
 
@@ -365,5 +392,20 @@ class RestaurantController extends Controller
         ];
 
         return view('restaurants.gallery.index')->with($data);
+    }
+
+    public function albumView($id)
+    {
+        $album = Album::FindorFail($id);
+        $restaurant = Restaurant::FindorFail($album->restaurant_id);
+        $pictures = Picture::where('album_id', $id)->get();
+
+        $data = [
+            'restaurant' => $restaurant,
+            'album' => $album,
+            'pictures' => $pictures,
+        ];
+
+        return view('restaurants.gallery.album')->with($data);
     }
 }

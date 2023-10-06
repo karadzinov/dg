@@ -185,165 +185,26 @@
                  tabindex="0">
                 <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">
                     <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">Галерија <span
-                            class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2">12</span></h3>
-                    <form class="position-relative">
-                        <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh"
-                               placeholder="Search Friends">
-                        <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y text-dark ms-3"></i>
-                    </form>
+                            class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2">{{ count($albums) }}</span>
+                    </h3>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card hover-img overflow-hidden rounded-2">
-                            <div class="card-body p-0">
-                                <img src="/dist/images/alikas.jpg" alt="" class="img-fluid w-100 object-fit-cover"
-                                     style="height: 220px;">
-                                <div class="p-4 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h6 class="fw-semibold mb-0 fs-4">Isuava wakceajo fe.jpg</h6>
-                                        <span class="text-dark fs-2">Wed, Dec 14, 2023</span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="text-muted fw-semibold d-flex align-items-center p-1"
-                                           href="javascript:void(0)" role="button" data-bs-toggle="dropdown"
-                                           aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </a>
-                                        <ul class="dropdown-menu overflow-hidden">
-                                            <li><a class="dropdown-item" href="javascript:void(0)">Isuava wakceajo
-                                                    fe.jpg</a></li>
-                                        </ul>
-                                    </div>
+                    @foreach($albums as $album)
+                        <div class="col-sm-6 col-xl-4">
+                            <div class="card hover-img overflow-hidden rounded-2">
+                                <div class="position-relative">
+                                    <a href="{{ route('musicians.album.view', $album->id) }}"><img src="/images/cover_images/musicians/thumbnails/{{ $album->coverImg }}"
+                                                                                                     class="card-img-top rounded-0" alt="..."></a>
+                                    <a
+                                        class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
+                                        data-bs-toggle="tooltip" data-bs-placement="top"><i
+                                            class="ti ti-eye fs-4"></i></a></div>
+                                <div class="card-body pt-3 p-4">
+                                    <h6 class="fw-semibold fs-4">{{ $album->name }}</h6>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card hover-img overflow-hidden rounded-2">
-                            <div class="card-body p-0">
-                                <img src="/dist/images/gallery/gallery1.jpg" alt=""
-                                     class="img-fluid w-100 object-fit-cover" style="height: 220px;">
-                                <div class="p-4 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h6 class="fw-semibold mb-0 fs-4">Ip docmowe vemremrif.jpg</h6>
-                                        <span class="text-dark fs-2">Wed, Dec 14, 2023</span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="text-muted fw-semibold d-flex align-items-center p-1"
-                                           href="javascript:void(0)" role="button" data-bs-toggle="dropdown"
-                                           aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </a>
-                                        <ul class="dropdown-menu overflow-hidden">
-                                            <li><a class="dropdown-item" href="javascript:void(0)">Ip docmowe
-                                                    vemremrif.jpg</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card hover-img overflow-hidden rounded-2">
-                            <div class="card-body p-0">
-                                <img src="/dist/images/gallery/gallery2.jpg" alt=""
-                                     class="img-fluid w-100 object-fit-cover" style="height: 220px;">
-                                <div class="p-4 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h6 class="fw-semibold mb-0 fs-4">Duan cosudos utaku.jpg</h6>
-                                        <span class="text-dark fs-2">Wed, Dec 14, 2023</span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="text-muted fw-semibold d-flex align-items-center p-1"
-                                           href="javascript:void(0)" role="button" data-bs-toggle="dropdown"
-                                           aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </a>
-                                        <ul class="dropdown-menu overflow-hidden">
-                                            <li><a class="dropdown-item" href="javascript:void(0)">Duan cosudos
-                                                    utaku.jpg</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card hover-img overflow-hidden rounded-2">
-                            <div class="card-body p-0">
-                                <img src="/dist/images/gallery/gallery3.jpg" alt=""
-                                     class="img-fluid w-100 object-fit-cover" style="height: 220px;">
-                                <div class="p-4 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h6 class="fw-semibold mb-0 fs-4">Fu netbuv oggu.jpg</h6>
-                                        <span class="text-dark fs-2">Wed, Dec 14, 2023</span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="text-muted fw-semibold d-flex align-items-center p-1"
-                                           href="javascript:void(0)" role="button" data-bs-toggle="dropdown"
-                                           aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </a>
-                                        <ul class="dropdown-menu overflow-hidden">
-                                            <li><a class="dropdown-item" href="javascript:void(0)">Fu netbuv
-                                                    oggu.jpg</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card hover-img overflow-hidden rounded-2">
-                            <div class="card-body p-0">
-                                <img src="/dist/images/gallery/gallery4.jpg" alt=""
-                                     class="img-fluid w-100 object-fit-cover" style="height: 220px;">
-                                <div class="p-4 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h6 class="fw-semibold mb-0 fs-4">Di sekog do.jpg</h6>
-                                        <span class="text-dark fs-2">Wed, Dec 14, 2023</span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="text-muted fw-semibold d-flex align-items-center p-1"
-                                           href="javascript:void(0)" role="button" data-bs-toggle="dropdown"
-                                           aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </a>
-                                        <ul class="dropdown-menu overflow-hidden">
-                                            <li><a class="dropdown-item" href="javascript:void(0)">Di sekog do.jpg</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card hover-img overflow-hidden rounded-2">
-                            <div class="card-body p-0">
-                                <img src="/dist/images/gallery/gallery5.jpg" alt=""
-                                     class="img-fluid w-100 object-fit-cover" style="height: 220px;">
-                                <div class="p-4 d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h6 class="fw-semibold mb-0 fs-4">Lo jogu camhiisi.jpg</h6>
-                                        <span class="text-dark fs-2">Thu, Dec 15, 2023</span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="text-muted fw-semibold d-flex align-items-center p-1"
-                                           href="javascript:void(0)" role="button" data-bs-toggle="dropdown"
-                                           aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </a>
-                                        <ul class="dropdown-menu overflow-hidden">
-                                            <li><a class="dropdown-item" href="javascript:void(0)">Lo jogu
-                                                    camhiisi.jpg</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab"

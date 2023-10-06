@@ -16,7 +16,8 @@ class Album extends Model
         'musician_id',
         'photographer_id',
         'name',
-        'slug'
+        'slug',
+        'coverImg'
     ];
 
     public function restaurant()

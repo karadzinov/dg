@@ -34,12 +34,13 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
         Route::get('/{restaurant}/edit', [\App\Http\Controllers\RestaurantController::class, 'edit'])->name('restaurants.edit');
         Route::put('/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'update'])->name('restaurants.update');
         Route::delete('/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'destroy'])->name('restaurants.destroy');
-        Route::get('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'gallery'])->name('restaurants.gallery');
+        Route::get('/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'gallery'])->name('restaurants.gallery');
         Route::get('/{restaurant}/galleries/create', [\App\Http\Controllers\RestaurantController::class, 'createGallery'])->name('restaurants.gallery.create');
         Route::get('/{restaurant}/video/create', [\App\Http\Controllers\RestaurantController::class, 'createVideo'])->name('restaurants.gallery.video.create');
         Route::post('/{restaurant}/galleries', [\App\Http\Controllers\RestaurantController::class, 'storeGallery'])->name('restaurants.gallery.store');
         Route::post('/{restaurant}/video', [\App\Http\Controllers\RestaurantController::class, 'storeVideo'])->name('restaurants.gallery.video.store');
         Route::delete('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'destroyGallery'])->name('restaurants.gallery.destroy');
+        Route::get('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'albumView'])->name('restaurants.album.view');
     });
     Route::group(['prefix' => 'musicians'], function() {
         //Musicians CRUD
@@ -48,12 +49,13 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
         Route::get('/{musician}/edit', [\App\Http\Controllers\MusicianController::class, 'edit'])->name('musicians.edit');
         Route::put('/{musician}', [\App\Http\Controllers\MusicianController::class, 'update'])->name('musicians.update');
         Route::delete('/{musician}', [\App\Http\Controllers\MusicianController::class, 'destroy'])->name('musicians.destroy');
-        Route::get('/galleries/{gallery}', [\App\Http\Controllers\MusicianController::class, 'gallery'])->name('musicians.gallery');
+        Route::get('/{gallery}', [\App\Http\Controllers\MusicianController::class, 'gallery'])->name('musicians.gallery');
         Route::get('/{musician}/galleries/create', [\App\Http\Controllers\MusicianController::class, 'createGallery'])->name('musicians.gallery.create');
         Route::get('/{musician}/video/create', [\App\Http\Controllers\MusicianController::class, 'createVideo'])->name('musicians.gallery.video.create');
         Route::post('/{musician}/galleries', [\App\Http\Controllers\MusicianController::class, 'storeGallery'])->name('musicians.gallery.store');
         Route::post('/{musician}/video', [\App\Http\Controllers\MusicianController::class, 'storeVideo'])->name('musicians.gallery.video.store');
         Route::delete('/galleries/{gallery}', [\App\Http\Controllers\MusicianController::class, 'destroyGallery'])->name('musicians.gallery.destroy');
+        Route::get('/galleries/{gallery}', [\App\Http\Controllers\MusicianController::class, 'albumView'])->name('musicians.album.view');
     });
     Route::group(['prefix' => 'photographers'], function() {
         //Photographers CRUD
@@ -62,12 +64,13 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
         Route::get('/{photographer}/edit', [\App\Http\Controllers\PhotographerController::class, 'edit'])->name('photographers.edit');
         Route::put('/{photographer}', [\App\Http\Controllers\PhotographerController::class, 'update'])->name('photographers.update');
         Route::delete('/{photographer}', [\App\Http\Controllers\PhotographerController::class, 'destroy'])->name('photographers.destroy');
-        Route::get('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'gallery'])->name('photographers.gallery');
+        Route::get('/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'gallery'])->name('photographers.gallery');
         Route::get('/{photographer}/galleries/create', [\App\Http\Controllers\PhotographerController::class, 'createGallery'])->name('photographers.gallery.create');
         Route::get('/{photographer}/video/create', [\App\Http\Controllers\PhotographerController::class, 'createVideo'])->name('photographers.gallery.video.create');
         Route::post('/{photographer}/galleries', [\App\Http\Controllers\PhotographerController::class, 'storeGallery'])->name('photographers.gallery.store');
         Route::post('/{photographer}/video', [\App\Http\Controllers\PhotographerController::class, 'storeVideo'])->name('photographers.gallery.video.store');
         Route::delete('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'destroyGallery'])->name('photographers.gallery.destroy');
+        Route::get('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'albumView'])->name('photographers.album.view');
 
     });
     //Contacts CRUD

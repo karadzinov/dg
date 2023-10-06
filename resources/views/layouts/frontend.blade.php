@@ -17,7 +17,7 @@
     <meta name="author" content=""/>
     <meta name="keywords" content="Mordenize"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
+    <x-embed-styles />
     <!-- --------------------------------------------------- -->
     <!-- Favicon -->
     <!-- --------------------------------------------------- -->
@@ -28,7 +28,7 @@
     <!-- Owl Carousel -->
     <!-- --------------------------------------------------- -->
     <link rel="stylesheet" href="/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
-
+    <link href="/css/swiper-bundle.min.css" rel="stylesheet">
     <!-- --------------------------------------------------- -->
     <!-- Prism Js -->
     <!-- --------------------------------------------------- -->

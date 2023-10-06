@@ -4,8 +4,80 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df16705b90151956c737cd6030bb4938",
+    "content-hash": "8c21ab0bd3beb43bade6ac318ff22381",
     "packages": [
+        {
+            "name": "bensampo/laravel-embed",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BenSampo/laravel-embed.git",
+                "reference": "ba5b70fac968ec2e53ead1af0b84571d69a558fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BenSampo/laravel-embed/zipball/ba5b70fac968ec2e53ead1af0b84571d69a558fb",
+                "reference": "ba5b70fac968ec2e53ead1af0b84571d69a558fb",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3.1|^7.0",
+                "illuminate/contracts": "^8.83.27|^9.0|^10.0",
+                "illuminate/support": "^8.83.27|^9.0|^10.0",
+                "php": "^7.4.0|^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^8.83.27|^9.0|^10.0",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.5.23|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "BenSampo\\Embed\\EmbedServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BenSampo\\Embed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Sampson",
+                    "homepage": "https://sampo.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Painless responsive embeds for videos, slideshows and more.",
+            "homepage": "https://github.com/bensampo/laravel-embed",
+            "keywords": [
+                "bensampo",
+                "embed",
+                "laravel",
+                "package"
+            ],
+            "support": {
+                "issues": "https://github.com/BenSampo/laravel-embed/issues",
+                "source": "https://github.com/BenSampo/laravel-embed/tree/v2.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/bensampo",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-11T10:16:15+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -431,6 +503,64 @@
                 }
             ],
             "time": "2023-01-14T14:17:03+00:00"
+        },
+        {
+            "name": "fomvasss/youtube",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fomvasss/youtube.git",
+                "reference": "3c85cf86fc5b65147ac73985a44e26344605e70f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fomvasss/youtube/zipball/3c85cf86fc5b65147ac73985a44e26344605e70f",
+                "reference": "3c85cf86fc5b65147ac73985a44e26344605e70f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fomvasss\\Youtube\\YoutubeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fomvasss\\Youtube\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WebWest",
+                    "homepage": "http://web-west.net.ua",
+                    "role": "Company"
+                },
+                {
+                    "name": "Fomin Vasyl",
+                    "email": "fomvasss@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Package for generate IFrame with youtube-link",
+            "keywords": [
+                "laravel",
+                "video",
+                "youtube"
+            ],
+            "support": {
+                "issues": "https://github.com/fomvasss/youtube/issues",
+                "source": "https://github.com/fomvasss/youtube/tree/v1.3.0"
+            },
+            "time": "2018-06-13T20:13:34+00:00"
         },
         {
             "name": "fruitcake/php-cors",

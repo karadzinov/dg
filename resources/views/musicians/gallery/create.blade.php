@@ -50,6 +50,21 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="coverImg"> Главна слика : <span class="danger">*</span>
+                                        </label>
+                                        <input type="file"
+                                               class="form-control form-horizontal required @error('coverImg') is-invalid @enderror"
+                                               id="coverImg"
+                                               name="coverImg"/>
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <input type="number" hidden name="musician_id" value="{{ $musician->id }}">
                             <div class="row">
