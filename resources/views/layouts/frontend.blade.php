@@ -140,7 +140,7 @@
                     <a class="nav-link" href="/">За нас</a>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="/">Контакт</a>
+                    <a class="nav-link" href="{{ route('frontend.contact') }}">Контакт</a>
                 </li>
             </ul>
             <div class="d-block d-lg-none">
@@ -313,7 +313,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="app-chat.html" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('frontend.contact') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-message-dots"></i>
                 </span>

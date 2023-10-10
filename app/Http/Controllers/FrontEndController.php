@@ -181,6 +181,15 @@ class FrontEndController extends Controller
         $session = Session::flash('plus_one', 'This is a message!');
         return redirect()->back()->with($session);
 
+    }
 
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    public function question()
+    {
+        dd('DEFINE FLOW');
     }
 }
