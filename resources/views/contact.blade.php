@@ -119,18 +119,32 @@
                                         class="form-control form-select"
                                         data-placeholder="Choose a Category"
                                         tabindex="1">
-                                        <option value="Category 1">Ресторани</option>
-                                        <option value="Category 2">Музичари</option>
-                                        <option value="Category 3">Фотографи</option>
-                                        <option value="Category 4">Покани</option>
+                                        <option value="Ресторани">Ресторани</option>
+                                        <option value="Музичари">Музичари</option>
+                                        <option value="Фотографи">Фотографи</option>
+                                        <option value="Покани">Покани</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-3">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="subject" class="control-label">Наслов</label>
+                                    <input
+                                        type="text"
+                                        id="subject"
+                                        name="subject"
+                                        class="form-control"
+                                        placeholder="Во врска со што?"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="question">Вашето прашање</label>
-                                <textarea id="question" name="question" class="form-control quill-editor"></textarea>
+                                <label for="description">Вашето прашање</label>
+                                <input type="text" id="description" name="description" class="form-control" style="height: 200px">
                             </div>
                         </div>
                         <div class="form-actions">

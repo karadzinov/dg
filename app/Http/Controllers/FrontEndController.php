@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ConfirmInvitation;
+use App\Mail\MailSender;
 use App\Models\Album;
 use App\Models\Contact;
 use App\Models\Musician;
@@ -188,8 +189,24 @@ class FrontEndController extends Controller
         return view('contact');
     }
 
-    public function question()
+    public function question(Request $request)
     {
-        dd('DEFINE FLOW');
+
+        $sender = [
+            'firstName' => $request->get('firstName'),
+            'lastName' => $request->get('lastName'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
+        ];
+
+        $subject = $request->get('subject');
+        $email = $request->get('email');
+        $msg = $request->get('description');
+
+
+        Mail::to($email)->send(new MailSender($msg, $subject, $sender));
+        dd('DEFINE FLOW,
+        ->From which email,
+        ->to whom!!');
     }
 }
