@@ -6,6 +6,7 @@ use App\Mail\ConfirmInvitation;
 use App\Mail\MailSender;
 use App\Models\Album;
 use App\Models\Contact;
+use App\Models\Invitation;
 use App\Models\Musician;
 use App\Models\Photographer;
 use App\Models\Picture;
@@ -208,5 +209,16 @@ class FrontEndController extends Controller
         dd('DEFINE FLOW,
         ->From which email,
         ->to whom!!');
+    }
+
+    public function invitations()
+    {
+        $invitations = Invitation::all();
+
+        $data = [
+            'invitations' => $invitations,
+        ];
+
+        return view('invitations.index')->with($data);
     }
 }

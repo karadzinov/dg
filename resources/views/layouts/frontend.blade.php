@@ -24,7 +24,9 @@
     <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
     <link rel="stylesheet" href="/dist/libs/quill/dist/quill.snow.css">
     <link href="/dist/libs/quill/quill.snow.css" rel="stylesheet">
+
     <!-- --------------------------------------------------- -->
+    <link href="/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
     <!-- Owl Carousel -->
     <!-- --------------------------------------------------- -->
     <link rel="stylesheet" href="/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
@@ -78,7 +80,7 @@
                     <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="/">Креирајте покани</a>
+                    <a class="nav-link" href="{{ route('frontend.invitations') }}">Креирајте покани</a>
                 </li>
                 <li class="nav-item dropdown hover-dd d-none d-lg-block">
                     <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
@@ -251,7 +253,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="app-chat.html" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('frontend.invitations') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-photo"></i>
                 </span>
@@ -420,6 +422,7 @@
 <script src="/dist/libs/quill/quill.min.js"></script>
 <script src="/dist/js/productDetail.js"></script>
 <script src="/dist/js/app.init.js"></script>
+<script src="/dist/libs/dropzone/dist/min/dropzone.min.js"></script>
 <!-- ---------------------------------------------- -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {

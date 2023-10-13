@@ -73,6 +73,7 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
         Route::get('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'albumView'])->name('photographers.album.view');
 
     });
+
     //Contacts CRUD
     Route::get('/{slug}/contacts', [\App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
     Route::get('/{slug}/contacts/create', [\App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
@@ -97,7 +98,7 @@ Route::get('/photographers', [\App\Http\Controllers\FrontEndController::class, '
 Route::get('/photographers/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profilePhotographer'])->name('photographers.profile');
 Route::get('/contact', [\App\Http\Controllers\FrontEndController::class, 'contact'])->name('frontend.contact');
 Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question');
-
+Route::get('/invitations', [\App\Http\Controllers\FrontEndController::class, 'invitations'])->name('frontend.invitations');
 Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 
 
