@@ -26,7 +26,7 @@
     <link href="/dist/libs/quill/quill.snow.css" rel="stylesheet">
 
     <!-- --------------------------------------------------- -->
-    <link href="/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
+
     <!-- Owl Carousel -->
     <!-- --------------------------------------------------- -->
     <link rel="stylesheet" href="/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
