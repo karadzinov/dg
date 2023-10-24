@@ -17,13 +17,18 @@
     <meta name="author" content=""/>
     <meta name="keywords" content="Mordenize"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <x-embed-styles />
+    <x-embed-styles/>
     <!-- --------------------------------------------------- -->
     <!-- Favicon -->
     <!-- --------------------------------------------------- -->
     <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
     <link rel="stylesheet" href="/dist/libs/quill/dist/quill.snow.css">
     <link href="/dist/libs/quill/quill.snow.css" rel="stylesheet">
+
+    <!-- --------------------------------------------------- -->
+    <link href="/start/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
+
+    <!-- --------------------------------------------------- -->
 
     <!-- --------------------------------------------------- -->
 
@@ -42,9 +47,7 @@
     <link id="themeColors" rel="stylesheet" href="/dist/css/style.min.css"/>
     <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
     <link rel="stylesheet" href="/dist/css/custom.css"/>
-    <style>
 
-    </style>
 </head>
 
 <body>
@@ -222,7 +225,8 @@
                                             <div class="text-center">
                                                 <p>Логирајте се за пристап до вашиот профил</p>
                                             </div>
-                                            <a href="{{ route('login') }}" class="btn btn-outline-primary">Логирај се</a>
+                                            <a href="{{ route('login') }}" class="btn btn-outline-primary">Логирај
+                                                се</a>
                                         </div>
                                     @endif
                                 </div>
@@ -261,7 +265,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow"  aria-expanded="false">
+                        <a class="sidebar-link has-arrow" aria-expanded="false">
                 <span>
                   <i class="ti ti-apps"></i>
                 </span>
@@ -420,36 +424,37 @@
 <script src="/dist/js/forms/form-wizard.js"></script>
 <script src="/dist/libs/quill/dist/quill.min.js"></script>
 <script src="/dist/libs/quill/quill.min.js"></script>
-<script src="/dist/js/productDetail.js"></script>
 <script src="/dist/js/app.init.js"></script>
 <script src="/dist/libs/dropzone/dist/min/dropzone.min.js"></script>
 <!-- ---------------------------------------------- -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Datatables Responsive
-        $("#datatable").DataTable({
-            "filter": false,
-            "length": false
+    $('document').ready(function () {
+        document.addEventListener("DOMContentLoaded", function () {
+            // Datatables Responsive
+            $("#datatable").DataTable({
+                "filter": false,
+                "length": false
+            });
         });
-    });
-    var toolbarOptions = [
-        ["bold", "underline"],
-        ["link", "blockquote", "code", "image"],
-        [{list: "ordered"}, {list: "bullet"}]
-    ];
-    $('.quill-editor').each(function (i, el) {
-        var el = $(this), id = 'quilleditor-' + i, val = el.val(), editor_height = 200;
-        var div = $('<div/>').attr('id', id).css('height', editor_height + 'px').html(val);
-        el.addClass('d-none');
-        el.parent().append(div);
-        var quill = new Quill('#' + id, {
-            modules: {toolbar: toolbarOptions},
-            theme: 'snow'
-        });
-        quill.on('text-change', function () {
-            console.log(quill.container.firstChild.innerHTML);
-            el.html();
-            $("#description").val(quill.container.firstChild.innerHTML);
+        var toolbarOptions = [
+            ["bold", "underline"],
+            ["link", "blockquote", "code", "image"],
+            [{list: "ordered"}, {list: "bullet"}]
+        ];
+        $('.quill-editor').each(function (i, el) {
+            var el = $(this), id = 'quilleditor-' + i, val = el.val(), editor_height = 200;
+            var div = $('<div/>').attr('id', id).css('height', editor_height + 'px').html(val);
+            el.addClass('d-none');
+            el.parent().append(div);
+            var quill = new Quill('#' + id, {
+                modules: {toolbar: toolbarOptions},
+                theme: 'snow'
+            });
+            quill.on('text-change', function () {
+                console.log(quill.container.firstChild.innerHTML);
+                el.html();
+                $("#description").val(quill.container.firstChild.innerHTML);
+            });
         });
     });
 </script>
@@ -493,17 +498,19 @@
 
 </script>
 <script>
-    // Date Picker
-    jQuery(".mydatepicker, #datepicker, .input-group.date").datepicker();
-    jQuery("#datepicker-autoclose").datepicker({
-        autoclose: true,
-        todayHighlight: true,
-    });
-    jQuery("#date-range").datepicker({
-        toggleActive: true,
-    });
-    jQuery("#datepicker-inline").datepicker({
-        todayHighlight: true,
+    $('document').ready(function () {
+        // Date Picker
+        jQuery(".mydatepicker, #datepicker, .input-group.date").datepicker();
+        jQuery("#datepicker-autoclose").datepicker({
+            autoclose: true,
+            todayHighlight: true,
+        });
+        jQuery("#date-range").datepicker({
+            toggleActive: true,
+        });
+        jQuery("#datepicker-inline").datepicker({
+            todayHighlight: true,
+        });
     });
 </script>
 

@@ -214,9 +214,11 @@ class FrontEndController extends Controller
     public function invitations()
     {
         $invitations = Invitation::all();
+        $restaurants = Restaurant::all();
 
         $data = [
             'invitations' => $invitations,
+            'restaurants' => $restaurants,
         ];
 
         return view('invitations.index')->with($data);

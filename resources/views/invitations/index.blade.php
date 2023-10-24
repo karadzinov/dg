@@ -54,42 +54,68 @@
                     <div class="card-body wizard-content">
                         <h4 class="card-title mb-0">Внесете ги следниве информации</h4>
                         <h6 class="card-subtitle mb-3"></h6>
-                        <form action="#" class="tab-wizard dropzone wizard-circle">
+                        <form action="{{ route('invitations.store') }}" method="post" id="check_form"
+                              class="tab-wizard wizard-circle"
+                              enctype="multipart/form-data">
+                            @csrf
                             <!-- Step 1 -->
                             <h6>Чекор 1</h6>
                             <section>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="mr">Името на младоженецот</label>
-                                            <input type="text" class="form-control" required id="mr" name="mr" />
+                                            <label for="mr" class="form-label">Име на младоженец</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="mr" id="mr" placeholder="" value=""/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="mrs">Името на невестата</label>
-                                            <input type="text" class="form-control" required id="mrs" name="mrs"/>
+                                            <label for="mrs" class="form-label">Име на невеста</label>
+                                            <input type="text"
+                                                   class="form-control "
+                                                   name="mrs" id="mrs" placeholder="" value=""/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="emailAddress1">Датум на свадбата</label>
-                                            <input type="date" class="form-control" id="emailAddress1" required />
+                                            <label for="date" class="form-label">Име на младоженец</label>
+                                            <input type="date"
+                                                   class="form-control"
+                                                   name="date" id="date" placeholder="" value=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="restaurant_id" class="form-label">Изберете ресторан</label>
+                                            <select name="restaurant_id" id="restaurant_id"
+                                                    class="form-control">
+                                                @foreach($restaurants as $restaurant)
+                                                    <option
+                                                        value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="fv-row mb-10">
                                         <!--begin::Label-->
-                                        <label for="basic-url" class="form-label">Вашиот
-                                            линк</label>
+                                        <label for="basic-url" class="form-label">Вашиот линк</label>
                                         <!--end::Label-->
+
+
                                         <div class="input-group mb-5">
-                                            <span class="input-group-text" id="basic-addon3">https://dragigosti.com/</span>
-                                            <input type="text" class="form-control " id="basic-url" name="basic_url"
-                                                   aria-describedby="basic-addon3">
+                                            <span class="input-group-text"
+                                                  id="basic-addon3">https://dragigosti.com/</span>
+                                            <input type="text" class="form-control" id="basic-url"
+                                                   aria-describedby="basic-addon3" name="basic-url">
+                                            <span class="input-group-text">
+<span class="svg-icon  svg-icon-2hx svg-icon-danger" id="valid-url">
+</span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -98,94 +124,88 @@
                             <h6>Чекор 2</h6>
                             <section>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <!--begin::Input group-->
-                                        <div class="fv-row">
-                                            <!--begin::Dropzone-->
-                                            <div class="dropzone" id="kt_dropzonejs_example_1">
-                                                <!--begin::Message-->
-                                                <div class="dz-message needsclick">
-                                                    <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span class="path2"></span></i>
-
-                                                    <!--begin::Info-->
-                                                    <div class="ms-4">
-                                                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                                                        <span class="fs-7 fw-semibold text-gray-400">Upload up to 10 files</span>
-                                                    </div>
-                                                    <!--end::Info-->
-                                                </div>
-                                            </div>
-                                            <!--end::Dropzone-->
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <div>
+                                            <label for="male_photo" class="form-label">Прикачете слика од
+                                                младоженецот</label>
+                                            <input class="form-control form-control-lg" id="male_photo"
+                                                   name="male_photo" type="file">
                                         </div>
-                                        <!--end::Input group-->
                                     </div>
+                                    <div class="col-md-2"></div>
                                 </div>
-
+                                <br>
+                                <br>
+                                <br>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="jobTitle1">Job Title :</label>
-                                            <input type="text" class="form-control" id="jobTitle1" />
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <div>
+                                            <label for="female_photo" class="form-label">Прикачете слика од
+                                                невестата</label>
+                                            <input class="form-control form-control-lg" id="female_photo"
+                                                   name="female_photo" type="file">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="videoUrl1">Company Name :</label>
-                                            <input type="text" class="form-control" id="videoUrl1" />
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <div>
+                                            <label for="group_photo" class="form-label">Прикачете слика од
+                                                двајцата</label>
+                                            <input class="form-control form-control-lg" id="group_photo"
+                                                   name="group_photo" type="file">
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="shortDescription1">Job Description :</label>
-                                            <textarea name="shortDescription" id="shortDescription1" rows="6" class="form-control"></textarea>
-                                        </div>
-                                    </div>
+                                    <div class="col-md-2"></div>
                                 </div>
                             </section>
                             <!-- Step 3 -->
                             <h6>Чекор 3</h6>
                             <section>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="int1">Interview For :</label>
-                                            <input type="text" class="form-control" id="int1" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="intType1">Interview Type :</label>
-                                            <select class="form-select" id="intType1" data-placeholder="Type to search cities" name="intType1">
-                                                <option value="Banquet">Normal</option>
-                                                <option value="Fund Raiser">Difficult</option>
-                                                <option value="Dinner Party">Hard</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="Location1">Location :</label>
-                                            <select class="form-select" id="Location1" name="location">
-                                                <option value="">Select City</option>
-                                                <option value="India">India</option>
-                                                <option value="USA">USA</option>
-                                                <option value="Dubai">Dubai</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="jobTitle2">Interview Date :</label>
-                                            <input type="date" class="form-control" id="jobTitle2" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>Requirements :</label>
-                                            <div class="c-inputs-stacked">
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio6" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio6">Employee</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio7" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio7">Contract</label>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="card blog position-relative overflow-hidden hover-img"
+                                             style="background-image: url(/images/templates/template-a.png); background-size: cover">
+                                            <div class="card-body position-relative">
+                                                <div class="d-flex flex-column justify-content-between h-100">
+                                                    <div>
+                                                        <a href="{{ route('invitations.template_a') }}"
+                                                           class="fs-7 my-4 fw-semibold text-white d-block lh-sm">Темплејт
+                                                            А</a>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="form-check">
+                                            <label for="template" class="form-check-label">Избери</label>
+                                            <input type="checkbox" class="form-check-input success" id="template"
+                                                   name="template" value="template_a"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="card blog position-relative overflow-hidden hover-img"
+                                             style="background-image: url(/images/maticno.png); background-size: cover">
+                                            <div class="card-body position-relative">
+                                                <div class="d-flex flex-column justify-content-between h-100">
+                                                    <div>
+                                                        <a href="{{ route('invitations.template_a') }}"
+                                                           class="fs-7 my-4 fw-semibold text-white d-block lh-sm">Темплејт
+                                                            B</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-check">
+                                            <label for="template" class="form-check-label">Избери</label>
+                                            <input type="checkbox" class="form-check-input success" id="template"
+                                                   name="template" value="template_b"/>
                                         </div>
                                     </div>
                                 </div>
@@ -194,166 +214,176 @@
                             <h6>Чекор 4</h6>
                             <section>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="behName1">Behaviour :</label>
-                                            <input type="text" class="form-control" id="behName1" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="participants1">Confidance</label>
-                                            <input type="text" class="form-control" id="participants1" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="participants1">Result</label>
-                                            <select class="form-select" id="participants1" name="location">
-                                                <option value="">Select Result</option>
-                                                <option value="Selected">Selected</option>
-                                                <option value="Rejected">Rejected</option>
-                                                <option value="Call Second-time"> Call Second-time </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="decisions1">Comments</label>
-                                            <textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>Rate Interviwer :</label>
-                                            <div class="c-inputs-stacked">
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio1" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio1">1 star</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio2" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio2">2 star</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio3" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio3">3 star</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio4" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio4">4 star</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio5" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio5">5 star</label>
-                                                </div>
-                                            </div>
+                                            <label for="male_text" class="form-label">Текст од младоженецот</label>
+                                            <textarea cols="80" id="male_text" name="male_text" rows="10" data-sample="1"
+                                                      data-sample-short>
+                                </textarea>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                        </form>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="female_text" class="form-label">Текст од невестата</label>
+                                        <textarea cols="80" id="female_text" name="female_text" rows="10" data-sample="2"
+                                                  data-sample-short>
+                                </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="main_text" class="form-label">Текст од невестата</label>
+                                        <textarea cols="80" id="main_text" name="main_text" rows="10" data-sample="3"
+                                                  data-sample-short>
+                                </textarea>
+                                    </div>
+                                </div>
                     </div>
+                    </section>
+                    </form>
                 </div>
-                <!-- ---------------------
-                                                    end Custom Design Example
-                                                ---------------- -->
             </div>
         </div>
+    </div>
 
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center mb-0 mt-4">
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                       href="#"><i class="ti ti-chevron-left"></i></a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link border-0 rounded-circle round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">4</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">...</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">10</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                       href="#"><i class="ti ti-chevron-right"></i></a>
-                </li>
-            </ul>
-        </nav>
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center mb-0 mt-4">
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
+                   href="#"><i class="ti ti-chevron-left"></i></a>
+            </li>
+            <li class="page-item active" aria-current="page">
+                <a class="page-link border-0 rounded-circle round-32 mx-1 d-flex align-items-center justify-content-center"
+                   href="#">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                   href="#">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                   href="#">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                   href="#">4</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                   href="#">5</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                   href="#">...</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                   href="#">10</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
+                   href="#"><i class="ti ti-chevron-right"></i></a>
+            </li>
+        </ul>
+    </nav>
     </div>
 @endsection
 @section('scripts')
     <script>
+        $('document').ready(function () {
+            let mr = '';
+            let mrs = '';
+            $("#mr").on('input', function (e) {
+                mr = $(this).val().toLowerCase();
+            });
 
-        let mr = '';
-        let mrs = '';
-        $("#mr").on('input',function(e){
+            console.log(mr);
+            $("#mrs").on('input', function (e) {
+                mrs = $(this).val().toLowerCase();
 
+                $("#basic-url").val(mr + "-" + mrs);
 
-            mr = $(this).val().toLowerCase();
+                $("#valid-url").removeClass("svg-icon-danger").addClass("svg-icon-primary");
+
+            });
+
+            $('#mrs').blur(function ()          //whenever you click off an input element
+            {
+                if (!$(this).val()) {                      //if it is blank.
+                    $("#valid-url").removeClass("svg-icon-primary").addClass("svg-icon-danger");
+                    $("#valid-url").val("");
+                }
+            });
+
+            $('#mr').blur(function ()          //whenever you click off an input element
+            {
+                if (!$(this).val()) {                      //if it is blank.
+                    $("#valid-url").removeClass("svg-icon-primary").addClass("svg-icon-danger");
+                    $("#valid-url").val("");
+                }
+            });
         });
-
-
-        $("#mrs").on('input',function(e){
-            mrs = $(this).val().toLowerCase();
-
-            $("#basic-url").val(mr + "-" + mrs);
-
-            $("#basic-url").removeClass("is-invalid").addClass("is-valid");
-
-        });
-
-
-        $('#mrs').blur(function()          //whenever you click off an input element
-        {
-            if( !$(this).val() ) {                      //if it is blank.
-                $("#basic-url").removeClass("is-valid").addClass("is-invalid");
-                $("#basic-url").val("");
-            }
-        });
-
-        $('#mr').blur(function()          //whenever you click off an input element
-        {
-            if( !$(this).val() ) {                      //if it is blank.
-                $("#basic-url").removeClass("is-valid").addClass("is-invalid");
-                $("#basic-url").val("");
-            }
-        });
-
-
-
 
     </script>
 
+    <script src="/dist/libs/ckeditor/ckeditor.js"></script>
+    <script src="/dist/libs/ckeditor/samples/js/sample.js"></script>
     <script>
-        var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-            paramName: "file", // The name that will be used to transfer the file
-            maxFiles: 10,
-            maxFilesize: 10, // MB
-            addRemoveLinks: true,
-            accept: function(file, done) {
-                if (file.name == "wow.jpg") {
-                    done("Naha, you don't.");
-                } else {
-                    done();
-                }
+        //default
+        initSample();
+
+        //inline editor
+        // We need to turn off the automatic editor creation first.
+        CKEDITOR.disableAutoInline = true;
+
+        CKEDITOR.inline("editor2", {
+            extraPlugins: "sourcedialog",
+            removePlugins: "sourcearea",
+        });
+
+        var editor1 = CKEDITOR.replace("editor1", {
+            extraAllowedContent: "div",
+            height: 460,
+        });
+        editor1.on("instanceReady", function () {
+            // Output self-closing tags the HTML4 way, like <br>.
+            this.dataProcessor.writer.selfClosingEnd = ">";
+
+            // Use line breaks for block elements, tables, and lists.
+            var dtd = CKEDITOR.dtd;
+            for (var e in CKEDITOR.tools.extend(
+                {},
+                dtd.$nonBodyContent,
+                dtd.$block,
+                dtd.$listItem,
+                dtd.$tableContent
+            )) {
+                this.dataProcessor.writer.setRules(e, {
+                    indent: true,
+                    breakBeforeOpen: true,
+                    breakAfterOpen: true,
+                    breakBeforeClose: true,
+                    breakAfterClose: true,
+                });
             }
+            // Start in source mode.
+            this.setMode("source");
+        });
+    </script>
+    <script data-sample="1">
+        CKEDITOR.replace("male_text", {
+            height: 150,
+        });
+    </script>
+    <script data-sample="2">
+        CKEDITOR.replace("female_text", {
+            height: 150,
+        });
+    </script>
+    <script data-sample="3">
+        CKEDITOR.replace("main_text", {
+            height: 150,
         });
     </script>
 @endsection

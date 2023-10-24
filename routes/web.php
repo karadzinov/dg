@@ -98,7 +98,12 @@ Route::get('/photographers', [\App\Http\Controllers\FrontEndController::class, '
 Route::get('/photographers/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profilePhotographer'])->name('photographers.profile');
 Route::get('/contact', [\App\Http\Controllers\FrontEndController::class, 'contact'])->name('frontend.contact');
 Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question');
+
 Route::get('/invitations', [\App\Http\Controllers\FrontEndController::class, 'invitations'])->name('frontend.invitations');
+Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
+Route::post('/invitations/images', [\App\Http\Controllers\InvitationController::class, 'storeImages'])->name('invitations.storeImages');
+Route::get('/template-a', [\App\Http\Controllers\InvitationController::class, 'template_a'])->name('invitations.template_a');
+
 Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 
 

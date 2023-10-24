@@ -16,11 +16,13 @@ class Invitation extends Model
         'female_name',
         'male_text',
         'female_text',
-        'template_number',
+        'main_text',
+        'template',
         'invitation_link',
         'male_photo',
         'female_photo',
         'group_photo',
-        'date'
+        'date',
+        'restaurant_id'
     ];
 }
