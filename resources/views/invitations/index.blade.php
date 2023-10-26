@@ -88,26 +88,12 @@
                                                    name="date" id="date" placeholder="" value=""/>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="restaurant_id" class="form-label">Изберете ресторан</label>
-                                            <select name="restaurant_id" id="restaurant_id"
-                                                    class="form-control">
-                                                @foreach($restaurants as $restaurant)
-                                                    <option
-                                                        value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="fv-row mb-10">
                                         <!--begin::Label-->
                                         <label for="basic-url" class="form-label">Вашиот линк</label>
                                         <!--end::Label-->
-
-
                                         <div class="input-group mb-5">
                                             <span class="input-group-text"
                                                   id="basic-addon3">https://dragigosti.com/</span>
@@ -127,49 +113,52 @@
                                     <div class="col-md-2"></div>
                                     <div class="col-md-8">
                                         <div class="card">
-
-
-                                            <div id="image-upload">
-
-                                                <div class="dz-message" data-dz-message><span>Изберете слика за младоженецот</span></div>
+                                            <div id="male-upload">
+                                                <div class="dz-message" data-dz-message><span>Изберете слика за младоженецот</span>
+                                                </div>
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple />
+                                                    <input name="file" type="file"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <div>
-                                            <label for="female_photo" class="form-label">Прикачете слика од
-                                                невестата</label>
-                                            <input class="form-control form-control-lg" id="female_photo"
-                                                   name="female_photo" type="file">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <br>
-                                <br>
+                                <input name="male_photo" id="male_photo" hidden type="text" value=""/>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-8">
-                                        <div>
-                                            <label for="group_photo" class="form-label">Прикачете слика од
-                                                двајцата</label>
-                                            <input class="form-control form-control-lg" id="group_photo"
-                                                   name="group_photo" type="file">
+                                        <div class="card">
+                                            <div id="female-upload">
+                                                <div class="dz-message" data-dz-message><span>Изберете слика за невестата</span>
+                                                </div>
+                                                <div class="fallback">
+                                                    <input name="file" type="file"/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
+                                <input name="female_photo" id="female_photo" hidden type="text" value=""/>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <div class="card">
+                                            <div id="group-upload">
+                                                <div class="dz-message" data-dz-message>
+                                                    <span>Изберете заедничка слика</span></div>
+                                                <div class="fallback">
+                                                    <input name="file" type="file"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <input name="group_photo" id="group_photo" hidden type="text" value=""/>
                             </section>
                             <!-- Step 3 -->
                             <h6>Чекор 3</h6>
@@ -190,7 +179,7 @@
                                         </div>
                                         <div class="form-check">
                                             <label for="template" class="form-check-label">Избери</label>
-                                            <input type="checkbox" class="form-check-input success" id="template"
+                                            <input type="checkbox" class="form-check-input success"
                                                    name="template" value="template_a"/>
                                         </div>
                                     </div>
@@ -209,89 +198,58 @@
                                         </div>
                                         <div class="form-check">
                                             <label for="template" class="form-check-label">Избери</label>
-                                            <input type="checkbox" class="form-check-input success" id="template"
+                                            <input type="checkbox" class="form-check-input success"
                                                    name="template" value="template_b"/>
                                         </div>
                                     </div>
                                 </div>
                             </section>
-                            <!-- Step 4 -->
-                            <h6>Чекор 4</h6>
-                            <section>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="male_text" class="form-label">Текст од младоженецот</label>
-                                            <textarea cols="80" id="male_text" name="male_text" rows="10" data-sample="1"
-                                                      data-sample-short>
-                                </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label for="female_text" class="form-label">Текст од невестата</label>
-                                        <textarea cols="80" id="female_text" name="female_text" rows="10" data-sample="2"
-                                                  data-sample-short>
-                                </textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label for="main_text" class="form-label">Текст од невестата</label>
-                                        <textarea cols="80" id="main_text" name="main_text" rows="10" data-sample="3"
-                                                  data-sample-short>
-                                </textarea>
-                                    </div>
-                                </div>
+                        </form>
                     </div>
-                    </section>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <nav aria-label="...">
-        <ul class="pagination justify-content-center mb-0 mt-4">
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                   href="#"><i class="ti ti-chevron-left"></i></a>
-            </li>
-            <li class="page-item active" aria-current="page">
-                <a class="page-link border-0 rounded-circle round-32 mx-1 d-flex align-items-center justify-content-center"
-                   href="#">1</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                   href="#">2</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                   href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                   href="#">4</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                   href="#">5</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                   href="#">...</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                   href="#">10</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                   href="#"><i class="ti ti-chevron-right"></i></a>
-            </li>
-        </ul>
-    </nav>
+        <nav aria-label="...">
+            <ul class="pagination justify-content-center mb-0 mt-4">
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
+                       href="#"><i class="ti ti-chevron-left"></i></a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link border-0 rounded-circle round-32 mx-1 d-flex align-items-center justify-content-center"
+                       href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                       href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                       href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                       href="#">4</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                       href="#">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                       href="#">...</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
+                       href="#">10</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
+                       href="#"><i class="ti ti-chevron-right"></i></a>
+                </li>
+            </ul>
+        </nav>
     </div>
 @endsection
 @section('scripts')
@@ -393,10 +351,9 @@
     </script>
     <script type="text/javascript">
 
-
-        let myDropzone = $("#image-upload").dropzone({
+        let myMaleDropzone = $("#male-upload").dropzone({
             addRemoveLinks: true,
-            maxFiles: 2000,
+            maxFiles: 1,
             init: function () {
 
                 // Hack: Add the dropzone class to the element
@@ -404,8 +361,8 @@
 
 
                 this.on("removedfile", function (file) {
-                   let filename = JSON.parse(file.xhr.response);
-                   filename = filename.success;
+                    let filename = JSON.parse(file.xhr.response);
+                    filename = filename.success;
 
                     if (file) {
                         $.ajax({
@@ -428,13 +385,88 @@
                 'X-CSRF-TOKEN': "{{ @csrf_token() }}"
             },
             success: function (file, response) {
-
-                $("#mladozenec").append(`<img src="/images/${response.success}" alt="" />`);
-                console.log(response);
+                console.log(response['success']);
+                $('#male_photo').attr('value', `${response.success}`);
             }
         });
 
+        let myFemaleDropzone = $("#female-upload").dropzone({
+            addRemoveLinks: true,
+            maxFiles: 1,
+            init: function () {
 
+                // Hack: Add the dropzone class to the element
+                $(this.element).addClass("dropzone");
+
+
+                this.on("removedfile", function (file) {
+                    let filename = JSON.parse(file.xhr.response);
+                    filename = filename.success;
+
+                    if (file) {
+                        $.ajax({
+                            url: "{{ route('dropzone.destroy') }}",
+                            method: 'post',
+                            data: {filename: filename},
+                            headers: {
+                                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                            },
+                            success: function (response) {
+                                console.log(response);
+                            }
+                        });
+                    }
+                });
+            },
+            url: "{{ route('dropzone.store') }}",
+            method: 'post',
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (file, response) {
+                console.log(response['success']);
+                $('#female_photo').attr('value', `${response.success}`);
+            }
+        });
+
+        let myGroupDropzone = $("#group-upload").dropzone({
+            addRemoveLinks: true,
+            maxFiles: 1,
+            init: function () {
+
+                // Hack: Add the dropzone class to the element
+                $(this.element).addClass("dropzone");
+
+
+                this.on("removedfile", function (file) {
+                    let filename = JSON.parse(file.xhr.response);
+                    filename = filename.success;
+
+                    if (file) {
+                        $.ajax({
+                            url: "{{ route('dropzone.destroy') }}",
+                            method: 'post',
+                            data: {filename: filename},
+                            headers: {
+                                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                            },
+                            success: function (response) {
+                                console.log(response);
+                            }
+                        });
+                    }
+                });
+            },
+            url: "{{ route('dropzone.store') }}",
+            method: 'post',
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (file, response) {
+                console.log(response['success']);
+                $('#group_photo').attr('value', `${response.success}`);
+            }
+        });
 
     </script>
 @endsection

@@ -16,6 +16,8 @@ class InvitationController extends Controller
     public function store(Request $request)
     {
 
+        dd($request);
+
         $validator = Validator::make($request->all(), [
             'mr' => 'required|max:255',
             'mrs' => 'required',

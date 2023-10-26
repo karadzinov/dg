@@ -27,8 +27,8 @@ class DropzoneController extends Controller
     {
         $image = $request->file('file');
 
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images'),$imageName);
+        $imageName = time().'.'.$image->getClientOriginalName();
+        $image->move(public_path('images/invitations'),$imageName);
 
         return response()->json(['success'=>$imageName]);
     }
@@ -36,7 +36,7 @@ class DropzoneController extends Controller
     public function destroy(Request $request): JsonResponse
     {
         $fileName = $request->get('filename');
-        unlink(public_path(). '/images/'. $fileName);
+        unlink(public_path(). '/images/invitations'. $fileName);
 
         return response()->json(["success" => $fileName]);
 
