@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'check.role'], function () {
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     //User Profile
     Route::get('/' , [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('/activities' , [\App\Http\Controllers\UserController::class, 'activities'])->name('users.activities');
 
     Route::group(['prefix' => 'restaurants'], function() {
         //Restaurants CRUD

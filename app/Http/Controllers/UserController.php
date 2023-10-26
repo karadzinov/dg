@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
 use App\Models\Musician;
 use App\Models\Photographer;
 use App\Models\Restaurant;
@@ -22,5 +23,16 @@ class UserController extends Controller
             'photographers' => $photographers
         ];
         return view('users.index')->with($data);
+    }
+
+    public function activities()
+    {
+        $id = Auth::user()->id;
+        $invitations = Invitation::where('user_id', $id)->get();
+
+        $data = [
+            'invitations' => $invitations,
+        ];
+        return view('users.activities')->with($data);
     }
 }

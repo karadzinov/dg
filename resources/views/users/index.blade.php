@@ -11,7 +11,7 @@
                                 <li class="breadcrumb-item"><a class="text-muted"
                                                                href="{{ route('frontend.index') }}"><i
                                             class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Информации за профилот</li>
+                                <li class="breadcrumb-item" aria-current="page"><a href="{{ route('users.index') }}">Информации за профилот</a></li>
                             </ol>
                         </nav>
                     </div>

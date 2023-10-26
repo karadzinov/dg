@@ -208,6 +208,16 @@
                                                     <span class="d-block text-dark">Подесувања</span>
                                                 </div>
                                             </a>
+                                            <a href="{{ route('users.activities') }}"
+                                               class="py-8 px-7 mt-8 d-flex align-items-center">
+                          <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
+                            <img src="/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
+                          </span>
+                                                <div class="w-75 d-inline-block v-middle ps-3">
+                                                    <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои активности </h6>
+                                                    <span class="d-block text-dark">Погледни</span>
+                                                </div>
+                                            </a>
                                         </div>
                                         <div class="d-grid py-4 px-7 pt-8">
                                             <a href="{{ route('logout') }}"
@@ -327,7 +337,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="app-calendar.html" aria-expanded="false">
+                        <a class="sidebar-link" href="" aria-expanded="false">
                 <span>
                   <i class="ti ti-info-square"></i>
                 </span>

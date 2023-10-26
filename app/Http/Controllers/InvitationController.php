@@ -9,12 +9,13 @@ use App\Http\Controllers\Helpers\ImageStoreMalePhoto;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class InvitationController extends Controller
 {
     public function store(Request $request)
     {
-        dd($request);
+
         $validator = Validator::make($request->all(), [
             'mr' => 'required|max:255',
             'mrs' => 'required',
@@ -30,7 +31,6 @@ class InvitationController extends Controller
         ]);
 
         if ($validator->fails()) {
-            dd($validator);
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
@@ -48,6 +48,8 @@ class InvitationController extends Controller
         $imageObj = new ImageStoreGroupPhoto($request, 'invitations');
         $group_photo = $imageObj->imageStore();
 
+        $user_id = Auth::user()->id;
+
         Invitation::create([
             'male_name' => $request->get('mr'),
             'female_name' => $request->get('mrs'),
@@ -56,13 +58,20 @@ class InvitationController extends Controller
             'female_text' => $request->get('female_text'),
             'main_text' => $request->get('main_text'),
             'template' => $request->get('template'),
-            'invitation_link' => $request->get('invitation_link'),
+            'invitation_link' => $request->get('basic-url'),
             'male_photo' => $male_photo,
             'female_photo' => $female_photo,
             'group_photo' => $group_photo,
             'restaurant_id' => $request->get('restaurant_id'),
+            'user_id' => $user_id,
         ]);
-        dd($request);
+
+        $invitations = Invitation::where('user_id', $user_id)->get();
+
+        $data = [
+            'invitations' => $invitations,
+        ];
+        return view('users.activities')->with($data);
     }
 
     public function template_a()

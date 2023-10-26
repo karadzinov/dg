@@ -23,6 +23,17 @@ class Invitation extends Model
         'female_photo',
         'group_photo',
         'date',
-        'restaurant_id'
+        'restaurant_id',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class, 'restaurant_id', 'id');
+    }
 }
