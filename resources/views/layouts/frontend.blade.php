@@ -41,6 +41,7 @@
     <!-- --------------------------------------------------- -->
     <link rel="stylesheet" href="/dist/libs/prismjs/themes/prism-okaidia.min.css">
 
+    <link rel="stylesheet" href="/dist/libs/dropzone/dist/min/dropzone.min.css">
     <!-- --------------------------------------------------- -->
     <!-- Core Css -->
     <!-- --------------------------------------------------- -->

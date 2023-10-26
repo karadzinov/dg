@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DropzoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,5 +115,11 @@ Route::get('/{link}',  [\App\Http\Controllers\FrontEndController::class, 'link']
 Route::post('/confirm',  [\App\Http\Controllers\FrontEndController::class, 'confirm'])->name('confirm');
 Route::post('/plus_one',  [\App\Http\Controllers\FrontEndController::class, 'plusOne'])->name('plus_one');
 
+Route::middleware(['web'])->group(function () {
+
+    Route::get('dropzone', [\App\Http\Controllers\DropzoneController::class, 'index']);
+    Route::post('dropzone/store', [\App\Http\Controllers\DropzoneController::class, 'store'])->name('dropzone.store');
+    Route::post('dropzone/delete', [\App\Http\Controllers\DropzoneController::class, 'destroy'])->name('dropzone.destroy');
+});
 
 

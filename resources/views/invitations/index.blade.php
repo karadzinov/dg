@@ -126,11 +126,16 @@
                                 <div class="row">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-8">
-                                        <div>
-                                            <label for="male_photo" class="form-label">Прикачете слика од
-                                                младоженецот</label>
-                                            <input class="form-control form-control-lg" id="male_photo"
-                                                   name="male_photo" type="file">
+                                        <div class="card">
+
+
+                                            <div id="image-upload">
+
+                                                <div class="dz-message" data-dz-message><span>Изберете слика за младоженецот</span></div>
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
@@ -385,5 +390,51 @@
         CKEDITOR.replace("main_text", {
             height: 150,
         });
+    </script>
+    <script type="text/javascript">
+
+
+        let myDropzone = $("#image-upload").dropzone({
+            addRemoveLinks: true,
+            maxFiles: 2000,
+            init: function () {
+
+                // Hack: Add the dropzone class to the element
+                $(this.element).addClass("dropzone");
+
+
+                this.on("removedfile", function (file) {
+                   let filename = JSON.parse(file.xhr.response);
+                   filename = filename.success;
+
+                    if (file) {
+                        $.ajax({
+                            url: "{{ route('dropzone.destroy') }}",
+                            method: 'post',
+                            data: {filename: filename},
+                            headers: {
+                                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                            },
+                            success: function (response) {
+                                console.log(response);
+                            }
+                        });
+                    }
+                });
+            },
+            url: "{{ route('dropzone.store') }}",
+            method: 'post',
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (file, response) {
+
+                $("#mladozenec").append(`<img src="/images/${response.success}" alt="" />`);
+                console.log(response);
+            }
+        });
+
+
+
     </script>
 @endsection
