@@ -48,7 +48,6 @@
     <link id="themeColors" rel="stylesheet" href="/dist/css/style.min.css"/>
     <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
     <link rel="stylesheet" href="/dist/css/custom.css"/>
-
 </head>
 
 <body>
@@ -84,7 +83,7 @@
                     <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="{{ route('frontend.invitations') }}">Креирајте покани</a>
+                    <a class="nav-link" href="{{ route('invitations.create') }}">Креирајте покани</a>
                 </li>
                 <li class="nav-item dropdown hover-dd d-none d-lg-block">
                     <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
@@ -209,13 +208,13 @@
                                                     <span class="d-block text-dark">Подесувања</span>
                                                 </div>
                                             </a>
-                                            <a href="{{ route('users.activities') }}"
+                                            <a href="{{ route('frontend.invitations') }}"
                                                class="py-8 px-7 mt-8 d-flex align-items-center">
                           <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                             <img src="/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
                           </span>
                                                 <div class="w-75 d-inline-block v-middle ps-3">
-                                                    <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои активности </h6>
+                                                    <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
                                                     <span class="d-block text-dark">Погледни</span>
                                                 </div>
                                             </a>

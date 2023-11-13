@@ -1,472 +1,102 @@
 @extends('layouts.frontend')
 @section('content')
-
-    <div class="row">
-        <div class="col-12">
-            <div id="myCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel"
-                 style="margin-top: 140px;">
-                <ul class="carousel-indicators">
-                    <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active"
-                        aria-current="true"></li>
-                </ul>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="slider-image"
-                             style="background-image: url('/dist/images/flowers.png');"></div>
-                        <div class="carousel-caption d-md-block">
-                            <h4>Ресторани</h4>
-                            <h5>пронајдете го ресторанот од соништата</h5>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Page Start -->
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <!-- Card -->
-                <div class="card">
-                    <div class="card-body">
-                        <h3>Креирајте ја вашата покана...</h3>
-                        <p>
-
-                        </p>
+        <div class="card bg-light-info shadow-none position-relative overflow-hidden">
+            <div class="card-body px-4 py-3">
+                <div class="row align-items-center">
+                    <div class="col-9">
+                        <h4 class="fw-semibold mb-8">{{ Auth::user()->name }}</h4>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a class="text-muted"
+                                                               href="{{ route('frontend.index') }}"><i
+                                            class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Информации за
+                                        профилот</a></li>
+                                <li class="breadcrumb-item" aria-current="page"><a
+                                        href="{{ route('frontend.invitations') }}">Покани</a></li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <!-- ---------------------
-                                                    start Custom Design Example
-                                                ---------------- -->
-                <div class="card">
-                    <div class="card-body wizard-content">
-                        <h4 class="card-title mb-0">Внесете ги следниве информации</h4>
-                        <h6 class="card-subtitle mb-3"></h6>
-                        <form action="{{ route('invitations.store') }}" method="post" id="check_form"
-                              class="tab-wizard wizard-circle"
-                              enctype="multipart/form-data">
-                            @csrf
-                            <!-- Step 1 -->
-                            <h6>Чекор 1</h6>
-                            <section>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="mr" class="form-label">Име на младоженец</label>
-                                            <input type="text"
-                                                   class="form-control"
-                                                   name="mr" id="mr" placeholder="" value=""/>
+        <div class="widget-content searchable-container list">
+            <!-- --------------------- -->
+            <!-- Modal -->
+            <div class="card card-body">
+                <h4 class="card-title text-center">Покани</h4>
+                @if(count($invitations)=== 0)
+                    <br>
+                    <h6 class="card-title text-center">Немате креирано покана</h6>
+                @else
+                    <div class="table-responsive">
+                        <table class="table search-table align-middle text-nowrap">
+                            <thead class="header-item">
+                            <th class="text-center">Покана</th>
+                            <th class="text-center">Име на невестата</th>
+                            <th class="text-center">Име на младоженецот</th>
+                            <th class="text-center">Текст</th>
+                            <th class="text-end">Акција</th>
+                            </thead>
+                            <tbody>
+                            <!-- start row -->
+                            @foreach($invitations as $invitation)
+                                <tr class="search-items">
+                                    <td>
+                                        <div class="action-btn text-center">
+                                            <a href="{{ route('invitation.show', $invitation->id) }}"
+                                               class="text-info edit">
+                                                <i class="ti ti-eye fs-5"></i> Погледни
+                                            </a>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="mrs" class="form-label">Име на невеста</label>
-                                            <input type="text"
-                                                   class="form-control "
-                                                   name="mrs" id="mrs" placeholder="" value=""/>
+                                    </td>
+                                    <td>
+                                        <div class="text-center align-items-center">
+                                            {{ $invitation->female_name }}
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="date" class="form-label">Име на младоженец</label>
-                                            <input type="date"
-                                                   class="form-control"
-                                                   name="date" id="date" placeholder="" value=""/>
+                                    </td>
+                                    <td>
+                                        <div class="text-center align-items-center">
+                                            {{ $invitation->male_name }}
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="fv-row mb-10">
-                                        <!--begin::Label-->
-                                        <label for="basic-url" class="form-label">Вашиот линк</label>
-                                        <!--end::Label-->
-                                        <div class="input-group mb-5">
-                                            <span class="input-group-text"
-                                                  id="basic-addon3">https://dragigosti.com/</span>
-                                            <input type="text" class="form-control" id="basic-url"
-                                                   aria-describedby="basic-addon3" name="basic-url">
-                                            <span class="input-group-text">
-<span class="svg-icon  svg-icon-2hx svg-icon-danger" id="valid-url">
-</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                            <!-- Step 2 -->
-                            <h6>Чекор 2</h6>
-                            <section>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <div class="card">
-                                            <div id="male-upload">
-                                                <div class="dz-message" data-dz-message><span>Изберете слика за младоженецот</span>
-                                                </div>
-                                                <div class="fallback">
-                                                    <input name="file" type="file"/>
-                                                </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center align-items-center">
+                                            <div class="action-btn ">
+                                                <a href="{{ route('frontend.editText', $invitation->id) }}"
+                                                   class="text-info edit">
+                                                    <i class="ti ti-edit fs-5"></i> Додади/Промени текст
+                                                </a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <input name="male_photo" id="male_photo" hidden type="text" value=""/>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <div class="card">
-                                            <div id="female-upload">
-                                                <div class="dz-message" data-dz-message><span>Изберете слика за невестата</span>
-                                                </div>
-                                                <div class="fallback">
-                                                    <input name="file" type="file"/>
-                                                </div>
-                                            </div>
+                                    </td>
+                                    <td class="text-end">
+                                        <div class="action-btn">
+                                            <a href="javascript:void(0)">
+
+                                            </a>
+                                            <a href="{{ route('invitation.destroy', $invitation->id) }}"
+                                               class="text-dark delete ms-2"
+                                               onclick="event.preventDefault();
+                                  document.getElementById('delete-form').submit();">
+                                                <i class="ti ti-trash fs-5"></i>
+                                            </a>
+                                            <form id="delete-form" method="post"
+                                                  action="{{ route('invitation.destroy', $invitation->id) }}">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <input name="female_photo" id="female_photo" hidden type="text" value=""/>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <div class="card">
-                                            <div id="group-upload">
-                                                <div class="dz-message" data-dz-message>
-                                                    <span>Изберете заедничка слика</span></div>
-                                                <div class="fallback">
-                                                    <input name="file" type="file"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <input name="group_photo" id="group_photo" hidden type="text" value=""/>
-                            </section>
-                            <!-- Step 3 -->
-                            <h6>Чекор 3</h6>
-                            <section>
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="card blog position-relative overflow-hidden hover-img"
-                                             style="background-image: url(/images/templates/template-a.png); background-size: cover">
-                                            <div class="card-body position-relative">
-                                                <div class="d-flex flex-column justify-content-between h-100">
-                                                    <div>
-                                                        <a href="{{ route('invitations.template_a') }}"
-                                                           class="fs-7 my-4 fw-semibold text-white d-block lh-sm">Темплејт
-                                                            А</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-check">
-                                            <label for="template" class="form-check-label">Избери</label>
-                                            <input type="checkbox" class="form-check-input success"
-                                                   name="template" value="template_a"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="card blog position-relative overflow-hidden hover-img"
-                                             style="background-image: url(/images/maticno.png); background-size: cover">
-                                            <div class="card-body position-relative">
-                                                <div class="d-flex flex-column justify-content-between h-100">
-                                                    <div>
-                                                        <a href="{{ route('invitations.template_a') }}"
-                                                           class="fs-7 my-4 fw-semibold text-white d-block lh-sm">Темплејт
-                                                            B</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-check">
-                                            <label for="template" class="form-check-label">Избери</label>
-                                            <input type="checkbox" class="form-check-input success"
-                                                   name="template" value="template_b"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <!-- end row -->
+                            </tbody>
+                        </table>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
-
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center mb-0 mt-4">
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                       href="#"><i class="ti ti-chevron-left"></i></a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link border-0 rounded-circle round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">4</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">...</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">10</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                       href="#"><i class="ti ti-chevron-right"></i></a>
-                </li>
-            </ul>
-        </nav>
     </div>
-@endsection
-@section('scripts')
-    <script>
-        $('document').ready(function () {
-            let mr = '';
-            let mrs = '';
-            $("#mr").on('input', function (e) {
-                mr = $(this).val().toLowerCase();
-            });
-
-            console.log(mr);
-            $("#mrs").on('input', function (e) {
-                mrs = $(this).val().toLowerCase();
-
-                $("#basic-url").val(mr + "-" + mrs);
-
-                $("#valid-url").removeClass("svg-icon-danger").addClass("svg-icon-primary");
-
-            });
-
-            $('#mrs').blur(function ()          //whenever you click off an input element
-            {
-                if (!$(this).val()) {                      //if it is blank.
-                    $("#valid-url").removeClass("svg-icon-primary").addClass("svg-icon-danger");
-                    $("#valid-url").val("");
-                }
-            });
-
-            $('#mr').blur(function ()          //whenever you click off an input element
-            {
-                if (!$(this).val()) {                      //if it is blank.
-                    $("#valid-url").removeClass("svg-icon-primary").addClass("svg-icon-danger");
-                    $("#valid-url").val("");
-                }
-            });
-        });
-
-    </script>
-
-    <script src="/dist/libs/ckeditor/ckeditor.js"></script>
-    <script src="/dist/libs/ckeditor/samples/js/sample.js"></script>
-    <script>
-        //default
-        initSample();
-
-        //inline editor
-        // We need to turn off the automatic editor creation first.
-        CKEDITOR.disableAutoInline = true;
-
-        CKEDITOR.inline("editor2", {
-            extraPlugins: "sourcedialog",
-            removePlugins: "sourcearea",
-        });
-
-        var editor1 = CKEDITOR.replace("editor1", {
-            extraAllowedContent: "div",
-            height: 460,
-        });
-        editor1.on("instanceReady", function () {
-            // Output self-closing tags the HTML4 way, like <br>.
-            this.dataProcessor.writer.selfClosingEnd = ">";
-
-            // Use line breaks for block elements, tables, and lists.
-            var dtd = CKEDITOR.dtd;
-            for (var e in CKEDITOR.tools.extend(
-                {},
-                dtd.$nonBodyContent,
-                dtd.$block,
-                dtd.$listItem,
-                dtd.$tableContent
-            )) {
-                this.dataProcessor.writer.setRules(e, {
-                    indent: true,
-                    breakBeforeOpen: true,
-                    breakAfterOpen: true,
-                    breakBeforeClose: true,
-                    breakAfterClose: true,
-                });
-            }
-            // Start in source mode.
-            this.setMode("source");
-        });
-    </script>
-    <script data-sample="1">
-        CKEDITOR.replace("male_text", {
-            height: 150,
-        });
-    </script>
-    <script data-sample="2">
-        CKEDITOR.replace("female_text", {
-            height: 150,
-        });
-    </script>
-    <script data-sample="3">
-        CKEDITOR.replace("main_text", {
-            height: 150,
-        });
-    </script>
-    <script type="text/javascript">
-
-        let myMaleDropzone = $("#male-upload").dropzone({
-            addRemoveLinks: true,
-            maxFiles: 1,
-            init: function () {
-
-                // Hack: Add the dropzone class to the element
-                $(this.element).addClass("dropzone");
-
-
-                this.on("removedfile", function (file) {
-                    let filename = JSON.parse(file.xhr.response);
-                    filename = filename.success;
-
-                    if (file) {
-                        $.ajax({
-                            url: "{{ route('dropzone.destroy') }}",
-                            method: 'post',
-                            data: {filename: filename},
-                            headers: {
-                                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-                            },
-                            success: function (response) {
-                                console.log(response);
-                            }
-                        });
-                    }
-                });
-            },
-            url: "{{ route('dropzone.store') }}",
-            method: 'post',
-            headers: {
-                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-            },
-            success: function (file, response) {
-                console.log(response['success']);
-                $('#male_photo').attr('value', `${response.success}`);
-            }
-        });
-
-        let myFemaleDropzone = $("#female-upload").dropzone({
-            addRemoveLinks: true,
-            maxFiles: 1,
-            init: function () {
-
-                // Hack: Add the dropzone class to the element
-                $(this.element).addClass("dropzone");
-
-
-                this.on("removedfile", function (file) {
-                    let filename = JSON.parse(file.xhr.response);
-                    filename = filename.success;
-
-                    if (file) {
-                        $.ajax({
-                            url: "{{ route('dropzone.destroy') }}",
-                            method: 'post',
-                            data: {filename: filename},
-                            headers: {
-                                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-                            },
-                            success: function (response) {
-                                console.log(response);
-                            }
-                        });
-                    }
-                });
-            },
-            url: "{{ route('dropzone.store') }}",
-            method: 'post',
-            headers: {
-                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-            },
-            success: function (file, response) {
-                console.log(response['success']);
-                $('#female_photo').attr('value', `${response.success}`);
-            }
-        });
-
-        let myGroupDropzone = $("#group-upload").dropzone({
-            addRemoveLinks: true,
-            maxFiles: 1,
-            init: function () {
-
-                // Hack: Add the dropzone class to the element
-                $(this.element).addClass("dropzone");
-
-
-                this.on("removedfile", function (file) {
-                    let filename = JSON.parse(file.xhr.response);
-                    filename = filename.success;
-
-                    if (file) {
-                        $.ajax({
-                            url: "{{ route('dropzone.destroy') }}",
-                            method: 'post',
-                            data: {filename: filename},
-                            headers: {
-                                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-                            },
-                            success: function (response) {
-                                console.log(response);
-                            }
-                        });
-                    }
-                });
-            },
-            url: "{{ route('dropzone.store') }}",
-            method: 'post',
-            headers: {
-                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-            },
-            success: function (file, response) {
-                console.log(response['success']);
-                $('#group_photo').attr('value', `${response.success}`);
-            }
-        });
-
-    </script>
 @endsection
