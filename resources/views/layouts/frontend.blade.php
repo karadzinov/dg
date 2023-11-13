@@ -1,384 +1,530 @@
-<?php error_reporting(0); ?>
-    <!DOCTYPE html>
-<!--[if IE 9]>
-<html lang="en" class="ie9"> <![endif]-->
-<!--[if gt IE 9]>
-<html lang="en" class="ie"> <![endif]-->
-<!--[if !IE]><!-->
+<!DOCTYPE html>
 <html lang="en">
-<!--<![endif]-->
-
 <head>
-    <meta charset="utf-8">
+    <!-- --------------------------------------------------- -->
+    <!-- Title -->
+    <!-- --------------------------------------------------- -->
     <title>Драги Гости</title>
-    <meta name="description" content="Покана за свадбата на Бобан и Елена">
-    <meta name="author" content="Martin Karadzinov">
 
-
-    <meta charset="utf-8"/>
-
-
-    <meta name="description" content="Покана за свадбата на Бобан и Елена"/>
-    <meta name="Author" content="Martin Karadzinov"/>
-    <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="Драги гости">
-    <meta itemprop="description" content="Покана за свадбата на Бобан и Елена">
-    <meta itemprop="image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="https://dragigosti.com">
-    <meta name="twitter:title" content="Драги гости">
-    <meta name="twitter:description" content="Покана за свадбата на Бобан и Елена">
-    <meta name="twitter:creator" content="@tiggaz">
-    <meta name="twitter:image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}">
-
-    <!-- Open Graph data -->
-
-    <meta property="og:title" content="Драги гости"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://dragigosti.com"/>
-    <meta property="og:image" content="{{ env('SITE_NAME').'/images/pokana-svadba.jpg' }}"/>
-    <meta property="og:description" content="Покана за свадбата на Бобан и Елена"/>
-    <meta property="og:site_name" content="Драги гости"/>
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-
-    <!-- Mobile Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <!-- --------------------------------------------------- -->
+    <!-- Required Meta Tag -->
+    <!-- --------------------------------------------------- -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="handheldfriendly" content="true"/>
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="description" content="Mordenize"/>
+    <meta name="author" content=""/>
+    <meta name="keywords" content="Mordenize"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <x-embed-styles/>
+    <!-- --------------------------------------------------- -->
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- --------------------------------------------------- -->
+    <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
+    <link rel="stylesheet" href="/dist/libs/quill/dist/quill.snow.css">
+    <link href="/dist/libs/quill/quill.snow.css" rel="stylesheet">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- --------------------------------------------------- -->
+    <link href="/start/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
 
+    <!-- --------------------------------------------------- -->
 
-    <!-- Styles -->
-    <link href="/css/all.css" rel="stylesheet">
+    <!-- --------------------------------------------------- -->
 
-    <!-- Web Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic'
-          rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+    <!-- Owl Carousel -->
+    <!-- --------------------------------------------------- -->
+    <link rel="stylesheet" href="/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link href="/css/swiper-bundle.min.css" rel="stylesheet">
+    <!-- --------------------------------------------------- -->
+    <!-- Prism Js -->
+    <!-- --------------------------------------------------- -->
+    <link rel="stylesheet" href="/dist/libs/prismjs/themes/prism-okaidia.min.css">
 
-
+    <link rel="stylesheet" href="/dist/libs/dropzone/dist/min/dropzone.min.css">
+    <!-- --------------------------------------------------- -->
+    <!-- Core Css -->
+    <!-- --------------------------------------------------- -->
+    <link id="themeColors" rel="stylesheet" href="/dist/css/style.min.css"/>
+    <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
+    <link rel="stylesheet" href="/dist/css/custom.css"/>
 </head>
 
-<!-- body classes:  -->
-<!-- "boxed": boxed layout mode e.g. <body class="boxed"> -->
-<!-- "pattern-1 ... pattern-9": background patterns for boxed layout mode e.g. <body class="boxed pattern-1"> -->
-<!-- "transparent-header": makes the header transparent and pulls the banner to top -->
-<!-- "gradient-background-header": applies gradient background to header -->
-<!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-<body class="no-trans front-page   ">
-
-<!-- scrollToTop -->
-<!-- ================ -->
-<div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
-
-<!-- page wrapper start -->
-<!-- ================ -->
-<div class="page-wrapper">
-
-    <!-- header-container start -->
-    <div class="header-container">
-
-        <!-- header start -->
-        <!-- classes:  -->
-        <!-- "fixed": enables fixed navigation mode (sticky menu) e.g. class="header fixed clearfix" -->
-        <!-- "dark": dark version of header e.g. class="header dark clearfix" -->
-        <!-- "full-width": mandatory class for the full-width menu layout -->
-        <!-- "centered": mandatory class for the centered logo layout -->
-        <!-- ================ -->
-        <header class="header centered fixed    clearfix">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- header-left start -->
-                        <!-- ================ -->
-                        <div class="header-left clearfix">
-
-                            <!-- logo -->
-                            <div id="logo" class="logo">
-                                <h2 class="text-center logo-font margin-clear"><a href="#" class="text-muted">Бобан<span
-                                            class="text-default"><i class="pl-10 pr-10 fa fa-heart"></i></span>Елена</a>
-                                </h2>
-                            </div>
-
-                            <!-- name-and-slogan -->
-                            <div class="site-slogan text-center">
-                                Ве покануваат на нивната венчавка
-                            </div>
-
-                        </div>
-                        <!-- header-left end -->
-
-                    </div>
-
-                </div>
-            </div>
-
-        </header>
-        <!-- header end -->
-    </div>
-    <!-- header-container end -->
-
-    <!-- banner start -->
-    <!-- ================ -->
-    <div class="pv-40 dark-translucent-bg"
-         style="background-image: url(/images/boban-elena.jpg);background-position: 80% 40%;">
-        <div class="container pv-40">
-            <div class="row">
-                <div class="col-md-8 text-center col-md-offset-2 pv-40">
-                    <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
-                        <h1 class="page-title text-center logo-font">Здраво @yield('guests')!</h1>
-                        <h1 class="page-title text-center logo-font">Време е за нашата венчавка</h1>
-                        <div class="separator"></div>
-                        <h3 class="text-center"><em>21ви Јуни, Ресторан Аликас, Скопје</em></h3>
-                        <!-- countdown start -->
-                        <div class="countdown clearfix"></div>
-                        <!-- countdown end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- banner end -->
-
-    <div id="page-start"></div>
-
-
-    @yield('gallery')
-    <!-- section start -->
-    <!-- ================ -->
-    <section class="light-gray-bg pv-30 clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">Бобан и <span class="text-default">Елена</span>
-                    </h2>
-                    <div class="separator"></div>
-                    <p class="text-center">Нашата венчавка… наше време на насмевки, наше време на танц, наше време на љубов, наше време на вечност...
-                        Ќе ни биде особено драго ако еден од најсреќните моменти од нашиот живот го споделите со нас ….
-                        Од вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- section end -->
-    <!-- section start -->
-    <!-- ================ -->
-    <section class="full-width-section">
-        <div class="full-text-container left light-gray-bg border-clear text-right">
-            <h2 class="logo-font">Бобан Николовски</h2>
-            <div class="separator-3 visible-lg"></div>
-            <p>На секој патник му е потребна дестинација, на верник му е потребна молитва, на писателот му е
-                потребна муза. Слично на тоа, мене ми недостасуваше љубов и
-                разбирање, сè додека не дојде Елена. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
-                планината што ја обгрнува мојата душа, песната што ја исполнува моето срце.</p>
-
-            <p>
-                Во постела ладна веќе нема да се лежи.<br>
-                Елена ми дојде на перниче бело.<br>
-                Ќе ме грее со топло тело.<br>
-                Ќе ме грее со раце нежни.<br>
-                Ќе ги издржиме заедно сите долги, ноќи зимски и снежни.
-            </p>
-
-            <div class="separator-2 visible-lg"></div>
-        </div>
-        <div class="full-image-container light-gray-bg border-clear">
-            <img src="/images/boban.jpg" alt="">
-            <div class="full-image-overlay text-center">
-                <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
-                <p>Доста време ерген одев, доста лични моми водев, дојде време да се женам, овој живот да го сменам.</p>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/karadzinov"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiggaz"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/martin.karadzinov/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!-- section end -->
-    <!-- section start -->
-    <!-- ================ -->
-    <section class="full-width-section">
-        <div class="full-image-container default-bg">
-            <img class="to-right-block" src="/images/elena.jpg" alt="">
-            <div class="full-image-overlay text-center">
-                <h3>Yes <i class="fa fa-heart"></i></h3>
-                <p>"We mature in knowledge and wisdom but never leave the playground of our hearts."</p>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/tilia.ivanovska"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiliaiv/"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/tiliaiv/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="full-text-container default-bg">
-            <h2 class="logo-font">Елена Митреска</h2>
-            <div class="separator-2 visible-lg"></div>
-            <p>... а велев дека Бобан ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
-
-            <p>    Од денес  велам животен пријател и животен сопатник.</p>
-            <p>   До вчера ЈАС и ТИ, од денеска НИЕ.</p>
-            <p>    За НАС нов ден, нов почеток, нов живот.</p>
-            <p>   Љубовта ги овековечува моментите, моментите го исполнуваат животот, животот е почеток на вечноста, а нашата вечност започнува со крунисувањето на нашата љубов …</p>
-            <p>   Соновите и љубовта ќе ги споделиме еден со друг, а радоста и веселбата со ВАС - Денеска камбаните ќе бијат за НАС.</p>
-            <p>    Бидете дел од почетокот на нашата приказна …</p>
-            <div class="separator-3 visible-lg"></div>
-        </div>
-    </section>
-    <!-- section end -->
-
-
-    @yield('content')
-
-    <!-- section start -->
-    <!-- ================ -->
-    <section class="pv-30 clearfix">
-
-
-        <div class="container">
-            <div class="row">
-                <h2 class="text-center space-top text-default logo-font">Програма</h2>
-                <div class="separator"></div>
-                <div class="col-md-12">
-                    <div class="image-box text-center">
-                        <img src="/images/programa.jpg" alt="" class="img-responsive" style="display: inline-block;">
-                    </div>
-                </div>
-
-            </div>
-            <h3 class="text-default text-center space-top logo-font"><span class="text-muted">Ресторан</span> Аликас
-            </h3>
-            <div class="separator"></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <!--  <img src="/images/Slider_3.jpg" class="img-responsive"> -->
-                    <iframe width="315" height="560" src="https://www.youtube.com/embed/ZWCuUmiaKxU"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
-
-                </div>
-                <div class="col-md-6">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11853.501157668741!2d21.4050789!3d42.0351322!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135414c018653265%3A0x1fb5002215f81f9b!2sAllikas!5e0!3m2!1sen!2smk!4v1684963367605!5m2!1sen!2smk"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- section end -->
-
-    <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
-    <!-- ================ -->
-    <footer id="footer" class="clearfix " style="overflow-x: hidden;">
-        <!-- .footer start -->
-        <!-- ================ -->
-        <div class="footer">
-            <div class="container">
-                <div class="footer-inner">
-                    <div class="row">
-                        <div class=" d-flex justify-content-between">
-
-
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="footer-content">
-                                        @if($guests)
-                                            <h2 class="title text-default">RSVP</h2>
-                                            <div class="separator-2 mt-10"></div>
-                                            <p>Доколку сакате да го потврдите Вашето присуство, Ве молиме пополнете ги
-                                                полињата
-                                                подолу.</p>
-                                            <p>Напомена: Во било кој момент можете да го откажете присуството преку
-                                                email или јавете ни се.
-                                            <p>Ветуваме дека личните податоци нема да бидат злоупотребени за други
-                                                цели.</p>
-                                            <p>Вашата email адреса ни е потребна за да ги испратиме местата за седење 7
-                                                дена пред
-                                                почетокот на свадбата.</p>
-                                        @endif
-                                        @yield('form')
+<body>
+<!-- --------------------------------------------------- -->
+<!-- Body Wrapper -->
+<!-- --------------------------------------------------- -->
+<div
+    class="page-wrapper"
+    id="main-wrapper"
+    data-layout="horizontal"
+    data-navbarbg="skin6"
+    data-sidebartype="full"
+    data-sidebar-position="fixed"
+    data-header-position="fixed"
+>
+    <!-- Header Start -->
+    <header class="app-header" style="background-color: white">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <ul class="navbar-nav quick-links d-none d-lg-flex">
+                <li class="nav-item d-none d-lg-block">
+                    <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
+                        <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
+                        <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
+                    </a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link " href="/" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal">
+                        <i class="ti ti-search"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="{{ route('invitations.create') }}">Креирајте покани</a>
+                </li>
+                <li class="nav-item dropdown hover-dd d-none d-lg-block">
+                    <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
+                                class="ti ti-chevron-down"></i></span></a>
+                    <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0"
+                         style="max-width: 250px;">
+                        <div class="col-12">
+                            <div class=" ps-7 pt-7">
+                                <div class="border-bottom">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="position-relative">
+                                                <a href="{{ route('frontend.restaurants') }}"
+                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                                    <div class="d-inline-block">
+                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-home-2"></i>
+                  </span>
+                                                            <span class="hide-menu">&nbsp;Ресторани</span></h6>
+                                                    </div>
+                                                </a>
+                                                <a href="{{ route('frontend.musicians') }}"
+                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                                    <div class="d-inline-block">
+                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-music"></i>
+                  </span>
+                                                            <span class="hide-menu">&nbsp;Музичари</span></h6>
+                                                    </div>
+                                                </a>
+                                                <a href="{{ route('frontend.photographers') }}"
+                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                                    <div class="d-inline-block">
+                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-camera"></i>
+                  </span>
+                                                            <span class="hide-menu">&nbsp;Фотографи</span></h6>
+                                                    </div>
+                                                </a>
+                                                <a href="./app-notes.html"
+                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                                    <div class="d-inline-block">
+                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-hotel-service"></i>
+                  </span>
+                                                            <span class="hide-menu">&nbsp;Останато</span></h6>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="/">За нас</a>
+                </li>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+                    <a class="nav-link" href="{{ route('frontend.contact') }}">Контакт</a>
+                </li>
+            </ul>
+            <div class="d-block d-lg-none">
+                <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
+                <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
+            </div>
+            <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+              <span class="p-2">
+                <i class="ti ti-dots fs-7"></i>
+              </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="javascript:void(0)"
+                       class="nav-link d-flex d-lg-none align-items-center justify-content-center" type="button"
+                       data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar"
+                       aria-controls="offcanvasWithBothOptions">
+                        <i class="ti ti-align-justified fs-7"></i>
+                    </a>
+                    <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                <div class="d-flex align-items-center">
+                                    <div class="user-profile-img">
+                                        <img src="/dist/images/profile/user-1.jpg" class="rounded-circle"
+                                             width="35" height="35"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up"
+                                 aria-labelledby="drop1">
+                                <div class="profile-dropdown position-relative" data-simplebar>
+                                    @if(Auth::user())
+                                        <div class="py-3 px-7 pb-0">
+                                            <h5 class="mb-0 fs-5 fw-semibold">Профил на корисникот</h5>
+                                        </div>
+                                        <div class="d-flex align-items-center py-9 mx-7 border-bottom">
+                                            <img src="/dist/images/profile/user-1.jpg" class="rounded-circle"
+                                                 width="80" height="80"
+                                                 alt=""/>
+                                            <div class="ms-3">
+                                                <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
+                                                <p class="mb-0 d-flex text-dark align-items-center gap-2">
+                                                    <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="message-body">
+                                            <a href="{{ route('users.index') }}"
+                                               class="py-8 px-7 mt-8 d-flex align-items-center">
+                          <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
+                            <img src="/dist/images/svgs/icon-tasks.svg" alt="" width="24" height="24">
+                          </span>
+                                                <div class="w-75 d-inline-block v-middle ps-3">
+                                                    <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои услуги </h6>
+                                                    <span class="d-block text-dark">Подесувања</span>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('frontend.invitations') }}"
+                                               class="py-8 px-7 mt-8 d-flex align-items-center">
+                          <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
+                            <img src="/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
+                          </span>
+                                                <div class="w-75 d-inline-block v-middle ps-3">
+                                                    <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
+                                                    <span class="d-block text-dark">Погледни</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="d-grid py-4 px-7 pt-8">
+                                            <a href="{{ route('logout') }}"
+                                               class="btn btn-outline-primary"
+                                               onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    @else
+                                        <div class="d-grid py-4 px-7 pt-8">
+                                            <div class="text-center">
+                                                <p>Логирајте се за пристап до вашиот профил</p>
+                                            </div>
+                                            <a href="{{ route('login') }}" class="btn btn-outline-primary">Логирај
+                                                се</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <!-- .footer end -->
-
-        <!-- .subfooter start -->
-        <!-- ================ -->
-        <div class="subfooter">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="text-center">Copyright © 2023 by <a target="_blank" href="https://pingdevs.com">PingDevs</a>.
-                            All Rights Reserved</p>
-                    </div>
-
-                </div>
+        </nav>
+    </header>
+    <!-- Header End -->
+    <!--  Mobilenavbar -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar"
+         aria-labelledby="offcanvasWithBothOptionsLabel">
+        <nav class="sidebar-nav scroll-sidebar">
+            <div class="offcanvas-header justify-content-between">
+                <img src="/dist/images/logo.svg" width="160" alt="" class="img-fluid">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-        </div>
-        <!-- .subfooter end -->
-    </footer>
-    <!-- footer end -->
+            <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar="" data-simplebar>
+                <ul id="sidebarnav">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('frontend.index') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-home"></i>
+                </span>
+                            <span class="hide-menu">Почетна</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('frontend.invitations') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-photo"></i>
+                </span>
+                            <span class="hide-menu">Креирајте покани</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow" aria-expanded="false">
+                <span>
+                  <i class="ti ti-apps"></i>
+                </span>
+                            <span class="hide-menu">Услуги</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level my-3">
+                            <li class="sidebar-item py-2">
+                                <a href="{{ route('frontend.restaurants') }}"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-home-2"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Ресторани</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-item py-2">
+                                <a href="{{ route('frontend.musicians') }}"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-music"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Музичари</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-item py-2">
+                                <a href="{{ route('frontend.photographers') }}"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-camera"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Фотографи</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-item py-2">
+                                <a href="./app-notes.html"
+                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                                    <div class="d-inline-block">
+                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
+                    <i class="ti ti-hotel-service"></i>
+                  </span>
+                                            <span class="hide-menu">&nbsp;Останато</span></h6>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('frontend.contact') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-message-dots"></i>
+                </span>
+                            <span class="hide-menu">Контакт</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="" aria-expanded="false">
+                <span>
+                  <i class="ti ti-info-square"></i>
+                </span>
+                            <span class="hide-menu">За над</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
+    <!-- Main wrapper -->
+    <div class="body-wrapper">
+        @yield('content')
+    </div>
+    <!-- Main wrapper End -->
 </div>
-<!-- page-wrapper end -->
 
-<!-- Scripts -->
+<!--  Search Bar -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content rounded-1">
+            <div class="modal-header border-bottom">
+                <input type="search" class="form-control fs-3" placeholder="Search here" id="search"/>
+                <span data-bs-dismiss="modal" class="lh-1 cursor-pointer">
+              <i class="ti ti-x fs-5 ms-3"></i>
+            </span>
+            </div>
+            <div class="modal-body message-body" data-simplebar="">
+                <h5 class="mb-0 fs-5 p-1">Quick Page Links</h5>
+                <ul class="list mb-0 py-2">
+                    <li class="p-1 mb-1 bg-hover-light-black">
+                        <a href="#">
+                            <span class="fs-3 text-black fw-normal d-block">Dashboard</span>
+                            <span class="fs-3 text-muted d-block">/dashboards/dashboard2</span>
+                        </a>
+                    </li>
+                    <li class="p-1 mb-1 bg-hover-light-black">
+                        <a href="#">
+                            <span class="fs-3 text-black fw-normal d-block">Contacts</span>
+                            <span class="fs-3 text-muted d-block">/apps/contacts</span>
+                        </a>
+                    </li>
+                    <li class="p-1 mb-1 bg-hover-light-black">
+                        <a href="#">
+                            <span class="fs-3 text-black fw-normal d-block">Posts</span>
+                            <span class="fs-3 text-muted d-block">/apps/blog/posts</span>
+                        </a>
+                    </li>
+                    <li class="p-1 mb-1 bg-hover-light-black">
+                        <a href="#">
+                            <span class="fs-3 text-black fw-normal d-block">Detail</span>
+                            <span class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
+                        </a>
+                    </li>
+                    <li class="p-1 mb-1 bg-hover-light-black">
+                        <a href="#">
+                            <span class="fs-3 text-black fw-normal d-block">Shop</span>
+                            <span class="fs-3 text-muted d-block">/apps/ecommerce/shop</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- Latest compiled and minified JavaScript -->
-<!-- Optional theme -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
-      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-<script src="/plugins/modernizr.js"></script>
-<script src="/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script src="/plugins/isotope/isotope.pkgd.min.js"></script>
-<script src="/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="/plugins/waypoints/jquery.waypoints.min.js"></script>
-<script src="/plugins/jquery.countTo.js"></script>
-<script src="/plugins/jquery.parallax-1.1.3.js"></script>
-<script src="/plugins/jquery.validate.js"></script>
-<script src="/js/google.map.config.js"></script>
-<script src="/plugins/vide/jquery.vide.js"></script>
-<script src="/plugins/owl-carousel/owl.carousel.js"></script>
-<script src="/plugins/jquery.browser.js"></script>
-<script src="/plugins/SmoothScroll.js"></script>
-<script src="/plugins/jquery.countdown/jquery.plugin.js"></script>
-<script src="/plugins/jquery.countdown/jquery.countdown.js"></script>
+<!-- ---------------------------------------------- -->
+<!-- Import Js Files -->
+<!-- ---------------------------------------------- -->
+<script src="/dist/libs/jquery/dist/jquery.min.js"></script>
+<script src="/dist/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- ---------------------------------------------- -->
+<!-- core files -->
+<script src="/dist/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+<!-- ---------------------------------------------- -->
+<script src="/dist/js/app.min.js"></script>
+<script src="/dist/js/app.horizontal.init.js"></script>
+<script src="/dist/js/app-style-switcher.js"></script>
+<script src="/dist/js/sidebarmenu.js"></script>
+<script src="/dist/js/custom.js"></script>
+<script src="/dist/libs/prismjs/prism.js"></script>
+<!-- ---------------------------------------------- -->
+<!-- current page js files -->
+<!-- ---------------------------------------------- -->
+<script src="/dist/js/apps/chat.js"></script>
+<script src="/dist/js/moment.js"></script>
+<script src="/dist/js/datepicker.min.js"></script>
+<script src="/dist/js/index.global.min.js"></script>
+<script src="/dist/js/calendar.init.js"></script>
+<script src="/dist/libs/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="/dist/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/dist/js/forms/form-wizard.js"></script>
+<script src="/dist/libs/quill/dist/quill.min.js"></script>
+<script src="/dist/libs/quill/quill.min.js"></script>
+<script src="/dist/js/app.init.js"></script>
+<script src="/dist/libs/dropzone/dist/min/dropzone.min.js"></script>
+<!-- ---------------------------------------------- -->
+<script>
+    $('document').ready(function () {
+        document.addEventListener("DOMContentLoaded", function () {
+            // Datatables Responsive
+            $("#datatable").DataTable({
+                "filter": false,
+                "length": false
+            });
+        });
+        var toolbarOptions = [
+            ["bold", "underline"],
+            ["link", "blockquote", "code", "image"],
+            [{list: "ordered"}, {list: "bullet"}]
+        ];
+        $('.quill-editor').each(function (i, el) {
+            var el = $(this), id = 'quilleditor-' + i, val = el.val(), editor_height = 200;
+            var div = $('<div/>').attr('id', id).css('height', editor_height + 'px').html(val);
+            el.addClass('d-none');
+            el.parent().append(div);
+            var quill = new Quill('#' + id, {
+                modules: {toolbar: toolbarOptions},
+                theme: 'snow'
+            });
+            quill.on('text-change', function () {
+                console.log(quill.container.firstChild.innerHTML);
+                el.html();
+                $("#description").val(quill.container.firstChild.innerHTML);
+            });
+        });
+    });
+</script>
+<script>
+    $('document').ready(function () {
 
+        $('.clone').on('click', function (e) {
+            e.preventDefault();
+        });
+        $('.remove').on('click', function (e) {
+            e.preventDefault();
+        });
+        var regex = /^(.+?)(\d+)$/i;
+        var cloneIndex = $(".clonedInput").length;
 
-<script src="/js/template.js" defer></script>
-<script src="/js/custom.js" defer></script>
-<script src="/js/coming.soon.config.js"></script>
+        function clone() {
+            $(".clonedInput").last().clone()
+                .appendTo(".showHere")
+                .attr("id", "clonedInput" + cloneIndex)
+                .find("*")
+                .each(function () {
+                    var id = this.id || "";
+                    var match = id.match(regex) || [];
+                    if (match.length == 3) {
+                        this.id = match[1] + (cloneIndex);
+                    }
+                })
+                .on('click', 'button.clone', clone)
+                .on('click', 'button.remove', remove);
+            cloneIndex++;
+        }
 
+        function remove() {
+            $(".clonedInput").last().remove();
+        }
+
+        $("button.clone").on("click", clone);
+        $("button.remove").on("click", remove);
+
+    });
+
+</script>
+<script>
+    $('document').ready(function () {
+        // Date Picker
+        jQuery(".mydatepicker, #datepicker, .input-group.date").datepicker();
+        jQuery("#datepicker-autoclose").datepicker({
+            autoclose: true,
+            todayHighlight: true,
+        });
+        jQuery("#date-range").datepicker({
+            toggleActive: true,
+        });
+        jQuery("#datepicker-inline").datepicker({
+            todayHighlight: true,
+        });
+    });
+</script>
+
+@yield('scripts')
 
 </body>
 </html>
