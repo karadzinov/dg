@@ -25,14 +25,4 @@ class UserController extends Controller
         return view('users.index')->with($data);
     }
 
-    public function activities()
-    {
-        $id = Auth::user()->id;
-        $invitations = Invitation::where('user_id', $id)->get();
-
-        $data = [
-            'invitations' => $invitations,
-        ];
-        return view('users.activities')->with($data);
-    }
 }

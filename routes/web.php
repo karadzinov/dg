@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'check.role'], function () {
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     //User Profile
     Route::get('/' , [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-    Route::get('/activities' , [\App\Http\Controllers\UserController::class, 'activities'])->name('users.activities');
+
 
     Route::group(['prefix' => 'restaurants'], function() {
         //Restaurants CRUD
@@ -101,9 +101,14 @@ Route::get('/photographers/{slug}', [\App\Http\Controllers\FrontEndController::c
 Route::get('/contact', [\App\Http\Controllers\FrontEndController::class, 'contact'])->name('frontend.contact');
 Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question');
 
-Route::get('/invitations', [\App\Http\Controllers\FrontEndController::class, 'invitations'])->name('frontend.invitations');
+
+Route::get('/invitations' , [\App\Http\Controllers\InvitationController::class, 'invitations'])->name('frontend.invitations');
+Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
 Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
+Route::get('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');
+Route::delete('/invitations/{invitation}', [App\Http\Controllers\InvitationController::class, 'destroy'])->name('invitation.destroy');
 Route::post('/invitations/images', [\App\Http\Controllers\InvitationController::class, 'storeImages'])->name('invitations.storeImages');
+Route::get('/invitations/edit-text/{invitation}', [\App\Http\Controllers\InvitationController::class, 'editText'])->name('frontend.editText');
 Route::get('/template-a', [\App\Http\Controllers\InvitationController::class, 'template_a'])->name('invitations.template_a');
 
 Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
@@ -116,10 +121,11 @@ Route::post('/confirm',  [\App\Http\Controllers\FrontEndController::class, 'conf
 Route::post('/plus_one',  [\App\Http\Controllers\FrontEndController::class, 'plusOne'])->name('plus_one');
 
 Route::middleware(['web'])->group(function () {
-
     Route::get('dropzone', [\App\Http\Controllers\DropzoneController::class, 'index']);
     Route::post('dropzone/store', [\App\Http\Controllers\DropzoneController::class, 'store'])->name('dropzone.store');
     Route::post('dropzone/delete', [\App\Http\Controllers\DropzoneController::class, 'destroy'])->name('dropzone.destroy');
+
+    Route::put('/invitation/text/store', [\App\Http\Controllers\InvitationController::class, 'textStore'])->name('text.store');
 });
 
 

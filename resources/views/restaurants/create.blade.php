@@ -381,9 +381,22 @@
                         </section>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" id="searchmap" class="form-control">
+                                <input type="text" id="searchmap" class="form-control" style="background-color: #fff; font-size: 15px;
+                                    font-weight: 300;
+                                    margin-left: 12px;
+                                    padding: 0 11px 0 13px;
+                                    text-overflow: ellipsis;
+                                    width: 300px;">
                                 <div id="map-canvas">
+                                    #searchmap {
 
+
+
+                                    }
+
+                                    #searchmap:focus {
+                                    border-color: #4d90fe;
+                                    }
                                 </div>
                             </div>
                         </div>
