@@ -6,12 +6,17 @@ use App\Http\Controllers\Helpers\ImageStoreFemalePhoto;
 use App\Http\Controllers\Helpers\ImageStoreGroupPhoto;
 use App\Http\Controllers\Helpers\ImageStoreLogo;
 use App\Http\Controllers\Helpers\ImageStoreMalePhoto;
+use App\Mail\MailSender;
+use App\Mail\MailSenderNewInvitation;
 use App\Models\Invitation;
+use App\Models\Restaurant;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isEmpty;
 
 class InvitationController extends Controller
 {
@@ -35,7 +40,7 @@ class InvitationController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'mr' => 'required|max:255',
+            'mr' => 'required',
             'mrs' => 'required',
             'date' => 'required',
             'basic-url' => 'required',
@@ -43,6 +48,7 @@ class InvitationController extends Controller
             'male_photo' => 'required',
             'female_photo' => 'required',
             'group_photo' => 'required',
+            'email' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -51,7 +57,79 @@ class InvitationController extends Controller
                 ->withInput();
         }
 
-        $user_id = Auth::user()->id;
+
+        $male_text = '<p>На секој патник му е потребна дестинација, на верник му е потребна молитва, на писателот му е
+                потребна муза. Слично на тоа, мене ми недостасуваше љубов и
+                разбирање, сè додека не дојде Ане. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
+                планината што ја обгрнува мојата душа, песната што ја исполнува моето срце.</p>
+            <p>
+                Во постела ладна веќе нема да се лежи.<br>
+                Ане ми дојде на перниче бело.<br>
+                Ќе ме грее со топло тело.<br>
+                Ќе ме грее со раце нежни.<br>
+                Ќе ги издржиме заедно сите долги, ноќи зимски и снежни.
+            </p>';
+
+        $male_quote = '<p>Доста време ерген одев, доста лични моми водев, дојде време да се женам, овој живот да го сменам.</p>';
+
+        $female_text = '<p>... а велев дека Зоки ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
+            <p>    Од денес  велам животен пријател и животен сопатник.</p>
+            <p>   До вчера ЈАС и ТИ, од денеска НИЕ.</p>
+            <p>    За НАС нов ден, нов почеток, нов живот.</p>
+            <p>   Љубовта ги овековечува моментите, моментите го исполнуваат животот, животот е почеток на вечноста, а нашата вечност започнува со крунисувањето на нашата љубов …</p>
+            <p>   Соновите и љубовта ќе ги споделиме еден со друг, а радоста и веселбата со ВАС - Денеска камбаните ќе бијат за НАС.</p>
+            <p>    Бидете дел од почетокот на нашата приказна …</p>';
+
+        $female_quote = '<p>"We mature in knowledge and wisdom but never leave the playground of our hearts."</p>';
+
+        $main_text = 'Нашата венчавка… наше време на насмевки, наше време на танц, наше време на љубов, наше време на вечност...
+                        Ќе ни биде особено драго ако еден од најсреќните моменти од нашиот живот го споделите со нас ….
+                        Од вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!';
+
+        if (Auth::user()) {
+            $user_id = Auth::user()->id;
+
+            $invitation = Invitation::create([
+                'male_name' => $request->get('mr'),
+                'female_name' => $request->get('mrs'),
+                'date' => $request->get('date'),
+                'template' => $request->get('template'),
+                'invitation_link' => $request->get('basic-url'),
+                'male_photo' => $request->get('male_photo'),
+                'female_photo' => $request->get('female_photo'),
+                'group_photo' => $request->get('group_photo'),
+                'restaurant_id' => $request->get('restaurant_id'),
+                'user_id' => $user_id,
+                'email' => $request->get('email'),
+                'male_text' => $male_text,
+                'female_text' => $female_text,
+                'main_text' => $main_text,
+                'male_quote' => $male_quote,
+                'female_quote' => $female_quote,
+            ]);
+
+            // $subject = 'Драги Гости - Креирана Покана';
+
+           // Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation));
+
+
+            $invitation = Invitation::where('invitation_link', $request->get('basic-url'))->first();
+            $restaurants = Restaurant::all();
+
+            $data = [
+                'invitation' => $invitation,
+                'restaurants' => $restaurants,
+            ];
+
+            if ($invitation->template === 'template_a' ) {
+                return view('templates.text-add-templates.template_a')->with($data);
+            } else if ($invitation->template === 'template_b' ) {
+                return view('templates.text-add-templates.template_b')->with($data);
+            } else {
+                return redirect()->route('frontend.index');
+            }
+
+        }
 
         $invitation = Invitation::create([
             'male_name' => $request->get('mr'),
@@ -63,28 +141,73 @@ class InvitationController extends Controller
             'female_photo' => $request->get('female_photo'),
             'group_photo' => $request->get('group_photo'),
             'restaurant_id' => $request->get('restaurant_id'),
-            'user_id' => $user_id,
+            'email' => $request->get('email'),
+            'male_text' => $male_text,
+            'female_text' => $female_text,
+            'main_text' => $main_text,
+            'male_quote' => $male_quote,
+            'female_quote' => $female_quote,
         ]);
 
-        $invitations = Invitation::where('user_id', $user_id)->get();
+
+
+       // $subject = 'Драги Гости - Креирана Покана';
+
+       // Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation));
+
+        $invitation = Invitation::where('invitation_link', $request->get('basic-url'))->first();
+        $restaurants = Restaurant::all();
 
         $data = [
-            'invitations' => $invitations,
+            'invitation' => $invitation,
+            'restaurants' => $restaurants,
         ];
 
-        return view('invitations.index')->with($data);
+        if ($invitation->template === 'template_a' ) {
+            return view('templates.text-add-templates.template_a')->with($data);
+        } else if ($invitation->template === 'template_b' ) {
+            return view('templates.text-add-templates.template_b')->with($data);
+        } else {
+            return redirect()->route('frontend.index');
+        }
     }
 
-    public function show($id)
+    public function saveRestaurantToInvitations(Request $request, $id)
     {
         $invitation = Invitation::FindorFail($id);
 
+        if ($request->get('restaurant_option') === 'map') {
+            $invitation->lat = $request->get('lat');
+            $invitation->lng = $request->get('lng');
+            $invitation->save();
+        }
+
+        if ($request->get('restaurant_option') === 'list') {
+            $invitation->restaurant_id = $request->get('restaurant_id');
+            $invitation->save();
+        }
+
+        $subject = 'Драги Гости - Креирана Покана';
+
+        Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation));
+
+        return view('invitations.confirm');
+    }
+
+    public function show($invitation_link)
+    {
+
+        $invitation = Invitation::where('invitation_link', $invitation_link)->first();
+        $restaurants = Restaurant::all();
+
         $data = [
-            'invitation' => $invitation
+            'invitation' => $invitation,
+            'restaurants' => $restaurants,
         ];
 
         if ($invitation->template === 'template_a') {
-            return view('templates.text-add-templates.template_a')->with($data);
+
+            return view('invitations.view.template_a')->with($data);
         }
         dd('so far');
     }
@@ -111,24 +234,6 @@ class InvitationController extends Controller
     {
 
         return view('templates.template-A');
-    }
-
-    public function editText($id)
-    {
-
-        $invitation = Invitation::FindorFail($id);
-
-
-        $invitationDate = $invitation->date;
-
-        $date = Carbon::setLocale('mk')->$invitationDate->format('l j F Y H:i:s');
-        dd($date);
-        $data = [
-            'invitation' => $invitation,
-        ];
-
-        return view("templates.text-add-templates.$invitation->template")->with($data);
-
     }
 
     public function textStore(Request $request): JsonResponse
@@ -178,6 +283,24 @@ class InvitationController extends Controller
 
 
         return response()->json(['success' => $objectChanged]);
+    }
+
+    public function checkUrl(Request $request): JsonResponse
+    {
+
+        $url = $request->get('content');
+
+        $invitation = Invitation::where('invitation_link', $url)->get();
+
+        $answer = null;
+
+        if (count($invitation) === 0) {
+            $answer = 'Valid Url Link';
+        } else {
+            $answer = 'Choose another Url';
+        }
+
+        return response()->json(['status' => $answer]);
     }
 
 

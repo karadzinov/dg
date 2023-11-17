@@ -36,7 +36,6 @@
                             <th class="text-center">Покана</th>
                             <th class="text-center">Име на невестата</th>
                             <th class="text-center">Име на младоженецот</th>
-                            <th class="text-center">Текст</th>
                             <th class="text-end">Акција</th>
                             </thead>
                             <tbody>
@@ -45,7 +44,7 @@
                                 <tr class="search-items">
                                     <td>
                                         <div class="action-btn text-center">
-                                            <a href="{{ route('invitation.show', $invitation->id) }}"
+                                            <a href="{{ route('invitation.show', $invitation->invitation_link) }}"
                                                class="text-info edit">
                                                 <i class="ti ti-eye fs-5"></i> Погледни
                                             </a>
@@ -61,20 +60,10 @@
                                             {{ $invitation->male_name }}
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="text-center align-items-center">
-                                            <div class="action-btn ">
-                                                <a href="{{ route('frontend.editText', $invitation->id) }}"
-                                                   class="text-info edit">
-                                                    <i class="ti ti-edit fs-5"></i> Додади/Промени текст
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
                                     <td class="text-end">
                                         <div class="action-btn">
                                             <a href="javascript:void(0)">
-
+                                                <i class="ti ti-edit fs-5"></i>Промени
                                             </a>
                                             <a href="{{ route('invitation.destroy', $invitation->id) }}"
                                                class="text-dark delete ms-2"

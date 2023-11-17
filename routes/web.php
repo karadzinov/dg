@@ -28,7 +28,6 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     //User Profile
     Route::get('/' , [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
-
     Route::group(['prefix' => 'restaurants'], function() {
         //Restaurants CRUD
         Route::get('/create', [\App\Http\Controllers\RestaurantController::class, 'create'])->name('restaurants.create');
@@ -105,6 +104,7 @@ Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'quest
 Route::get('/invitations' , [\App\Http\Controllers\InvitationController::class, 'invitations'])->name('frontend.invitations');
 Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
 Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
+Route::post('/invitations/{invitation}/save', [\App\Http\Controllers\InvitationController::class, 'saveRestaurantToInvitations'])->name('invitations.saveRestaurant');
 Route::get('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');
 Route::delete('/invitations/{invitation}', [App\Http\Controllers\InvitationController::class, 'destroy'])->name('invitation.destroy');
 Route::post('/invitations/images', [\App\Http\Controllers\InvitationController::class, 'storeImages'])->name('invitations.storeImages');
@@ -113,8 +113,6 @@ Route::get('/template-a', [\App\Http\Controllers\InvitationController::class, 't
 
 Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 
-
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/{link}',  [\App\Http\Controllers\FrontEndController::class, 'link'])->name('bylink');
 Route::post('/confirm',  [\App\Http\Controllers\FrontEndController::class, 'confirm'])->name('confirm');
@@ -126,6 +124,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('dropzone/delete', [\App\Http\Controllers\DropzoneController::class, 'destroy'])->name('dropzone.destroy');
 
     Route::put('/invitation/text/store', [\App\Http\Controllers\InvitationController::class, 'textStore'])->name('text.store');
+    Route::post('/invitations/checkUrl', [\App\Http\Controllers\InvitationController::class, 'checkUrl'])->name('invitations.checkUrl');
 });
 
 

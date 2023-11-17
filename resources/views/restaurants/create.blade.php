@@ -389,11 +389,7 @@
                                     width: 300px;">
                                 <div id="map-canvas">
                                     #searchmap {
-
-
-
                                     }
-
                                     #searchmap:focus {
                                     border-color: #4d90fe;
                                     }
@@ -420,7 +416,6 @@
 
         $(document).ready(function () {
 // Google Maps
-
 
             map = new google.maps.Map(document.getElementById('map-canvas'), {
                 center: {lat: 41.9981294, lng: 21.4254355 },

@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -75,31 +75,84 @@
             display: none;
         }
 
+
         #searchmap {
+            background-color: #fff;
+
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
         }
+
         #searchmap:focus {
             border-color: #4d90fe;
         }
+
+        #map-canvas {
+            width: 100%;
+            min-height: 200px;
+        }
+
+
+        @media (min-width: 576px) {
+            #map-canvas {
+                width: 100%;
+                min-height: 200px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #map-canvas {
+                width: 100%;
+                min-height: 200px;
+            }
+        }
+
+
+        @media (min-width: 992px) {
+            #map-canvas {
+                width: 100%;
+                min-height: 500px;
+            }
+        }
+
+        #choose-from-list {
+            display: none;
+        }
+
+        #choose-on-map {
+            display: none;
+        }
     </style>
+
 </head>
 
-<body class="no-trans front-page">
+<body class="no-trans front-page   ">
+
 <!-- scrollToTop -->
 <!-- ================ -->
 <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
+
 <!-- page wrapper start -->
 <!-- ================ -->
 <div class="page-wrapper">
+
     <!-- header-container start -->
     <div class="header-container">
+
         <!-- ================ -->
         <header class="header centered fixed    clearfix">
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <!-- header-left start -->
                         <!-- ================ -->
                         <div class="header-left clearfix">
+
                             <!-- logo -->
                             <div id="logo" class="logo">
                                 <h2 class="text-center logo-font margin-clear"><a href="#"
@@ -110,15 +163,20 @@
                                     </a>
                                 </h2>
                             </div>
+
                             <!-- name-and-slogan -->
                             <div class="site-slogan text-center">
                                 Ве покануваат на нивната венчавка
                             </div>
+
                         </div>
                         <!-- header-left end -->
+
                     </div>
+
                 </div>
             </div>
+
         </header>
         <!-- header end -->
     </div>
@@ -127,7 +185,7 @@
     <!-- banner start -->
     <!-- ================ -->
     <div class="pv-40 dark-translucent-bg"
-         style="background-image: url(/images/invitations/{{$invitation->group_photo}});background-position: 80% 40%;">
+         style="background-image: url('/images/invitations/{{$invitation->group_photo}}');background-position: 80% 40%;">
         <div class="container pv-40">
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
@@ -243,28 +301,126 @@
         </div>
     </section>
     <!-- section end -->
-    <div class="col-md-12">
-        <div class="form-group">
-            <input type="text" id="searchmap" class="form-control" style="background-color: #fff; font-size: 15px;
+    <!-- section start -->
+    <!-- ================ -->
+    <section class="pv-30 clearfix">
+
+        <div class="container">
+            <!--
+           <div class="row">
+               <h2 class="text-center space-top text-default logo-font">Програма</h2>
+               <div class="separator"></div>
+               <div class="col-md-12">
+                   <div class="image-box text-center">
+                     <img src="/images/programa.jpg" alt="" class="img-responsive" style="display: inline-block;">
+                    </div>
+                </div>
+
+            </div>
+            -->
+
+
+            <div class="separator"></div>
+            <form action="{{ route('invitations.saveRestaurant', $invitation->id) }}" method="post">
+                @csrf
+                <div class="choose-from-list">
+                    <h3 class="text-default text-center space-top logo-font"><span
+                            class="text-muted">Одбери Ресторан</span></h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="restaurant_option"> <span class="danger"></span>
+                                    </label>
+                                    <select class="form-control required" name="restaurant_option" id="restaurant_option"
+                                            onchange='onSelectChangeHandler()'>
+                                        <option>Одберете</option>
+                                        <option value="list">Одбери од листа на ресторани</option>
+                                        <option value="map">Одбери на мапа</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="choose-from-list" id="choose-from-list">
+                    <h3 class="text-default text-center space-top logo-font"><span
+                            class="text-muted">Одбери Ресторан</span></h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="restaurant_id"> <span class="danger"></span>
+                                    </label>
+                                    <select class="form-control required" id="restaurant_id" name="restaurant_id">
+                                        @foreach($restaurants as $restaurant)
+                                            <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="choose-on-map" id="choose-on-map">
+                    <h3 class="text-default text-center space-top logo-font"><span
+                            class="text-muted">Одбери Ресторан</span></h3>
+                    <div class="separator"></div>
+                    <div class="row">
+                        <input type="hidden" id="lat" class="form-control" name="lat">
+                        <input type="hidden" id="lng" class="form-control" name="lng">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" id="searchmap" class="form-control" style="background-color: #fff; font-size: 15px;
                                     font-weight: 300;
                                     margin-left: 12px;
                                     padding: 0 11px 0 13px;
                                     text-overflow: ellipsis;
-                                    width: 300px;">
-            <div id="map-canvas">
+                                    width: 300px;"/>
+                                <div id="map-canvas">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-sm btn-primary">Сочувај ги информациите</button>
+                </div>
+            </form>
 
+            <h3 class="text-default text-center space-top logo-font"><span class="text-muted">Ресторан</span> Аликас
+            </h3>
+            <div class="separator"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!--  <img src="/images/Slider_3.jpg" class="img-responsive"> -->
+                    <iframe width="315" height="560" src="https://www.youtube.com/embed/ZWCuUmiaKxU"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+
+                </div>
+                <div class="col-md-6">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11853.501157668741!2d21.4050789!3d42.0351322!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135414c018653265%3A0x1fb5002215f81f9b!2sAllikas!5e0!3m2!1sen!2smk!4v1684963367605!5m2!1sen!2smk"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="text-end">
-        <button type="submit" class="btn btn-primary">Сочувај ги информациите</button>
-    </div>
+    </section>
+    <!-- section end -->
+
     <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
     <!-- ================ -->
     <footer id="footer" class="clearfix " style="overflow-x: hidden;">
         <!-- .footer start -->
-        <!-- ================ -->
+        <!-- ================
         <div class="footer">
             <div class="container">
                 <div class="footer-inner">
@@ -286,15 +442,19 @@
                                             дена пред
                                             почетокот на свадбата.</p>
                                         @yield('form')
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+-->
         <!-- .footer end -->
+
         <!-- .subfooter start -->
         <!-- ================ -->
         <div class="subfooter">
@@ -316,9 +476,15 @@
 <!-- page-wrapper end -->
 
 <!-- Scripts -->
-<script src="/dist/js/jquery-2.2.4.min.js"></script>
-<link rel="stylesheet" href="/dist/css/bootstrap-theme.min.css">
-<script src="/dist/js/bootstrap.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- Optional theme -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 <script src="/plugins/modernizr.js"></script>
 <script src="/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script src="/plugins/isotope/isotope.pkgd.min.js"></script>
@@ -339,6 +505,7 @@
 <script src="/js/coming.soon.config.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="http://cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
 <script>
     CKEDITOR.disableAutoInline = true;
     $("div[contenteditable='true']").each(function (index) {
@@ -394,65 +561,92 @@
     });
 </script>
 <script>
+    $.noConflict();
+    jQuery( document ).ready(function( $ ) {
+// Google Maps
+
+            map = new google.maps.Map(document.getElementById('map-canvas'), {
+                center: {lat: 41.9981294, lng: 21.4254355},
+                zoom: 10
+            });
+
+            var marker = new google.maps.Marker({
+                position: {lat: 41.9981294, lng: 21.4254355},
+                map: map,
+                draggable: true
+            });
+
+            var input = document.getElementById('searchmap');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+            google.maps.event.addListener(searchBox, 'places_changed', function () {
+                var places = searchBox.getPlaces();
+                var bounds = new google.maps.LatLngBounds();
+                var i, place;
+                for (i = 0; place = places[i]; i++) {
+                    bounds.extend(place.geometry.location);
+                    marker.setPosition(place.geometry.location);
+                }
+                map.fitBounds(bounds);
+                map.setZoom(15);
+
+            });
+
+            google.maps.event.addListener(marker, 'position_changed', function () {
+                var lat = marker.getPosition().lat();
+                var lng = marker.getPosition().lng();
+
+                $('#lat').val(lat);
+                $('#lng').val(lng);
+            });
+
+
+            $("form").bind("keypress", function (e) {
+                if (e.keyCode == 13) {
+                    $("#searchmap").attr('value');
+                    //add more buttons here
+                    return false;
+                }
+            });
+
+
+    });
     $(function () {
         var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y, m, d')}}");
         $('#defaultCountdown').countdown({until: date});
     });
 </script>
+<script>
+
+
+</script>
+
+<!-- Google Maps -->
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
 
 <script>
 
-    $(document).ready(function () {
-// Google Maps
 
-        map = new google.maps.Map(document.getElementById('map-canvas'), {
-            center: {lat: 41.9981294, lng: 21.4254355 },
-            zoom: 10
-        });
+</script>
 
-        var marker = new google.maps.Marker({
-            position: {lat: 41.9981294, lng: 21.4254355 },
-            map: map,
-            draggable: true
-        });
+<script>
 
-        var input = document.getElementById('searchmap');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+    function onSelectChangeHandler() {
+        let val = document.getElementById("restaurant_option").value;
+        switch (val) {
+            case "map":
+                document.getElementById("choose-from-list").style.display = "none";
+                document.getElementById("choose-on-map").style.display = "block";
+                break;
+            case "list":
+                document.getElementById("choose-from-list").style.display = "block";
+                document.getElementById("choose-on-map").style.display = "none";
+                break;
+        }
+    }
 
-        google.maps.event.addListener(searchBox, 'places_changed', function () {
-            var places = searchBox.getPlaces();
-            var bounds = new google.maps.LatLngBounds();
-            var i, place;
-            for (i = 0; place = places[i]; i++) {
-                bounds.extend(place.geometry.location);
-                marker.setPosition(place.geometry.location);
-            }
-            map.fitBounds(bounds);
-            map.setZoom(15);
-
-        });
-
-        google.maps.event.addListener(marker, 'position_changed', function () {
-            var lat = marker.getPosition().lat();
-            var lng = marker.getPosition().lng();
-
-            $('#lat').val(lat);
-            $('#lng').val(lng);
-        });
-
-
-        $("form").bind("keypress", function (e) {
-            if (e.keyCode == 13) {
-                $("#searchmap").attr('value');
-                //add more buttons here
-                return false;
-            }
-        });
-
-    });
 </script>
 </body>
 </html>

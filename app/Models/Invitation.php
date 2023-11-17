@@ -26,7 +26,10 @@ class Invitation extends Model
         'restaurant_id',
         'user_id',
         'male_quote',
-        'female_quote'
+        'female_quote',
+        'email',
+        'lat',
+        'lng'
     ];
 
     public function user()

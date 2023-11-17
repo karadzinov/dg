@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -75,31 +75,78 @@
             display: none;
         }
 
+
         #searchmap {
+            background-color: #fff;
+
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
         }
+
         #searchmap:focus {
             border-color: #4d90fe;
         }
+
+        #map-canvas {
+            width: 100%;
+            min-height: 200px;
+        }
+
+
+        @media (min-width: 576px) {
+            #map-canvas {
+                width: 100%;
+                min-height: 200px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #map-canvas {
+                width: 100%;
+                min-height: 200px;
+            }
+        }
+
+
+        @media (min-width: 992px) {
+            #map-canvas {
+                width: 100%;
+                min-height: 500px;
+            }
+        }
+
+
     </style>
+
 </head>
 
 <body class="no-trans front-page">
+
 <!-- scrollToTop -->
 <!-- ================ -->
 <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
+
 <!-- page wrapper start -->
 <!-- ================ -->
 <div class="page-wrapper">
+
     <!-- header-container start -->
     <div class="header-container">
+
         <!-- ================ -->
         <header class="header centered fixed    clearfix">
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <!-- header-left start -->
                         <!-- ================ -->
                         <div class="header-left clearfix">
+
                             <!-- logo -->
                             <div id="logo" class="logo">
                                 <h2 class="text-center logo-font margin-clear"><a href="#"
@@ -110,15 +157,20 @@
                                     </a>
                                 </h2>
                             </div>
+
                             <!-- name-and-slogan -->
                             <div class="site-slogan text-center">
                                 Ве покануваат на нивната венчавка
                             </div>
+
                         </div>
                         <!-- header-left end -->
+
                     </div>
+
                 </div>
             </div>
+
         </header>
         <!-- header end -->
     </div>
@@ -243,28 +295,46 @@
         </div>
     </section>
     <!-- section end -->
-    <div class="col-md-12">
-        <div class="form-group">
-            <input type="text" id="searchmap" class="form-control" style="background-color: #fff; font-size: 15px;
-                                    font-weight: 300;
-                                    margin-left: 12px;
-                                    padding: 0 11px 0 13px;
-                                    text-overflow: ellipsis;
-                                    width: 300px;">
-            <div id="map-canvas">
+    <!-- section start -->
+    <!-- ================ -->
+    <section class="pv-30 clearfix">
+
+        <div class="container">
+            <!--
+           <div class="row">
+               <h2 class="text-center space-top text-default logo-font">Програма</h2>
+               <div class="separator"></div>
+               <div class="col-md-12">
+                   <div class="image-box text-center">
+                     <img src="/images/programa.jpg" alt="" class="img-responsive" style="display: inline-block;">
+                    </div>
+                </div>
 
             </div>
+            -->
+
+
+            <div class="separator"></div>
+
+
+            </h3>
+            <div class="separator"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div id="map-canvas"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <br>
-    <div class="text-end">
-        <button type="submit" class="btn btn-primary">Сочувај ги информациите</button>
-    </div>
+    </section>
+    <!-- section end -->
+
     <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
     <!-- ================ -->
     <footer id="footer" class="clearfix " style="overflow-x: hidden;">
         <!-- .footer start -->
-        <!-- ================ -->
+        <!-- ================
         <div class="footer">
             <div class="container">
                 <div class="footer-inner">
@@ -286,15 +356,19 @@
                                             дена пред
                                             почетокот на свадбата.</p>
                                         @yield('form')
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+-->
         <!-- .footer end -->
+
         <!-- .subfooter start -->
         <!-- ================ -->
         <div class="subfooter">
@@ -316,9 +390,15 @@
 <!-- page-wrapper end -->
 
 <!-- Scripts -->
-<script src="/dist/js/jquery-2.2.4.min.js"></script>
-<link rel="stylesheet" href="/dist/css/bootstrap-theme.min.css">
-<script src="/dist/js/bootstrap.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- Optional theme -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 <script src="/plugins/modernizr.js"></script>
 <script src="/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script src="/plugins/isotope/isotope.pkgd.min.js"></script>
@@ -339,66 +419,15 @@
 <script src="/js/coming.soon.config.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="http://cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.disableAutoInline = true;
-    $("div[contenteditable='true']").each(function (index) {
-        var invitation_id = "{{ $invitation->id }}";
-        var content_id = $(this).attr('id');
-        CKEDITOR.inline(content_id, {
-            on: {
-                blur: function (event) {
-                    var data = event.editor.getData();
 
-                    $.ajax({
-                        url: "{{ route('text.store') }}",
-                        method: 'put',
-                        data: {
-                            invitation_id: invitation_id,
-                            content: data,
-                            content_id: content_id
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-                        },
-                        success: function (response) {
-                            if (response.success === 'male_text') {
-                                $("#male_text_message").css('display', 'block');
-                                $("#male_text_message").html("Successfully Saved");
-                                $("#male_text_message").fadeOut(5000);
-                            }
-                            if (response.success === 'female_text') {
-                                $("#female_text_message").css('display', 'block');
-                                $("#female_text_message").html("Successfully Saved");
-                                $("#female_text_message").fadeOut(5000);
-                            }
-                            if (response.success === 'main_text') {
-                                $("#main_text_message").css('display', 'block');
-                                $("#main_text_message").html("Successfully Saved");
-                                $("#main_text_message").fadeOut(5000);
-                            }
-                            if (response.success === 'male_quote') {
-                                $("#male_quote_message").css('display', 'block');
-                                $("#male_quote_message").html("Successfully Saved");
-                                $("#male_quote_message").fadeOut(5000);
-                            }
-                            if (response.success === 'female_quote') {
-                                $("#female_quote_message").css('display', 'block');
-                                $("#female_quote_message").html("Successfully Saved");
-                                $("#female_quote_message").fadeOut(5000);
-                            }
-                        }
-                    });
-                }
-            }
-        });
-    });
-</script>
+
 <script>
     $(function () {
         var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y, m, d')}}");
         $('#defaultCountdown').countdown({until: date});
     });
 </script>
+<!-- Google Maps -->
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
 
@@ -408,51 +437,20 @@
 // Google Maps
 
         map = new google.maps.Map(document.getElementById('map-canvas'), {
-            center: {lat: 41.9981294, lng: 21.4254355 },
-            zoom: 10
+            center: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
+            zoom: 15
         });
 
         var marker = new google.maps.Marker({
-            position: {lat: 41.9981294, lng: 21.4254355 },
+            position: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
             map: map,
-            draggable: true
-        });
-
-        var input = document.getElementById('searchmap');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
-
-        google.maps.event.addListener(searchBox, 'places_changed', function () {
-            var places = searchBox.getPlaces();
-            var bounds = new google.maps.LatLngBounds();
-            var i, place;
-            for (i = 0; place = places[i]; i++) {
-                bounds.extend(place.geometry.location);
-                marker.setPosition(place.geometry.location);
-            }
-            map.fitBounds(bounds);
-            map.setZoom(15);
-
-        });
-
-        google.maps.event.addListener(marker, 'position_changed', function () {
-            var lat = marker.getPosition().lat();
-            var lng = marker.getPosition().lng();
-
-            $('#lat').val(lat);
-            $('#lng').val(lng);
-        });
-
-
-        $("form").bind("keypress", function (e) {
-            if (e.keyCode == 13) {
-                $("#searchmap").attr('value');
-                //add more buttons here
-                return false;
-            }
+            draggable: false
         });
 
     });
+
 </script>
+
+
 </body>
 </html>

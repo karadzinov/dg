@@ -48,6 +48,16 @@
     <link id="themeColors" rel="stylesheet" href="/dist/css/style.min.css"/>
     <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
     <link rel="stylesheet" href="/dist/css/custom.css"/>
+    <style>
+        #valid{
+            display: none;
+        }
+
+        #not-valid{
+            display: none;
+        }
+
+    </style>
 </head>
 
 <body>

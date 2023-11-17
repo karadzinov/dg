@@ -130,9 +130,7 @@ $(".validation-wizard").steps({
   bodyTag: "section",
   transitionEffect: "fade",
   titleTemplate: '<span class="step">#index#</span> #title#',
-  labels: {
-    finish: "Submit",
-  },
+
   onStepChanging: function (event, currentIndex, newIndex) {
     return (
       currentIndex > newIndex ||
