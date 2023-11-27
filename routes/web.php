@@ -87,44 +87,59 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     Route::post('/{slug}/galleries/create', [\App\Http\Controllers\AlbumController::class, 'create'])->name('gallery.create');
     Route::post('/{slug}/gallery', [\App\Http\Controllers\AlbumController::class, 'store'])->name('gallery.store');
     Route::delete('/galleries/{gallery}', [\App\Http\Controllers\AlbumController::class, 'destroy'])->name('gallery.destroy');
+
+    //Invitations CRUD
+    Route::get('/invitations' , [\App\Http\Controllers\InvitationController::class, 'invitations'])->name('frontend.invitations');
+    Route::delete('/invitations/{invitation}', [App\Http\Controllers\InvitationController::class, 'destroy'])->name('invitation.destroy');
 });
 
 
-Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
-Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
-Route::get('/restaurants/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileRestaurants'])->name('restaurants.profile');
-Route::get('/musicians', [\App\Http\Controllers\FrontEndController::class, 'musicians'])->name('frontend.musicians');
-Route::get('/musicians/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileMusician'])->name('musicians.profile');
-Route::get('/photographers', [\App\Http\Controllers\FrontEndController::class, 'photographers'])->name('frontend.photographers');
-Route::get('/photographers/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profilePhotographer'])->name('photographers.profile');
-Route::get('/contact', [\App\Http\Controllers\FrontEndController::class, 'contact'])->name('frontend.contact');
-Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question');
 
 
-Route::get('/invitations' , [\App\Http\Controllers\InvitationController::class, 'invitations'])->name('frontend.invitations');
-Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
-Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
-Route::post('/invitations/{invitation}/save', [\App\Http\Controllers\InvitationController::class, 'saveRestaurantToInvitations'])->name('invitations.saveRestaurant');
-Route::get('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');
-Route::delete('/invitations/{invitation}', [App\Http\Controllers\InvitationController::class, 'destroy'])->name('invitation.destroy');
-Route::post('/invitations/images', [\App\Http\Controllers\InvitationController::class, 'storeImages'])->name('invitations.storeImages');
-Route::get('/invitations/edit-text/{invitation}', [\App\Http\Controllers\InvitationController::class, 'editText'])->name('frontend.editText');
-Route::get('/template-a', [\App\Http\Controllers\InvitationController::class, 'template_a'])->name('invitations.template_a');
-
-Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 
 
-Route::get('/{link}',  [\App\Http\Controllers\FrontEndController::class, 'link'])->name('bylink');
-Route::post('/confirm',  [\App\Http\Controllers\FrontEndController::class, 'confirm'])->name('confirm');
-Route::post('/plus_one',  [\App\Http\Controllers\FrontEndController::class, 'plusOne'])->name('plus_one');
+
+
+
+
+
+
+
+
+
+
 
 Route::middleware(['web'])->group(function () {
+
+    //AJAX routes
     Route::get('dropzone', [\App\Http\Controllers\DropzoneController::class, 'index']);
     Route::post('dropzone/store', [\App\Http\Controllers\DropzoneController::class, 'store'])->name('dropzone.store');
     Route::post('dropzone/delete', [\App\Http\Controllers\DropzoneController::class, 'destroy'])->name('dropzone.destroy');
 
     Route::put('/invitation/text/store', [\App\Http\Controllers\InvitationController::class, 'textStore'])->name('text.store');
     Route::post('/invitations/checkUrl', [\App\Http\Controllers\InvitationController::class, 'checkUrl'])->name('invitations.checkUrl');
+
+    // Frontend routes
+    Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
+    Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
+    Route::get('/restaurants/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileRestaurants'])->name('restaurants.profile');
+    Route::get('/musicians', [\App\Http\Controllers\FrontEndController::class, 'musicians'])->name('frontend.musicians');
+    Route::get('/musicians/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileMusician'])->name('musicians.profile');
+    Route::get('/photographers', [\App\Http\Controllers\FrontEndController::class, 'photographers'])->name('frontend.photographers');
+    Route::get('/photographers/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profilePhotographer'])->name('photographers.profile');
+    Route::get('/contact', [\App\Http\Controllers\FrontEndController::class, 'contact'])->name('frontend.contact');
+    Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question');
+    Route::get('/template-a', [\App\Http\Controllers\InvitationController::class, 'template_a'])->name('invitations.template_a');
+    Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
+
+
+    //Invitation routes
+    Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
+    Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
+    Route::post('/invitations/{invitation}/save', [\App\Http\Controllers\InvitationController::class, 'saveRestaurantToInvitations'])->name('invitations.saveRestaurant');
+    Route::get('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');
+    Route::get('/invitations/{invitation}/edit', [\App\Http\Controllers\InvitationController::class, 'editText'])->name('invitation.editText');
+    Route::put('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'updateRestaurantToInvitations'])->name('invitations.updateRestaurant');
 });
 
 

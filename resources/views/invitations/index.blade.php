@@ -36,7 +36,9 @@
                             <th class="text-center">Покана</th>
                             <th class="text-center">Име на невестата</th>
                             <th class="text-center">Име на младоженецот</th>
-                            <th class="text-end">Акција</th>
+                            <th class="text-center">Промени текст</th>
+                            <th class="text-center">Промени инфо/слики</th>
+                            <th class="text-end">Избриши</th>
                             </thead>
                             <tbody>
                             <!-- start row -->
@@ -60,11 +62,23 @@
                                             {{ $invitation->male_name }}
                                         </div>
                                     </td>
+                                    <td>
+                                        <div class="text-center align-items-center">
+                                            <a href="{{ route('invitation.editText', $invitation->id) }}">
+                                                <i class="ti ti-edit fs-5"></i>Промени текст
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center align-items-center">
+                                            <a href="">
+                                                <i class="ti ti-edit fs-5"></i>Промени инфо/слики
+                                            </a>
+                                        </div>
+                                    </td>
                                     <td class="text-end">
                                         <div class="action-btn">
-                                            <a href="javascript:void(0)">
-                                                <i class="ti ti-edit fs-5"></i>Промени
-                                            </a>
+
                                             <a href="{{ route('invitation.destroy', $invitation->id) }}"
                                                class="text-dark delete ms-2"
                                                onclick="event.preventDefault();

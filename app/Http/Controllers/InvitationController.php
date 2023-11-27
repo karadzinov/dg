@@ -108,10 +108,6 @@ class InvitationController extends Controller
                 'female_quote' => $female_quote,
             ]);
 
-            // $subject = 'Драги Гости - Креирана Покана';
-
-           // Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation));
-
 
             $invitation = Invitation::where('invitation_link', $request->get('basic-url'))->first();
             $restaurants = Restaurant::all();
@@ -121,9 +117,9 @@ class InvitationController extends Controller
                 'restaurants' => $restaurants,
             ];
 
-            if ($invitation->template === 'template_a' ) {
+            if ($invitation->template === 'template_a') {
                 return view('templates.text-add-templates.template_a')->with($data);
-            } else if ($invitation->template === 'template_b' ) {
+            } else if ($invitation->template === 'template_b') {
                 return view('templates.text-add-templates.template_b')->with($data);
             } else {
                 return redirect()->route('frontend.index');
@@ -150,11 +146,6 @@ class InvitationController extends Controller
         ]);
 
 
-
-       // $subject = 'Драги Гости - Креирана Покана';
-
-       // Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation));
-
         $invitation = Invitation::where('invitation_link', $request->get('basic-url'))->first();
         $restaurants = Restaurant::all();
 
@@ -163,9 +154,9 @@ class InvitationController extends Controller
             'restaurants' => $restaurants,
         ];
 
-        if ($invitation->template === 'template_a' ) {
+        if ($invitation->template === 'template_a') {
             return view('templates.text-add-templates.template_a')->with($data);
-        } else if ($invitation->template === 'template_b' ) {
+        } else if ($invitation->template === 'template_b') {
             return view('templates.text-add-templates.template_b')->with($data);
         } else {
             return redirect()->route('frontend.index');
@@ -196,18 +187,16 @@ class InvitationController extends Controller
 
     public function show($invitation_link)
     {
-
         $invitation = Invitation::where('invitation_link', $invitation_link)->first();
-        $restaurants = Restaurant::all();
+
 
         $data = [
             'invitation' => $invitation,
-            'restaurants' => $restaurants,
         ];
 
         if ($invitation->template === 'template_a') {
 
-            return view('invitations.view.template_a')->with($data);
+            return view('invitations.template_a.view')->with($data);
         }
         dd('so far');
     }
@@ -226,7 +215,7 @@ class InvitationController extends Controller
             'invitations' => $invitations,
         ];
 
-        return view('invitations.index')->with($data);
+        return redirect()->route('frontend.invitations')->with($data);
 
     }
 
@@ -303,5 +292,21 @@ class InvitationController extends Controller
         return response()->json(['status' => $answer]);
     }
 
+    public function editText($id)
+    {
+        $invitation = Invitation::FindorFail($id);
+        $restaurants = Restaurant::all();
+
+        $data = [
+            'invitation' => $invitation,
+            'restaurants' => $restaurants,
+        ];
+
+        if ($invitation->template === 'template_a') {
+
+            return view('invitations.template_a.edit')->with($data);
+        }
+        dd('so far');
+    }
 
 }
