@@ -46,7 +46,7 @@
 
     <!-- Styles -->
     <link href="/css/all.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="/dist/libs/dropzone/dist/min/dropzone.min.css">
     <!-- Web Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic'
           rel='stylesheet' type='text/css'>
@@ -83,6 +83,18 @@
             display: none;
         }
 
+        #searchmap{
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 35%;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+            position: absolute;
+            z-index: 10;
+            left: 5px !important;
+        }
     </style>
 </head>
 
@@ -135,6 +147,14 @@
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
                     <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
+                        <div id="group-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                            <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените заедничката слика</span>
+                            </div>
+                            <div class="fallback">
+                                <input name="file"  type="file"/>
+                            </div>
+                        </div>
+                        <br>
                         <h1 class="page-title text-center logo-font">Здраво!</h1>
                         <h1 class="page-title text-center logo-font">Време е за нашата венчавка</h1>
                         <div class="separator"></div>
@@ -193,6 +213,13 @@
         <div class="full-image-container light-gray-bg border-clear">
             <img src="/images/invitations/{{$invitation->male_photo}}" alt="">
             <div class="full-image-overlay text-center">
+                <div id="male-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                    <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените сликата на младоженецот</span>
+                    </div>
+                    <div class="fallback">
+                        <input name="file"  type="file"/>
+                    </div>
+                </div>
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
                 <div id="male_quote" contenteditable="true">
                     {!! $invitation->male_quote !!}
@@ -221,9 +248,16 @@
     <!-- section start -->
     <!-- ================ -->
     <section class="full-width-section">
-        <div class="full-image-container default-bg">
+        <div class="full-image-container default-bg" >
             <img class="to-right-block" src="/images/invitations/{{$invitation->female_photo}}" alt="">
-            <div class="full-image-overlay text-center">
+            <div class="full-image-overlay text-center" >
+                <div id="female-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                    <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените сликата на невестата</span>
+                    </div>
+                    <div class="fallback">
+                        <input name="file"  type="file"/>
+                    </div>
+                </div>
                 <h3>Yes <i class="fa fa-heart"></i></h3>
                 <div id="female_quote" contenteditable="true">
                     {!! $invitation->female_quote !!}
@@ -265,7 +299,7 @@
 
     <div class="container">
         <div class="separator"></div>
-        <form action="{{ route('invitations.saveRestaurant', $invitation->id) }}" method="post">
+        <form action="{{ route('invitations.update', $invitation->id) }}" method="post">
             @csrf
             <div class="choose-from-list">
                 <h3 class="text-default text-center space-top logo-font"><span
@@ -298,6 +332,7 @@
                                 <label for="restaurant_id"> <span class="danger"></span>
                                 </label>
                                 <select class="form-control required" id="restaurant_id" name="restaurant_id">
+                                        <option value="null" selected>none</option>
                                     @foreach($restaurants as $restaurant)
                                         <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
                                     @endforeach
@@ -330,8 +365,23 @@
                 </div>
             </div>
             <br>
-            <div class="text-right" style="color: #5D87FF">
-                <button type="submit" class="btn btn-sm btn-primary">Сочувај ги информациите</button>
+            <input name="male_photo" id="male_photo" hidden type="text" value=""/>
+            <input name="female_photo" id="female_photo" hidden type="text" value=""/>
+            <input name="group_photo" id="group_photo" hidden type="text" value=""/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-2">
+                        <div class="text-right" style="color: #5D87FF">
+                            <button type="submit" class="btn btn-sm btn-primary">Сочувај ги информациите</button>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="text-right" style="color: #5D87FF">
+                            <a href="{{ route('frontend.invitations') }}" class="btn btn-sm btn-primary">Назад</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
         <br>
@@ -387,6 +437,7 @@
 <script src="/js/coming.soon.config.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="http://cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+<script src="/dist/libs/dropzone/dist/min/dropzone.min.js"></script>
 
 <script>
     CKEDITOR.disableAutoInline = true;
@@ -529,6 +580,125 @@
                 break;
         }
     }
+</script>
+<script type="text/javascript">
+
+    let myMaleDropzone = $("#male-upload").dropzone({
+        addRemoveLinks: true,
+        maxFiles: 1,
+        init: function () {
+
+            // Hack: Add the dropzone class to the element
+            $(this.element).addClass("dropzone");
+
+            this.on("removedfile", function (file) {
+                let filename = JSON.parse(file.xhr.response);
+                filename = filename.success;
+
+                if (file) {
+                    $.ajax({
+                        url: "{{ route('dropzone.destroy') }}",
+                        method: 'post',
+                        data: {filename: filename},
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                        },
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                }
+            });
+        },
+        url: "{{ route('dropzone.store') }}",
+        method: 'post',
+        headers: {
+            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+        },
+        success: function (file, response) {
+            console.log(response['success']);
+            $('#male_photo').attr('value', `${response.success}`);
+        }
+    });
+
+    let myFemaleDropzone = $("#female-upload").dropzone({
+        addRemoveLinks: true,
+        maxFiles: 1,
+        init: function () {
+
+            // Hack: Add the dropzone class to the element
+            $(this.element).addClass("dropzone");
+
+
+            this.on("removedfile", function (file) {
+                let filename = JSON.parse(file.xhr.response);
+                filename = filename.success;
+
+                if (file) {
+                    $.ajax({
+                        url: "{{ route('dropzone.destroy') }}",
+                        method: 'post',
+                        data: {filename: filename},
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                        },
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                }
+            });
+        },
+        url: "{{ route('dropzone.store') }}",
+        method: 'post',
+        headers: {
+            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+        },
+        success: function (file, response) {
+            console.log(response['success']);
+            $('#female_photo').attr('value', `${response.success}`);
+        }
+    });
+
+    let myGroupDropzone = $("#group-upload").dropzone({
+        addRemoveLinks: true,
+        maxFiles: 1,
+        init: function () {
+
+            // Hack: Add the dropzone class to the element
+            $(this.element).addClass("dropzone");
+
+
+            this.on("removedfile", function (file) {
+                let filename = JSON.parse(file.xhr.response);
+                filename = filename.success;
+
+                if (file) {
+                    $.ajax({
+                        url: "{{ route('dropzone.destroy') }}",
+                        method: 'post',
+                        data: {filename: filename},
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                        },
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                }
+            });
+        },
+        url: "{{ route('dropzone.store') }}",
+        method: 'post',
+        headers: {
+            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+        },
+        success: function (file, response) {
+            console.log(response['success']);
+            $('#group_photo').attr('value', `${response.success}`);
+        }
+    });
+
 </script>
 </body>
 </html>

@@ -23,7 +23,10 @@ class InvitationController extends Controller
     public function invitations()
     {
         $id = Auth::user()->id;
-        $invitations = Invitation::where('user_id', $id)->get();
+        $email = Auth::user()->email;
+        $invitations = Invitation::where('user_id', $id)
+            ->orWhere('email', $email)
+            ->paginate(10);
 
         $data = [
             'invitations' => $invitations,
@@ -307,6 +310,44 @@ class InvitationController extends Controller
             return view('invitations.template_a.edit')->with($data);
         }
         dd('so far');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $invitation = Invitation::where('id', $id)->first();
+
+        $male_photo = $request->get('male_photo');
+        $female_photo = $request->get('female_photo');
+        $group_photo = $request->get('group_photo');
+
+        if (isset($male_photo)) {
+            $invitation->male_photo = $request->get('male_photo');
+            $invitation->save();
+        }
+        if (isset($female_photo)) {
+            $invitation->female_photo = $request->get('female_photo');
+            $invitation->save();
+        }
+
+        if (isset($group_photo)) {
+            $invitation->group_photo = $request->get('group_photo');
+            $invitation->save();
+        }
+
+        if ($request->get('restaurant_option') === 'map') {
+            $invitation->lat = $request->get('lat');
+            $invitation->lng = $request->get('lng');
+            $invitation->save();
+        }
+
+        if ($request->get('restaurant_option') === 'list') {
+            $invitation->restaurant_id = $request->get('restaurant_id');
+            $invitation->save();
+        }
+
+        $invitation = Invitation::where('id', $id)->first();
+
+        return view('invitations.confirm');
     }
 
 }

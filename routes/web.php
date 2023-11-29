@@ -137,7 +137,8 @@ Route::middleware(['web'])->group(function () {
     Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
     Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
     Route::post('/invitations/{invitation}/save', [\App\Http\Controllers\InvitationController::class, 'saveRestaurantToInvitations'])->name('invitations.saveRestaurant');
-    Route::get('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');
+    Route::get('/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');
+    Route::post('/invitations/{invitation}/update', [\App\Http\Controllers\InvitationController::class, 'update'])->name('invitations.update');
     Route::get('/invitations/{invitation}/edit', [\App\Http\Controllers\InvitationController::class, 'editText'])->name('invitation.editText');
     Route::put('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'updateRestaurantToInvitations'])->name('invitations.updateRestaurant');
 });

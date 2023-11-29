@@ -37,7 +37,6 @@
                             <th class="text-center">Име на невестата</th>
                             <th class="text-center">Име на младоженецот</th>
                             <th class="text-center">Промени текст</th>
-                            <th class="text-center">Промени инфо/слики</th>
                             <th class="text-end">Избриши</th>
                             </thead>
                             <tbody>
@@ -65,14 +64,7 @@
                                     <td>
                                         <div class="text-center align-items-center">
                                             <a href="{{ route('invitation.editText', $invitation->id) }}">
-                                                <i class="ti ti-edit fs-5"></i>Промени текст
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center align-items-center">
-                                            <a href="">
-                                                <i class="ti ti-edit fs-5"></i>Промени инфо/слики
+                                                <i class="ti ti-edit fs-5"></i>Промени текст/слики
                                             </a>
                                         </div>
                                     </td>
@@ -97,6 +89,9 @@
                             <!-- end row -->
                             </tbody>
                         </table>
+                        <div class="col-md-12 text-center">
+                            {{ $invitations->links() }}
+                        </div>
                     </div>
                 @endif
             </div>

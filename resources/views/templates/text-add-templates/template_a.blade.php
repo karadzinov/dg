@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -83,6 +83,18 @@
             display: none;
         }
 
+        #searchmap{
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 35%;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+            position: absolute;
+            z-index: 10;
+            left: 5px !important;
+        }
     </style>
 </head>
 
@@ -301,14 +313,7 @@
                     <input type="hidden" id="lng" class="form-control" name="lng">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input type="text" id="searchmap" class="form-control" style="background-color: #fff; font-size: 15px;
-                                    font-weight: 300;
-                                    margin-left: 35%;
-                                    padding: 0 11px 0 13px;
-                                    text-overflow: ellipsis;
-                                    width: 300px;
-                                    position: absolute;
-                                    z-index: 10"/>
+                            <input type="text" id="searchmap" class="form-control" />
                             <div id="map-canvas">
                             </div>
                         </div>

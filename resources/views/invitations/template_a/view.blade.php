@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -200,7 +200,9 @@
         </div>
     </section>
     <br>
-
+    <h3 class="text-default text-center space-top logo-font"><span
+            class="text-muted">Ресторан</span></h3>
+    <br>
     @if(isset($invitation->lng))
         <div class="container">
             <div class="row">
@@ -211,21 +213,33 @@
         </div>
     @endif
     @if(isset($invitation->restaurant_id))
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="dark-translucent-bg"
-                         style="background-image: url(/images/cover_images/restaurants/originals/{{$invitation->restaurant->coverImg}});background-position: 80% 40%;">
-                        <div class="container-fluid pv-40">
-                            <div class="row">
-                                <div class="col-md-8 text-center col-md-offset-2 pv-40">
-                                    <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
-                                        <h3 class="page-title text-center logo-font">Ве отчекуваме во</h3>
-                                        <h2 class="page-title text-center logo-font">Ресторан <a href="{{route('restaurants.profile', $invitation->restaurant->slug)}}"> {{ $invitation->restaurant->name }}</a></h2>
-                                        <!-- countdown end -->
+                    <div class="col-md-6">
+                        <div class="dark-translucent-bg"
+                             style="background-image: url(/images/cover_images/restaurants/originals/{{$invitation->restaurant->coverImg}});background-position: 80% 50%;height: 450px">
+                            <div class="container-fluid pv-40">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 text-center col-md-offset-2 pv-40">
+                                            <div class="object-non-visible pv-40" data-animation-effect="fadeIn"
+                                                 data-effect-delay="100">
+                                                <h3 class="page-title text-center logo-font">Ве отчекуваме во</h3>
+                                                <h2 class="page-title text-center logo-font">Ресторан <a
+                                                        href="{{route('restaurants.profile', $invitation->restaurant->slug)}}"> {{ $invitation->restaurant->name }}</a>
+                                                </h2>
+                                                <!-- countdown end -->
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div id="map-canvas"></div>
                         </div>
                     </div>
                 </div>
@@ -233,7 +247,20 @@
         </div>
 
     @endif
-
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-8"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <div class="text-right" style="color: #5D87FF">
+                        <a href="{{ route('frontend.invitations') }}" class="btn btn-primary">Назад</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
     <!-- ================ -->
     <footer id="footer" class="clearfix " style="overflow-x: hidden;">
@@ -254,9 +281,9 @@
 <!-- page-wrapper end -->
 
 
-
-    {{--<script src="/dist/libs/jquery/dist/jquery.min.js"></script>--}}
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+{{--<script src="/dist/libs/jquery/dist/jquery.min.js"></script>--}}
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
@@ -293,24 +320,50 @@
 
     });
 </script>
-<script>
-    $(document).ready(function () {
-        window.addEventListener('load', (event) => { initAutocomplete(); });
-
-        function initAutocomplete() {
-            map = new google.maps.Map(document.getElementById('map-canvas'), {
-                center: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
-                zoom: 15
+@if(isset($invitation->lng))
+    <script>
+        $(document).ready(function () {
+            window.addEventListener('load', (event) => {
+                initAutocomplete();
             });
 
-            var marker = new google.maps.Marker({
-                position: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
-                map: map,
-                draggable: false
+            function initAutocomplete() {
+                map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
+                    zoom: 15
+                });
+
+                var marker = new google.maps.Marker({
+                    position: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
+                    map: map,
+                    draggable: false
+                });
+            }
+        });
+    </script>
+@endif
+@if(isset($invitation->restaurant_id))
+    <script>
+        $(document).ready(function () {
+            window.addEventListener('load', (event) => {
+                initAutocomplete();
             });
-        }
-    });
-</script>
+
+            function initAutocomplete() {
+                map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: {lat: {{ $invitation->restaurant->lat }}, lng: {{ $invitation->restaurant->lng }}},
+                    zoom: 15
+                });
+
+                var marker = new google.maps.Marker({
+                    position: {lat: {{ $invitation->restaurant->lat }}, lng: {{ $invitation->restaurant->lng }}},
+                    map: map,
+                    draggable: false
+                });
+            }
+        });
+    </script>
+@endif
 
 </body>
 </html>

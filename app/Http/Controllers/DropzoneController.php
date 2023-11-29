@@ -33,6 +33,7 @@ class DropzoneController extends Controller
         return response()->json(['success'=>$imageName]);
     }
 
+
     public function destroy(Request $request): JsonResponse
     {
         $fileName = $request->get('filename');
