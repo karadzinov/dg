@@ -21,10 +21,12 @@ class MailSenderNewInvitation extends Mailable
 
     public $subject;
     public $invitation;
-    public function __construct($subject, $invitation)
+    public $hash;
+    public function __construct($subject, $invitation, $hash)
     {
         $this->subject = $subject;
         $this->invitation = $invitation;
+        $this->hash = $hash;
     }
 
     /**

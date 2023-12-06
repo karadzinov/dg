@@ -29,7 +29,8 @@ class Invitation extends Model
         'female_quote',
         'email',
         'lat',
-        'lng'
+        'lng',
+        'hash',
     ];
 
     public function user()

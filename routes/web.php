@@ -96,28 +96,7 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::middleware(['web'])->group(function () {
-
-    //AJAX routes
-    Route::get('dropzone', [\App\Http\Controllers\DropzoneController::class, 'index']);
-    Route::post('dropzone/store', [\App\Http\Controllers\DropzoneController::class, 'store'])->name('dropzone.store');
-    Route::post('dropzone/delete', [\App\Http\Controllers\DropzoneController::class, 'destroy'])->name('dropzone.destroy');
-
-    Route::put('/invitation/text/store', [\App\Http\Controllers\InvitationController::class, 'textStore'])->name('text.store');
-    Route::post('/invitations/checkUrl', [\App\Http\Controllers\InvitationController::class, 'checkUrl'])->name('invitations.checkUrl');
 
     // Frontend routes
     Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
@@ -141,6 +120,16 @@ Route::middleware(['web'])->group(function () {
     Route::post('/invitations/{invitation}/update', [\App\Http\Controllers\InvitationController::class, 'update'])->name('invitations.update');
     Route::get('/invitations/{invitation}/edit', [\App\Http\Controllers\InvitationController::class, 'editText'])->name('invitation.editText');
     Route::put('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'updateRestaurantToInvitations'])->name('invitations.updateRestaurant');
+    Route::get('/{invitation}/{hash}', [\App\Http\Controllers\InvitationController::class, 'checkHash'])->name('invitations.checkHash');
+
+    //AJAX routes
+    Route::get('dropzone', [\App\Http\Controllers\DropzoneController::class, 'index']);
+    Route::post('dropzone/store', [\App\Http\Controllers\DropzoneController::class, 'store'])->name('dropzone.store');
+    Route::post('dropzone/delete', [\App\Http\Controllers\DropzoneController::class, 'destroy'])->name('dropzone.destroy');
+
+    Route::put('/invitation/text/store', [\App\Http\Controllers\InvitationController::class, 'textStore'])->name('text.store');
+    Route::post('/invitations/checkUrl', [\App\Http\Controllers\InvitationController::class, 'checkUrl'])->name('invitations.checkUrl');
+
 });
 
 

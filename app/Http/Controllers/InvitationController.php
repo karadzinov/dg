@@ -10,6 +10,7 @@ use App\Mail\MailSender;
 use App\Mail\MailSenderNewInvitation;
 use App\Models\Invitation;
 use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -89,8 +90,11 @@ class InvitationController extends Controller
                         Ќе ни биде особено драго ако еден од најсреќните моменти од нашиот живот го споделите со нас ….
                         Од вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!';
 
+        $email = $request->get('email');
+
         if (Auth::user()) {
             $user_id = Auth::user()->id;
+
 
             $invitation = Invitation::create([
                 'male_name' => $request->get('mr'),
@@ -103,12 +107,13 @@ class InvitationController extends Controller
                 'group_photo' => $request->get('group_photo'),
                 'restaurant_id' => $request->get('restaurant_id'),
                 'user_id' => $user_id,
-                'email' => $request->get('email'),
+                'email' => $email,
                 'male_text' => $male_text,
                 'female_text' => $female_text,
                 'main_text' => $main_text,
                 'male_quote' => $male_quote,
                 'female_quote' => $female_quote,
+                'hash' => md5($email),
             ]);
 
 
@@ -140,12 +145,13 @@ class InvitationController extends Controller
             'female_photo' => $request->get('female_photo'),
             'group_photo' => $request->get('group_photo'),
             'restaurant_id' => $request->get('restaurant_id'),
-            'email' => $request->get('email'),
+            'email' => $email,
             'male_text' => $male_text,
             'female_text' => $female_text,
             'main_text' => $main_text,
             'male_quote' => $male_quote,
             'female_quote' => $female_quote,
+            'hash' => md5($email),
         ]);
 
 
@@ -181,9 +187,13 @@ class InvitationController extends Controller
             $invitation->save();
         }
 
+        $hash = md5($invitation->email);
+        $invitation->hash = $hash;
+        $invitation->save();
+
         $subject = 'Драги Гости - Креирана Покана';
 
-        Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation));
+        Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation, $hash));
 
         return view('invitations.confirm');
     }
@@ -350,4 +360,19 @@ class InvitationController extends Controller
         return view('invitations.confirm');
     }
 
+    public function checkHash($invitationUrl, $hash)
+    {
+        $invitation = Invitation::where('hash', $hash)->first();
+        $user = User::where('email', $invitation->email)->first();
+
+        if ($user === null) {
+            $data = [
+                'invitation' => $invitation,
+            ];
+            return view('auth.registerNew')->with($data);
+        } else {
+            return redirect()->route('frontend.invitations');
+        }
+
+    }
 }
