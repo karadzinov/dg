@@ -556,7 +556,7 @@
 <script>
     $(document).ready(function () {
         $(function () {
-            var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y, m, d')}}");
+            var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y-m-d')}}");
             $('#defaultCountdown').countdown({until: date});
         });
     });
