@@ -59,7 +59,15 @@
             display: none;
         }
 
+        #male_name_message {
+            display: none;
+        }
+
         #female_text_message {
+            display: none;
+        }
+
+        #female_name_message {
             display: none;
         }
 
@@ -83,7 +91,7 @@
             display: none;
         }
 
-        #searchmap{
+        #searchmap {
             background-color: #fff;
             font-size: 15px;
             font-weight: 300;
@@ -96,6 +104,7 @@
             left: 5px !important;
         }
     </style>
+
 </head>
 
 <body class="no-trans front-page">
@@ -118,10 +127,9 @@
                             <!-- logo -->
                             <div id="logo" class="logo">
                                 <h2 class="text-center logo-font margin-clear"><a href="#"
-                                                                                  class="text-muted">{{ $invitation->male_name }}
-                                        <span
-                                            class="text-default"><i
-                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ $invitation->female_name }}
+                                                                                  class="text-muted">{{ strip_tags($invitation->male_name) }}
+                                        <span class="text-default"><i
+                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ strip_tags($invitation->female_name) }}
                                     </a>
                                 </h2>
                             </div>
@@ -147,11 +155,13 @@
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
                     <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
-                        <div id="group-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
-                            <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените заедничката слика</span>
+                        <div id="group-upload"
+                             style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                            <div class="dz-message" data-dz-message>
+                                <span>Кликнете за да ја смените заедничката слика</span>
                             </div>
                             <div class="fallback">
-                                <input name="file"  type="file"/>
+                                <input name="file" type="file"/>
                             </div>
                         </div>
                         <br>
@@ -178,8 +188,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">{{ $invitation->male_name }} и <span
-                            class="text-default">{{ $invitation->female_name }}</span>
+                    <h2 class="text-center logo-font text-muted">{{strip_tags($invitation->male_name)}} и <span
+                            class="text-default">{{ strip_tags($invitation->female_name) }}</span>
                     </h2>
                     <div class="separator"></div>
                     <div id="main_text" contenteditable="true">
@@ -199,7 +209,10 @@
     <!-- ================ -->
     <section class="full-width-section">
         <div class="full-text-container left light-gray-bg border-clear text-right" id="male-photo">
-            <h2 class="logo-font">{{ $invitation->male_name }}</h2>
+            <div class="logo-font" id="male_name" style="font-size: 24px" contenteditable="true">{!! $invitation->male_name !!}</div>
+            <div class="col text-right" style="width: 200px">
+                <p class="alert alert-success btn" id="male_name_message"></p>
+            </div>
             <div class="separator-3 visible-lg"></div>
             <div id="male_text" contenteditable="true">
                 {!! $invitation->male_text !!}
@@ -213,11 +226,13 @@
         <div class="full-image-container light-gray-bg border-clear">
             <img src="/images/invitations/{{$invitation->male_photo}}" alt="">
             <div class="full-image-overlay text-center">
-                <div id="male-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
-                    <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените сликата на младоженецот</span>
+                <div id="male-upload"
+                     style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                    <div class="dz-message" data-dz-message>
+                        <span>Кликнете за да ја смените сликата на младоженецот</span>
                     </div>
                     <div class="fallback">
-                        <input name="file"  type="file"/>
+                        <input name="file" type="file"/>
                     </div>
                 </div>
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
@@ -248,14 +263,15 @@
     <!-- section start -->
     <!-- ================ -->
     <section class="full-width-section">
-        <div class="full-image-container default-bg" >
+        <div class="full-image-container default-bg">
             <img class="to-right-block" src="/images/invitations/{{$invitation->female_photo}}" alt="">
-            <div class="full-image-overlay text-center" >
-                <div id="female-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
-                    <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените сликата на невестата</span>
+            <div class="full-image-overlay text-center">
+                <div id="female-upload"
+                     style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                    <div class="dz-message" data-dz-message><span>Кликнете за да ја смените сликата на невестата</span>
                     </div>
                     <div class="fallback">
-                        <input name="file"  type="file"/>
+                        <input name="file" type="file"/>
                     </div>
                 </div>
                 <h3>Yes <i class="fa fa-heart"></i></h3>
@@ -282,7 +298,10 @@
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <h2 class="logo-font">{{ $invitation->female_name }}</h2>
+            <div class="logo-font" id="female_name" style="font-size: 24px" contenteditable="true">{!! $invitation->female_name !!}</div>
+            <div class="col text-left" style="width: 200px">
+                <p class="alert alert-success btn" id="female_name_message"></p>
+            </div>
             <div class="separator-2 visible-lg"></div>
             <div id="female_text" contenteditable="true">
                 {!! $invitation->female_text !!}
@@ -295,7 +314,50 @@
     </section>
     <br>
     <!-- section end -->
+    @if(isset($invitation->lng))
+        <div class="container" id="show_position">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="map-canvas"></div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @if(isset($invitation->restaurant_id))
+        <div class="container-fluid" id="show_restaurant">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="dark-translucent-bg"
+                             style="background-image: url(/images/cover_images/restaurants/originals/{{$invitation->restaurant->coverImg}});background-position: 80% 50%;height: 450px">
+                            <div class="container-fluid pv-40">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 text-center col-md-offset-2 pv-40">
+                                            <div class="object-non-visible pv-40" data-animation-effect="fadeIn"
+                                                 data-effect-delay="100">
+                                                <h3 class="page-title text-center logo-font">Ве отчекуваме во</h3>
+                                                <h2 class="page-title text-center logo-font">Ресторан <a
+                                                        href="{{route('restaurants.profile', $invitation->restaurant->slug)}}"> {{ $invitation->restaurant->name }}</a>
+                                                </h2>
+                                                <!-- countdown end -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div id="map-canvas"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    @endif
 
     <div class="container">
         <div class="separator"></div>
@@ -303,7 +365,7 @@
             @csrf
             <div class="choose-from-list">
                 <h3 class="text-default text-center space-top logo-font"><span
-                        class="text-muted">Одбери Ресторан</span></h3>
+                        class="text-muted">Промени Ресторан</span></h3>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-3"></div>
@@ -332,7 +394,7 @@
                                 <label for="restaurant_id"> <span class="danger"></span>
                                 </label>
                                 <select class="form-control required" id="restaurant_id" name="restaurant_id">
-                                        <option value="null" selected>none</option>
+                                    <option value="null" selected>none</option>
                                     @foreach($restaurants as $restaurant)
                                         <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
                                     @endforeach
@@ -449,6 +511,8 @@
                 blur: function (event) {
                     var data = event.editor.getData();
 
+                    console.log(data);
+
                     $.ajax({
                         url: "{{ route('text.store') }}",
                         method: 'put',
@@ -460,16 +524,27 @@
                         headers: {
                             'X-CSRF-TOKEN': "{{ @csrf_token() }}"
                         },
+
                         success: function (response) {
                             if (response.success === 'male_text') {
                                 $("#male_text_message").css('display', 'block');
                                 $("#male_text_message").html("Successfully Saved");
                                 $("#male_text_message").fadeOut(5000);
                             }
+                            if (response.success === 'male_name') {
+                                $("#male_name_message").css('display', 'block');
+                                $("#male_name_message").html("Successfully Saved");
+                                $("#male_name_message").fadeOut(5000);
+                            }
                             if (response.success === 'female_text') {
                                 $("#female_text_message").css('display', 'block');
                                 $("#female_text_message").html("Successfully Saved");
                                 $("#female_text_message").fadeOut(5000);
+                            }
+                            if (response.success === 'female_name') {
+                                $("#female_name_message").css('display', 'block');
+                                $("#female_name_message").html("Successfully Saved");
+                                $("#female_name_message").fadeOut(5000);
                             }
                             if (response.success === 'main_text') {
                                 $("#main_text_message").css('display', 'block');
@@ -498,65 +573,62 @@
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
 
-<script>
-    $(document).ready(function () {
-        window.addEventListener('load', (event) => {
-            initAutocomplete();
+@if(isset($invitation->lng))
+    <script>
+        $(document).ready(function () {
+            window.addEventListener('load', (event) => {
+                initAutocomplete();
+            });
+
+            function initAutocomplete() {
+                map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
+                    zoom: 15
+                });
+
+                var marker = new google.maps.Marker({
+                    position: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
+                    map: map,
+                    draggable: false
+                });
+            }
         });
-
-        function initAutocomplete() {
-            map = new google.maps.Map(document.getElementById('map-canvas'), {
-                center: {lat: 41.9981294, lng: 21.4254355},
-                zoom: 10
+    </script>
+@endif
+@if(isset($invitation->restaurant_id))
+    <script>
+        $(document).ready(function () {
+            window.addEventListener('load', (event) => {
+                initAutocomplete();
             });
 
-            var marker = new google.maps.Marker({
-                position: {lat: 41.9981294, lng: 21.4254355},
-                map: map,
-                draggable: true
-            });
+            function initAutocomplete() {
+                map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: {lat: {{ $invitation->restaurant->lat }}, lng: {{ $invitation->restaurant->lng }}},
+                    zoom: 15
+                });
 
-            var input = document.getElementById('searchmap');
-            var searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
-
-            google.maps.event.addListener(searchBox, 'places_changed', function () {
-                var places = searchBox.getPlaces();
-                var bounds = new google.maps.LatLngBounds();
-                var i, place;
-                for (i = 0; place = places[i]; i++) {
-                    bounds.extend(place.geometry.location);
-                    marker.setPosition(place.geometry.location);
-                }
-                map.fitBounds(bounds);
-                map.setZoom(15);
-
-            });
-
-            google.maps.event.addListener(marker, 'position_changed', function () {
-                var lat = marker.getPosition().lat();
-                var lng = marker.getPosition().lng();
-
-                $('#lat').val(lat);
-                $('#lng').val(lng);
-            });
+                var marker = new google.maps.Marker({
+                    position: {lat: {{ $invitation->restaurant->lat }}, lng: {{ $invitation->restaurant->lng }}},
+                    map: map,
+                    draggable: false
+                });
+            }
+        });
+    </script>
+@endif
 
 
-            $("form").bind("keypress", function (e) {
-                if (e.keyCode == 13) {
-                    $("#searchmap").attr('value');
-                    //add more buttons here
-                    return false;
-                }
-            });
-        }
-    });
-</script>
+
+
+
+
+
 
 <script>
     $(document).ready(function () {
         $(function () {
-            var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y-m-d')}}");
+            var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y, m, d')}}");
             $('#defaultCountdown').countdown({until: date});
         });
     });
@@ -699,6 +771,31 @@
         }
     });
 
+</script>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#female_name").attr('title', 'Кликни за да го промениш името на невестата!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#female_text").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#male_name").attr('title', 'Кликни за да го промениш името на младоженецот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#male_text").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#main_text").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#male_quote").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#female_quote").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+    });
 </script>
 </body>
 </html>

@@ -53,12 +53,12 @@
                                     </td>
                                     <td>
                                         <div class="text-center align-items-center">
-                                            {{ $invitation->female_name }}
+                                            {{strip_tags($invitation->female_name) }}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="text-center align-items-center">
-                                            {{ $invitation->male_name }}
+                                            {{ strip_tags($invitation->male_name) }}
                                         </div>
                                     </td>
                                     <td>

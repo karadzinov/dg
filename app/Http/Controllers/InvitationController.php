@@ -256,11 +256,25 @@ class InvitationController extends Controller
             $objectChanged = 'male_text';
         }
 
+        if ($updateOn === 'male_name') {
+            $invitation->male_name = $updateText;
+            $invitation->save();
+
+            $objectChanged = 'male_name';
+        }
+
         if ($updateOn === 'female_text') {
             $invitation->female_text = $updateText;
             $invitation->save();
 
             $objectChanged = 'female_text';
+        }
+
+        if ($updateOn === 'female_name') {
+            $invitation->female_name = $updateText;
+            $invitation->save();
+
+            $objectChanged = 'female_name';
         }
 
         if ($updateOn === 'main_text') {
