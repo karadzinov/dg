@@ -103,6 +103,7 @@
             z-index: 10;
             left: 5px !important;
         }
+
     </style>
 
 </head>
@@ -195,11 +196,12 @@
                     <div id="main_text" contenteditable="true">
                         {!! $invitation->main_text !!}
                     </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4 text-center" style="width: 200px">
-                        <p class="alert alert-success btn" id="main_text_message"></p>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2 text-center" style="width: 100px">
+                        <p class="alert alert-success btn btn-sm" id="main_text_message"><i
+                                class="fa fa-check"></i></p>
                     </div>
-                    <div class="col-md-4"></div>
+                    <div class="col-md-5"></div>
                 </div>
             </div>
         </div>
@@ -210,15 +212,17 @@
     <section class="full-width-section">
         <div class="full-text-container left light-gray-bg border-clear text-right" id="male-photo">
             <div class="logo-font" id="male_name" style="font-size: 24px" contenteditable="true">{!! $invitation->male_name !!}</div>
-            <div class="col text-right" style="width: 200px">
-                <p class="alert alert-success btn" id="male_name_message"></p>
+            <div class="col text-right" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="male_name_message"><i
+                        class="fa fa-check"></i></p>
             </div>
             <div class="separator-3 visible-lg"></div>
             <div id="male_text" contenteditable="true">
                 {!! $invitation->male_text !!}
             </div>
-            <div class="col text-right" style="width: 200px">
-                <p class="alert alert-success btn" id="male_text_message"></p>
+            <div class="col text-right" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="male_text_message"><i
+                        class="fa fa-check"></i></p>
             </div>
             <div class="separator-2 visible-lg"></div>
         </div>
@@ -240,13 +244,14 @@
                     {!! $invitation->male_quote !!}
                 </div>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="text-center" style="width: 200px">
-                            <p class="alert alert-success btn" id="male_quote_message"></p>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        <div class="text-center" style="width: 100px">
+                            <p class="alert alert-success btn btn-sm" id="male_quote_message"><i
+                                    class="fa fa-check"></i></p>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
+                    <div class="col-md-5"></div>
                 </div>
                 <ul class="social-links circle animated-effect-1 text-center">
                     <li class="facebook"><a target="_blank" href="https://www.facebook.com/karadzinov"><i
@@ -279,13 +284,14 @@
                     {!! $invitation->female_quote !!}
                 </div>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="text-center" style="width: 200px">
-                            <p class="alert alert-success btn" id="female_quote_message"></p>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        <div class="text-center" style="width: 100px">
+                            <p class="alert alert-success btn btn-sm" id="female_quote_message"><i
+                                    class="fa fa-check"></i></p>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
+                    <div class="col-md-5"></div>
                 </div>
                 <ul class="social-links circle animated-effect-1 text-center">
                     <li class="facebook"><a target="_blank" href="https://www.facebook.com/tilia.ivanovska"><i
@@ -299,15 +305,17 @@
         </div>
         <div class="full-text-container default-bg">
             <div class="logo-font" id="female_name" style="font-size: 24px" contenteditable="true">{!! $invitation->female_name !!}</div>
-            <div class="col text-left" style="width: 200px">
-                <p class="alert alert-success btn" id="female_name_message"></p>
+            <div class="col text-left" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="female_name_message"><i
+                        class="fa fa-check"></i></p>
             </div>
             <div class="separator-2 visible-lg"></div>
             <div id="female_text" contenteditable="true">
                 {!! $invitation->female_text !!}
             </div>
-            <div class="col text-left" style="width: 200px">
-                <p class="alert alert-success btn" id="female_text_message"></p>
+            <div class="col text-left" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="female_text_message"><i
+                        class="fa fa-check"></i></p>
             </div>
             <div class="separator-3 visible-lg"></div>
         </div>
@@ -528,37 +536,36 @@
                         success: function (response) {
                             if (response.success === 'male_text') {
                                 $("#male_text_message").css('display', 'block');
-                                $("#male_text_message").html("Successfully Saved");
+                                // $("#male_text_message").html("Successfully Saved");
                                 $("#male_text_message").fadeOut(5000);
                             }
                             if (response.success === 'male_name') {
                                 $("#male_name_message").css('display', 'block');
-                                $("#male_name_message").html("Successfully Saved");
+                                // $("#male_name_message").html("Successfully Saved");
                                 $("#male_name_message").fadeOut(5000);
                             }
                             if (response.success === 'female_text') {
                                 $("#female_text_message").css('display', 'block');
-                                $("#female_text_message").html("Successfully Saved");
+                                // $("#female_text_message").html("Successfully Saved");
                                 $("#female_text_message").fadeOut(5000);
                             }
                             if (response.success === 'female_name') {
                                 $("#female_name_message").css('display', 'block');
-                                $("#female_name_message").html("Successfully Saved");
+                                // $("#female_name_message").html("Successfully Saved");
                                 $("#female_name_message").fadeOut(5000);
                             }
                             if (response.success === 'main_text') {
                                 $("#main_text_message").css('display', 'block');
-                                $("#main_text_message").html("Successfully Saved");
                                 $("#main_text_message").fadeOut(5000);
                             }
                             if (response.success === 'male_quote') {
                                 $("#male_quote_message").css('display', 'block');
-                                $("#male_quote_message").html("Successfully Saved");
+                                // $("#male_quote_message").html("Successfully Saved");
                                 $("#male_quote_message").fadeOut(5000);
                             }
                             if (response.success === 'female_quote') {
                                 $("#female_quote_message").css('display', 'block');
-                                $("#female_quote_message").html("Successfully Saved");
+                                // $("#female_quote_message").html("Successfully Saved");
                                 $("#female_quote_message").fadeOut(5000);
                             }
                         }
