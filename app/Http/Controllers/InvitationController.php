@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Helpers\ImageStoreFemalePhoto;
-use App\Http\Controllers\Helpers\ImageStoreGroupPhoto;
-use App\Http\Controllers\Helpers\ImageStoreLogo;
-use App\Http\Controllers\Helpers\ImageStoreMalePhoto;
-use App\Mail\MailSender;
 use App\Mail\MailSenderNewInvitation;
 use App\Models\Invitation;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use function PHPUnit\Framework\isEmpty;
 
 class InvitationController extends Controller
 {
@@ -61,10 +54,13 @@ class InvitationController extends Controller
                 ->withInput();
         }
 
+        $male_name = $request->get('mr');
+        $female_name = $request->get('mrs');
 
-        $male_text = '<p>На секој патник му е потребна дестинација, на верник му е потребна молитва, на писателот му е
+
+        $male_text = "<p>На секој патник му е потребна дестинација, на верник му е потребна молитва, на писателот му е
                 потребна муза. Слично на тоа, мене ми недостасуваше љубов и
-                разбирање, сè додека не дојде Ане. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
+                разбирање, сè додека не дојде $female_name. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
                 планината што ја обгрнува мојата душа, песната што ја исполнува моето срце.</p>
             <p>
                 Во постела ладна веќе нема да се лежи.<br>
@@ -72,23 +68,23 @@ class InvitationController extends Controller
                 Ќе ме грее со топло тело.<br>
                 Ќе ме грее со раце нежни.<br>
                 Ќе ги издржиме заедно сите долги, ноќи зимски и снежни.
-            </p>';
+            </p>";
 
         $male_quote = '<p>Доста време ерген одев, доста лични моми водев, дојде време да се женам, овој живот да го сменам.</p>';
 
-        $female_text = '<p>... а велев дека Зоки ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
+        $female_text = "<p>... а велев дека $male_name ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
             <p>    Од денес  велам животен пријател и животен сопатник.</p>
             <p>   До вчера ЈАС и ТИ, од денеска НИЕ.</p>
             <p>    За НАС нов ден, нов почеток, нов живот.</p>
             <p>   Љубовта ги овековечува моментите, моментите го исполнуваат животот, животот е почеток на вечноста, а нашата вечност започнува со крунисувањето на нашата љубов …</p>
             <p>   Соновите и љубовта ќе ги споделиме еден со друг, а радоста и веселбата со ВАС - Денеска камбаните ќе бијат за НАС.</p>
-            <p>    Бидете дел од почетокот на нашата приказна …</p>';
+            <p>    Бидете дел од почетокот на нашата приказна …</p>";
 
         $female_quote = '<p>"We mature in knowledge and wisdom but never leave the playground of our hearts."</p>';
 
-        $main_text = 'Нашата венчавка… наше време на насмевки, наше време на танц, наше време на љубов, наше време на вечност...
+        $main_text = "Нашата венчавка… наше време на насмевки, наше време на танц, наше време на љубов, наше време на вечност...
                         Ќе ни биде особено драго ако еден од најсреќните моменти од нашиот живот го споделите со нас ….
-                        Од вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!';
+                        Од вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!";
 
         $email = $request->get('email');
 
