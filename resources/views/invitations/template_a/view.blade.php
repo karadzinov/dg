@@ -76,10 +76,10 @@
                             <!-- logo -->
                             <div id="logo" class="logo">
                                 <h2 class="text-center logo-font margin-clear"><a href="#"
-                                                                                  class="text-muted">{{ $invitation->male_name }}
+                                                                                  class="text-muted">{{strip_tags($invitation->male_name)}}
                                         <span
                                             class="text-default"><i
-                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ $invitation->female_name }}
+                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{strip_tags($invitation->female_name)}}
                                     </a>
                                 </h2>
                             </div>
@@ -127,8 +127,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">{{ $invitation->male_name }} и <span
-                            class="text-default">{{ $invitation->female_name }}</span>
+                    <h2 class="text-center logo-font text-muted">{{strip_tags($invitation->male_name)}} и <span
+                            class="text-default">{{strip_tags($invitation->female_name)}}</span>
                     </h2>
                     <div class="separator"></div>
                     <div id="main_text">
@@ -143,7 +143,7 @@
     <!-- ================ -->
     <section class="full-width-section">
         <div class="full-text-container left light-gray-bg border-clear text-right">
-            <h2 class="logo-font">{{ $invitation->male_name }}</h2>
+            <h2 class="logo-font">{{strip_tags($invitation->male_name)}}</h2>
             <div class="separator-3 visible-lg"></div>
             <div id="male_text">
                 {!! $invitation->male_text !!}
@@ -191,7 +191,7 @@
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <h2 class="logo-font">{{ $invitation->female_name }}</h2>
+            <h2 class="logo-font">{{strip_tags($invitation->female_name)}}</h2>
             <div class="separator-2 visible-lg"></div>
             <div>
                 {!! $invitation->female_text !!}

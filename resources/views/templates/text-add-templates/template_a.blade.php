@@ -46,7 +46,7 @@
 
     <!-- Styles -->
     <link href="/css/all.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="/dist/libs/dropzone/dist/min/dropzone.min.css">
     <!-- Web Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic'
           rel='stylesheet' type='text/css'>
@@ -59,7 +59,15 @@
             display: none;
         }
 
+        #male_name_message {
+            display: none;
+        }
+
         #female_text_message {
+            display: none;
+        }
+
+        #female_name_message {
             display: none;
         }
 
@@ -83,7 +91,7 @@
             display: none;
         }
 
-        #searchmap{
+        #searchmap {
             background-color: #fff;
             font-size: 15px;
             font-weight: 300;
@@ -95,7 +103,9 @@
             z-index: 10;
             left: 5px !important;
         }
+
     </style>
+
 </head>
 
 <body class="no-trans front-page">
@@ -118,10 +128,9 @@
                             <!-- logo -->
                             <div id="logo" class="logo">
                                 <h2 class="text-center logo-font margin-clear"><a href="#"
-                                                                                  class="text-muted">{{ $invitation->male_name }}
-                                        <span
-                                            class="text-default"><i
-                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ $invitation->female_name }}
+                                                                                  class="text-muted">{{ strip_tags($invitation->male_name) }}
+                                        <span class="text-default"><i
+                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ strip_tags($invitation->female_name) }}
                                     </a>
                                 </h2>
                             </div>
@@ -147,6 +156,8 @@
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
                     <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
+
+                        <br>
                         <h1 class="page-title text-center logo-font">Здраво!</h1>
                         <h1 class="page-title text-center logo-font">Време е за нашата венчавка</h1>
                         <div class="separator"></div>
@@ -170,16 +181,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">{{ $invitation->male_name }} и <span
-                            class="text-default">{{ $invitation->female_name }}</span>
+                    <h2 class="text-center logo-font text-muted">{{strip_tags($invitation->male_name)}} и <span
+                            class="text-default">{{ strip_tags($invitation->female_name) }}</span>
                     </h2>
                     <div class="separator"></div>
                     <div id="main_text" contenteditable="true">
                         {!! $invitation->main_text !!}
                     </div>
-                    <div class="col">
-                        <p class="alert alert-success" id="main_text_message"></p>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2 text-center" style="width: 100px">
+                        <p class="alert alert-success btn btn-sm" id="main_text_message"><i
+                                class="fa fa-check"></i></p>
                     </div>
+                    <div class="col-md-5"></div>
                 </div>
             </div>
         </div>
@@ -188,14 +202,19 @@
 
     <!-- ================ -->
     <section class="full-width-section">
-        <div class="full-text-container left light-gray-bg border-clear text-right">
-            <h2 class="logo-font">{{ $invitation->male_name }}</h2>
+        <div class="full-text-container left light-gray-bg border-clear text-right" id="male-photo">
+            <div class="logo-font" id="male_name" style="font-size: 24px" contenteditable="true">{!! $invitation->male_name !!}</div>
+            <div class="col text-right" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="male_name_message"><i
+                        class="fa fa-check"></i></p>
+            </div>
             <div class="separator-3 visible-lg"></div>
             <div id="male_text" contenteditable="true">
                 {!! $invitation->male_text !!}
             </div>
-            <div class="col">
-                <p class="alert alert-success" id="male_text_message"></p>
+            <div class="col text-right" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="male_text_message"><i
+                        class="fa fa-check"></i></p>
             </div>
             <div class="separator-2 visible-lg"></div>
         </div>
@@ -203,9 +222,20 @@
         <div class="full-image-container light-gray-bg border-clear">
             <img src="/images/invitations/{{$invitation->male_photo}}" alt="">
             <div class="full-image-overlay text-center">
+
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
                 <div id="male_quote" contenteditable="true">
                     {!! $invitation->male_quote !!}
+                </div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        <div class="text-center" style="width: 100px">
+                            <p class="alert alert-success btn btn-sm" id="male_quote_message"><i
+                                    class="fa fa-check"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
                 </div>
                 <ul class="social-links circle animated-effect-1 text-center">
                     <li class="facebook"><a target="_blank" href="https://www.facebook.com/karadzinov"><i
@@ -215,9 +245,6 @@
                     <li class="instagram"><a target="_blank" href="https://www.instagram.com/martin.karadzinov/"><i
                                 class="fa fa-instagram"></i></a></li>
                 </ul>
-                <div class="col">
-                    <p class="alert alert-success" id="male_quote_message"></p>
-                </div>
             </div>
         </div>
     </section>
@@ -228,9 +255,20 @@
         <div class="full-image-container default-bg">
             <img class="to-right-block" src="/images/invitations/{{$invitation->female_photo}}" alt="">
             <div class="full-image-overlay text-center">
+
                 <h3>Yes <i class="fa fa-heart"></i></h3>
                 <div id="female_quote" contenteditable="true">
                     {!! $invitation->female_quote !!}
+                </div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        <div class="text-center" style="width: 100px">
+                            <p class="alert alert-success btn btn-sm" id="female_quote_message"><i
+                                    class="fa fa-check"></i></p>
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
                 </div>
                 <ul class="social-links circle animated-effect-1 text-center">
                     <li class="facebook"><a target="_blank" href="https://www.facebook.com/tilia.ivanovska"><i
@@ -240,19 +278,21 @@
                     <li class="instagram"><a target="_blank" href="https://www.instagram.com/tiliaiv/"><i
                                 class="fa fa-instagram"></i></a></li>
                 </ul>
-                <div class="col">
-                    <p class="alert alert-success" id="female_quote_message"></p>
-                </div>
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <h2 class="logo-font">{{ $invitation->female_name }}</h2>
+            <div class="logo-font" id="female_name" style="font-size: 24px" contenteditable="true">{!! $invitation->female_name !!}</div>
+            <div class="col text-left" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="female_name_message"><i
+                        class="fa fa-check"></i></p>
+            </div>
             <div class="separator-2 visible-lg"></div>
             <div id="female_text" contenteditable="true">
                 {!! $invitation->female_text !!}
             </div>
-            <div class="col">
-                <p class="alert alert-success" id="female_text_message"></p>
+            <div class="col text-left" style="width: 100px">
+                <p class="alert alert-success btn btn-sm" id="female_text_message"><i
+                        class="fa fa-check"></i></p>
             </div>
             <div class="separator-3 visible-lg"></div>
         </div>
@@ -389,6 +429,8 @@
                 blur: function (event) {
                     var data = event.editor.getData();
 
+                    console.log(data);
+
                     $.ajax({
                         url: "{{ route('text.store') }}",
                         method: 'put',
@@ -400,30 +442,40 @@
                         headers: {
                             'X-CSRF-TOKEN': "{{ @csrf_token() }}"
                         },
+
                         success: function (response) {
                             if (response.success === 'male_text') {
                                 $("#male_text_message").css('display', 'block');
-                                $("#male_text_message").html("Successfully Saved");
+                                // $("#male_text_message").html("Successfully Saved");
                                 $("#male_text_message").fadeOut(5000);
+                            }
+                            if (response.success === 'male_name') {
+                                $("#male_name_message").css('display', 'block');
+                                // $("#male_name_message").html("Successfully Saved");
+                                $("#male_name_message").fadeOut(5000);
                             }
                             if (response.success === 'female_text') {
                                 $("#female_text_message").css('display', 'block');
-                                $("#female_text_message").html("Successfully Saved");
+                                // $("#female_text_message").html("Successfully Saved");
                                 $("#female_text_message").fadeOut(5000);
+                            }
+                            if (response.success === 'female_name') {
+                                $("#female_name_message").css('display', 'block');
+                                // $("#female_name_message").html("Successfully Saved");
+                                $("#female_name_message").fadeOut(5000);
                             }
                             if (response.success === 'main_text') {
                                 $("#main_text_message").css('display', 'block');
-                                $("#main_text_message").html("Successfully Saved");
                                 $("#main_text_message").fadeOut(5000);
                             }
                             if (response.success === 'male_quote') {
                                 $("#male_quote_message").css('display', 'block');
-                                $("#male_quote_message").html("Successfully Saved");
+                                // $("#male_quote_message").html("Successfully Saved");
                                 $("#male_quote_message").fadeOut(5000);
                             }
                             if (response.success === 'female_quote') {
                                 $("#female_quote_message").css('display', 'block');
-                                $("#female_quote_message").html("Successfully Saved");
+                                // $("#female_quote_message").html("Successfully Saved");
                                 $("#female_quote_message").fadeOut(5000);
                             }
                         }
@@ -495,7 +547,7 @@
 <script>
     $(document).ready(function () {
         $(function () {
-            var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y-m-d')}}");
+            var date = new Date("{{\Carbon\Carbon::parse($invitation->date)->format('Y, m, d')}}");
             $('#defaultCountdown').countdown({until: date});
         });
     });
@@ -521,6 +573,32 @@
                 break;
         }
     }
+</script>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#female_name").attr('title', 'Кликни за да го промениш името на невестата!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#female_text").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#male_name").attr('title', 'Кликни за да го промениш името на младоженецот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#male_text").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#main_text").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#male_quote").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+        setTimeout(function () {
+            $("#female_quote").attr('title', 'Кликни за да го промениш текстот!!!');
+        }, 200);
+    });
 </script>
 </body>
 </html>
