@@ -80,7 +80,6 @@
                 <li class="nav-item d-none d-lg-block">
                     <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
                         <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
-                        <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
                     </a>
                 </li>
                 <li class="nav-item dropdown-hover d-none d-lg-block">

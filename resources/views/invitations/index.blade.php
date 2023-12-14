@@ -89,9 +89,7 @@
                             <!-- end row -->
                             </tbody>
                         </table>
-                        <div class="col-md-12 text-center">
-                            {{ $invitations->links() }}
-                        </div>
+
                     </div>
                 @endif
             </div>

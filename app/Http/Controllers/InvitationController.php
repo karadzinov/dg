@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Helpers\ImageStoreFemalePhoto;
+use App\Http\Controllers\Helpers\ImageStoreGroupPhoto;
+use App\Http\Controllers\Helpers\ImageStoreLogo;
+use App\Http\Controllers\Helpers\ImageStoreMalePhoto;
+use App\Mail\MailSender;
 use App\Mail\MailSenderNewInvitation;
 use App\Models\Invitation;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isEmpty;
 
 class InvitationController extends Controller
 {
@@ -54,37 +61,26 @@ class InvitationController extends Controller
                 ->withInput();
         }
 
-        $male_name = $request->get('mr');
-        $female_name = $request->get('mrs');
+        $date = now();
 
+        if ($request->has('date') && $request->date) {
+            $date = Carbon::parse($request->date)->format('Y-m-d 00:00:00');
+        }
 
-        $male_text = "<p>На секој патник му е потребна дестинација, на верник му е потребна молитва, на писателот му е
-                потребна муза. Слично на тоа, мене ми недостасуваше љубов и
-                разбирање, сè додека не дојде $female_name. Таа е мојот животен сопатник, сонцето што го осветлува мојот ден,
-                планината што ја обгрнува мојата душа, песната што ја исполнува моето срце.</p>
-            <p>
-                Во постела ладна веќе нема да се лежи.<br>
-                Ане ми дојде на перниче бело.<br>
-                Ќе ме грее со топло тело.<br>
-                Ќе ме грее со раце нежни.<br>
-                Ќе ги издржиме заедно сите долги, ноќи зимски и снежни.
-            </p>";
+        $mrs = $request->get('mrs');
+        $mr  = $request->get('mr');
+
+        $male_text = "<p>На секој човек му е потребен животен сопатник, многу љубов и разбирање.</p>
+<p>Ако сонцето ја има месечината, денот ја има ноќта, планината го има морето, животот ја има смртта, длабочината ја има висината, галамата ја има тишината, среќата ја има тагата, доброто го има злото - јас ја имам $mrs . Таа е сè што недостасуваше во мојот живот, а заедно сме енергијата, земјата, водата, воздухот и огнот. Ви благодарам што сте дел од нашиот живот.</p>
+<p>Дојдете да си поминеме убаво!</p>";
 
         $male_quote = '<p>Доста време ерген одев, доста лични моми водев, дојде време да се женам, овој живот да го сменам.</p>';
 
-        $female_text = "<p>... а велев дека $male_name ми е само симпатијата од средно :) , а потоа пријател во мојот живот...</p>
-            <p>    Од денес  велам животен пријател и животен сопатник.</p>
-            <p>   До вчера ЈАС и ТИ, од денеска НИЕ.</p>
-            <p>    За НАС нов ден, нов почеток, нов живот.</p>
-            <p>   Љубовта ги овековечува моментите, моментите го исполнуваат животот, животот е почеток на вечноста, а нашата вечност започнува со крунисувањето на нашата љубов …</p>
-            <p>   Соновите и љубовта ќе ги споделиме еден со друг, а радоста и веселбата со ВАС - Денеска камбаните ќе бијат за НАС.</p>
-            <p>    Бидете дел од почетокот на нашата приказна …</p>";
+        $female_text = "<p>Како секоја принцеза, така и јас сонував за принцот на бел коњ. Но, за кратко време сфатив дека реалноста е многу поубава од секоја бајка, од секој коњ, од секој сон... Наместо да се плашам од иднината, решив после една година да влезам во една друга реалност која ме научи на мир, среќа и на решителност. Заедно со $mr постигнавме многу за кратко време и едвај чекам да видам што можеме да направиме понатаму. Но, без Вашата поддршка, љубов и грижа, никогаш немаше да бидеме тука.</p>";
 
         $female_quote = '<p>"We mature in knowledge and wisdom but never leave the playground of our hearts."</p>';
 
-        $main_text = "Нашата венчавка… наше време на насмевки, наше време на танц, наше време на љубов, наше време на вечност...
-                        Ќе ни биде особено драго ако еден од најсреќните моменти од нашиот живот го споделите со нас ….
-                        Од вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!";
+        $main_text = 'Со огромна чест и задоволство Ве покануваме заедно да ја прославиме една од нашите најважни вечери во животот. Од Вас очекуваме да донесете само позитивна енергија и удобни чевли за играње. Се гледаме!';
 
         $email = $request->get('email');
 
@@ -95,7 +91,7 @@ class InvitationController extends Controller
             $invitation = Invitation::create([
                 'male_name' => $request->get('mr'),
                 'female_name' => $request->get('mrs'),
-                'date' => $request->get('date'),
+                'date' => $date,
                 'template' => $request->get('template'),
                 'invitation_link' => $request->get('basic-url'),
                 'male_photo' => $request->get('male_photo'),
@@ -187,7 +183,7 @@ class InvitationController extends Controller
         $invitation->hash = $hash;
         $invitation->save();
 
-        $subject = 'Драги Гости - Креирана Покана';
+        $subject = 'Креирана Покана';
 
         Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation, $hash));
 
@@ -252,25 +248,11 @@ class InvitationController extends Controller
             $objectChanged = 'male_text';
         }
 
-        if ($updateOn === 'male_name') {
-            $invitation->male_name = $updateText;
-            $invitation->save();
-
-            $objectChanged = 'male_name';
-        }
-
         if ($updateOn === 'female_text') {
             $invitation->female_text = $updateText;
             $invitation->save();
 
             $objectChanged = 'female_text';
-        }
-
-        if ($updateOn === 'female_name') {
-            $invitation->female_name = $updateText;
-            $invitation->save();
-
-            $objectChanged = 'female_name';
         }
 
         if ($updateOn === 'main_text') {
@@ -375,7 +357,7 @@ class InvitationController extends Controller
         $invitation = Invitation::where('hash', $hash)->first();
         $user = User::where('email', $invitation->email)->first();
 
-        if ($user === null) {
+        if (!$user) {
             $data = [
                 'invitation' => $invitation,
             ];
