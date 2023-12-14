@@ -83,7 +83,7 @@
             display: none;
         }
 
-        #searchmap{
+        #searchmap {
             background-color: #fff;
             font-size: 15px;
             font-weight: 300;
@@ -147,11 +147,13 @@
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
                     <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
-                        <div id="group-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
-                            <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените заедничката слика</span>
+                        <div id="group-upload"
+                             style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                            <div class="dz-message" data-dz-message>
+                                <span>Кликнете за да ја смените заедничката слика</span>
                             </div>
                             <div class="fallback">
-                                <input name="file"  type="file"/>
+                                <input name="file" type="file"/>
                             </div>
                         </div>
                         <br>
@@ -213,11 +215,13 @@
         <div class="full-image-container light-gray-bg border-clear">
             <img src="/images/invitations/{{$invitation->male_photo}}" alt="">
             <div class="full-image-overlay text-center">
-                <div id="male-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
-                    <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените сликата на младоженецот</span>
+                <div id="male-upload"
+                     style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                    <div class="dz-message" data-dz-message>
+                        <span>Кликнете за да ја смените сликата на младоженецот</span>
                     </div>
                     <div class="fallback">
-                        <input name="file"  type="file"/>
+                        <input name="file" type="file"/>
                     </div>
                 </div>
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
@@ -248,14 +252,15 @@
     <!-- section start -->
     <!-- ================ -->
     <section class="full-width-section">
-        <div class="full-image-container default-bg" >
+        <div class="full-image-container default-bg">
             <img class="to-right-block" src="/images/invitations/{{$invitation->female_photo}}" alt="">
-            <div class="full-image-overlay text-center" >
-                <div id="female-upload" style="background-color: transparent; border: 1px solid white; border-radius: 10px">
-                    <div class="dz-message" data-dz-message  ><span>Кликнете за да ја смените сликата на невестата</span>
+            <div class="full-image-overlay text-center">
+                <div id="female-upload"
+                     style="background-color: transparent; border: 1px solid white; border-radius: 10px">
+                    <div class="dz-message" data-dz-message><span>Кликнете за да ја смените сликата на невестата</span>
                     </div>
                     <div class="fallback">
-                        <input name="file"  type="file"/>
+                        <input name="file" type="file"/>
                     </div>
                 </div>
                 <h3>Yes <i class="fa fa-heart"></i></h3>
@@ -332,7 +337,7 @@
                                 <label for="restaurant_id"> <span class="danger"></span>
                                 </label>
                                 <select class="form-control required" id="restaurant_id" name="restaurant_id">
-                                        <option value="null" selected>none</option>
+                                    <option value="null" selected>none</option>
                                     @foreach($restaurants as $restaurant)
                                         <option value="{{ $restaurant->id }}">{{ $restaurant->name }}</option>
                                     @endforeach
@@ -499,6 +504,7 @@
         src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
 
 <script>
+
     $(document).ready(function () {
         window.addEventListener('load', (event) => {
             initAutocomplete();
@@ -506,12 +512,12 @@
 
         function initAutocomplete() {
             map = new google.maps.Map(document.getElementById('map-canvas'), {
-                center: {lat: 41.9981294, lng: 21.4254355},
-                zoom: 10
+                center: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
+                zoom: 15
             });
 
             var marker = new google.maps.Marker({
-                position: {lat: 41.9981294, lng: 21.4254355},
+                position: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
                 map: map,
                 draggable: true
             });
@@ -563,6 +569,18 @@
 </script>
 
 <script>
+    $("#searchmap").attr("placeholder", 'Внесете ресторан');
+</script>
+<script>
+
+    @if($invitation->lat)
+
+    document.getElementById("choose-from-list").style.display = "none";
+    document.getElementById("choose-on-map").style.display = "block";
+
+    @endif
+
+
     function onSelectChangeHandler() {
         let val = document.getElementById("restaurant_option").value;
         switch (val) {

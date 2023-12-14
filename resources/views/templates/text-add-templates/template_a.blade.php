@@ -500,7 +500,9 @@
         });
     });
 </script>
-
+<script>
+    $("#searchmap").attr("placeholder", 'Внесете ресторан');
+</script>
 <script>
     function onSelectChangeHandler() {
         let val = document.getElementById("restaurant_option").value;

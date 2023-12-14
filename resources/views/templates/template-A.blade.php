@@ -300,7 +300,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="text-center">Copyright © 2023 by <a target="_blank" href="https://pingdevs.com">PingDevs</a>.
+                        <p class="text-center">Copyright © {{ date('Y') }} by <a target="_blank" href="https://pingdevs.com">PingDevs</a>.
                             All Rights Reserved</p>
                     </div>
 
