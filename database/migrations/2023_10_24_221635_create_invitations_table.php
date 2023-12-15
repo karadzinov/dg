@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->longText('female_text')->nullable();
             $table->longText('main_text')->nullable();
             $table->string('template');
-            $table->string('invitation_link');
+            $table->string('invitation_link')->unique();
             $table->string('male_photo');
             $table->string('female_photo');
             $table->string('group_photo');
