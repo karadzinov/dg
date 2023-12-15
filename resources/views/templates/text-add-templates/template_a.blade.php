@@ -384,13 +384,13 @@
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <div class="logo-font" id="female_name" style="font-size: 24px" contenteditable="true">{!! $invitation->female_name !!}</div>
+            <div class="logo-font left" id="female_name" style="font-size: 24px" contenteditable="true">{!! $invitation->female_name !!}</div>
             <div class="col text-left" style="width: 100px">
                 <p class="alert alert-success btn btn-sm" id="female_name_message"><i
                         class="fa fa-check"></i></p>
             </div>
             <div class="separator-2 visible-lg"></div>
-            <div id="female_text" contenteditable="true">
+            <div id="female_text" contenteditable="true" class="left">
                 {!! $invitation->female_text !!}
             </div>
             <div class="col text-left" style="width: 100px">

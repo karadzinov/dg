@@ -126,7 +126,7 @@
             font-family: sans-serif;
             content: attr(data-title); /* here's the magic */
             position:absolute;
-            z-index: 100;
+            z-index: 1000;
             /* vertically center */
             top:50%;
             transform:translateY(-50%);
