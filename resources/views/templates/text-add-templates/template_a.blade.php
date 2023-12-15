@@ -124,7 +124,7 @@
             font-family: sans-serif;
             content: attr(data-title); /* here's the magic */
             position:absolute;
-            z-index: 100;
+            z-index: 10000;
             /* vertically center */
             top:50%;
             transform:translateY(-50%);
@@ -353,7 +353,7 @@
             <div class="full-image-overlay text-center">
 
                 <h3>Yes <i class="fa fa-heart"></i></h3>
-                <div id="female_quote" contenteditable="true" class="left">
+                <div id="female_quote" contenteditable="true">
                     {!! $invitation->female_quote !!}
                 </div>
                 <div class="row">
