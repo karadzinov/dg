@@ -91,6 +91,11 @@
             display: none;
         }
 
+        .name {
+            font-size: 28px;
+            font-family: Pacifico,cursive,sans-serif;
+        }
+
         #searchmap {
             background-color: #fff;
             font-size: 15px;
@@ -102,6 +107,104 @@
             position: absolute;
             z-index: 10;
             left: 5px !important;
+        }
+
+
+        [data-title] {
+
+            position:relative; /* making the .tooltip span a container for the tooltip text */
+            border-bottom:1px dashed #000; /* little indicater to indicate it's hoverable */
+        }
+
+        [data-title]:before {
+            font-size: 16px;
+            text-transform: none;
+            text-decoration: none;
+            font-style: normal !important;
+            font-family: sans-serif;
+            content: attr(data-title); /* here's the magic */
+            position:absolute;
+            z-index: 100;
+            /* vertically center */
+            top:50%;
+            transform:translateY(-50%);
+
+            /* move to right */
+            left:100%;
+            margin-left:15px; /* and add a small left margin */
+
+            /* basic styles */
+            width:200px;
+            padding:10px;
+            border-radius:10px;
+            background:#000;
+            color: #fff;
+            text-align:center;
+
+            display:none; /* hide by default */
+            opacity:0;
+            transition:.3s opacity;
+        }
+
+        [data-title]:hover:before {
+            display:block;
+            opacity:1;
+
+        }
+
+
+        [data-title].left:before {
+            /* reset defaults */
+            left:initial;
+            margin:initial;
+
+            /* set new values */
+            right:100%;
+            margin-right:15px;
+        }
+
+        [data-title]:after {
+            content: "";
+            position:absolute;
+
+            /* position tooltip correctly */
+            left:100%;
+            margin-left:-5px;
+
+            /* vertically center */
+            top:50%;
+            transform:translateY(-50%);
+
+            /* the arrow */
+            border:10px solid #000;
+            border-color: transparent black transparent transparent;
+
+            display:none;
+        }
+        [data-title]:hover:before, [data-title]:hover:after {
+            display:block;
+        }
+
+        [data-title].left:after {
+            content: "";
+            position:absolute;
+
+            /* position tooltip correctly */
+            left: -20px;
+
+
+            /* vertically center */
+            top:50%;
+            transform:translateY(-50%);
+
+            /* the arrow */
+            border:10px solid #000;
+            border-color:  transparent  transparent black transparent ;
+
+            display:none;
+        }
+        [data-title]:hover:before, [data-title]:hover:after {
+            display:block;
         }
 
     </style>
@@ -578,25 +681,31 @@
 <script>
     $(document).ready(function () {
         setTimeout(function () {
-            $("#female_name").attr('title', 'Кликни за да го промениш името на невестата!!!');
+            $("#female_name").attr('data-title', 'Кликни за да го промениш името на невестата');
         }, 200);
         setTimeout(function () {
-            $("#female_text").attr('title', 'Кликни за да го промениш текстот!!!');
+            $("#female_text").attr('data-title', 'Кликни за да го промениш текстот');
         }, 200);
         setTimeout(function () {
-            $("#male_name").attr('title', 'Кликни за да го промениш името на младоженецот!!!');
+            $("#male_name").attr('data-title', 'Кликни за да го промениш името на младоженецот');
         }, 200);
         setTimeout(function () {
-            $("#male_text").attr('title', 'Кликни за да го промениш текстот!!!');
+            $("#male_text").attr('data-title', 'Кликни за да го промениш текстот');
         }, 200);
         setTimeout(function () {
-            $("#main_text").attr('title', 'Кликни за да го промениш текстот!!!');
+            $("#main_text").attr('data-title', 'Кликни за да го промениш текстот');
         }, 200);
         setTimeout(function () {
-            $("#male_quote").attr('title', 'Кликни за да го промениш текстот!!!');
+            $("#male_quote").attr('data-title', 'Кликни за да го промениш текстот');
         }, 200);
         setTimeout(function () {
-            $("#female_quote").attr('title', 'Кликни за да го промениш текстот!!!');
+            $("#female_quote").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#female_name").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#male_name").attr('data-title', 'Кликни за да го промениш текстот');
         }, 200);
     });
 </script>
