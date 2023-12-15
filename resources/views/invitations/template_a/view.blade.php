@@ -16,13 +16,13 @@
     <meta name="Author" content="Martin Karadzinov"/>
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="Драги гости">
-    <meta itemprop="description" content="Покана за свадбата на Зоки и Ане">
+    <meta itemprop="description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}">
     <meta itemprop="image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}">
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="https://dragigosti.com">
     <meta name="twitter:title" content="Драги гости">
-    <meta name="twitter:description" content="Покана за свадбата на Зоки и Ане">
+    <meta name="twitter:description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}">
     <meta name="twitter:creator" content="@tiggaz">
     <meta name="twitter:image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}">
     <!-- Open Graph data -->
@@ -30,7 +30,7 @@
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="https://dragigosti.com"/>
     <meta property="og:image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}"/>
-    <meta property="og:description" content="Покана за свадбата на Зоки и Ане"/>
+    <meta property="og:description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}"/>
     <meta property="og:site_name" content="Драги гости"/>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
@@ -76,10 +76,10 @@
                             <!-- logo -->
                             <div id="logo" class="logo">
                                 <h2 class="text-center logo-font margin-clear"><a href="#"
-                                                                                  class="text-muted">{{strip_tags($invitation->male_name)}}
+                                                                                  class="text-muted">{{ explode(' ', $invitation->male_name)[0] }}
                                         <span
                                             class="text-default"><i
-                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{strip_tags($invitation->female_name)}}
+                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ explode(' ', $invitation->female_name)[0] }}
                                     </a>
                                 </h2>
                             </div>
@@ -127,8 +127,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">{{strip_tags($invitation->male_name)}} и <span
-                            class="text-default">{{strip_tags($invitation->female_name)}}</span>
+                    <h2 class="text-center logo-font text-muted">{{ explode(' ', $invitation->male_name)[0] }} и <span
+                            class="text-default">{{ explode(' ', $invitation->female_name)[0] }}</span>
                     </h2>
                     <div class="separator"></div>
                     <div id="main_text">
@@ -158,14 +158,7 @@
                 <div id="male_quote">
                     {!! $invitation->male_quote !!}
                 </div>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/karadzinov"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiggaz"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/martin.karadzinov/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
+
             </div>
         </div>
     </section>
@@ -180,14 +173,7 @@
                 <div>
                     {!! $invitation->female_quote !!}
                 </div>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/tilia.ivanovska"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiliaiv/"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/tiliaiv/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
+
             </div>
         </div>
         <div class="full-text-container default-bg">
