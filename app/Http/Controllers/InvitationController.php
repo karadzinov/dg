@@ -275,6 +275,20 @@ class InvitationController extends Controller
             $objectChanged = 'female_quote';
         }
 
+        if ($updateOn === 'female_name') {
+            $updateText = str_replace("&nbsp;", "", $updateText);
+            $invitation->female_name = strip_tags($updateText);
+            $invitation->save();
+
+            $objectChanged = 'female_name_message';
+        }
+
+        if ($updateOn === 'male_name') {
+            $updateText = str_replace("&nbsp;", "", $updateText);
+            $invitation->male_name = strip_tags($updateText);
+            $invitation->save();
+            $objectChanged = 'male_name_message';
+        }
 
         return response()->json(['success' => $objectChanged]);
     }

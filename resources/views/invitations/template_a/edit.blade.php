@@ -59,6 +59,14 @@
             display: none;
         }
 
+        #female_name_message {
+            display: none;
+        }
+
+        #male_name_message {
+            display: none;
+        }
+
         #female_text_message {
             display: none;
         }
@@ -75,6 +83,11 @@
             display: none;
         }
 
+        .name {
+            font-size: 28px;
+            font-family: Pacifico,cursive,sans-serif;
+        }
+
         #choose-from-list {
             display: none;
         }
@@ -82,6 +95,7 @@
         #choose-on-map {
             display: none;
         }
+
 
         #searchmap {
             background-color: #fff;
@@ -95,6 +109,107 @@
             z-index: 10;
             left: 5px !important;
         }
+
+
+
+        [data-title] {
+
+            position:relative; /* making the .tooltip span a container for the tooltip text */
+            border-bottom:1px dashed #000; /* little indicater to indicate it's hoverable */
+        }
+
+        [data-title]:before {
+            font-size: 16px;
+            text-transform: none;
+            text-decoration: none;
+            font-style: normal !important;
+            font-family: sans-serif;
+            content: attr(data-title); /* here's the magic */
+            position:absolute;
+            z-index: 100;
+            /* vertically center */
+            top:50%;
+            transform:translateY(-50%);
+
+            /* move to right */
+            left:100%;
+            margin-left:15px; /* and add a small left margin */
+
+            /* basic styles */
+            width:200px;
+            padding:10px;
+            border-radius:10px;
+            background:#000;
+            color: #fff;
+            text-align:center;
+
+            display:none; /* hide by default */
+            opacity:0;
+            transition:.3s opacity;
+        }
+
+        [data-title]:hover:before {
+            display:block;
+            opacity:1;
+
+        }
+
+
+        [data-title].left:before {
+            /* reset defaults */
+            left:initial;
+            margin:initial;
+
+            /* set new values */
+            right:100%;
+            margin-right:15px;
+        }
+
+        [data-title]:after {
+            content: "";
+            position:absolute;
+
+            /* position tooltip correctly */
+            left:100%;
+            margin-left:-5px;
+
+            /* vertically center */
+            top:50%;
+            transform:translateY(-50%);
+
+            /* the arrow */
+            border:10px solid #000;
+            border-color: transparent black transparent transparent;
+
+            display:none;
+        }
+        [data-title]:hover:before, [data-title]:hover:after {
+            display:block;
+        }
+
+        [data-title].left:after {
+            content: "";
+            position:absolute;
+
+            /* position tooltip correctly */
+            left: -20px;
+
+
+            /* vertically center */
+            top:50%;
+            transform:translateY(-50%);
+
+            /* the arrow */
+            border:10px solid #000;
+            border-color:  transparent  transparent black transparent ;
+
+            display:none;
+        }
+        [data-title]:hover:before, [data-title]:hover:after {
+            display:block;
+        }
+
+
     </style>
 </head>
 
@@ -118,10 +233,10 @@
                             <!-- logo -->
                             <div id="logo" class="logo">
                                 <h2 class="text-center logo-font margin-clear"><a href="#"
-                                                                                  class="text-muted">{{ $invitation->male_name }}
+                                                                                  class="text-muted">{{ explode(' ', $invitation->male_name)[0] }}
                                         <span
                                             class="text-default"><i
-                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ $invitation->female_name }}
+                                                class="pl-10 pr-10 fa fa-heart"></i></span>{{ explode(' ', $invitation->female_name)[0] }}
                                     </a>
                                 </h2>
                             </div>
@@ -180,8 +295,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center logo-font text-muted">{{ $invitation->male_name }} и <span
-                            class="text-default">{{ $invitation->female_name }}</span>
+                    <h2 class="text-center logo-font text-muted">{{ explode(' ', $invitation->male_name)[0] }} и <span
+                            class="text-default">{{ explode(' ', $invitation->female_name)[0] }}</span>
                     </h2>
                     <div class="separator"></div>
                     <div id="main_text" contenteditable="true">
@@ -189,7 +304,7 @@
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4 text-center" style="width: 200px">
-                        <p class="alert alert-success btn" id="main_text_message"></p>
+                        <p class="alert alert-success btn btn-sm" id="main_text_message"><i class="fa fa-check"></i></p>
                     </div>
                     <div class="col-md-4"></div>
                 </div>
@@ -201,13 +316,16 @@
     <!-- ================ -->
     <section class="full-width-section">
         <div class="full-text-container left light-gray-bg border-clear text-right" id="male-photo">
-            <h2 class="logo-font">{{ $invitation->male_name }}</h2>
+            <div class="name" contenteditable="true" id="male_name">{{ $invitation->male_name }}</div>
+            <div class="col text-left" style="width: 200px;">
+                <p class="alert alert-success btn btn-sm" id="male_name_message"><i class="fa fa-check"></i></p>
+            </div>
             <div class="separator-3 visible-lg"></div>
             <div id="male_text" contenteditable="true">
                 {!! $invitation->male_text !!}
             </div>
             <div class="col text-right" style="width: 200px">
-                <p class="alert alert-success btn" id="male_text_message"></p>
+                <p class="alert alert-success btn btn-sm" id="male_text_message"></p>
             </div>
             <div class="separator-2 visible-lg"></div>
         </div>
@@ -232,7 +350,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="text-center" style="width: 200px">
-                            <p class="alert alert-success btn" id="male_quote_message"></p>
+                            <p class="alert alert-success btn btn-sm" id="male_quote_message"><i class="fa fa-check"></i></p>
                         </div>
                     </div>
                     <div class="col-md-4"></div>
@@ -271,7 +389,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="text-center" style="width: 200px">
-                            <p class="alert alert-success btn" id="female_quote_message"></p>
+                            <p class="alert alert-success btn btn-sm" id="female_quote_message"><i class="fa fa-check"></i></p>
                         </div>
                     </div>
                     <div class="col-md-4"></div>
@@ -287,13 +405,16 @@
             </div>
         </div>
         <div class="full-text-container default-bg">
-            <h2 class="logo-font">{{ $invitation->female_name }}</h2>
+            <div class="name left" contenteditable="true" id="female_name">{{ $invitation->female_name }}</div>
+            <div class="col text-left" style="width: 200px;">
+                <p class="alert alert-success btn btn-sm" id="female_name_message"></p>
+            </div>
             <div class="separator-2 visible-lg"></div>
-            <div id="female_text" contenteditable="true">
+            <div id="female_text" contenteditable="true" class="left">
                 {!! $invitation->female_text !!}
             </div>
             <div class="col text-left" style="width: 200px">
-                <p class="alert alert-success btn" id="female_text_message"></p>
+                <p class="alert alert-success btn btn-sm" id="female_text_message"></p>
             </div>
             <div class="separator-3 visible-lg"></div>
         </div>
@@ -490,6 +611,18 @@
                                 $("#female_quote_message").css('display', 'block');
                                 $("#female_quote_message").html("Successfully Saved");
                                 $("#female_quote_message").fadeOut(5000);
+                            }
+
+                            if (response.success === 'female_name_message') {
+                                $("#female_name_message").css('display', 'block');
+                                $("#female_name_message").html("Successfully Saved");
+                                $("#female_name_message").fadeOut(5000);
+                            }
+
+                            if (response.success === 'male_name_message') {
+                                $("#male_name_message").css('display', 'block');
+                                $("#male_name_message").html("Successfully Saved");
+                                $("#male_name_message").fadeOut(5000);
                             }
                         }
                     });
@@ -717,6 +850,38 @@
         }
     });
 
+</script>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#female_name").attr('data-title', 'Кликни за да го промениш името на невестата');
+        }, 200);
+        setTimeout(function () {
+            $("#female_text").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#male_name").attr('data-title', 'Кликни за да го промениш името на младоженецот');
+        }, 200);
+        setTimeout(function () {
+            $("#male_text").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#main_text").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#male_quote").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#female_quote").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#female_name").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+        setTimeout(function () {
+            $("#male_name").attr('data-title', 'Кликни за да го промениш текстот');
+        }, 200);
+    });
 </script>
 </body>
 </html>
