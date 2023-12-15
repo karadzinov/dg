@@ -111,9 +111,9 @@
 
 
         [data-title] {
-
+            z-index: 10000;
             position:relative; /* making the .tooltip span a container for the tooltip text */
-            border-bottom:1px dashed #000; /* little indicater to indicate it's hoverable */
+
         }
 
         [data-title]:before {
@@ -163,6 +163,17 @@
             margin-right:15px;
         }
 
+        [data-title].top:before {
+            /* reset defaults */
+            left:initial;
+            margin:initial;
+
+
+            left: 0%;
+            top: -40px;
+
+        }
+
         [data-title]:after {
             content: "";
             position:absolute;
@@ -203,9 +214,30 @@
 
             display:none;
         }
+        [data-title].top:after {
+            content: "";
+            position:absolute;
+
+
+
+
+            /* vertically center */
+            top: 22px;
+            left: 100px;
+            transform:translateY(-150%);
+
+            /* the arrow */
+            border:10px solid #000;
+            border-color: black  transparent   transparent  transparent ;
+
+            display:none;
+        }
         [data-title]:hover:before, [data-title]:hover:after {
             display:block;
         }
+
+
+
 
     </style>
 
@@ -293,7 +325,7 @@
                     </div>
                     <div class="col-md-5"></div>
                     <div class="col-md-2 text-center" style="width: 100px">
-                        <p class="alert alert-success btn btn-sm" id="main_text_message"><i
+                        <p class="alert alert-warning btn btn-sm" id="main_text_message"><i
                                 class="fa fa-check"></i></p>
                     </div>
                     <div class="col-md-5"></div>
@@ -308,7 +340,7 @@
         <div class="full-text-container left light-gray-bg border-clear text-right" id="male-photo">
             <div class="logo-font" id="male_name" style="font-size: 24px" contenteditable="true">{!! $invitation->male_name !!}</div>
             <div class="col text-right" style="width: 100px">
-                <p class="alert alert-success btn btn-sm" id="male_name_message"><i
+                <p class="alert alert-warning btn btn-sm" id="male_name_message"><i
                         class="fa fa-check"></i></p>
             </div>
             <div class="separator-3 visible-lg"></div>
@@ -316,7 +348,7 @@
                 {!! $invitation->male_text !!}
             </div>
             <div class="col text-right" style="width: 100px">
-                <p class="alert alert-success btn btn-sm" id="male_text_message"><i
+                <p class="alert alert-warning btn btn-sm" id="male_text_message"><i
                         class="fa fa-check"></i></p>
             </div>
             <div class="separator-2 visible-lg"></div>
@@ -327,14 +359,14 @@
             <div class="full-image-overlay text-center">
 
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
-                <div id="male_quote" contenteditable="true" class="left">
+                <div id="male_quote" contenteditable="true" class="top">
                     {!! $invitation->male_quote !!}
                 </div>
                 <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-2">
                         <div class="text-center" style="width: 100px">
-                            <p class="alert alert-success btn btn-sm" id="male_quote_message"><i
+                            <p class="alert alert-warning btn btn-sm" id="male_quote_message"><i
                                     class="fa fa-check"></i></p>
                         </div>
                     </div>
@@ -353,14 +385,14 @@
             <div class="full-image-overlay text-center">
 
                 <h3>Yes <i class="fa fa-heart"></i></h3>
-                <div id="female_quote" contenteditable="true">
+                <div id="female_quote" contenteditable="true" class="top">
                     {!! $invitation->female_quote !!}
                 </div>
                 <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-2">
                         <div class="text-center" style="width: 100px">
-                            <p class="alert alert-success btn btn-sm" id="female_quote_message"><i
+                            <p class="alert alert-warning btn btn-sm" id="female_quote_message"><i
                                     class="fa fa-check"></i></p>
                         </div>
                     </div>
@@ -372,7 +404,7 @@
         <div class="full-text-container default-bg">
             <div class="logo-font left" id="female_name" style="font-size: 24px" contenteditable="true">{!! $invitation->female_name !!}</div>
             <div class="col text-left" style="width: 100px">
-                <p class="alert alert-success btn btn-sm" id="female_name_message"><i
+                <p class="alert alert-warning btn btn-sm" id="female_name_message"><i
                         class="fa fa-check"></i></p>
             </div>
             <div class="separator-2 visible-lg"></div>
@@ -380,7 +412,7 @@
                 {!! $invitation->female_text !!}
             </div>
             <div class="col text-left" style="width: 100px">
-                <p class="alert alert-success btn btn-sm" id="female_text_message"><i
+                <p class="alert alert-warning btn btn-sm" id="female_text_message"><i
                         class="fa fa-check"></i></p>
             </div>
             <div class="separator-3 visible-lg"></div>
@@ -506,7 +538,7 @@
 <script src="/js/custom.js" defer></script>
 <script src="/js/coming.soon.config.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="http://cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
 
 <script>
     CKEDITOR.disableAutoInline = true;
@@ -667,31 +699,25 @@
 <script>
     $(document).ready(function () {
         setTimeout(function () {
-            $("#female_name").attr('data-title', 'Кликни за да го промениш името на невестата');
+            $("#female_name").attr('data-title', 'Кликнете за промена на името');
         }, 200);
         setTimeout(function () {
-            $("#female_text").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#male_name").attr('data-title', 'Кликнете за промена на името');
         }, 200);
         setTimeout(function () {
-            $("#male_name").attr('data-title', 'Кликни за да го промениш името на младоженецот');
+            $("#male_text").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#male_text").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#main_text").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#main_text").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#male_quote").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#male_quote").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#female_quote").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#female_quote").attr('data-title', 'Кликни за да го промениш текстот');
-        }, 200);
-        setTimeout(function () {
-            $("#female_name").attr('data-title', 'Кликни за да го промениш текстот');
-        }, 200);
-        setTimeout(function () {
-            $("#male_name").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#female_text").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
     });
 </script>

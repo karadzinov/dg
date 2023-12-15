@@ -59,15 +59,15 @@
             display: none;
         }
 
-        #female_name_message {
-            display: none;
-        }
-
         #male_name_message {
             display: none;
         }
 
         #female_text_message {
+            display: none;
+        }
+
+        #female_name_message {
             display: none;
         }
 
@@ -83,11 +83,6 @@
             display: none;
         }
 
-        .name {
-            font-size: 28px;
-            font-family: Pacifico,cursive,sans-serif;
-        }
-
         #choose-from-list {
             display: none;
         }
@@ -96,6 +91,10 @@
             display: none;
         }
 
+        .name {
+            font-size: 28px;
+            font-family: Pacifico,cursive,sans-serif;
+        }
 
         #searchmap {
             background-color: #fff;
@@ -111,11 +110,10 @@
         }
 
 
-
         [data-title] {
-
+            z-index: 10000;
             position:relative; /* making the .tooltip span a container for the tooltip text */
-            border-bottom:1px dashed #000; /* little indicater to indicate it's hoverable */
+
         }
 
         [data-title]:before {
@@ -126,7 +124,7 @@
             font-family: sans-serif;
             content: attr(data-title); /* here's the magic */
             position:absolute;
-            z-index: 1000;
+            z-index: 10000;
             /* vertically center */
             top:50%;
             transform:translateY(-50%);
@@ -163,6 +161,17 @@
             /* set new values */
             right:100%;
             margin-right:15px;
+        }
+
+        [data-title].top:before {
+            /* reset defaults */
+            left:initial;
+            margin:initial;
+
+
+            left: 0%;
+            top: -40px;
+
         }
 
         [data-title]:after {
@@ -205,9 +214,29 @@
 
             display:none;
         }
+        [data-title].top:after {
+            content: "";
+            position:absolute;
+
+
+
+
+            /* vertically center */
+            top: 22px;
+            left: 100px;
+            transform:translateY(-150%);
+
+            /* the arrow */
+            border:10px solid #000;
+            border-color: black  transparent   transparent  transparent ;
+
+            display:none;
+        }
         [data-title]:hover:before, [data-title]:hover:after {
             display:block;
         }
+
+
 
 
     </style>
@@ -343,7 +372,7 @@
                     </div>
                 </div>
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
-                <div id="male_quote" contenteditable="true">
+                <div id="male_quote" contenteditable="true" class="top">
                     {!! $invitation->male_quote !!}
                 </div>
                 <div class="row">
@@ -355,14 +384,7 @@
                     </div>
                     <div class="col-md-4"></div>
                 </div>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/karadzinov"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiggaz"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/martin.karadzinov/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
+
             </div>
         </div>
     </section>
@@ -382,7 +404,7 @@
                     </div>
                 </div>
                 <h3>Yes <i class="fa fa-heart"></i></h3>
-                <div id="female_quote" contenteditable="true">
+                <div id="female_quote" contenteditable="true" class="top">
                     {!! $invitation->female_quote !!}
                 </div>
                 <div class="row">
@@ -394,14 +416,7 @@
                     </div>
                     <div class="col-md-4"></div>
                 </div>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/tilia.ivanovska"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiliaiv/"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/tiliaiv/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
+
             </div>
         </div>
         <div class="full-text-container default-bg">
@@ -855,31 +870,25 @@
 <script>
     $(document).ready(function () {
         setTimeout(function () {
-            $("#female_name").attr('data-title', 'Кликни за да го промениш името на невестата');
+            $("#female_name").attr('data-title', 'Кликнете за промена на името');
         }, 200);
         setTimeout(function () {
-            $("#female_text").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#male_name").attr('data-title', 'Кликнете за промена на името');
         }, 200);
         setTimeout(function () {
-            $("#male_name").attr('data-title', 'Кликни за да го промениш името на младоженецот');
+            $("#male_text").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#male_text").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#main_text").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#main_text").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#male_quote").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#male_quote").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#female_quote").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
         setTimeout(function () {
-            $("#female_quote").attr('data-title', 'Кликни за да го промениш текстот');
-        }, 200);
-        setTimeout(function () {
-            $("#female_name").attr('data-title', 'Кликни за да го промениш текстот');
-        }, 200);
-        setTimeout(function () {
-            $("#male_name").attr('data-title', 'Кликни за да го промениш текстот');
+            $("#female_text").attr('data-title', 'Кликнете за промена на текстот');
         }, 200);
     });
 </script>
