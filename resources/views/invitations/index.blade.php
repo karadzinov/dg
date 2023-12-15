@@ -92,6 +92,9 @@
 
                     </div>
                 @endif
+
+
+                {{ $invitations->links() }}
             </div>
         </div>
     </div>
