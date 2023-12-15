@@ -327,7 +327,7 @@
             <div class="full-image-overlay text-center">
 
                 <h3>My <i class="fa fa-heart"></i> Is Yours</h3>
-                <div id="male_quote" contenteditable="true">
+                <div id="male_quote" contenteditable="true" class="left">
                     {!! $invitation->male_quote !!}
                 </div>
                 <div class="row">
@@ -340,14 +340,7 @@
                     </div>
                     <div class="col-md-5"></div>
                 </div>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/karadzinov"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiggaz"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/martin.karadzinov/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
+
             </div>
         </div>
     </section>
@@ -360,7 +353,7 @@
             <div class="full-image-overlay text-center">
 
                 <h3>Yes <i class="fa fa-heart"></i></h3>
-                <div id="female_quote" contenteditable="true">
+                <div id="female_quote" contenteditable="true" class="left">
                     {!! $invitation->female_quote !!}
                 </div>
                 <div class="row">
@@ -373,14 +366,7 @@
                     </div>
                     <div class="col-md-5"></div>
                 </div>
-                <ul class="social-links circle animated-effect-1 text-center">
-                    <li class="facebook"><a target="_blank" href="https://www.facebook.com/tilia.ivanovska"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a target="_blank" href="https://twitter.com/tiliaiv/"><i
-                                class="fa fa-twitter"></i></a></li>
-                    <li class="instagram"><a target="_blank" href="https://www.instagram.com/tiliaiv/"><i
-                                class="fa fa-instagram"></i></a></li>
-                </ul>
+
             </div>
         </div>
         <div class="full-text-container default-bg">
