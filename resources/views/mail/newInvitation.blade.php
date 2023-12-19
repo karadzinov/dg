@@ -34,7 +34,7 @@
 <p>Истата можете да ја погледнете на линкот подолу.</p>
 <br>
 <br>
-<a href="{{ env('APP_URL') }}/{{ $invitation->invitation_link }}/{{$hash}}" class="button" target="_blank">Погледни</a>
+<a href="{{ env('APP_URL') }}/{{ $invitation->invitation_link }}/email/{{$hash}}" class="button" target="_blank">Погледни</a>
 
 <br>
 <br>

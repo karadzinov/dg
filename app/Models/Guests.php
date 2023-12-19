@@ -14,11 +14,17 @@ class Guests extends Model
         'email',
         'link_id',
         'plus_one',
-        'confirmed'
+        'confirmed',
+        'invitation_id'
     ];
 
     public function link()
     {
        return $this->belongsTo(Link::class, 'link_id');
+    }
+
+    public function invitation()
+    {
+        return $this->belongsTo(Invitation::class, 'invitation_id');
     }
 }

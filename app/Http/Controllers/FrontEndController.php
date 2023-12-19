@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\In;
+
 class FrontEndController extends Controller
 {
     public function index()
@@ -120,8 +122,10 @@ class FrontEndController extends Controller
 
     }
 
-    public function link($link)
+    public function link($invitation, $link)
     {
+        $invitation = Invitation::where('invitation_link', '=', $invitation)->first();
+
         $link = Link::where('link', $link)->first();
         $guests = Guests::select('name')->where('link_id', '=', $link->id)->get()->toArray();
 
@@ -144,17 +148,21 @@ class FrontEndController extends Controller
         $guests = Guests::where('link_id', '=', $link->id)->get();
 
 
-        $data = ['str' => $str, 'guests' => $guests, "link" => $link];
 
-        return view('guests')->with($data);
+        $data = ['str' => $str, 'guests' => $guests, "link" => $link, "invitation" => $invitation];
+
+        if ($invitation->template === 'template_a') {
+
+            return view('invitations.template_a.view')->with($data);
+        }
 
     }
 
     public function confirm(Request $request)
     {
+        $guest = Guests::where('id', '=',$request->get('id'))->first();
 
 
-        $guest = Guests::where('id', $request->get('id'))->first();
         $guest->confirmed = true;
         if ($request->has('email') && $request->get('email') != '') {
             $guest->email = $request->get('email');

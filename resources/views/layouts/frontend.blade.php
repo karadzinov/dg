@@ -501,6 +501,7 @@
                         this.id = match[1] + (cloneIndex);
                     }
                 })
+                .val("")
                 .on('click', 'button.clone', clone)
                 .on('click', 'button.remove', remove);
             cloneIndex++;

@@ -17,12 +17,13 @@ use App\Http\Controllers\DropzoneController;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/guests', \App\Http\Controllers\GuestController::class);
+    Route::get('/guests/create/{invitation}', [\App\Http\Controllers\GuestController::class, 'create'])->name('guests.create');
+    Route::get('/guests/{invitation}', [\App\Http\Controllers\GuestController::class, 'index'])->name('guests.index');
+    Route::post('/guests/{invitation}', [\App\Http\Controllers\GuestController::class, 'store'])->name('guests.store');
+    Route::delete('/guests/{guest}', [\App\Http\Controllers\GuestController::class, 'destroy'])->name('guests.destroy');
 });
 
-Route::group(['prefix' => 'admin',  'middleware' => 'check.role'], function () {
-   Route::get('/', [App\Http\Controllers\BackEndController::class, 'index'])->name('backend.index');
-});
+
 
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     //User Profile
@@ -100,6 +101,7 @@ Route::middleware(['web'])->group(function () {
 
     // Frontend routes
     Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
+
     Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
     Route::get('/restaurants/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileRestaurants'])->name('restaurants.profile');
     Route::get('/musicians', [\App\Http\Controllers\FrontEndController::class, 'musicians'])->name('frontend.musicians');
@@ -120,7 +122,9 @@ Route::middleware(['web'])->group(function () {
     Route::post('/invitations/{invitation}/update', [\App\Http\Controllers\InvitationController::class, 'update'])->name('invitations.update');
     Route::get('/invitations/{invitation}/edit', [\App\Http\Controllers\InvitationController::class, 'editText'])->name('invitation.editText');
     Route::put('/invitations/{invitation}', [\App\Http\Controllers\InvitationController::class, 'updateRestaurantToInvitations'])->name('invitations.updateRestaurant');
-    Route::get('/{invitation}/{hash}', [\App\Http\Controllers\InvitationController::class, 'checkHash'])->name('invitations.checkHash');
+    Route::get('/{invitation}/{link}', [\App\Http\Controllers\FrontEndController::class, 'link'])->name('invitations.link');
+
+    Route::get('/{invitation}/email/{hash}', [\App\Http\Controllers\InvitationController::class, 'checkHash'])->name('invitations.checkHash');
 
     //AJAX routes
     Route::get('dropzone', [\App\Http\Controllers\DropzoneController::class, 'index']);
@@ -130,6 +134,9 @@ Route::middleware(['web'])->group(function () {
     Route::put('/invitation/text/store', [\App\Http\Controllers\InvitationController::class, 'textStore'])->name('text.store');
     Route::post('/invitations/checkUrl', [\App\Http\Controllers\InvitationController::class, 'checkUrl'])->name('invitations.checkUrl');
 
+
+    Route::post('/confirm', [\App\Http\Controllers\FrontEndController::class, 'confirm'])->name('confirm');
+    Route::post('/plus_one', [\App\Http\Controllers\FrontEndController::class, 'plusOne'])->name('plus_one');
 });
 
 

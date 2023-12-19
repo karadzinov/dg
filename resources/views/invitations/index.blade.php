@@ -36,6 +36,8 @@
                             <th class="text-center">Покана</th>
                             <th class="text-center">Име на невестата</th>
                             <th class="text-center">Име на младоженецот</th>
+                            <th class="text-center">Додади гости</th>
+                            <th class="text-center">Прегледај листа на гости</th>
                             <th class="text-center">Промени текст</th>
                             <th class="text-end">Избриши</th>
                             </thead>
@@ -59,6 +61,20 @@
                                     <td>
                                         <div class="text-center align-items-center">
                                             {{ strip_tags($invitation->male_name) }}
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="text-center align-items-center">
+                                            <a href="{{ route('guests.create', $invitation) }}">
+                                                <i class="ti ti-edit fs-5"></i>Додади гости</a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-center align-items-center">
+
+                                                <a href="{{ route('guests.index', $invitation) }}" class="btn btn-sm btn-info">Потврдени: {{ $invitation->guestsConfirmed() }}</a>
+                                                <a href="{{ route('guests.index', $invitation) }}" class="btn btn-sm btn-danger">Не потврдени: {{ $invitation->guestsWaiting() }}</a>
                                         </div>
                                     </td>
                                     <td>

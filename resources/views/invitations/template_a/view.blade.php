@@ -104,7 +104,7 @@
             <div class="row">
                 <div class="col-md-8 text-center col-md-offset-2 pv-40">
                     <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
-                        <h1 class="page-title text-center logo-font">Здраво!</h1>
+                        <h1 class="page-title text-center logo-font">Здраво @isset($str){{ $str }} @endisset!</h1>
                         <h1 class="page-title text-center logo-font">Време е за нашата венчавка</h1>
                         <div class="separator"></div>
                         <?php \Carbon\Carbon::setLocale('MK');
@@ -117,6 +117,82 @@
                         <!-- countdown end -->
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="footer-content">
+                @isset($guests)
+                    <h2 class="title text-default">RSVP</h2>
+                    <div class="separator-2 mt-10"></div>
+                    <p>Доколку сакате да го потврдите Вашето присуство, Ве молиме пополнете ги полињата
+                        подолу.</p>
+                    <p>Напомена: Во било кој момент можете да го откажете присуството преку email или јавете ни се.
+                    <p>Ветуваме дека личните податоци нема да бидат злоупотребени за други цели.</p>
+                    <p>Вашата email адреса ни е потребна за да ги испратиме местата за седење 7 дена пред
+                        почетокот на свадбата.</p>
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            Ви благодариме на потврдата!
+                        </div>
+                    @endif
+                    @if(session()->has('plus_one'))
+                        <div class="alert alert-success">
+                            Ви благодариме на додавањето! Ве молиме потврдете.
+                        </div>
+                    @endif
+                    <div class="contact-form">
+                        @foreach($guests as $guest)
+
+                            <form action="{{ route('confirm', ["id" => $guest->id]   ) }}" method="POST">
+                                @csrf
+                                <div class="form-group has-feedback">
+                                    <label class="sr-only" for="name">Name*</label>
+                                    <input type="text" placeholder="Name" class="form-control" id="name" name="name"
+                                           value="{{ $guest->name }}">
+                                    <i class="fa fa-user form-control-feedback"></i>
+
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="sr-only" for="email">Email*</label>
+                                    <input type="email" placeholder="Email" class="form-control" id="email" name="email"
+                                           value="{{ $guest->email }}">
+                                    <i class="fa fa-envelope form-control-feedback"></i>
+
+                                </div>
+                                @if(!$guest->confirmed)
+                                    <input type="submit" value="Потврди" class="submit-button btn btn-default">
+                                @else
+                                    <input type="submit" value="Потврдено" class="success btn btn-default" disabled>
+                                @endif
+                            </form>
+
+                            @if($guest->plus_one)
+                                <form action="{{ route('plus_one', ["link_id" => $link->id, "guest_id" => $guest->id]) }}"
+                                      method="POST">
+                                    @csrf
+                                    <div class="form-group has-feedback">
+                                        <label class="sr-only" for="name">Name*</label>
+                                        <input type="text" placeholder="Name" class="form-control" id="name" name="name">
+                                        <i class="fa fa-user form-control-feedback"></i>
+
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="sr-only" for="email">Email*</label>
+                                        <input type="email" placeholder="Email" class="form-control" id="email" name="email">
+                                        <i class="fa fa-envelope form-control-feedback"></i>
+
+                                    </div>
+                                    <input type="submit" value="Додади" class="submit-button btn btn-default">
+                                </form>
+                            @endif
+                        @endforeach
+
+
+                    </div>
+                @endisset
+
             </div>
         </div>
     </div>

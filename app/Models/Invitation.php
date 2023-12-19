@@ -38,6 +38,26 @@ class Invitation extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function guests()
+    {
+        return $this->hasMany(Guests::class)->get();
+    }
+
+    public function guestsCount()
+    {
+        return $this->hasMany(Guests::class)->count();
+    }
+
+    public function guestsConfirmed()
+    {
+        return $this->hasMany(Guests::class)->where('confirmed', '=', 1)->count();
+    }
+
+    public function guestsWaiting()
+    {
+        return $this->hasMany(Guests::class)->where('confirmed', '=', 0)->count();
+    }
+
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id', 'id');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guests;
+use App\Models\Invitation;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use Illuminate\Support\Str;
@@ -20,10 +21,10 @@ class GuestController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function index(Invitation $invitation)
     {
-        $guests = Guests::all();
-        $data = ["guests" => $guests];
+        $guests = $invitation->guests();
+        $data = ["guests" => $guests, "invitation" => $invitation];
         return view('guests.index')->with($data);
     }
 
@@ -32,9 +33,10 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Invitation $invitation)
     {
-        return view('guests.create');
+        $data = ['invitation' => $invitation];
+        return view('guests.create')->with($data);
     }
 
     /**
@@ -43,7 +45,7 @@ class GuestController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Invitation $invitation)
     {
         $link = new Link();
         $link->link = Str::random(5);
@@ -59,7 +61,8 @@ class GuestController extends Controller
                 'name' => $name,
                 'email' => $email[$index],
                 'plus_one' => $plus_one,
-                'link_id' => $link->id
+                'link_id' => $link->id,
+                'invitation_id' => $invitation->id
             ]);
         }
         return redirect()->back();
@@ -123,7 +126,6 @@ class GuestController extends Controller
      */
     public function destroy(Guests $guest)
     {
-
         $guest->delete();
         return redirect()->back();
     }
