@@ -62,7 +62,8 @@ class GuestController extends Controller
                 'email' => $email[$index],
                 'plus_one' => $plus_one,
                 'link_id' => $link->id,
-                'invitation_id' => $invitation->id
+                'invitation_id' => $invitation->id,
+                'confirmed' => true
             ]);
         }
         return redirect()->back();
@@ -112,7 +113,7 @@ class GuestController extends Controller
                 'name' => $name,
                 'email' => $email[$index],
                 'plus_one' => $plus_one,
-                'link_id' => $link->id
+                'link_id' => $link->id,
             ]);
         }
         return redirect()->back();
