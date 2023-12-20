@@ -47,8 +47,7 @@
                                     <td>{{ $guest->email }}</td>
                                     <td>
                                         <a target="_blank"
-                                           href="{{ env('APP_URL') }}/{{ $invitation->invitation_link }}/{{ $guest->link->link }}">{{ env('APP_URL') }}
-                                            /{{ $invitation->invitation_link }}/{{ $guest->link->link }}</a>
+                                           href="{{ env('APP_URL') }}/{{ $invitation->invitation_link }}/{{ $guest->link->link }}">{{ env('APP_URL') }}/{{ $invitation->invitation_link }}/{{ $guest->link->link }}</a>
                                     </td>
                                     <td>
                                         @if($guest->confirmed != 0)
