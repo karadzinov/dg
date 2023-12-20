@@ -172,6 +172,7 @@
                                 <form action="{{ route('plus_one', ["link_id" => $link->id, "guest_id" => $guest->id]) }}"
                                       method="POST">
                                     @csrf
+                                    <input type="hidden" name="invitation_id" value="{{ $invitation->id }}" />
                                     <div class="form-group has-feedback">
                                         <label class="sr-only" for="name">Name*</label>
                                         <input type="text" placeholder="Name" class="form-control" id="name" name="name">
