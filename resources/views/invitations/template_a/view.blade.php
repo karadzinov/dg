@@ -173,6 +173,7 @@
                                       method="POST">
                                     @csrf
                                     <input type="hidden" name="invitation_id" value="{{ $invitation->id }}" />
+                                    <input type="hidden" name="confirmed" value="1" />
                                     <div class="form-group has-feedback">
                                         <label class="sr-only" for="name">Name*</label>
                                         <input type="text" placeholder="Name" class="form-control" id="name" name="name">
