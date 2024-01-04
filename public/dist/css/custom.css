@@ -1,17 +1,12 @@
 .slider-image {
-    min-height: 500px;
-    max-height: 500px;
     width: 100%;
     background-size: cover;
     background-position: center;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
 }
 
 .carousel-caption {
 
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+
     color: white;
     border-radius: 10px;
     position: absolute;

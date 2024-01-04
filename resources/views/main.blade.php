@@ -13,12 +13,14 @@
                 <div class="carousel-inner">
 
                     <div class="carousel-item active">
-                        <div class="slider-image"
-                             style="background-image: url('/dist/images/flowers.png');"></div>
-
+                        <video class="slider-image" autoplay loop muted playsinline>
+                            <source
+                                src="/video/dragigosti.webm"
+                                type="video/webm">
+                        </video>
                         <div class="carousel-caption d-md-block">
-                            <h4>Драги Гости</h4>
-                            <h5>вашиот единствен свадбен планер</h5>
+                            <img src="/dist/images/logo.svg" class="dark-logo" width="460" alt=""/>
+                            <h5>единствениот свадбен планер кој ви е потребен</h5>
 
                         </div>
 
