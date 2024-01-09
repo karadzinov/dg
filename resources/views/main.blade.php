@@ -44,437 +44,54 @@
     <!-- Page Start -->
     <div class="container-fluid">
 
+        <div class="row hexa">
 
-        <div class="row">
-            <div class="col-12">
-                <!-- Card -->
-                <div class="card">
-                    <div class="card-body">
-                        <h3>Драги гости...</h3>
-                        <div id="editor">
-                            <p>
-                                Секој пар има приказна и никоја не е иста. Електронските покани ќе Ви помогнат да ја
-                                пренесете без ограничувања преку кратко видео, слики, текст што ќе ја направи единствена
-                                исто како вашата приказна а ние ќе се погрижиме за тоа. Едноставно, гостите нема да
-                                сакаат
-                                да пропуштат да бидат дел од неа. Преку RSVP копчето во секој миг ќе знаете кој го
-                                потврдил
-                                нивното пристуство а кого би сакале да го потсетите. При самата потврда гостите ќе може
-                                да
-                                внесат информација што ќе ви олесни при организирањето.И тука не завршува Вашата
-                                електронската покана, на истиот линк Вашите гости ќе имаат пристап до сликите и видеата
-                                што
-                                Вие ќе ги одберете од Вашата свадба а преку кој ќе може да ја споделат радоста со
-                                најблиските. За крај, електронската порака не Ви заштедува само време и енергија туку
-                                исто
-                                така се грижи дека нема ниту едно дрво да биде исечено за неа. Едвај чекаме да ја
-                                слушнеме
-                                Вашата приказна
-                            </p>
-                        </div>
-                    </div>
+
+            <div class="gallery">
+                <div>
+                    <p class="hex-title">DJs</p>
+                    <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/10496/images/a67164-f1f1-82e5-e8c-afffdbd7a060_AdobeStock_110110063.jpeg" alt="a house on a mountain">
                 </div>
+
+                <div class="active" id="invitations">
+                    <p class="hex-title">Онлајн Покани</p>
+                    <img src="https://www.brides.com/thmb/GOB3oUZwX5epKWGUUwBim6d48Bc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/diy-wedding-invitations-getty-recirc-1123-85cf65e909bb426d951a250e4134d88e.jpg" alt="sime pink flowers">
+                </div>
+                <div>
+                    <p class="hex-title">Ресторани</p>
+                    <img src="https://images.squarespace-cdn.com/content/v1/62125959ab8da87f49fb31cb/1680231108755-OUAGK6JP1X3ACHLLY6D0/059_Wedding+at+The+Paseo+venue+in+Apache+Junction%2C+Arizona+only+45+minutes+from+Phoenix..jpg" alt="big rocks with some trees">
+                </div>
+                <div>
+                    <p class="hex-title">Фотографи</p>
+                    <img src="https://photor.org/wp-content/uploads/2020/10/types-of-photographs-and-photographers-see-the-differences-between-one.jpg"
+                          alt="a waterfall, a lot of tree and a great view from the sky">
+                </div>
+                <div><img src="https://theweddingavenue.co.uk/wp-content/uploads/2022/10/gold-wedding-rings.jpeg" alt="a cool landscape"></div>
+                <div><img src="https://www.ripleys.com/wp-content/uploads/2018/06/shutterstock_117779707.jpg" alt="inside a town between two big buildings">
+                </div>
+                <div>
+                    <p class="hex-title">Музичари</p>
+                    <img src="https://i.ytimg.com/vi/ePUHdvzNOVs/hqdefault.jpg" alt="a great view of the sea above the mountain"></div>
+
             </div>
+
+
         </div>
-        <div class="row">
-            <div class="col-12">
-                <!-- Card -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="example">
-                                <h4 class="card-title mt-4">Изберете го вашиот датум</h4>
-
-                                <div class="input-daterange input-group" id="date-range">
-                                    <input type="text" class="form-control" name="start">
-
-                                    <span class="input-group-text bg-info b-0 text-white">ДО</span>
-
-                                    <input type="text" class="form-control" name="end">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="owl-carousel counter-carousel owl-theme">
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-primary shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="../../dist/images/svgs/icon-user-male.svg" width="50" height="50" class="mb-3"
-                                     alt=""/>
-                                <p class="fw-semibold fs-3 text-primary mb-1"> Employees </p>
-                                <h5 class="fw-semibold text-primary mb-0">96</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-warning shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="../../dist/images/svgs/icon-briefcase.svg" width="50" height="50" class="mb-3"
-                                     alt=""/>
-                                <p class="fw-semibold fs-3 text-warning mb-1">Clients</p>
-                                <h5 class="fw-semibold text-warning mb-0">3,650</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-info shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="../../dist/images/svgs/icon-mailbox.svg" width="50" height="50" class="mb-3"
-                                     alt=""/>
-                                <p class="fw-semibold fs-3 text-info mb-1">Projects</p>
-                                <h5 class="fw-semibold text-info mb-0">356</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-danger shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="../../dist/images/svgs/icon-favorites.svg" width="50" height="50" class="mb-3"
-                                     alt=""/>
-                                <p class="fw-semibold fs-3 text-danger mb-1">Events</p>
-                                <h5 class="fw-semibold text-danger mb-0">696</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-success shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="../../dist/images/svgs/icon-speech-bubble.svg" width="50" height="50"
-                                     class="mb-3" alt=""/>
-                                <p class="fw-semibold fs-3 text-success mb-1">Payroll</p>
-                                <h5 class="fw-semibold text-success mb-0">$96k</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card border-0 zoom-in bg-light-info shadow-none">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="../../dist/images/svgs/icon-connect.svg" width="50" height="50" class="mb-3"
-                                     alt=""/>
-                                <p class="fw-semibold fs-3 text-info mb-1">Reports</p>
-                                <h5 class="fw-semibold text-info mb-0">59</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 col-lg-8">
-                <div class="card blog position-relative overflow-hidden hover-img"
-                     style="background-image: url(/dist/images/alikas.jpg);">
-                    <div class="card-body position-relative">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                            <div class="d-flex align-items-start justify-content-between">
-                                <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
-                                     data-bs-title="Mollie Underwood">
-
-                                </div>
-                                <span class="badge text-bg-primary rounded-3 fs-2 fw-semibold">Топ понуда</span>
-                            </div>
-                            <div>
-                                <a href="/profile/alikas" class="fs-7 my-4 fw-semibold text-white d-block lh-sm"><h1
-                                        class="text-white">25ти Август</h1>
-                                    <p> Аликас</p></a>
-                                <div class="d-flex align-items-center gap-4">
-                                    <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
-                                        <i class="ti ti-eye fs-5"></i>
-                                        Капацитет 300 гости
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
-
-                                        32<i class="ti ti-currency-euro fs-5"></i> / порција
-
-                                    </div>
-                                    <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
-                                        <i class="ti ti-point"></i>
-                                        <small>Петок, Август 25</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog position-relative overflow-hidden hover-img"
-                     style="background-image: url(/dist/images/ragusa.jpg);">
-                    <div class="card-body position-relative">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                            <div class="d-flex align-items-start justify-content-between">
-                                <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
-                                     data-bs-title="Francisco Quinn">
-
-                                </div>
-                                <span class="badge text-bg-primary rounded-3 fs-2 fw-semibold">Топ понуда</span>
-                            </div>
-                            <div>
-                                <a href="/profile/alikas" class="fs-7 my-4 fw-semibold text-white d-block lh-sm">5
-                                    Август - Рагуза</a>
-                                <div class="d-flex align-items-center gap-4">
-                                    <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
-                                        <i class="ti ti-eye fs-5"></i>
-                                        Капацитет 713
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
-                                        35 <i class="ti ti-currency-euro"></i>
-
-                                    </div>
-                                    <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
-                                        <i class="ti ti-point"></i>
-                                        <small>Петок, Авг 5</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card rounded-2 overflow-hidden hover-img">
-                    <div class="position-relative">
-                        <a href="/profile/ksantika"><img src="/dist/images/ksantika.jpg" class="card-img-top rounded-0"
-                                                         alt="..."></a>
-                        <span
-                            class="badge bg-white text-dark fs-2 rounded-4 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">20% намалување</span>
-
-                    </div>
-                    <div class="card-body p-4">
-                        <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm  mt-3">Топ понуа</span>
-                        <a class="d-block my-4 fs-5 text-dark fw-semibold" href="">Ксантика</a>
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>Капацитет
-                                400
-                            </div>
-
-                            <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>Сабота,
-                                Сеп 16
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card rounded-2 overflow-hidden hover-img">
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="/dist/images/vezilka.jpg" class="card-img-top rounded-0"
-                                                          alt="..."></a>
-                        <span
-                            class="badge bg-white text-dark fs-2 rounded-4 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">20% намалување</span>
-
-                    </div>
-                    <div class="card-body p-4">
-                        <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm  mt-3">Топ понуа</span>
-                        <a class="d-block my-4 fs-5 text-dark fw-semibold" href="">Везилка</a>
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>Капацитет
-                                400
-                            </div>
-                            <div class="d-flex align-items-center gap-2">35 <i
-                                    class="ti ti-currency-euro text-dark fs-5"></i></div>
-                            <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>Сабота,
-                                Сеп 16
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card rounded-2 overflow-hidden hover-img">
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="/dist/images/alikas2.jpg" class="card-img-top rounded-0"
-                                                          alt="..."></a>
-
-
-                    </div>
-                    <div class="card-body p-4">
-                        <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm  mt-3">Прослава</span>
-                        <a class="d-block my-4 fs-5 text-dark fw-semibold" href="">Аликас</a>
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>Капацитет
-                                100
-                            </div>
-                            <div class="d-flex align-items-center gap-2">35 <i
-                                    class="ti ti-currency-euro text-dark fs-5"></i></div>
-                            <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>Недела,
-                                Сеп 17
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card rounded-2 overflow-hidden hover-img">
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="/dist/images/vezilka2.jpg" class="card-img-top rounded-0"
-                                                          alt="..."></a>
-
-                        <img src="/dist/images/vezilka-logo.png" alt=""
-                             class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
-                             height="40" data-bs-toggle="tooltip" data-bs-placement="top"
-                             data-bs-title="Ресторант Везилка">
-                    </div>
-                    <div class="card-body p-4">
-                        <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm  mt-3">Свадба</span>
-                        <a class="d-block my-4 fs-5 text-dark fw-semibold" href="">Везилка</a>
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>Капацитет
-                                400
-                            </div>
-                            <div class="d-flex align-items-center gap-2">35 <i
-                                    class="ti ti-currency-euro text-dark fs-5"></i></div>
-                            <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>Недела,
-                                Сеп 17
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card rounded-2 overflow-hidden hover-img">
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="/dist/images/latana.jpg" class="card-img-top rounded-0"
-                                                          alt="..."></a>
-                        <span
-                            class="badge bg-white text-dark fs-2 rounded-4 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">10% намалување</span>
-                        <img src="/dist/images/latana-logo.jpg" alt=""
-                             class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
-                             height="40" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Walter Palmer">
-                    </div>
-                    <div class="card-body p-4">
-                        <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm  mt-3">Свадба</span>
-                        <a class="d-block my-4 fs-5 text-dark fw-semibold" href="">Ла Тана</a>
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>Капацитет
-                                200
-                            </div>
-                            <div class="d-flex align-items-center gap-2">35 <i
-                                    class="ti ti-currency-euro text-dark fs-5"></i></div>
-                            <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>Среда,
-                                Сеп 14
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card rounded-2 overflow-hidden hover-img">
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="/dist/images/ragusa2.jpg" class="card-img-top rounded-0"
-                                                          alt="..."></a>
-                        <span
-                            class="badge bg-white text-dark fs-2 rounded-4 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">5% намалување</span>
-                        <img src="/dist/images/ragusa-logo.png" alt=""
-                             class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
-                             height="40" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Walter Palmer">
-                    </div>
-                    <div class="card-body p-4">
-                        <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm  mt-3">Свадба</span>
-                        <a class="d-block my-4 fs-5 text-dark fw-semibold" href="">Ragusа</a>
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>Капацитет
-                                200
-                            </div>
-                            <div class="d-flex align-items-center gap-2">35 <i
-                                    class="ti ti-currency-euro text-dark fs-5"></i></div>
-                            <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>Среда,
-                                Сеп 14
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card rounded-2 overflow-hidden hover-img">
-                    <div class="position-relative">
-                        <a href="javascript:void(0)"><img src="/dist/images/doubletree.jpg"
-                                                          class="card-img-top rounded-0" alt="..."></a>
-                        <span
-                            class="badge bg-white text-dark fs-2 rounded-4 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">5% намалување</span>
-                        <img src="/dist/images/doubletree-logo.png" alt=""
-                             class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
-                             height="40" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Walter Palmer">
-                    </div>
-                    <div class="card-body p-4">
-                        <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm  mt-3">Свадба</span>
-                        <a class="d-block my-4 fs-5 text-dark fw-semibold" href="">Doubletree by Hilton</a>
-                        <div class="d-flex align-items-center gap-4">
-                            <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>Капацитет
-                                200
-                            </div>
-                            <div class="d-flex align-items-center gap-2">35 <i
-                                    class="ti ti-currency-euro text-dark fs-5"></i></div>
-                            <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>Среда,
-                                Сеп 14
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center mb-0 mt-4">
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                       href="#"><i class="ti ti-chevron-left"></i></a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link border-0 rounded-circle round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">4</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">...</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 mx-1 d-flex align-items-center justify-content-center"
-                       href="#">10</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link border-0 rounded-circle text-dark round-32 d-flex align-items-center justify-content-center"
-                       href="#"><i class="ti ti-chevron-right"></i></a>
-                </li>
-            </ul>
-        </nav>
     </div>
+        @endsection
+        @section('scripts')
+            <script>
+                $(".hexa div").on("mouseout", function () {
+                    $(this).removeClass("active");
+                    $("#invitations").addClass("active");
+                });
+
+
+                $(".gallery div").on("mouseover", function () {
+                    $("#invitations").removeClass("active");
+                });
+
+
+            </script>
 @endsection
 
