@@ -6,7 +6,7 @@
 
 
             <div id="myCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel"
-                 style="margin-top: 140px;">
+                 style="margin-top: 40px; max-height: 650px">
                 <ul class="carousel-indicators">
                     <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active"
                         aria-current="true"></li>
