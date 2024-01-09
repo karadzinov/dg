@@ -2,11 +2,13 @@
     width: 100%;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+}
+.main-container {
+    overflow: hidden;
 }
 
 .carousel-caption {
-
-
     color: white;
     border-radius: 10px;
     position: absolute;
@@ -104,6 +106,8 @@
         width: 100%;
         min-height: 200px;
     }
+
+
 }
 
 
@@ -147,7 +151,7 @@
     transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1));
     cursor: pointer;
     filter: grayscale(80%);
-    transition: .4s linear;
+    transition: .2s linear;
     position: relative;
     justify-content: center;
     vertical-align: center;

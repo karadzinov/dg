@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+<div class="main-container">
     <div class="row">
         <div class="col-12">
 
@@ -39,7 +40,7 @@
             </div>
         </div>
     </div>
-
+</div>
 
     <!-- Page Start -->
     <div class="container-fluid">
@@ -103,7 +104,13 @@
 
            let img = $(this).children('img')[0];
 
-            window.location = '/' + $(img).data('link');
+           img = $(img).data('link');
+
+           if(img) {
+               window.location = '/' + img;
+           }
+
+
         });
 
 
