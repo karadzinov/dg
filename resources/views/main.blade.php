@@ -56,9 +56,9 @@
 
                 <div class="active" id="invitations">
                     <p class="hex-title">Онлајн Покани</p>
-                    <img
-                        src="https://www.brides.com/thmb/GOB3oUZwX5epKWGUUwBim6d48Bc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/diy-wedding-invitations-getty-recirc-1123-85cf65e909bb426d951a250e4134d88e.jpg"
-                        alt="Online Invitations" data-link="invitation/create">
+                    <video class="slider-image" autoplay loop muted>
+                        <source src="/video/test.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div>
                     <p class="hex-title">Ресторани</p>

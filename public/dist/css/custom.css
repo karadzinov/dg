@@ -168,6 +168,17 @@
 
 }
 
+
+.gallery > div > video {
+    grid-area: 1/1;
+    width: var(--s);
+    aspect-ratio: 0.866;
+    object-fit: cover;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
 .gallery > div:hover {
     filter: grayscale(0);
     z-index: 1;
