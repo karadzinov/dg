@@ -1,14 +1,4 @@
-a.pokani {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 15px;
-    color: #ffffff;
-}
 
-a.pokani:hover {
-
-    color: #ffffff;
-}
 
 .slider-image {
     width: 100%;
@@ -16,6 +6,7 @@ a.pokani:hover {
     background-position: center;
     overflow: hidden;
 }
+
 .main-container {
     overflow: hidden;
 }
@@ -260,4 +251,57 @@ a.pokani:hover {
     display: grid;
     place-content: center;
     overflow: hidden;
+}
+
+
+#button {
+
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+
+
+}
+
+#button .clicki a {
+    text-align: center;
+
+
+    display: block;
+
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.scali {
+    display: block;
+    position: absolute;
+    transform: scale(0);
+}
+
+.animate {
+    animation: scali 0.5s linear;
+}
+
+@keyframes scali {
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+
+a.pokani {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    color: #ffffff;
+    will-change: box-shadow, transform;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+a.pokani:hover {
+    color: #ffffff !important;
 }

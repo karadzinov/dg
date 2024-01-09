@@ -50,11 +50,11 @@
     <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
     <link rel="stylesheet" href="/dist/css/custom.css"/>
     <style>
-        #valid{
+        #valid {
             display: none;
         }
 
-        #not-valid{
+        #not-valid {
             display: none;
         }
 
@@ -92,8 +92,13 @@
                 <li class="nav-item dropdown-hover d-none d-lg-block">
                     <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
                 </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block ">
-                    <a class="btn bg-danger pokani" href="{{ route('invitations.create') }}">Креирајте покани</a>
+                <li class="nav-item dropdown-hover d-none d-lg-block">
+
+                    <div id="button">
+                        <span class="scali"></span>
+                        <span class="clicki">  <a class="btn bg-danger pokani" href="{{ route('invitations.create') }}">Креирајте покани</a>  </span>
+                    </div>
+
                 </li>
                 <li class="nav-item dropdown hover-dd d-none d-lg-block">
                     <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
@@ -367,7 +372,6 @@
 </div>
 
 
-
 <!-- ---------------------------------------------- -->
 <!-- Import Js Files -->
 <!-- ---------------------------------------------- -->
@@ -487,6 +491,7 @@
         });
     });
 </script>
+
 
 @yield('scripts')
 
