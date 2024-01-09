@@ -22,6 +22,7 @@
     <!-- Favicon -->
     <!-- --------------------------------------------------- -->
     <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
+    <link rel="icon" type="image/x-icon" href="/dist/images/2.svg">
     <link rel="stylesheet" href="/dist/libs/quill/dist/quill.snow.css">
     <link href="/dist/libs/quill/quill.snow.css" rel="stylesheet">
 
