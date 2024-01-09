@@ -92,8 +92,8 @@
                 <li class="nav-item dropdown-hover d-none d-lg-block">
                     <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
                 </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="{{ route('invitations.create') }}">Креирајте покани</a>
+                <li class="nav-item dropdown-hover d-none d-lg-block ">
+                    <a class="btn bg-danger pokani" href="{{ route('invitations.create') }}">Креирајте покани</a>
                 </li>
                 <li class="nav-item dropdown hover-dd d-none d-lg-block">
                     <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
