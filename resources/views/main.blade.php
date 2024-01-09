@@ -49,7 +49,7 @@
 
             <div class="gallery">
                 <div>
-                    <p class="hex-title">DJs</p>
+
                     <img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/10496/images/a67164-f1f1-82e5-e8c-afffdbd7a060_AdobeStock_110110063.jpeg" alt="a house on a mountain">
                 </div>
 
