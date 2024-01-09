@@ -15,7 +15,7 @@
 
                     <div class="carousel-item active">
                         <video class="slider-image" autoplay loop muted>
-                            <source src="/video/output.mp4" type="video/mp4">
+                            <source src="/video/output1.mp4" type="video/mp4">
                         </video>
                         <div class="carousel-caption d-md-block">
                             <img src="/dist/images/logo.svg" class="dark-logo" width="460" alt=""/>
