@@ -113,6 +113,10 @@
 
         });
 
+        $("#invitations").on("click", function() {
+            window.location = '/invitation/create';
+        });
+
 
         $(".gallery div").on("mouseover", function () {
             $("#invitations").removeClass("active");
