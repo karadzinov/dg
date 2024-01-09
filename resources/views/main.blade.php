@@ -18,7 +18,9 @@
                             <source src="/video/output.mp4" type="video/mp4">
                         </video>
                         <div class="carousel-caption d-md-block">
+                            <h4>
                             <img src="/dist/images/logo.svg" class="dark-logo" width="460" alt=""/>
+                            </h4>
                             <h5>единствениот свадбен планер кој ви е потребен</h5>
 
                         </div>
