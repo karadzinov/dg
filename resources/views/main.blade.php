@@ -15,7 +15,7 @@
 
                         <div class="carousel-item active">
                             <div class="video-bg" data-background="/assets/video/fallback.webp">
-                            <video class="slider-image" autoplay loop muted controls="true">
+                            <video class="slider-image" autoplay="" muted="" playsinline="" loop="">
                                 <source src="/video/output.mp4" type="video/mp4">
                             </video>
                             <div class="carousel-caption d-md-block">
