@@ -40,66 +40,68 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row party">
-        <div class="col-12 text-center">
-
-            <h1 class="title-gradient">Ваш е свадбениот план, се останато препуштете ни нам.</h1>
-
-        </div>
-
-    </div>
-
-    <!-- Page Start -->
-<div class="container">
 
 
-        <div class="row hexa">
+        <div class="row party">
+            <div class="col-12 text-center">
 
-
-            <div class="gallery">
-                <div>
-
-                    <img
-                        src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/10496/images/a67164-f1f1-82e5-e8c-afffdbd7a060_AdobeStock_110110063.jpeg"
-                        alt="a house on a mountain">
-                </div>
-
-                <div class="active" id="invitations">
-                    <p class="hex-title">Онлајн Покани</p>
-                    <video class="slider-image" autoplay loop muted>
-                        <source src="/video/test.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div>
-                    <p class="hex-title">Ресторани</p>
-                    <img
-                        src="https://images.squarespace-cdn.com/content/v1/62125959ab8da87f49fb31cb/1680231108755-OUAGK6JP1X3ACHLLY6D0/059_Wedding+at+The+Paseo+venue+in+Apache+Junction%2C+Arizona+only+45+minutes+from+Phoenix..jpg"
-                        alt="Restaurants" data-link="restaurants">
-                </div>
-                <div>
-                    <p class="hex-title">Фотографи</p>
-                    <img
-                        src="https://photor.org/wp-content/uploads/2020/10/types-of-photographs-and-photographers-see-the-differences-between-one.jpg"
-                        alt="Photographers" data-link="photographers">
-                </div>
-                <div><img src="https://theweddingavenue.co.uk/wp-content/uploads/2022/10/gold-wedding-rings.jpeg"
-                          alt="Wedding rings">
-                </div>
-                <div><img src="https://www.ripleys.com/wp-content/uploads/2018/06/shutterstock_117779707.jpg"
-                          alt="Services">
-                </div>
-                <div>
-                    <p class="hex-title">Музичари</p>
-                    <img src="https://i.ytimg.com/vi/ePUHdvzNOVs/hqdefault.jpg"
-                         alt="Musicians" data-link="musicians"></div>
+                <h1 class="title-gradient">Ваш е свадбениот план, се останато препуштете ни нам.</h1>
 
             </div>
 
-
         </div>
-</div>
+
+
+        <!-- Page Start -->
+        <div class="container">
+
+
+            <div class="row hexa">
+
+
+                <div class="gallery">
+                    <div>
+
+                        <img
+                            src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/10496/images/a67164-f1f1-82e5-e8c-afffdbd7a060_AdobeStock_110110063.jpeg"
+                            alt="a house on a mountain">
+                    </div>
+
+                    <div class="active" id="invitations">
+                        <p class="hex-title mob-hex-title">Онлајн Покани</p>
+                        <video class="slider-image" autoplay loop muted>
+                            <source src="/video/test.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div>
+                        <p class="hex-title">Ресторани</p>
+                        <img
+                            src="https://images.squarespace-cdn.com/content/v1/62125959ab8da87f49fb31cb/1680231108755-OUAGK6JP1X3ACHLLY6D0/059_Wedding+at+The+Paseo+venue+in+Apache+Junction%2C+Arizona+only+45+minutes+from+Phoenix..jpg"
+                            alt="Restaurants" data-link="restaurants">
+                    </div>
+                    <div>
+                        <p class="hex-title">Фотографи</p>
+                        <img
+                            src="https://photor.org/wp-content/uploads/2020/10/types-of-photographs-and-photographers-see-the-differences-between-one.jpg"
+                            alt="Photographers" data-link="photographers">
+                    </div>
+                    <div><img src="https://theweddingavenue.co.uk/wp-content/uploads/2022/10/gold-wedding-rings.jpeg"
+                              alt="Wedding rings">
+                    </div>
+                    <div><img src="https://www.ripleys.com/wp-content/uploads/2018/06/shutterstock_117779707.jpg"
+                              alt="Services">
+                    </div>
+                    <div>
+                        <p class="hex-title">Музичари</p>
+                        <img src="https://i.ytimg.com/vi/ePUHdvzNOVs/hqdefault.jpg"
+                             alt="Musicians" data-link="musicians"></div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script>
