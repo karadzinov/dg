@@ -341,7 +341,7 @@ a.pokani:hover {
 
     .gallery-gap {
 
-        --g: 5px !important; /* control the gap */
+        --g: 15px !important; /* control the gap */
 
     }
 
