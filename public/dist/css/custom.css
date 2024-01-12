@@ -455,7 +455,7 @@ a.pokani:hover {
 
     .carousel-caption .dark-logo {
         width: 300px;
-        margin-left: 17%;
+
     }
 
     .mob-hex-title {
@@ -465,7 +465,7 @@ a.pokani:hover {
 
     .carousel-caption h5 {
         font-size: 15px;
-        margin-left: 17%;
+
     }
 
     .party {
@@ -480,28 +480,21 @@ a.pokani:hover {
         min-height: auto;
     }
 
-    .carousel-item
-    {
-        width: auto;
+
+
+
+
+    .carousel {
+        display: flex;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
     }
 
-    .carousel-caption {
-        top: 55%;
-        left: 25%;
-    }
-
-    .carousel-item .slider-image {
-        position: relative;
-        height: 400px;
+    .carousel-item {
+        flex: 0 0 auto;
+        margin-right: 20px;
+        scroll-snap-align: start;
         width: 100%;
-        background-size: cover;
-        background-position-x: 300px;
-        overflow: hidden;
-        margin-left: -100px;
-        margin-bottom: -35px;
-    }
-
-    .carousel-indicators {
-        display: none;
     }
 }
