@@ -87,9 +87,6 @@
     }
 
 
-
-
-
 }
 
 @media (min-width: 768px) {
@@ -97,7 +94,6 @@
         width: 100%;
         min-height: 200px;
     }
-
 
 
 }
@@ -303,7 +299,7 @@ a.pokani:hover {
     -webkit-text-fill-color: transparent;
     background: linear-gradient(-107deg, #000000, rgba(0, 0, 0, 0.98));
     -webkit-background-clip: text;
-   // text-shadow: 1px 0 5px #000000;
+/ / text-shadow: 1 px 0 5 px #000000;
     color: #D5745B;
     display: inline-block;
 
@@ -320,9 +316,6 @@ a.pokani:hover {
 
 
 }
-
-
-
 
 
 @media only screen and (max-width: 600px) {
@@ -460,12 +453,55 @@ a.pokani:hover {
 
     }
 
-    .dark-logo {
-        width: 200px;
+    .carousel-caption .dark-logo {
+        width: 300px;
+        margin-left: 17%;
     }
 
-  .mob-hex-title {
-      margin-top: -5px;
+    .mob-hex-title {
+        margin-top: -5px;
 
-  }
+    }
+
+    .carousel-caption h5 {
+        font-size: 15px;
+        margin-left: 17%;
+    }
+
+    .party {
+        min-height: 200px;
+    }
+
+    .title-gradient {
+        margin-top: 50px;
+    }
+
+    .hexa {
+        min-height: auto;
+    }
+
+    .carousel-item
+    {
+        width: auto;
+    }
+
+    .carousel-caption {
+        top: 55%;
+        left: 25%;
+    }
+
+    .carousel-item .slider-image {
+        position: relative;
+        height: 400px;
+        width: 100%;
+        background-size: cover;
+        background-position-x: 300px;
+        overflow: hidden;
+        margin-left: -100px;
+        margin-bottom: -35px;
+    }
+
+    .carousel-indicators {
+        display: none;
+    }
 }

@@ -101,6 +101,17 @@
 
             </div>
         </div>
+
+
+        <div class="row party">
+            <div class="col-12 text-center">
+
+                <h1 class="title-gradient">Ваш е свадбениот план, се останато препуштете ни нам.</h1>
+
+            </div>
+
+        </div>
+
     </div>
 @endsection
 @section('scripts')
@@ -146,7 +157,7 @@
 
         if(window.mobileCheck)
         {
-            scrollVal = 500;
+            scrollVal = 300;
         } else {
             scrollVal = 700;
         }
