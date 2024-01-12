@@ -158,7 +158,7 @@
 
         if(window.mobileCheck)
         {
-            scrollVal = 300;
+            scrollVal = 500;
         } else {
             scrollVal = 700;
         }
