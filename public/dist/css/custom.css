@@ -474,6 +474,7 @@ a.pokani:hover {
 
     .party {
         min-height: 200px;
+        margin-top: -8px;
     }
 
     .title-gradient {
