@@ -118,14 +118,16 @@
                         alt="Photographers" data-link="photographers">
                 </div>
                 <div>
+                    <img
+                        src="https://www.ripleys.com/wp-content/uploads/2018/06/shutterstock_117779707.jpg"
+                        alt="Services">
+
+                </div>
+                <div>
                     <p class="hex-title">Музичари</p>
                     <img src="https://i.ytimg.com/vi/ePUHdvzNOVs/hqdefault.jpg"
                          alt="Musicians" data-link="musicians">
 
-                </div>
-                <div><img
-                        src="https://www.ripleys.com/wp-content/uploads/2018/06/shutterstock_117779707.jpg"
-                        alt="Services">
                 </div>
                 <div>
                     <img
