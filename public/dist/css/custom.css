@@ -325,7 +325,7 @@ a.pokani:hover {
     }
 
     .gallery {
-        --s: 120px; /* control the size */
+        --s: 140px; /* control the size */
         --g: 2px; /* control the gap */
         display: grid;
         margin: calc(var(--s) + var(--g));
@@ -343,7 +343,7 @@ a.pokani:hover {
         width: var(--s);
         aspect-ratio: 0.866;
         object-fit: cover;
-        height: 120px;
+        height: 150px;
         clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0);
         transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1));
         cursor: pointer;
@@ -431,12 +431,13 @@ a.pokani:hover {
 
 
     .hex-title {
+
         position: absolute;
         color: #fff8f8;
 
         display: flex;
         top: 42%;
-        line-height: 18px;
+        line-height: 25px;
 
         justify-content: center;
         vertical-align: center;
@@ -445,7 +446,7 @@ a.pokani:hover {
 
         font-family: 'Poiret One', cursive;
         font-size: 18px;
-        width: 120px;
+        width: 100%;
         text-align: center;
 
         background-color: rgb(0, 0, 0); /* Fallback color */
@@ -462,7 +463,7 @@ a.pokani:hover {
         top: 60%;
     }
     .mob-hex-title {
-        margin-top: -15px;
+        font-size: 16px;
 
     }
 
