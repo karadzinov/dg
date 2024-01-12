@@ -1,49 +1,59 @@
 @extends('layouts.frontend')
 @section('content')
-<div class="main-container">
-    <div class="row">
-        <div class="col-12">
+    <div class="main-container">
+        <div class="row">
+            <div class="col-12">
 
 
-            <div id="myCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel"
-                 style="margin-top: 40px; max-height: 650px">
-                <ul class="carousel-indicators">
-                    <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active"
-                        aria-current="true"></li>
-                </ul>
-                <div class="carousel-inner">
+                <div id="myCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel"
+                     style="margin-top: 40px; max-height: 650px">
+                    <ul class="carousel-indicators">
+                        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active"
+                            aria-current="true"></li>
+                    </ul>
+                    <div class="carousel-inner">
 
-                    <div class="carousel-item active">
-                        <video class="slider-image" autoplay loop muted>
-                            <source src="/video/output.mp4" type="video/mp4">
-                        </video>
-                        <div class="carousel-caption d-md-block">
-                            <h4>
-                            <img src="/dist/images/logo.svg" class="dark-logo" width="460" alt=""/>
-                            </h4>
-                            <h5>единствениот свадбен планер кој ви е потребен</h5>
+                        <div class="carousel-item active">
+                            <video class="slider-image" autoplay loop muted>
+                                <source src="/video/output.mp4" type="video/mp4">
+                            </video>
+                            <div class="carousel-caption d-md-block">
+                                <h4>
+                                    <img src="/dist/images/logo.svg" class="dark-logo" width="460" alt=""/>
+                                </h4>
+                                <h5>единствениот свадбен планер кој ви е потребен</h5>
+
+                            </div>
 
                         </div>
 
+
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
                     </div>
-
-
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="row party">
+        <div class="col-12 text-center">
+
+            <h1 class="title-gradient">Ваш е свадбениот план, се останато препуштете ни нам.</h1>
+
+        </div>
+
+    </div>
 
     <!-- Page Start -->
-    <div class="container-fluid">
+<div class="container">
+
 
         <div class="row hexa">
 
@@ -89,7 +99,7 @@
 
 
         </div>
-    </div>
+</div>
 @endsection
 @section('scripts')
     <script>
@@ -102,18 +112,18 @@
         $(".gallery > div").on("click", function () {
 
 
-           let img = $(this).children('img')[0];
+            let img = $(this).children('img')[0];
 
-           img = $(img).data('link');
+            img = $(img).data('link');
 
-           if(img) {
-               window.location = '/' + img;
-           }
+            if (img) {
+                window.location = '/' + img;
+            }
 
 
         });
 
-        $("#invitations").on("click", function() {
+        $("#invitations").on("click", function () {
             window.location = '/invitation/create';
         });
 

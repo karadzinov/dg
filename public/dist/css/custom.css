@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap');
 
 .slider-image {
     width: 100%;
@@ -304,4 +304,30 @@ a.pokani {
 
 a.pokani:hover {
     color: #ffffff !important;
+}
+
+.title-gradient {
+    margin-top: 100px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: bold;
+    font-size: 5em;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(-107deg, #000000, rgba(0, 0, 0, 0.98));
+    -webkit-background-clip: text;
+   // text-shadow: 1px 0 5px #000000;
+    color: #D5745B;
+    display: inline-block;
+
+
+}
+
+.party {
+    position: relative;
+    min-height: 400px;
+    background-image: url('/dist/images/backgrounds/final.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+
 }
