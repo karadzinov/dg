@@ -14,6 +14,7 @@
                     <div class="carousel-inner">
 
                         <div class="carousel-item active">
+                            <div class="video-bg" data-background="/assets/video/fallback.webp">
                             <video class="slider-image" autoplay loop muted>
                                 <source src="/video/output.mp4" type="video/mp4">
                             </video>
@@ -182,5 +183,14 @@
 
 
     </script>
+
+            <script>
+                $(document).ready(function () {
+                    $(".video-bg").wallpaper({
+                        lazy: true,
+                        source: "/video/output.mp4"
+                    });
+                });
+            </script>
 @endsection
 
