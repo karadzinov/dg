@@ -454,17 +454,20 @@ a.pokani:hover {
     }
 
     .carousel-caption .dark-logo {
-        width: 300px;
+        width: 250px;
 
     }
 
+    .carousel-caption {
+        top: 60%;
+    }
     .mob-hex-title {
-        margin-top: -5px;
+        margin-top: -15px;
 
     }
 
     .carousel-caption h5 {
-        font-size: 15px;
+        font-size: 22px;
 
     }
 
@@ -496,5 +499,11 @@ a.pokani:hover {
         margin-right: 20px;
         scroll-snap-align: start;
         width: 100%;
+    }
+
+    .carousel-item .slider-image {
+        width: auto;
+        height: 600px;
+        margin-left: -300px;
     }
 }
