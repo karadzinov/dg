@@ -61,7 +61,7 @@
                 <div class="active" id="invitations">
                     <p class="hex-title mob-hex-title">Онлајн Покани</p>
                     <video class="slider-image" autoplay="" muted="" playsinline="" loop="">
-                        <source src="/video/test.mp4" type="video/mp4">
+                        <source src="/video/invitations.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div>
@@ -93,7 +93,7 @@
             </div>
 
 
-
+</div>
 
             <div class="row party">
                 <div class="col-12 text-center">
@@ -105,6 +105,7 @@
             </div>
 
         </div>
+
         @endsection
         @section('scripts')
             <script>
@@ -151,7 +152,7 @@
 
                 let scrollVal;
 
-                if (window.mobileCheck) {
+                if (window.mobileCheck()) {
                     scrollVal = 500;
 
                     div1 = $('#musicians');
