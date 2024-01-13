@@ -98,7 +98,7 @@
             <div class="row party">
                 <div class="col-12 text-center">
 
-                    <h1 class="title-gradient">Ваш е свадбениот план, се останато препуштете ни нам.</h1>
+                    <h1 class="title-gradient">Направете во вашиот веб сајт во само три чекора.</h1>
 
                 </div>
 
@@ -148,6 +148,7 @@
 
 
                 $(".gallery div").on("mouseover", function () {
+                    $(this).removeClass("active");
                     $("#invitations").removeClass("active");
 
                 });
