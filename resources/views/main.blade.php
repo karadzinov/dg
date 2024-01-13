@@ -61,7 +61,7 @@
                 <div class="active" id="invitations">
                     <p class="hex-title mob-hex-title">Онлајн Покани</p>
                     <video class="slider-image" autoplay="" muted="" playsinline="" loop="">
-                        <source src="/video/invitations.mp4" type="video/mp4">
+                        <source src="/video/test.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div>
