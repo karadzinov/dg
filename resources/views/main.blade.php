@@ -145,6 +145,8 @@
                 });
 
 
+
+
                 $(".gallery div").on("mouseover", function () {
                     $("#invitations").removeClass("active");
 
@@ -161,10 +163,16 @@
                     tdiv1 = div1.clone();
                     tdiv2 = div2.clone();
 
+
+
                     if(!div2.is(':empty')){
                         div1.replaceWith(tdiv2);
                         div2.replaceWith(tdiv1);
                     }
+
+                    $(tdiv1).on("click", function () {
+                        window.location = '/musicians';
+                    });
                 } else {
                     scrollVal = 700;
                 }
