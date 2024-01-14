@@ -80,7 +80,7 @@
             <ul class="navbar-nav quick-links d-none d-lg-flex">
                 <li class="nav-item d-none d-lg-block">
                     <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
-                        <img src="/dist/images/logos/dragigosti.png" class="dark-logo" width="160" alt=""/>
+                        <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="60" alt=""/>
                     </a>
                 </li>
 
@@ -159,7 +159,7 @@
                 </li>
             </ul>
             <div class="d-block d-lg-none">
-                <img src="/dist/images/logos/dragigosti.png" class="dark-logo" width="160" alt=""/>
+                <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="60" alt=""/>
 
             </div>
             <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
@@ -263,7 +263,7 @@
          aria-labelledby="offcanvasWithBothOptionsLabel">
         <nav class="sidebar-nav scroll-sidebar">
             <div class="offcanvas-header justify-content-between">
-                <img src="/dist/images/logos/dragigosti.png" width="160" alt="" class="img-fluid">
+                <img src="/dist/images/logos/logo-main.png" width="160" alt="" class="img-fluid">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar="" data-simplebar>
