@@ -183,7 +183,7 @@
                                aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <div class="user-profile-img">
-                                        <img src="/dist/images/profile/user-1.jpg" class="rounded-circle"
+                                        <img src="/dist/images/backgrounds/menu.png"
                                              width="35" height="35"
                                              alt=""/>
                                     </div>
