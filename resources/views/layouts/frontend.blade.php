@@ -398,6 +398,7 @@
 <script src="/dist/libs/quill/quill.min.js"></script>
 <script src="/dist/js/app.init.js"></script>
 <script src="/dist/libs/dropzone/dist/min/dropzone.min.js"></script>
+<script src="/js/custom.js"></script>
 <!-- ---------------------------------------------- -->
 <script>
     $('document').ready(function () {
