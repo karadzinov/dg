@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="handheldfriendly" content="true"/>
     <meta name="MobileOptimized" content="width"/>
-    <meta name="description" content="Mordenize"/>
+    <meta name="description" content="Драги гости - вашиот единствен свадбен планер"/>
     <meta name="author" content=""/>
     <meta name="keywords" content="Mordenize"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -80,15 +80,10 @@
             <ul class="navbar-nav quick-links d-none d-lg-flex">
                 <li class="nav-item d-none d-lg-block">
                     <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
-                        <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
+                        <img src="/dist/images/logos/dragigosti.png" class="dark-logo" width="160" alt=""/>
                     </a>
                 </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link " href="/" data-bs-toggle="modal"
-                       data-bs-target="#exampleModal">
-                        <i class="ti ti-search"></i>
-                    </a>
-                </li>
+
                 <li class="nav-item dropdown-hover d-none d-lg-block">
                     <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
                 </li>
@@ -96,7 +91,7 @@
 
                     <div id="button">
                         <span class="scali"></span>
-                        <span class="clicki">  <a class="btn bg-danger pokani" href="{{ route('invitations.create') }}">Креирајте покани</a>  </span>
+                        <span class="clicki">  <a class="btn bg-main pokani" href="{{ route('invitations.create') }}">Креирајте покани</a>  </span>
                     </div>
 
                 </li>
@@ -164,8 +159,8 @@
                 </li>
             </ul>
             <div class="d-block d-lg-none">
-                <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
-                <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
+                <img src="/dist/images/logos/dragigosti.png" class="dark-logo" width="160" alt=""/>
+
             </div>
             <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -268,7 +263,7 @@
          aria-labelledby="offcanvasWithBothOptionsLabel">
         <nav class="sidebar-nav scroll-sidebar">
             <div class="offcanvas-header justify-content-between">
-                <img src="/dist/images/logo.svg" width="160" alt="" class="img-fluid">
+                <img src="/dist/images/logos/dragigosti.png" width="160" alt="" class="img-fluid">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar="" data-simplebar>
@@ -282,7 +277,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('frontend.invitations') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="/invitation/create" aria-expanded="false">
                 <span>
                   <i class="ti ti-photo"></i>
                 </span>
@@ -331,7 +326,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item py-2">
-                                <a href="./app-notes.html"
+                                <a href="#"
                                    class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                                     <div class="d-inline-block">
                                         <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
@@ -356,7 +351,7 @@
                 <span>
                   <i class="ti ti-info-square"></i>
                 </span>
-                            <span class="hide-menu">За над</span>
+                            <span class="hide-menu">За нас</span>
                         </a>
                     </li>
                 </ul>

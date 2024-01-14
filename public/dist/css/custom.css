@@ -1,10 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap');
+.bg-main {
+    background-color: #F9B6A4;
+}
 
 .slider-image {
     width: 100%;
+    min-height: 600px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
+}
+
+
+.carousel-item:after {
+    content:"";
+    display:block;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background:rgba(0,0,0,0.7);
 }
 
 .main-container {
@@ -48,7 +64,7 @@
 }
 
 .orange {
-    color: #D5745B;
+    color: #F9B6A4;
 }
 
 .blue {
@@ -287,9 +303,7 @@ a.pokani {
     transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1)
 }
 
-a.pokani:hover {
-    color: #ffffff !important;
-}
+
 
 .title-gradient {
     margin-top: 50px;
@@ -300,7 +314,7 @@ a.pokani:hover {
     background: linear-gradient(-107deg, #000000, rgba(0, 0, 0, 0.98));
     -webkit-background-clip: text;
 / / text-shadow: 1 px 0 5 px #000000;
-    color: #D5745B;
+    color: #F9B6A4;
     display: inline-block;
 
 
