@@ -16,10 +16,14 @@
                             </video>
                             -->
                             <div class="carousel-caption">
-                                <div class="logo">
-                                    <img src="/dist/images/logos/logo-main.png" width="250"   alt=""/>
+
+                                <h5>Eдинствениот свадбен планер кој ви е потребен</h5>
+                                <div class="box-1">
+                                    <div class="butt btn-one">
+                                        <span>ДОЗНАЈ ПОВЕЌЕ</span>
+                                    </div>
                                 </div>
-                                <h5>единствениот свадбен планер кој ви е потребен</h5>
+
 
                             </div>
 
