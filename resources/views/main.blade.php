@@ -102,7 +102,7 @@
         <div class="row party">
             <div class="col-12 text-center">
 
-                <h1 class="title-gradient">Направете во вашиот веб сајт во само три чекори.</h1>
+                <h1 class="title-gradient">Направете го вашиот веб сајт во само три чекори.</h1>
 
             </div>
 
