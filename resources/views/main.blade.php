@@ -22,7 +22,9 @@
                                     <div class="butt btn-one">
                                         <span>ДОЗНАЈ ПОВЕЌЕ</span>
                                     </div>
+                                    <div class="arrow"></div>
                                 </div>
+
 
 
                             </div>
