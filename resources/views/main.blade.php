@@ -64,7 +64,7 @@
 
                 <div class="active" id="invitations">
                     <p class="hex-title mob-hex-title">Онлајн Покани</p>
-                    <video class="slider-image" autoplay="" muted="" playsinline="" loop="">
+                    <video class="video-background" autoplay="" muted="" playsinline="" loop="">
                         <source src="/video/test.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -196,6 +196,29 @@
 
 
     </div>
+
+
+    <button class="btn  btn-outline-dark-light p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        <i class="icon ti ti-phone-call fs-7"></i>
+    </button>
+
+    <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"
+         aria-labelledby="offcanvasExampleLabel">
+        <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
+            <h4 class="offcanvas-title fw-semibold" id="offcanvasExampleLabel">
+                Контакт
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" data-simplebar style="height: calc(100vh - 80px)">
+
+
+
+
+
+        </div>
+    </div>
+
 
 @endsection
 @section('scripts')
