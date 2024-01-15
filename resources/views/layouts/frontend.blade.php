@@ -49,6 +49,10 @@
     <link id="themeColors" rel="stylesheet" href="/dist/css/style.min.css"/>
     <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
     <link rel="stylesheet" href="/dist/css/custom.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <style>
         #valid {
             display: none;
