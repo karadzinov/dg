@@ -26828,11 +26828,11 @@ textarea.form-control-lg {
 }
 
 .btn-outline-dark-light {
-    --bs-btn-color: #2A3547;
-    --bs-btn-border-color: #2A3547;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #2A3547;
-    --bs-btn-hover-border-color: #2A3547;
+    --bs-btn-color: #000000;
+    --bs-btn-border-color: #000000;
+    --bs-btn-hover-color: #000000;
+    --bs-btn-hover-bg: #FFFFFF;
+    --bs-btn-hover-border-color: #000000;
     --bs-btn-focus-shadow-rgb: 42, 53, 71;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #2A3547;

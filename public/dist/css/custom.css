@@ -427,13 +427,13 @@ div[class*=box] {
 
 .title-gradient {
     margin-top: 50px;
-     font-family: 'Noto Sans JP', serif;
-    font-weight: 400;
+    font-family: 'Noto Sans JP', serif;
+    font-weight: 900;
     font-size: 3em;
     -webkit-text-fill-color: transparent;
-    background: linear-gradient(-107deg, #000000, rgba(0, 0, 0, 0.98));
+    background: linear-gradient(-90deg, #000000, rgba(0, 0, 0, 0.98));
     -webkit-background-clip: text;
-/ / text-shadow: 1 px 0 5 px #000000;
+
     color: #F9B6A4;
     display: inline-block;
 
@@ -444,10 +444,7 @@ div[class*=box] {
     margin-top: -7px;
 
     min-height: 250px;
-    background-image: url("/dist/images/backgrounds/rings.jpg");
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: #DDDDDD;
     padding: 30px;
 
 }
