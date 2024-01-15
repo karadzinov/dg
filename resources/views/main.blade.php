@@ -18,11 +18,11 @@
                             <div class="carousel-caption">
 
                                 <h5>Eдинствениот свадбен планер кој ви е потребен</h5>
-                                <div class="box-1">
+                                <div class="box-1 scroll-to">
                                     <div class="butt btn-one">
                                         <span>ДОЗНАЈ ПОВЕЌЕ</span>
                                     </div>
-                                    <div class="arrow"></div>
+                                    <div class="arrow scroll-to"></div>
                                 </div>
 
 
@@ -281,6 +281,13 @@
             check_from_top_de();
         });
 
+
+        $(".scroll-to").click(function() {
+            window.scrollTo({
+                top: 900,
+                behavior: "smooth",
+            });
+        })
 
     </script>
 
