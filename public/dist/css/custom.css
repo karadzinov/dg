@@ -460,6 +460,8 @@ div[class*=box] {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
+    border-radius: 20px;
+    border: 1px solid #DDDDDD;
 }
 
 .text-coming-soon {
