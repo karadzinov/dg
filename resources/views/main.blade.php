@@ -110,7 +110,7 @@
         </div>
 
 
-        <section class="slice-lg sct-color-1">
+        <section class="slice-lg sct-color-1 mt-2">
             <div class="container-fluid">
 
 
@@ -138,7 +138,10 @@
                         <div class="swiper-slide animate-on-scroll fadeIn" data-wow-delay="0.6s"
                              style="width: 450px; transform: translate3d(0px, 0px, -600px) rotateX(0deg) rotateY(0deg); z-index: -1; transition-duration: 0ms; visibility: visible; animation-delay: 0.6s; animation-name: fadeIn;">
                             <div class="block block--style-5 mb-0">
-                                <div class="kartichka image1">
+                                <div class="border-wrapper">
+                                    <div class="border"></div>
+                                    <div class="kartichka image1">
+                                    </div>
 
                                 </div>
                             </div>
