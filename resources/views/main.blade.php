@@ -9,12 +9,13 @@
                     <div class="carousel-inner">
 
                         <div class="carousel-item active">
-                            <div class="slider-image" style="background-image: url('/dist/images/backgrounds/background.jpg');"></div>
-                           <!--
-                            <video class="slider-image" autoplay="" muted="" playsinline="" loop="">
-                                <source src="/video/output.mp4" type="video/mp4">
-                            </video>
-                            -->
+                            <div class="slider-image"
+                                 style="background-image: url('/dist/images/backgrounds/background.jpg');"></div>
+                            <!--
+                             <video class="slider-image" autoplay="" muted="" playsinline="" loop="">
+                                 <source src="/video/output.mp4" type="video/mp4">
+                             </video>
+                             -->
                             <div class="carousel-caption">
 
                                 <h5>Eдинствениот свадбен планер кој ви е потребен</h5>
@@ -24,7 +25,6 @@
                                     </div>
                                     <div class="arrow scroll-to"></div>
                                 </div>
-
 
 
                             </div>
@@ -42,7 +42,6 @@
             <div class="col-12 text-center">
 
                 <h1 class="title-gradient">Ваш е свадбениот план, се останато препуштете ни нам.</h1>
-
 
 
             </div>
@@ -120,11 +119,13 @@
                      data-swiper-items="3" data-swiper-space-between="0" data-swiper-sm-items="2"
                      data-swiper-sm-space-between="0"
                      data-swiper-xs-items="1" data-swiper-xs-space-between="0" style="cursor: grab;">
-                    <div class="swiper-wrapper" style="transform: translate3d(-375px, 0px, 0px); transition-duration: 0ms;">
+                    <div class="swiper-wrapper"
+                         style="transform: translate3d(-375px, 0px, 0px); transition-duration: 0ms;">
                         <div class="swiper-slide animate-on-scroll fadeIn" data-wow-delay="0.9s"
                              style="width: 450px; transform: translate3d(0px, 0px, -900px) rotateX(0deg) rotateY(0deg); z-index: -2; transition-duration: 0ms; visibility: visible; animation-delay: 0.9s; animation-name: fadeIn;">
                             <div class="block block--style-5 mb-0">
                                 <div class="block-image">
+                                    <div class="text-coming-soon">Наскоро</div>
                                     <div class="kartichka image2">
 
                                     </div>
@@ -148,6 +149,7 @@
                         <div class="swiper-slide animate-on-scroll fadeIn" data-wow-delay="0.6s"
                              style="width: 450px; transform: translate3d(0px, 0px, -600px) rotateX(0deg) rotateY(0deg); z-index: -1; transition-duration: 0ms; visibility: visible; animation-delay: 0.6s; animation-name: fadeIn;">
                             <div class="block block--style-5 mb-0">
+                                <div class="text-coming-soon">Наскоро</div>
                                 <div class="kartichka image3">
 
                                 </div>
@@ -157,18 +159,18 @@
                         </div>
 
 
-
                     </div>
                 </div>
             </div>
         </section>
 
 
-
     </div>
 
 
-    <button class="btn  btn-outline-dark-light p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <button
+        class="btn  btn-outline-dark-light p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn"
+        type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         <i class="icon ti ti-phone-call fs-7"></i>
     </button>
 
@@ -183,12 +185,8 @@
         <div class="offcanvas-body" data-simplebar style="height: calc(100vh - 80px)">
 
 
-
-
-
         </div>
     </div>
-
 
 @endsection
 @section('scripts')
@@ -275,12 +273,17 @@
         });
 
 
-        $(".scroll-to").click(function() {
+        $(".scroll-to").click(function () {
             window.scrollTo({
                 top: 900,
                 behavior: "smooth",
             });
         })
+
+
+        $(".image1").on("click", function () {
+            window.location = '/invitation/create';
+        });
 
     </script>
 
