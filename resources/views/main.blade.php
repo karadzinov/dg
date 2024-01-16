@@ -116,8 +116,8 @@
 
 
                 <div class="swiper-container-coverflow swiper-container-horizontal swiper-container-3d"
-                     data-swiper-initial-slide="3"
-                     data-swiper-items="5" data-swiper-space-between="0" data-swiper-sm-items="2"
+                     data-swiper-initial-slide="1"
+                     data-swiper-items="3" data-swiper-space-between="0" data-swiper-sm-items="2"
                      data-swiper-sm-space-between="0"
                      data-swiper-xs-items="1" data-swiper-xs-space-between="0" style="cursor: grab;">
                     <div class="swiper-wrapper" style="transform: translate3d(-375px, 0px, 0px); transition-duration: 0ms;">
@@ -145,49 +145,17 @@
                             <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
                         </div>
 
-                        <div class="swiper-slide animate-on-scroll fadeIn swiper-slide-prev" data-wow-delay="0.3s"
-                             style="width: 450px; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
+                        <div class="swiper-slide animate-on-scroll fadeIn" data-wow-delay="0.6s"
+                             style="width: 450px; transform: translate3d(0px, 0px, -600px) rotateX(0deg) rotateY(0deg); z-index: -1; transition-duration: 0ms; visibility: visible; animation-delay: 0.6s; animation-name: fadeIn;">
                             <div class="block block--style-5 mb-0">
                                 <div class="kartichka image3">
 
                                 </div>
                             </div>
-                            <div class="swiper-slide-shadow-left" style="opacity: 1; transition-duration: 0ms;"></div>
+                            <div class="swiper-slide-shadow-left" style="opacity: 2; transition-duration: 0ms;"></div>
                             <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
                         </div>
 
-                        <div class="swiper-slide animate-on-scroll fadeIn swiper-slide-prev" data-wow-delay="0.3s"
-                             style="width: 450px; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
-                            <div class="block block--style-5 mb-0">
-                                <div class="kartichka image4">
-
-                                </div>
-                            </div>
-                            <div class="swiper-slide-shadow-left" style="opacity: 1; transition-duration: 0ms;"></div>
-                            <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
-                        </div>
-
-                        <div class="swiper-slide animate-on-scroll fadeIn swiper-slide-prev" data-wow-delay="0.3s"
-                             style="width: 450px; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
-                            <div class="block block--style-5 mb-0">
-                                <div class="kartichka image5">
-
-                                </div>
-                            </div>
-                            <div class="swiper-slide-shadow-left" style="opacity: 1; transition-duration: 0ms;"></div>
-                            <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
-                        </div>
-
-                        <div class="swiper-slide animate-on-scroll fadeIn swiper-slide-prev" data-wow-delay="0.3s"
-                             style="width: 450px; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
-                            <div class="block block--style-5 mb-0">
-                                <div class="kartichka image6">
-
-                                </div>
-                            </div>
-                            <div class="swiper-slide-shadow-left" style="opacity: 1; transition-duration: 0ms;"></div>
-                            <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
-                        </div>
 
 
                     </div>

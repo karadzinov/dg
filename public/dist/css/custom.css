@@ -463,14 +463,14 @@ div[class*=box] {
 }
 
 .image2 {
-    background-image: url('/dist/images/backgrounds/template1.jpg');
+    background-image: url('/dist/images/backgrounds/template2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
 }
 
 .image3 {
-    background-image: url('/dist/images/backgrounds/template1.jpg');
+    background-image: url('/dist/images/backgrounds/template3.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
