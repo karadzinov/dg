@@ -803,8 +803,40 @@ div[class*=box] {
 
 @media only screen and (max-width: 600px) {
 
+    .row {
+        padding: 0;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .col-12 {
+        padding: 0;
+    }
+
+    .col-md-6 {
+        padding: 5px;
+    }
+
+    .wizard-content .wizard .steps ul li {
+        width: 33%;
+    }
+
+    h3 {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .card-title {
+        text-align: center;
+    }
+
+
+
     .title-gradient {
         font-size: 30px;
+        padding: 10px;
     }
 
     .gallery {

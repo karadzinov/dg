@@ -126,9 +126,7 @@
                             <div class="block block--style-5 mb-0">
                                 <div class="block-image">
                                     <div class="text-coming-soon">Наскоро</div>
-                                    <div class="kartichka image2">
-
-                                    </div>
+                                    <div class="kartichka image2"></div>
                                 </div>
                             </div>
                             <div class="swiper-slide-shadow-left" style="opacity: 3; transition-duration: 0ms;"></div>
@@ -140,9 +138,7 @@
                             <div class="block block--style-5 mb-0">
                                 <div class="border-wrapper">
                                     <div class="border"></div>
-                                    <div class="kartichka image1">
-                                    </div>
-
+                                    <div class="kartichka image1"></div>
                                 </div>
                             </div>
                             <div class="swiper-slide-shadow-left" style="opacity: 2; transition-duration: 0ms;"></div>
@@ -153,9 +149,7 @@
                              style="width: 450px; transform: translate3d(0px, 0px, -600px) rotateX(0deg) rotateY(0deg); z-index: -1; transition-duration: 0ms; visibility: visible; animation-delay: 0.6s; animation-name: fadeIn;">
                             <div class="block block--style-5 mb-0">
                                 <div class="text-coming-soon">Наскоро</div>
-                                <div class="kartichka image3">
-
-                                </div>
+                                <div class="kartichka image3"></div>
                             </div>
                             <div class="swiper-slide-shadow-left" style="opacity: 2; transition-duration: 0ms;"></div>
                             <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
