@@ -368,6 +368,7 @@
         @yield('content')
     </div>
     <!-- Main wrapper End -->
+    @include('partials.footer')
 </div>
 
 
