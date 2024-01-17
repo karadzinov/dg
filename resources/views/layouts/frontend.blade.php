@@ -137,7 +137,7 @@
                                                             <span class="hide-menu">&nbsp;Фотографи</span></h6>
                                                     </div>
                                                 </a>
-                                                <a href="./app-notes.html"
+                                                <a href="/"
                                                    class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                                                     <div class="d-inline-block">
                                                         <h6 class="mb-1 fw-semibold bg-hover-primary"><span>

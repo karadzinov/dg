@@ -1,40 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <div id="myCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel"
-                 style="margin-top: 140px;">
-                <ul class="carousel-indicators">
-                    <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active"
-                        aria-current="true"></li>
-                </ul>
-                <div class="carousel-inner">
 
-                    <div class="carousel-item active">
-                        <div class="slider-image"
-                             style="background-image: url('/dist/images/flowers.png');"></div>
-
-                        <div class="carousel-caption d-md-block">
-                            <h4>Драги Гости</h4>
-                            <h5>вашиот единствен свадбен планер</h5>
-
-                        </div>
-
-                    </div>
-
-
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Page Start -->
     <div class="container-fluid">
