@@ -101,7 +101,8 @@ Route::middleware(['web'])->group(function () {
 
     // Frontend routes
     Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
-
+    Route::get('/privacy', [\App\Http\Controllers\FrontEndController::class, 'privacy'])->name('privacy');
+    Route::get('/terms', [\App\Http\Controllers\FrontEndController::class, 'terms'])->name('terms');
     Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
     Route::get('/restaurants/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileRestaurants'])->name('restaurants.profile');
     Route::get('/musicians', [\App\Http\Controllers\FrontEndController::class, 'musicians'])->name('frontend.musicians');
@@ -137,6 +138,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::post('/confirm', [\App\Http\Controllers\FrontEndController::class, 'confirm'])->name('confirm');
     Route::post('/plus_one', [\App\Http\Controllers\FrontEndController::class, 'plusOne'])->name('plus_one');
+
 });
 
 

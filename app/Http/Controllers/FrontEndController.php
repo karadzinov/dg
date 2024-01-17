@@ -231,4 +231,14 @@ class FrontEndController extends Controller
 
         return view('invitations.index')->with($data);
     }
+
+    public function privacy()
+    {
+        return view('privacy');
+    }
+
+    public function terms()
+    {
+        return view('terms');
+    }
 }

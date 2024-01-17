@@ -17,8 +17,8 @@
             <div class="col-md mb-3 mb-md-0">
                 <!-- List -->
                 <ul class="list-inline list-px-2 mb-0">
-                    <li class="list-inline-item"><a class="link link-light link-light-75" href="#">Приватност</a></li>
-                    <li class="list-inline-item"><a class="link link-light link-light-75" href="#">Услови на користењее</a></li>
+                    <li class="list-inline-item"><a class="link link-light link-light-75" href="/privacy">Приватност</a></li>
+                    <li class="list-inline-item"><a class="link link-light link-light-75" href="/terms">Услови на користење</a></li>
 
 
                 </ul>
