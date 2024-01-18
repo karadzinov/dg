@@ -64,8 +64,8 @@
             <ul class="text-center">
                 <li class="text-center">
                     <a class="text-nowrap nav-link">
-                        <img src="/dist/images/logo.svg" class="dark-logo" width="160" alt=""/>
-                        <img src="/dist/images/logo.svg" class="light-logo" width="160" alt=""/>
+                        <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="80" alt=""/>
+
                     </a>
                 </li>
             </ul>
@@ -77,7 +77,7 @@
          aria-labelledby="offcanvasWithBothOptionsLabel">
         <nav class="sidebar-nav scroll-sidebar">
             <div class="offcanvas-header justify-content-between">
-                <img src="/dist/images/logo.svg" width="160" alt="" class="img-fluid">
+                <img src="/dist/images/logos/logo-main.png" width="60" alt="" class="img-fluid">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
         </nav>
