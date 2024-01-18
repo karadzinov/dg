@@ -274,7 +274,7 @@
 
         $(".scroll-to").click(function () {
             window.scrollTo({
-                top: 900,
+                top: 800,
                 behavior: "smooth",
             });
         })
