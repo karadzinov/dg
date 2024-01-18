@@ -193,12 +193,16 @@
 @section('scripts')
     <script>
         $('document').ready(function () {
+
+
+
+
             let mr = '';
             let mrs = '';
             $("#mr").on("change paste keyup", function () {
                 mr = $(this).val().toLowerCase();
 
-                $("#basic-url").val(mrs + "-" + mr);
+                $("#basic-url").val(toLatin(mrs + "-" + mr));
 
                 var data = $("#basic-url").val();
 
@@ -228,7 +232,7 @@
             $("#mrs").on("change paste keyup", function () {
                 mrs = $(this).val().toLowerCase();
 
-                $("#basic-url").val(mrs + "-" + mr);
+                $("#basic-url").val(toLatin(mrs + "-" + mr));
 
                 var data = $("#basic-url").val();
 
@@ -442,8 +446,12 @@
     <script>
 
         $('document').ready(function () {
+
+
+
+
             $("#basic-url").on("change paste keyup", function () {
-                var data = $(this).val();
+                var data = toLatin($(this).val());
 
                 $.ajax({
                     url: "{{ route('invitations.checkUrl') }}",
