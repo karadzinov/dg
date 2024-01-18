@@ -95,6 +95,24 @@
                                     <div class="col-md-2"></div>
                                     <div class="col-md-8">
                                         <div class="card">
+                                            <div id="female-upload">
+                                                <div class="dz-message" data-dz-message><span>Изберете слика за невестата</span>
+                                                </div>
+                                                <div class="fallback">
+                                                    <input name="file" type="file"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <input name="male_photo" id="female_photo" hidden type="text" value=""/>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <div class="card">
                                             <div id="male-upload">
                                                 <div class="dz-message" data-dz-message><span>Изберете слика за младоженецот</span>
                                                 </div>
@@ -106,24 +124,7 @@
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
-                                <input name="male_photo" id="male_photo" hidden type="text" value=""/>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                        <div class="card">
-                                            <div id="female-upload">
-                                                <div class="dz-message" data-dz-message><span>Изберете слика за невестата</span>
-                                                </div>
-                                                <div class="fallback">
-                                                    <input name="file" type="file"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                                <input name="female_photo" id="female_photo" hidden type="text" value=""/>
+                                <input name="female_photo" id="male_photo" hidden type="text" value=""/>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-2"></div>
@@ -151,11 +152,12 @@
                                         <br>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12 col-lg-12 text-center">
+                                        <div class="col-md-12 col-lg-12 text-center mb-10">
 
-                                                 <button class="btn btn-block btn-primary" onclick="event.preventDefault();
+                                                 <button class="btn btn-block button-large btn-primary" onclick="event.preventDefault();
                                               $('#check_form').append(`<input type='hidden' name='template' checked value='template_a' />`);
                                   document.getElementById('check_form').submit();"><span id="mainurl"></span></button>
+
 
 
                                         </div>
