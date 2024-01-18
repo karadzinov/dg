@@ -14,10 +14,12 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\isEmpty;
+use Illuminate\Log\Logger;
 
 class InvitationController extends Controller
 {
@@ -43,6 +45,7 @@ class InvitationController extends Controller
     public function store(Request $request)
     {
 
+        Log::debug($request->all());
         $validator = Validator::make($request->all(), [
             'mr' => 'required',
             'mrs' => 'required',

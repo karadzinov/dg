@@ -436,6 +436,9 @@
             $("#basic-url").on("change paste keyup", function () {
                 var data = $(this).val();
 
+
+                $("#mainurl").text("https://dragigosti.com/" + toLatin($(this).val()));
+
                 $.ajax({
                     url: "{{ route('invitations.checkUrl') }}",
                     method: 'post',
