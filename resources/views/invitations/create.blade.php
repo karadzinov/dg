@@ -21,7 +21,7 @@
                         <h6 class="card-subtitle mb-3"></h6>
                         <form action="{{ route('invitations.store') }}" method="post" id="check_form"
                               class="tab-wizard wizard-circle"
-                              enctype="multipart/form-data">
+                              enctype="multipart/form-data" name="invitations">
                             @csrf
                             <!-- Step 1 -->
                             <h6>Чекор 1</h6>
@@ -32,7 +32,7 @@
                                             <label for="mrs" class="form-label">Име на невеста</label>
                                             <input type="text"
                                                    class="form-control "
-                                                   name="mrs" id="mrs" placeholder=""  value=""/>
+                                                   name="mrs" id="mrs" placeholder=""  value="" onkeyup="transcrire()" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -40,7 +40,7 @@
                                             <label for="mr" class="form-label">Име на младоженец</label>
                                             <input type="text"
                                                    class="form-control"
-                                                   name="mr" id="mr" placeholder=""  value=""/>
+                                                   name="mr" id="mr" placeholder=""  value="" onkeyup="transcrireMr()"/>
                                         </div>
                                     </div>
                                 </div>
