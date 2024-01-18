@@ -234,7 +234,7 @@
         let scrollVal;
 
         if (window.mobileCheck()) {
-            scrollVal = 500;
+            scrollVal = 150;
 
             div1 = $('#musicians');
             div2 = $('#services');
@@ -252,7 +252,7 @@
                 window.location = '/musicians';
             });
         } else {
-            scrollVal = 700;
+            scrollVal = 400;
         }
 
 
