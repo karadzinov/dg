@@ -10,12 +10,12 @@
     <!-- Required Meta Tag -->
     <!-- --------------------------------------------------- -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="handheldfriendly" content="true"/>
     <meta name="MobileOptimized" content="width"/>
     <meta name="description" content="Драги гости - вашиот единствен свадбен планер"/>
     <meta name="author" content=""/>
-    <meta name="keywords" content="Mordenize"/>
+    <meta name="keywords" content="свадбен планер, онлајн покани, покани за свадба"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <x-embed-styles/>
     <!-- --------------------------------------------------- -->
