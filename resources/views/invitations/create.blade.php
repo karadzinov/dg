@@ -32,7 +32,7 @@
                                             <label for="mrs" class="form-label">Име на невеста</label>
                                             <input type="text"
                                                    class="form-control "
-                                                   name="mrs" id="mrs" placeholder=""  value="" onkeyup="transcrire()" />
+                                                   name="mrs" id="mrs" placeholder="" value="" onkeyup="transcrire()"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -40,27 +40,34 @@
                                             <label for="mr" class="form-label">Име на младоженец</label>
                                             <input type="text"
                                                    class="form-control"
-                                                   name="mr" id="mr" placeholder=""  value="" onkeyup="transcrireMr()"/>
+                                                   name="mr" id="mr" placeholder="" value="" onkeyup="transcrireMr()"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="@if(auth()->user()) col-md-12 @else col-md-6 @endif">
                                         <div class="mb-3">
                                             <label for="date" class="form-label">Изберете датум</label>
                                             <input type="date"
                                                    class="form-control"
-                                                   name="date" id="date" placeholder=""  value=""/>
+                                                   name="date" id="date" placeholder="" value=""/>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Внесете го вашиот е-маил</label>
-                                            <input type="email"
-                                                   class="form-control"
-                                                   name="email" id="email" placeholder=""  value=""/>
+                                    @if(auth()->user())
+                                        <input type="hidden"
+                                               class="form-control"
+                                               name="email" id="email" placeholder=""
+                                               value="{{ auth()->user()->email }}"/>
+                                    @else
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Внесете го вашиот е-маил</label>
+                                                <input type="email"
+                                                       class="form-control"
+                                                       name="email" id="email" placeholder="" value=""/>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                                 <div class="row">
                                     <div class="fv-row mb-10">
@@ -92,7 +99,7 @@
                                                 <div class="dz-message" data-dz-message><span>Изберете слика за младоженецот</span>
                                                 </div>
                                                 <div class="fallback">
-                                                    <input name="file"  type="file"/>
+                                                    <input name="file" type="file"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +116,7 @@
                                                 <div class="dz-message" data-dz-message><span>Изберете слика за невестата</span>
                                                 </div>
                                                 <div class="fallback">
-                                                    <input name="file"  type="file"/>
+                                                    <input name="file" type="file"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -126,7 +133,7 @@
                                                 <div class="dz-message" data-dz-message>
                                                     <span>Изберете заедничка слика</span></div>
                                                 <div class="fallback">
-                                                    <input name="file"  type="file"/>
+                                                    <input name="file" type="file"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,44 +147,19 @@
                             <section>
                                 <div class="row">
                                     <div class="text-center">
-                                        <h5>Изберете темплејт</h5>
+                                        <h5>Продолжете кон уредување на вашата веб страна</h5>
                                         <br>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 col-lg-6">
-                                            <div class="card blog position-relative overflow-hidden hover-img"
-                                                 style="background-image: url(/images/templates/template-a.png); background-size: cover"
-                                                 onclick="event.preventDefault();
+                                        <div class="col-md-12 col-lg-12 text-center">
+
+                                                 <button class="btn btn-block btn-primary" onclick="event.preventDefault();
                                               $('#check_form').append(`<input type='hidden' name='template' checked value='template_a' />`);
-                                  document.getElementById('check_form').submit();">
-                                                <div class="card-body position-relative">
-                                                    <div class="d-flex flex-column justify-content-between h-100">
-                                                        <div>
-                                                            <a href="{{ route('invitations.template_a') }}"
-                                                               class="fs-7 my-4 fw-semibold text-white d-block lh-sm">Темплејт
-                                                                А</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                  document.getElementById('check_form').submit();"><span id="mainurl"></span></button>
+
+
                                         </div>
-                                        <div class="col-md-6 col-lg-6">
-                                            <div class="card blog position-relative overflow-hidden hover-img"
-                                                 style="background-image: url(/images/maticno.png); background-size: cover"
-                                                 onclick="event.preventDefault();
-                                             $('#check_form').append(`<input type='hidden' name='template' checked value='template_b' />`);
-                                  document.getElementById('check_form').submit();">
-                                                <div class="card-body position-relative">
-                                                    <div class="d-flex flex-column justify-content-between h-100">
-                                                        <div>
-                                                            <a href="{{ route('invitations.template_a') }}"
-                                                               class="fs-7 my-4 fw-semibold text-white d-block lh-sm">Темплејт
-                                                                B</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <br>
                             </section>
@@ -195,14 +177,15 @@
         $('document').ready(function () {
 
 
-
-
-            let mr = '';
-            let mrs = '';
+            let mr = $("#mr").val();
+            let mrs = $("#mrs").val();
             $("#mr").on("change paste keyup", function () {
+
                 mr = $(this).val().toLowerCase();
 
                 $("#basic-url").val(toLatin(mrs + "-" + mr));
+                $("#mainurl").text("https://dragigosti.com/" + toLatin(mrs + "-" + mr));
+
 
                 var data = $("#basic-url").val();
 
@@ -233,6 +216,8 @@
                 mrs = $(this).val().toLowerCase();
 
                 $("#basic-url").val(toLatin(mrs + "-" + mr));
+
+                $("#mainurl").text("https://dragigosti.com/" + toLatin(mrs + "-" + mr));
 
                 var data = $("#basic-url").val();
 
@@ -448,10 +433,8 @@
         $('document').ready(function () {
 
 
-
-
             $("#basic-url").on("change paste keyup", function () {
-                var data = toLatin($(this).val());
+                var data = $(this).val();
 
                 $.ajax({
                     url: "{{ route('invitations.checkUrl') }}",
