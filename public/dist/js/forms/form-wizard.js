@@ -150,7 +150,6 @@ $(".tab-wizard").steps({
         female_photo: {required: true},
         male_photo: {required: true},
         group_photo: {required: true},
-
         // compound rule
         email: {
             required: true,
