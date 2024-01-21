@@ -9,27 +9,27 @@
 <head>
     <meta charset="utf-8">
     <title>Драги Гости</title>
-    <meta name="description" content="Покана за свадбата на Зоки и Ане">
+    <meta name="description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}">
     <meta name="author" content="Martin Karadzinov">
     <meta charset="utf-8"/>
-    <meta name="description" content="Покана за свадбата на Зоки и Ане"/>
+    <meta name="description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}"/>
     <meta name="Author" content="Martin Karadzinov"/>
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="Драги гости">
     <meta itemprop="description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}">
-    <meta itemprop="image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}">
+    <meta itemprop="image" content="{{ env('SITE_NAME').'/images/invitations/'.$invitation->group_photo}}">
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="https://dragigosti.com">
     <meta name="twitter:title" content="Драги гости">
     <meta name="twitter:description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}">
     <meta name="twitter:creator" content="@tiggaz">
-    <meta name="twitter:image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}">
+    <meta name="twitter:image" content="{{ env('SITE_NAME').'/images/invitations/'.$invitation->group_photo}}">
     <!-- Open Graph data -->
     <meta property="og:title" content="Драги гости"/>
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="https://dragigosti.com"/>
-    <meta property="og:image" content="{{ env('SITE_NAME').'/images/couple.jpg' }}"/>
+    <meta property="og:image" content="{{ env('SITE_NAME').'/images/invitations/'.$invitation->group_photo}}"/>
     <meta property="og:description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}"/>
     <meta property="og:site_name" content="Драги гости"/>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -53,7 +53,13 @@
     <link href='https://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
-
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TS8GHQQ2');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body class="no-trans front-page">
@@ -429,5 +435,19 @@
     </script>
 @endif
 
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS8GHQQ2"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7XM5SM8DV"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-H7XM5SM8DV');
+</script>
 </body>
 </html>
