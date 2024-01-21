@@ -20,7 +20,7 @@
                         <h4 class="card-title mb-0">Внесете ги следниве информации</h4>
                         <h6 class="card-subtitle mb-3"></h6>
                         <form action="{{ route('invitations.store') }}" method="post" id="check_form"
-                              class="tab-wizard wizard-circle"
+                              class="tab-wizard wizard-circle tab-validation-wizard"
                               enctype="multipart/form-data" name="invitations">
                             @csrf
                             <!-- Step 1 -->
@@ -32,7 +32,7 @@
                                             <label for="mrs" class="form-label">Име на невеста</label>
                                             <input type="text"
                                                    class="form-control "
-                                                   name="mrs" id="mrs" placeholder="" value="" onkeyup="transcrire()"/>
+                                                   name="mrs" id="mrs" placeholder="" value="" onkeyup="transcrire()" required/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -40,7 +40,7 @@
                                             <label for="mr" class="form-label">Име на младоженец</label>
                                             <input type="text"
                                                    class="form-control"
-                                                   name="mr" id="mr" placeholder="" value="" onkeyup="transcrireMr()"/>
+                                                   name="mr" id="mr" placeholder="" value="" onkeyup="transcrireMr()" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                             <label for="date" class="form-label">Изберете датум</label>
                                             <input type="date"
                                                    class="form-control"
-                                                   name="date" id="date" placeholder="" value=""/>
+                                                   name="date" id="date" placeholder="" value="" required/>
                                         </div>
                                     </div>
                                     @if(auth()->user())
@@ -64,7 +64,7 @@
                                                 <label for="email" class="form-label">Внесете го вашиот е-маил</label>
                                                 <input type="email"
                                                        class="form-control"
-                                                       name="email" id="email" placeholder="" value=""/>
+                                                       name="email" id="email" placeholder="" value="" required/>
                                             </div>
                                         </div>
                                     @endif
@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
-                                <input name="male_photo" id="female_photo" hidden type="text" value=""/>
+                                <input name="female_photo" id="female_photo" class="form-control" style="visibility: hidden;" type="text" value="" required/>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-2"></div>
@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
-                                <input name="female_photo" id="male_photo" hidden type="text" value=""/>
+                                <input name="male_photo" class="form-control" style="visibility: hidden;" id="male_photo" type="text" value="" required/>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-2"></div>
@@ -134,14 +134,14 @@
                                                 <div class="dz-message" data-dz-message>
                                                     <span>Изберете заедничка слика</span></div>
                                                 <div class="fallback">
-                                                    <input name="file" type="file"/>
+                                                    <input name="file" type="file" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
                                 </div>
-                                <input name="group_photo" id="group_photo" hidden type="text" value=""/>
+                                <input name="group_photo" id="group_photo" class="form-control" style="visibility: hidden;" type="text" value="" required/>
                             </section>
                             <!-- Step 3 -->
                             <h6>Чекор 3</h6>
