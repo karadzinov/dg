@@ -20,7 +20,7 @@
     <meta itemprop="image" content="{{ env('SITE_NAME').'/images/invitations/'.$invitation->group_photo}}">
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="https://dragigosti.com">
+    <meta name="twitter:site" content="{{  url()->full() }}">
     <meta name="twitter:title" content="Драги гости">
     <meta name="twitter:description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}">
     <meta name="twitter:creator" content="@tiggaz">
@@ -28,14 +28,14 @@
     <!-- Open Graph data -->
     <meta property="og:title" content="Драги гости"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://dragigosti.com"/>
+    <meta property="og:url" content="{{  url()->full() }}"/>
     <meta property="og:image" content="{{ env('SITE_NAME').'/images/invitations/'.$invitation->group_photo}}"/>
     <meta property="og:description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}"/>
     <meta property="og:site_name" content="Драги гости"/>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <!-- Mobile Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="/dist/images/2.svg"/>
