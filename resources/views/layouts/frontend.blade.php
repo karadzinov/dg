@@ -382,12 +382,12 @@
 <!-- ---------------------------------------------- -->
 <!-- Import Js Files -->
 <!-- ---------------------------------------------- -->
-<script src="/dist/libs/jquery/dist/jquery.min.js"></script>
-<script src="/dist/libs/simplebar/dist/simplebar.min.js"></script>
-<script src="/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/simplebar.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
 <!-- ---------------------------------------------- -->
 <!-- core files -->
-<script src="/dist/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
 <!-- ---------------------------------------------- -->
 <script src="/dist/js/app.min.js"></script>
 <script src="/dist/js/app.horizontal.init.js"></script>
@@ -411,7 +411,7 @@
 <script src="/js/swiper.min.js"></script>
 <script src="/js/boomerang.min.js"></script>
 <script src="/js/custom.js"></script>
-<script src="/dist/js/car-replace.js"></script>
+
 <!-- ---------------------------------------------- -->
 
 
