@@ -110,6 +110,10 @@ $("#example-vertical").steps({
 
 
 
+
+
+
+
 //Custom design form example
 $(".tab-wizard").steps({
     headerTag: "h6",
@@ -122,8 +126,12 @@ $(".tab-wizard").steps({
     onStepChanging: function (event, currentIndex, newIndex) {
         // Allways allow previous action even if the current form is not valid!
         if (currentIndex > newIndex) {
-            return true;
+            return false;
         }
+
+
+
+
         // Forbid next action on "Warning" step if the user is to young
         // Needed in some cases if the user went back (clean up)
         if (currentIndex < newIndex) {
@@ -150,11 +158,15 @@ $(".tab-wizard").steps({
         female_photo: {required: true},
         male_photo: {required: true},
         group_photo: {required: true},
+        basic_url: {
+            required: true,
+            checkUrl: true,
+        },
         // compound rule
         email: {
             required: true,
             email: true
-        }
+        },
     },
     messages: {
         mr: "Ве молиме внесете го името на младоженецот",
@@ -163,6 +175,8 @@ $(".tab-wizard").steps({
         female_photo: "Ве молиме одберете слика за невестата",
         male_photo: "Ве молиме одберете слика за младоженецот",
         group_photo: "Ве молиме одберете заедничка слика",
+        basic_url: "Ве молиме променете го линкот",
+        date: "Ве молиме изберете датум поголем од: " + new Date().getDate() + "." + new Date().getMonth()  + 1 + "." + new Date().getFullYear()
     }
 });
 

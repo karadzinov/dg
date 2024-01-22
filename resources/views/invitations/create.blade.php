@@ -50,7 +50,7 @@
                                             <label for="date" class="form-label">Изберете датум</label>
                                             <input type="date"
                                                    class="form-control"
-                                                   name="date" id="date" placeholder="" value="" required/>
+                                                   name="date" id="date" placeholder="" value="" required min="{{ date('Y-m-d') }}"/>
                                         </div>
                                     </div>
                                     @if(auth()->user())
@@ -72,13 +72,15 @@
                                 <div class="row">
                                     <div class="fv-row mb-10">
                                         <!--begin::Label-->
-                                        <label for="basic-url" class="form-label">Вашиот линк до поканата</label>
+
+                                        <label for="basic_url" class="form-label">Вашиот линк до поканата</label>
+                                        <label id="basic_url-error" class="error" for="basic_url"></label>
                                         <!--end::Label-->
                                         <div class="input-group mb-5">
                                             <span class="input-group-text"
                                                   id="basic-addon3">https://dragigosti.com/</span>
-                                            <input type="text" class="form-control" id="basic-url"
-                                                   aria-describedby="basic-addon3" name="basic-url">
+                                            <input type="text" class="form-control" id="basic_url"
+                                                   aria-describedby="basic-addon3" name="basic_url" data-valid="false">
                                             <span class="input-group-text" style="background-color: lightgreen"
                                                   id="valid">
                                             <i style="color: black" class="ti ti-check"></i></span>
@@ -185,11 +187,11 @@
 
                 mr = $(this).val().toLowerCase();
 
-                $("#basic-url").val(toLatin(mrs + "-" + mr));
+                $("#basic_url").val(toLatin(mrs + "-" + mr));
                 $("#mainurl").text("https://dragigosti.com/" + toLatin(mrs + "-" + mr));
 
 
-                var data = $("#basic-url").val();
+                var data = $("#basic_url").val();
 
                 $.ajax({
                     url: "{{ route('invitations.checkUrl') }}",
@@ -202,10 +204,12 @@
                     },
                     success: function (response) {
                         if (response.status === 'Valid Url Link') {
+                            validInvalid(true);
                             $("#valid").css('display', 'block');
                             $("#not-valid").css('display', 'none');
                         }
                         if (response.status === 'Choose another Url') {
+                            validInvalid(false);
                             $("#valid").css('display', 'none');
                             $("#not-valid").css('display', 'block');
                         }
@@ -217,11 +221,11 @@
             $("#mrs").on("change paste keyup", function () {
                 mrs = $(this).val().toLowerCase();
 
-                $("#basic-url").val(toLatin(mrs + "-" + mr));
+                $("#basic_url").val(toLatin(mrs + "-" + mr));
 
                 $("#mainurl").text("https://dragigosti.com/" + toLatin(mrs + "-" + mr));
 
-                var data = $("#basic-url").val();
+                var data = $("#basic_url").val();
 
                 $.ajax({
                     url: "{{ route('invitations.checkUrl') }}",
@@ -235,9 +239,11 @@
                     success: function (response) {
                         if (response.status === 'Valid Url Link') {
                             $("#valid").css('display', 'block');
+                            validInvalid(true);
                             $("#not-valid").css('display', 'none');
                         }
                         if (response.status === 'Choose another Url') {
+                            validInvalid(false)
                             $("#valid").css('display', 'none');
                             $("#not-valid").css('display', 'block');
                         }
@@ -246,7 +252,48 @@
                 });
             });
 
+            $("#basic_url").on("change paste keyup", function () {
+                var data = $(this).val();
+
+
+                $("#mainurl").text("https://dragigosti.com/" + toLatin($(this).val()));
+
+                $.ajax({
+                    url: "{{ route('invitations.checkUrl') }}",
+                    method: 'post',
+                    data: {
+                        content: data,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                    },
+                    success: function (response) {
+                        if (response.status === 'Valid Url Link') {
+                            validInvalid(true);
+                            $("#valid").css('display', 'block');
+                            $("#not-valid").css('display', 'none');
+                        }
+                        if (response.status === 'Choose another Url') {
+                            validInvalid(false);
+                            $("#valid").css('display', 'none');
+                            $("#not-valid").css('display', 'block');
+                        }
+                    }
+                });
+            });
+
+            function validInvalid(e)
+            {
+                jQuery.validator.addMethod("checkUrl", function() { return e });
+            }
+
+
+            $("a[href$='previous']").hide();
         });
+
+
+
+
 
     </script>
 
@@ -430,46 +477,5 @@
 
     </script>
 
-    <script>
 
-        $('document').ready(function () {
-
-
-            $("#basic-url").on("change paste keyup", function () {
-                var data = $(this).val();
-
-
-                $("#mainurl").text("https://dragigosti.com/" + toLatin($(this).val()));
-
-                $.ajax({
-                    url: "{{ route('invitations.checkUrl') }}",
-                    method: 'post',
-                    data: {
-                        content: data,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-                    },
-                    success: function (response) {
-                        if (response.status === 'Valid Url Link') {
-                            $("#valid").css('display', 'block');
-                            $("#not-valid").css('display', 'none');
-                        }
-                        if (response.status === 'Choose another Url') {
-                            $("#valid").css('display', 'none');
-                            $("#not-valid").css('display', 'block');
-                        }
-                    }
-                });
-            });
-        });
-
-    </script>
-    <script>
-        $('document').ready(function () {
-            let element = $('a[href="#finish"]').val();
-            console.log(element);
-        });
-
-    </script>
 @endsection
