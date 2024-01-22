@@ -165,7 +165,7 @@
                                         </div>
 
                                     </div>
-                                    <br>
+                                </div>
                             </section>
                         </form>
                     </div>

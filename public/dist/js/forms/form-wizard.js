@@ -12,9 +12,6 @@ $(".tab-wizard").steps({
             return false;
         }
 
-
-
-
         // Forbid next action on "Warning" step if the user is to young
         // Needed in some cases if the user went back (clean up)
         if (currentIndex < newIndex) {
@@ -35,8 +32,14 @@ $(".tab-wizard").steps({
 
     rules: {
         // simple rule, converted to {required:true}
-        mr: {required: true},
-        mrs: {required: true},
+        mr: {
+            required: true,
+            checkUrl: true
+        },
+        mrs: {
+            required: true,
+            checkUrl: true
+        },
         female_photo: {required: true},
         male_photo: {required: true},
         group_photo: {required: true},
