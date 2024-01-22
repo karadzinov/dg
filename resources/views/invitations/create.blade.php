@@ -50,7 +50,7 @@
                                             <label for="date" class="form-label">Изберете датум</label>
                                             <input type="date"
                                                    class="form-control"
-                                                   name="date" id="date" placeholder="" value="" required min="{{ date('Y-m-d') }}"/>
+                                                   name="date" id="date" placeholder="" value="{{ date('Y-m-d',strtotime("-1 days")) }}" required min="{{ date('Y-m-d') }}"/>
                                         </div>
                                     </div>
                                     @if(auth()->user())
