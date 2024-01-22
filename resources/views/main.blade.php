@@ -76,16 +76,16 @@
                 <div>
                     <p class="hex-title">Фотографи</p>
                     <img
-                        src="/images/photo.jpeg"
+                        src="/images/photo.jpg"
                         alt="Photographers" data-link="photographers">
                 </div>
                 <div><img
-                        src="/images/wedding-rings.jpeg"
+                        src="/images/wedding-rings.jpg"
                         alt="Wedding rings">
                 </div>
                 <div id="services">
                     <img
-                        src="/images/services.jpeg"
+                        src="/images/services.jpg"
                         alt="Services">
                 </div>
                 <div id="musicians">
