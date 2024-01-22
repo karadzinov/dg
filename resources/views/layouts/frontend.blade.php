@@ -398,108 +398,22 @@
 <!-- ---------------------------------------------- -->
 <!-- current page js files -->
 <!-- ---------------------------------------------- -->
-<script src="/dist/js/apps/chat.js"></script>
-<script src="/dist/js/moment.js"></script>
-<script src="/dist/js/datepicker.min.js"></script>
-<script src="/dist/js/index.global.min.js"></script>
-<script src="/dist/js/calendar.init.js"></script>
-<script src="/dist/libs/jquery-steps/build/jquery.steps.min.js"></script>
-<script src="/dist/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="/dist/js/forms/form-wizard.js"></script>
-<script src="/dist/libs/quill/dist/quill.min.js"></script>
-<script src="/dist/libs/quill/quill.min.js"></script>
+
+
+
+
+
 <script src="/dist/js/app.init.js"></script>
-<script src="/dist/libs/dropzone/dist/min/dropzone.min.js"></script>
+
+<script src="/js/wow.min.js"></script>
+
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/boomerang.min.js"></script>
 <script src="/js/custom.js"></script>
 <script src="/dist/js/car-replace.js"></script>
 <!-- ---------------------------------------------- -->
-<script>
-    $('document').ready(function () {
-        document.addEventListener("DOMContentLoaded", function () {
-            // Datatables Responsive
-            $("#datatable").DataTable({
-                "filter": false,
-                "length": false
-            });
-        });
-        var toolbarOptions = [
-            ["bold", "underline"],
-            ["link", "blockquote", "code", "image"],
-            [{list: "ordered"}, {list: "bullet"}]
-        ];
-        $('.quill-editor').each(function (i, el) {
-            var el = $(this), id = 'quilleditor-' + i, val = el.val(), editor_height = 200;
-            var div = $('<div/>').attr('id', id).css('height', editor_height + 'px').html(val);
-            el.addClass('d-none');
-            el.parent().append(div);
-            var quill = new Quill('#' + id, {
-                modules: {toolbar: toolbarOptions},
-                theme: 'snow'
-            });
-            quill.on('text-change', function () {
-                console.log(quill.container.firstChild.innerHTML);
-                el.html();
-                $("#description").val(quill.container.firstChild.innerHTML);
-            });
-        });
-    });
-</script>
-<script>
-    $('document').ready(function () {
 
-        $('.clone').on('click', function (e) {
-            e.preventDefault();
-        });
-        $('.remove').on('click', function (e) {
-            e.preventDefault();
-        });
-        var regex = /^(.+?)(\d+)$/i;
-        var cloneIndex = $(".clonedInput").length;
-
-        function clone() {
-            $(".clonedInput").last().clone()
-                .appendTo(".showHere")
-                .attr("id", "clonedInput" + cloneIndex)
-                .find("*")
-                .each(function () {
-                    var id = this.id || "";
-                    var match = id.match(regex) || [];
-                    if (match.length == 3) {
-                        this.id = match[1] + (cloneIndex);
-                    }
-                })
-                .val("")
-                .on('click', 'button.clone', clone)
-                .on('click', 'button.remove', remove);
-            cloneIndex++;
-        }
-
-        function remove() {
-            $(".clonedInput").last().remove();
-        }
-
-        $("button.clone").on("click", clone);
-        $("button.remove").on("click", remove);
-
-    });
-
-</script>
-<script>
-    $('document').ready(function () {
-        // Date Picker
-        jQuery(".mydatepicker, #datepicker, .input-group.date").datepicker();
-        jQuery("#datepicker-autoclose").datepicker({
-            autoclose: true,
-            todayHighlight: true,
-        });
-        jQuery("#date-range").datepicker({
-            toggleActive: true,
-        });
-        jQuery("#datepicker-inline").datepicker({
-            todayHighlight: true,
-        });
-    });
-</script>
 
 
 @yield('scripts')

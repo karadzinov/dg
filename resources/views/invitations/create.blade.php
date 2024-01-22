@@ -177,8 +177,15 @@
     </div>
 @endsection
 @section('scripts')
+
+    <script src="/dist/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="/dist/libs/jquery-steps/build/jquery.steps.min.js"></script>
+    <script src="/dist/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/dist/js/forms/form-wizard.js"></script>
     <script>
+        Dropzone.autoDiscover = false;
         $('document').ready(function () {
+
 
 
             let mr = $("#mr").val();
@@ -297,65 +304,7 @@
 
     </script>
 
-    <script src="/dist/libs/ckeditor/ckeditor.js"></script>
-    <script src="/dist/libs/ckeditor/samples/js/sample.js"></script>
-    <script>
-        //default
-        initSample();
 
-        //inline editor
-        // We need to turn off the automatic editor creation first.
-        CKEDITOR.disableAutoInline = true;
-
-        CKEDITOR.inline("editor2", {
-            extraPlugins: "sourcedialog",
-            removePlugins: "sourcearea",
-        });
-
-        var editor1 = CKEDITOR.replace("editor1", {
-            extraAllowedContent: "div",
-            height: 460,
-        });
-        editor1.on("instanceReady", function () {
-            // Output self-closing tags the HTML4 way, like <br>.
-            this.dataProcessor.writer.selfClosingEnd = ">";
-
-            // Use line breaks for block elements, tables, and lists.
-            var dtd = CKEDITOR.dtd;
-            for (var e in CKEDITOR.tools.extend(
-                {},
-                dtd.$nonBodyContent,
-                dtd.$block,
-                dtd.$listItem,
-                dtd.$tableContent
-            )) {
-                this.dataProcessor.writer.setRules(e, {
-                    indent: true,
-                    breakBeforeOpen: true,
-                    breakAfterOpen: true,
-                    breakBeforeClose: true,
-                    breakAfterClose: true,
-                });
-            }
-            // Start in source mode.
-            this.setMode("source");
-        });
-    </script>
-    <script data-sample="1">
-        CKEDITOR.replace("male_text", {
-            height: 150,
-        });
-    </script>
-    <script data-sample="2">
-        CKEDITOR.replace("female_text", {
-            height: 150,
-        });
-    </script>
-    <script data-sample="3">
-        CKEDITOR.replace("main_text", {
-            height: 150,
-        });
-    </script>
     <script type="text/javascript">
 
         let myMaleDropzone = $("#male-upload").dropzone({
