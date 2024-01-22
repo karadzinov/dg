@@ -170,7 +170,9 @@
                 </li>
             </ul>
             <div class="d-block d-lg-none">
-                <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="60" alt=""/>
+                <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
+                    <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="60" alt=""/>
+                </a>
 
             </div>
             <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
@@ -194,9 +196,7 @@
                                aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <div class="user-profile-img">
-                                        <img src="/dist/images/backgrounds/menu.png"
-                                             width="35" height="35"
-                                             alt=""/>
+                                       <span class="fa fa-user"></span>
                                     </div>
                                 </div>
                             </a>
@@ -208,9 +208,7 @@
                                             <h5 class="mb-0 fs-5 fw-semibold">Профил на корисникот</h5>
                                         </div>
                                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                            <img src="/dist/images/profile/user-1.jpg" class="rounded-circle"
-                                                 width="80" height="80"
-                                                 alt=""/>
+                                            <span class="fa fa-user"></span>
                                             <div class="ms-3">
                                                 <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
                                                 <p class="mb-0 d-flex text-dark align-items-center gap-2">
@@ -274,7 +272,10 @@
          aria-labelledby="offcanvasWithBothOptionsLabel">
         <nav class="sidebar-nav scroll-sidebar">
             <div class="offcanvas-header justify-content-between">
-                <img src="/dist/images/logos/logo-main.png" width="160" alt="" class="img-fluid">
+                <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
+                    <img src="/dist/images/logos/logo-main.png" width="160" alt="" class="img-fluid">
+                </a>
+
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar="" data-simplebar>
