@@ -33,12 +33,10 @@ $(".tab-wizard").steps({
     rules: {
         // simple rule, converted to {required:true}
         mr: {
-            required: true,
-            checkUrl: true
+            required: true
         },
         mrs: {
-            required: true,
-            checkUrl: true
+            required: true
         },
         female_photo: {required: true},
         male_photo: {required: true},
