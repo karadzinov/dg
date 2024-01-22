@@ -50,7 +50,7 @@ class InvitationController extends Controller
             'mr' => 'required',
             'mrs' => 'required',
             'date' => 'required',
-            'basic-url' => 'required',
+            'basic_url' => 'required',
             'template' => 'required',
             'male_photo' => 'required',
             'female_photo' => 'required',
@@ -96,7 +96,7 @@ class InvitationController extends Controller
                 'female_name' => $request->get('mrs'),
                 'date' => $date,
                 'template' => $request->get('template'),
-                'invitation_link' => $request->get('basic-url'),
+                'invitation_link' => $request->get('basic_url'),
                 'male_photo' => $request->get('male_photo'),
                 'female_photo' => $request->get('female_photo'),
                 'group_photo' => $request->get('group_photo'),
@@ -112,7 +112,7 @@ class InvitationController extends Controller
             ]);
 
 
-            $invitation = Invitation::where('invitation_link', $request->get('basic-url'))->first();
+            $invitation = Invitation::where('invitation_link', $request->get('basic_url'))->first();
             $restaurants = Restaurant::all();
 
             $data = [
@@ -135,7 +135,7 @@ class InvitationController extends Controller
             'female_name' => $request->get('mrs'),
             'date' => $request->get('date'),
             'template' => $request->get('template'),
-            'invitation_link' => $request->get('basic-url'),
+            'invitation_link' => $request->get('basic_url'),
             'male_photo' => $request->get('male_photo'),
             'female_photo' => $request->get('female_photo'),
             'group_photo' => $request->get('group_photo'),
@@ -150,7 +150,7 @@ class InvitationController extends Controller
         ]);
 
 
-        $invitation = Invitation::where('invitation_link', $request->get('basic-url'))->first();
+        $invitation = Invitation::where('invitation_link', $request->get('basic_url'))->first();
         $restaurants = Restaurant::all();
 
         $data = [

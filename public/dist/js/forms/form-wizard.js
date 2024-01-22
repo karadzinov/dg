@@ -143,8 +143,7 @@ $(".tab-wizard").steps({
         return $(".tab-wizard").valid();
     },
     onFinished: function (event, currentIndex) {
-        console.log('NESTO');
-        document.getElementById('check_form').submit();
+        $(".tab-wizard").submit();
     },
 }).validate({
     errorPlacement: function errorPlacement(error, element) {
