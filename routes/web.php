@@ -117,6 +117,7 @@ Route::middleware(['web'])->group(function () {
 
     //Invitation routes
     Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
+    Route::get('/invitation/package' , [\App\Http\Controllers\InvitationController::class, 'package'])->name('invitations.package');
     Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
     Route::post('/invitations/{invitation}/save', [\App\Http\Controllers\InvitationController::class, 'saveRestaurantToInvitations'])->name('invitations.saveRestaurant');
     Route::get('/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');

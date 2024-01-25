@@ -48,4 +48,27 @@ class User extends Authenticatable
     {
         return $this->hasMany(Restaurant::class, 'user_id');
     }
+
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class, 'user_id');
+    }
+
+
+
+    public function packageInfo()
+    {
+        $countInvitations = $this->invitations()->count();
+
+        $guestCount = 0;
+
+        foreach($this->invitations()->get() as $invitation)
+        {
+            $guestCount += $invitation->guestsCount();
+        }
+
+        return ['totalGuests' => $guestCount, 'totalInvitations' => $countInvitations];
+
+    }
 }

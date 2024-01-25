@@ -8,6 +8,7 @@ use App\Http\Controllers\Helpers\ImageStoreLogo;
 use App\Http\Controllers\Helpers\ImageStoreMalePhoto;
 use App\Mail\MailSender;
 use App\Mail\MailSenderNewInvitation;
+use App\Models\Guests;
 use App\Models\Invitation;
 use App\Models\Restaurant;
 use App\Models\User;
@@ -34,12 +35,19 @@ class InvitationController extends Controller
         $data = [
             'invitations' => $invitations,
         ];
+
+
         return view('invitations.index')->with($data);
     }
 
     public function create()
     {
         return view('invitations.create');
+    }
+
+    public function package()
+    {
+        return view('invitations.package');
     }
 
     public function store(Request $request)

@@ -8,13 +8,16 @@
                         <h4 class="fw-semibold mb-8">{{ Auth::user()->name }}</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-muted"
-                                                               href="{{ route('frontend.index') }}"><i
-                                            class="ti ti-home-2 text-danger me-1 fs-5"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Информации за
-                                        профилот</a></li>
-                                <li class="breadcrumb-item" aria-current="page"><a
-                                        href="{{ route('frontend.invitations') }}">Покани</a></li>
+                                <li class="breadcrumb-item">
+                                    <a class="text-muted" href="{{ route('frontend.index') }}">
+                                        <i class="ti ti-home-2 text-danger me-1 fs-5"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('users.index') }}">Поканети гости {{ auth()->user()->packageInfo()['totalGuests'] }} / 300</a></li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    <a href="{{ route('frontend.invitations') }}">Покани {{ auth()->user()->packageInfo()['totalInvitations'] }} / 10</a>
+                                </li>
                             </ol>
                         </nav>
                     </div>
@@ -73,8 +76,11 @@
                                     <td>
                                         <div class="text-center align-items-center">
 
-                                                <a href="{{ route('guests.index', $invitation) }}" class="btn btn-sm btn-info">Потврдени: {{ $invitation->guestsConfirmed() }}</a>
-                                                <a href="{{ route('guests.index', $invitation) }}" class="btn btn-sm btn-danger">Не потврдени: {{ $invitation->guestsWaiting() }}</a>
+                                            <a href="{{ route('guests.index', $invitation) }}"
+                                               class="btn btn-sm btn-info">Потврдени: {{ $invitation->guestsConfirmed() }}</a>
+                                            <a href="{{ route('guests.index', $invitation) }}"
+                                               class="btn btn-sm btn-danger">Не
+                                                потврдени: {{ $invitation->guestsWaiting() }}</a>
                                         </div>
                                     </td>
                                     <td>
