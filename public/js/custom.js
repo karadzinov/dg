@@ -37,9 +37,6 @@
         $("button.remove").on("click", remove);
 
 
-
-
-
         window.mobileCheck = function () {
             let check = false;
             (function (a) {
@@ -131,6 +128,36 @@
 
         $(".image1").on("click", function () {
             window.location = '/invitation/create';
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Datatables Responsive
+            $("#datatable").DataTable({
+                "filter": false,
+                "length": false
+            });
+        });
+        var toolbarOptions = [
+            ["bold", "underline"],
+            ["link", "blockquote", "code", "image"],
+            [{list: "ordered"}, {list: "bullet"}]
+        ];
+        $('.quill-editor').each(function (i, el) {
+            var el = $(this), id = 'quilleditor-' + i, val = el.val(), editor_height = 200;
+            var div = $('<div/>').attr('id', id).css('height', editor_height + 'px').html(val);
+            el.addClass('d-none');
+            el.parent().append(div);
+            var quill = new Quill('#' + id, {
+                modules: {toolbar: toolbarOptions},
+                theme: 'snow'
+            });
+            quill.on('text-change', function () {
+                console.log(quill.container.firstChild.innerHTML);
+                el.html();
+                $("#description").val(quill.container.firstChild.innerHTML);
+            });
+
         });
 
 

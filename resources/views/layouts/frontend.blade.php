@@ -411,6 +411,8 @@
 <script src="/dist/js/sidebarmenu.js"></script>
 <script src="/dist/js/custom.js"></script>
 <script src="/dist/libs/prismjs/prism.js"></script>
+<script src="/dist/libs/quill/dist/quill.min.js"></script>
+
 <!-- ---------------------------------------------- -->
 <!-- current page js files -->
 <!-- ---------------------------------------------- -->
