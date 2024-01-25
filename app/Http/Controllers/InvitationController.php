@@ -195,18 +195,22 @@ class InvitationController extends Controller
 
     public function show($invitation_link)
     {
+
         $invitation = Invitation::where('invitation_link', $invitation_link)->first();
 
+        if($invitation) {
+            $data = [
+                'invitation' => $invitation,
+            ];
 
-        $data = [
-            'invitation' => $invitation,
-        ];
+            if ($invitation->template === 'template_a') {
 
-        if ($invitation->template === 'template_a') {
-
-            return view('invitations.template_a.view')->with($data);
+                return view('invitations.template_a.view')->with($data);
+            }
         }
-        dd('so far');
+
+        return redirect()->route('frontend.index');
+
     }
 
     public function destroy($id)
