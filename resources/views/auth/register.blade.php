@@ -62,10 +62,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="category" class="form-label">Одбери категорија</label>
-                                        <select id="category" class="form-control" name="category" required>
+                                        <select id="category" class="form-control" name="category">
+                                            <option value="invitations">Покани</option>
                                             <option value="restaurant">Ресторани</option>
                                             <option value="music">Музичари/Бендови</option>
                                             <option value="photo">Фотографи/Фотостудио</option>
+                                            <option value="other">Останато</option>
                                         </select>
                                     </div>
                                     <button type="submit"

@@ -217,16 +217,30 @@
                                             </div>
                                         </div>
                                         <div class="message-body">
-                                            <a href="{{ route('users.index') }}"
-                                               class="py-8 px-7 mt-8 d-flex align-items-center">
+
+                                            @if(auth()->user()->category === "invitations")
+                                                <a href="{{ route('frontend.invitations') }}"
+                                                   class="py-8 px-7 mt-8 d-flex align-items-center">
+                          <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
+                            <img src="/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
+                          </span>
+                                                    <div class="w-75 d-inline-block v-middle ps-3">
+                                                        <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
+                                                        <span class="d-block text-dark">Погледни</span>
+                                                    </div>
+                                                </a>
+
+                                            @else
+                                                <a href="{{ route('users.index') }}"
+                                                   class="py-8 px-7 mt-8 d-flex align-items-center">
                           <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                             <img src="/dist/images/svgs/icon-tasks.svg" alt="" width="24" height="24">
                           </span>
-                                                <div class="w-75 d-inline-block v-middle ps-3">
-                                                    <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои услуги </h6>
-                                                    <span class="d-block text-dark">Подесувања</span>
-                                                </div>
-                                            </a>
+                                                    <div class="w-75 d-inline-block v-middle ps-3">
+                                                        <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои услуги </h6>
+                                                        <span class="d-block text-dark">Подесувања</span>
+                                                    </div>
+                                                </a>
                                             <a href="{{ route('frontend.invitations') }}"
                                                class="py-8 px-7 mt-8 d-flex align-items-center">
                           <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
@@ -237,6 +251,7 @@
                                                     <span class="d-block text-dark">Погледни</span>
                                                 </div>
                                             </a>
+                                                @endif
                                         </div>
                                         <div class="d-grid py-4 px-7 pt-8">
                                             <a href="{{ route('logout') }}"

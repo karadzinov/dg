@@ -13,6 +13,9 @@ class UserController extends Controller
 {
     public function index()
     {
+
+
+
         $restaurants = Restaurant::where('user_id', Auth::user()->id)->get();
         $musicians = Musician::where('user_id', Auth::user()->id)->get();
         $photographers = Photographer::where('user_id', Auth::user()->id)->get();
@@ -22,6 +25,7 @@ class UserController extends Controller
             'musicians' => $musicians,
             'photographers' => $photographers
         ];
+        
         return view('users.index')->with($data);
     }
 
