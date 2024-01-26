@@ -126,6 +126,11 @@ class FrontEndController extends Controller
     {
         $invitation = Invitation::where('invitation_link', '=', $invitation)->first();
 
+        if(!$invitation)
+        {
+            return redirect()->route('frontend.index');
+        }
+
         $link = Link::where('link', $link)->first();
         $guests = Guests::select('name')->where('link_id', '=', $link->id)->get()->toArray();
 
