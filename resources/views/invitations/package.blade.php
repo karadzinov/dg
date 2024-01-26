@@ -6,9 +6,9 @@
             <div class="col-sm-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <span class="fw-bolder text-uppercase fs-2 d-block mb-7">Silver</span>
+                        <span class="fw-bolder text-uppercase fs-2 d-block mb-7">Bronze</span>
                         <div class="my-4">
-                            <img src="/dist/images/backgrounds/silver.png" alt="" class="img-fluid" width="80" height="80">
+                            <img src="/dist/images/backgrounds/bronze.png" alt="" class="img-fluid" width="80" height="80">
                         </div>
                         <h2 class="fw-bolder fs-12 mb-3">Бесплатен</h2>
                         <ul class="list-unstyled mb-7">
@@ -43,9 +43,9 @@
                         <div class="text-end">
                             <span class="badge fw-bolder py-1 bg-warning-subtle text-warning text-uppercase fs-2 rounded-3">POPULAR</span>
                         </div>
-                        <span class="fw-bolder text-uppercase fs-2 d-block mb-7">bronze</span>
+                        <span class="fw-bolder text-uppercase fs-2 d-block mb-7">Silver</span>
                         <div class="my-4">
-                            <img src="/dist/images/backgrounds/bronze.png" alt="" class="img-fluid" width="80" height="80">
+                            <img src="/dist/images/backgrounds/silver.png" alt="" class="img-fluid" width="80" height="80">
                         </div>
                         <div class="d-flex mb-3">
 

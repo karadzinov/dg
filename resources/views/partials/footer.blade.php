@@ -5,10 +5,22 @@
                 <a href="/">
                 <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="100" alt="">
                 </a>
+
+
+            </div>
+            <div class="col-md mb-4 mb-md-0 text-center">
+                <p class="text-white-50 mt-2">Линкови</p>
+                <ul class=" list-px-2 mb-0">
+                    <li class="listing-item"><a class="link link-light link-light-75" href="/about"> <i class="ti ti-info-circle"></i> За нас</a></li>
+                    <li class="listing-item"><a class="link link-light link-light-75" href="/invitation/package"> <i class="ti ti-coin"></i> Пакети</a></li>
+                    <li class="listing-item"><a class="link link-light link-light-75" href="/contact"><i class="ti ti-phone"></i> Контакт</a></li>
+                </ul>
+
+
             </div>
 
             <div class="col-md mb-4 mb-md-0 text-center">
-                <p class="text-white-50 mt-2">Услуги</p>
+                <p class="text-white-50 mt-5">Услуги</p>
                 <!-- List -->
                 <ul class=" list-px-2 mb-0">
                     <li class="listing-item"><a class="link link-light link-light-75" href="/invitation/package"> <i class="ti ti-mail"></i> Покани</a></li>
