@@ -1,4 +1,4 @@
-<footer class="bg-dark">
+<footer class="bg-dark mt-2">
     <div class="container">
         <div class="row align-items-center pt-8 pb-4">
             <div class="col-md mb-4 mb-md-0 text-center">
@@ -16,6 +16,7 @@
 
                     <li class="listing-item"><a class="link link-light link-light-75" href="/musicians"><i class="ti ti-music"></i> Музичари</a></li>
                     <li class="listing-item"><a class="link link-light link-light-75" href="/photographers"><i class="ti ti-camera"></i>  Фотографи</a></li>
+                    <li class="listing-item"><a class="link link-light link-light-75" href="/"><i class="ti ti-topology-ring"></i>  Останато</a></li>
                 </ul>
                 <!-- End List -->
             </div>
