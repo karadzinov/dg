@@ -113,7 +113,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question');
     Route::get('/template-a', [\App\Http\Controllers\InvitationController::class, 'template_a'])->name('invitations.template_a');
     Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
-
+    Route::get('/sitemap', [App\Http\Controllers\FrontEndController::class, 'sitemap'])->name('sitemap');
 
     //Invitation routes
     Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');

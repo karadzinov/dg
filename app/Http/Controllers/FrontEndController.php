@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\In;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use Illuminate\Support\Carbon;
 
 class FrontEndController extends Controller
 {
@@ -250,5 +253,81 @@ class FrontEndController extends Controller
     public function terms()
     {
         return view('terms');
+    }
+
+    public function sitemap()
+    {
+
+        $invitations = Invitation::all();
+        $restaurants = Restaurant::all();
+        $musicians = Musician::all();
+        $photographers = Photographer::all();
+
+
+        $sitemap = Sitemap::create();
+
+        $sitemap->add(Url::create(env('APP_URL'))
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1));
+        $sitemap->add(Url::create(env('APP_URL') . '/contact')
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1));
+        $sitemap->add(Url::create(env('APP_URL') . '/invitations')
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1));
+
+        foreach($invitations as $invitation)
+        {
+            $sitemap->add(Url::create(env('APP_URL') . '/'. $invitation->invitation_link)
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                ->setPriority(0.1));
+        }
+
+        $sitemap->add(Url::create(env('APP_URL') . '/restaurants')
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1));
+
+        foreach($restaurants as $restaurant)
+        {
+            $sitemap->add(Url::create(env('APP_URL') . '/restaurants/'. $restaurant->slug)
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                ->setPriority(0.1));
+        }
+
+
+        $sitemap->add(Url::create(env('APP_URL') . '/musicians')
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1));
+
+        foreach($musicians as $musician)
+        {
+            $sitemap->add(Url::create(env('APP_URL') . '/musicians/'. $musicians->slug)
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                ->setPriority(0.1));
+        }
+
+        $sitemap->add(Url::create(env('APP_URL') . '/photographers')
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1));
+
+        foreach($photographers as $photographer)
+        {
+            $sitemap->add(Url::create(env('APP_URL') . '/photographers/'. $photographer->slug)
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                ->setPriority(0.1));
+        }
+
+        $sitemap->writeToFile(public_path() . '/sitemap.xml');
+
     }
 }
