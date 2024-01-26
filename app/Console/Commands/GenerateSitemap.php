@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\FrontEndController;
 use Illuminate\Console\Command;
 
 class GenerateSitemap extends Command
@@ -25,6 +26,6 @@ class GenerateSitemap extends Command
      */
     public function handle()
     {
-        return redirect()->route('sitemap');
+        app(FrontEndController::class)->sitemap();
     }
 }
