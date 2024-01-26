@@ -13,11 +13,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="handheldfriendly" content="true"/>
     <meta name="MobileOptimized" content="width"/>
-    <meta name="description" content="Драги гости - вашиот единствен свадбен планер"/>
+    <meta name="description" content="Modernize your love story. Stunning invitation templates & intuitive website builder let you create a unique wedding experience your guests will adore."/>
     <meta name="author" content=""/>
     <meta name="keywords" content="свадбен планер, онлајн покани, покани за свадба"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <x-embed-styles/>
+
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Elegant & Easy Wedding Invitations: Create Yours on Dragigosti.com">
+    <meta itemprop="description" content="Modernize your love story. Stunning invitation templates & intuitive website builder let you create a unique wedding experience your guests will adore.">
+    <meta itemprop="image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@dragigosti">
+    <meta name="twitter:title" content="Elegant & Easy Wedding Invitations: Create Yours on Dragigosti.com">
+    <meta name="twitter:description" content="Modernize your love story. Stunning invitation templates & intuitive website builder let you create a unique wedding experience your guests will adore.">
+    <meta name="twitter:creator" content="@dragigosti">
+    <meta name="twitter:image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png">
+
+    <!-- Open Graph data -->
+    <meta property="fb:app_id" content="812138039502601"/>
+    <meta property="og:locale" content="mk_MK"/>
+    <meta property="og:title" content="Elegant & Easy Wedding Invitations: Create Yours on Dragigosti.com"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ env('APP_URL') }}"/>
+    <meta property="og:image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png"/>
+    <meta property="og:description" content="Modernize your love story. Stunning invitation templates & intuitive website builder let you create a unique wedding experience your guests will adore."/>
+    <meta property="og:site_name" content="DragiGosti"/>
+
     <!-- --------------------------------------------------- -->
     <!-- Favicon -->
     <!-- --------------------------------------------------- -->
