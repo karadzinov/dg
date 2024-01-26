@@ -132,6 +132,11 @@ class FrontEndController extends Controller
         }
 
         $link = Link::where('link', $link)->first();
+
+        if(!$link)
+        {
+            return redirect()->route('frontend.index');
+        }
         $guests = Guests::select('name')->where('link_id', '=', $link->id)->get()->toArray();
 
         if (count($guests) > 1) {
