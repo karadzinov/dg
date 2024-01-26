@@ -184,13 +184,85 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body" data-simplebar style="height: calc(100vh - 80px)">
+            <form id="main-page-contant" method="post" action="/main-contant">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="firstName" class="control-label">Име</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control"
+                                   placeholder="Петар" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="lastName" class="control-label">Презиме</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control"
+                                   placeholder="Петровски" required>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="firstName" class="control-label">Датум и време за контант</label>
+                            <input type="datetime-local" id="datetime-form" value="{{ date('Y-m-d H:i',strtotime("-1 days")) }}" required min="{{ date('Y-m-d') }}" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Испрати</button>
+                    </div>
+                </div>
+            </form>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p id="messageForm"></p>
+                </div>
+            </div>
 
         </div>
+
+
     </div>
 
 @endsection
 @section('scripts')
+
+    <script>
+        $("#main-page-contant").on("submit", function(e)
+        {
+            e.preventDefault();
+            let sendData = {
+                firstName: $("#firstName").val(),
+                lastName: $("#lastName").val(),
+                dateTime: $("#datetime-form").val()
+            }
+
+            $.ajax({
+                url: "{{ route('main.contact') }}",
+                method: 'post',
+                data: sendData,
+                headers: {
+                    'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                },
+                success: function (response) {
+                   $("#messageForm").text("Ви благодариме, ќе бидете контактирани во избраното време од тимот на Драги Гости");
+                },
+                error: function(response)
+                {
+                    $("#messageForm").text("Се случи грешка при испраќање на барањето, Ве молиме пробајте подоцна");
+                }
+            });
+        });
+    </script>
     <script>
 
         window.mobileCheck = function () {

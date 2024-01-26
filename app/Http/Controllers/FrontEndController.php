@@ -11,6 +11,7 @@ use App\Models\Musician;
 use App\Models\Photographer;
 use App\Models\Picture;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use App\Models\Guests;
@@ -22,6 +23,7 @@ use Illuminate\Validation\Rules\In;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class FrontEndController extends Controller
 {
@@ -253,6 +255,46 @@ class FrontEndController extends Controller
     public function terms()
     {
         return view('terms');
+    }
+
+    public function mainContact(Request  $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'firstName' => 'required',
+            'lastName' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'  => $validator->errors()]);
+        }
+
+        $sender = [
+            'firstName' => $request->get('firstName'),
+            'lastName' => $request->get('lastName'),
+            'dateTime' => $request->get('dateTime'),
+            'email' => 'contact@dragigosti.com',
+            'phone' => '+38971213980'
+        ];
+
+        $subject = "Contact from: ". $sender['firstName'];
+
+        $name = $sender['firstName']. ' ' . $sender['lastName'];
+
+        $dateTime = $sender['dateTime'];
+
+        $msg = "Имате порака од $name за да го контактирате во $dateTime";
+
+        Log::debug($msg);
+
+        try {
+            Mail::to("martin@pingdevs.com")->send(new MailSender($msg, $subject, $sender));
+        } catch (\Exception $e)
+        {
+            return response()->json(["errors" => $e->getMessage()], 400);
+        }
+
+        return response()->json(["success" => true], 200);
+
     }
 
     public function sitemap()
