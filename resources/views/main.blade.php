@@ -207,7 +207,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="firstName" class="control-label">Датум и време за контант</label>
+                            <label for="phone" class="control-label">Презиме</label>
+                            <input type="tel" id="phone" name="phone" class="form-control"
+                                   placeholder="070 555 555" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="datetime-form" class="control-label">Датум и време за контант</label>
                             <input type="datetime-local" id="datetime-form" value="{{ date('Y-m-d H:i',strtotime("-1 days")) }}" required min="{{ date('Y-m-d') }}" class="form-control" required>
                         </div>
                     </div>
@@ -243,7 +253,8 @@
             let sendData = {
                 firstName: $("#firstName").val(),
                 lastName: $("#lastName").val(),
-                dateTime: $("#datetime-form").val()
+                dateTime: $("#datetime-form").val(),
+                phone: $("#phone").val()
             }
 
             $.ajax({

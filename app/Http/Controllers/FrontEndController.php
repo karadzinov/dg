@@ -273,7 +273,7 @@ class FrontEndController extends Controller
             'lastName' => $request->get('lastName'),
             'dateTime' => $request->get('dateTime'),
             'email' => 'contact@dragigosti.com',
-            'phone' => '+38971213980'
+            'phone' => $request->get('phone')
         ];
 
         $subject = "Contact from: ". $sender['firstName'];
@@ -282,7 +282,9 @@ class FrontEndController extends Controller
 
         $dateTime = $sender['dateTime'];
 
-        $msg = "Имате порака од $name за да го контактирате во $dateTime";
+        $phone = $request->get('phone');
+
+        $msg = "Имате порака од $name за да го контактирате во $dateTime на телефон: $phone";
 
         Log::debug($msg);
 
