@@ -261,7 +261,8 @@ class FrontEndController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'firstName' => 'required',
-            'lastName' => 'required'
+            'lastName' => 'required',
+            'phone' => 'required'
         ]);
 
         if ($validator->fails()) {
