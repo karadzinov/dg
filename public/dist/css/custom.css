@@ -1038,4 +1038,10 @@ div[class*=box] {
     }
 
 
+    .sub-title-gradient {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
 }
