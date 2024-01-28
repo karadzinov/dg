@@ -116,7 +116,16 @@ Route::middleware(['web'])->group(function () {
     Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
     Route::get('/sitemap', [App\Http\Controllers\FrontEndController::class, 'sitemap'])->name('sitemap');
 
+
+    //Payment routes
+
+    Route::get('paypal', [\App\Http\Controllers\PaypalController::class, 'index'])->name('paypal');
+    Route::get('paypal/payment', [\App\Http\Controllers\PaypalController::class, 'payment'])->name('paypal.payment');
+    Route::get('paypal/payment/success', [\App\Http\Controllers\PaypalController::class, 'paymentSuccess'])->name('paypal.payment.success');
+    Route::get('paypal/payment/cancel', [\App\Http\Controllers\PaypalController::class, 'paymentCancel'])->name('paypal.payment/cancel');
+
     //Invitation routes
+    Route::post('/invitation/store/{invitation}', [\App\Http\Controllers\InvitationController::class, 'storeUser'])->name('invitation.store.user');
     Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
     Route::get('/invitation/package' , [\App\Http\Controllers\InvitationController::class, 'package'])->name('invitations.package');
     Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');

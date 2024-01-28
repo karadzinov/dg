@@ -52,13 +52,15 @@ class User extends Authenticatable
 
     public function invitations()
     {
-        return $this->hasMany(Invitation::class, 'user_id');
+        return $this->hasMany(Invitation::class, 'user_id', 'id');
     }
 
 
 
     public function packageInfo()
     {
+
+
         $countInvitations = $this->invitations()->count();
 
         $guestCount = 0;

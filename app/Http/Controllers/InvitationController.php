@@ -15,10 +15,12 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\Diff\Exception;
 use function PHPUnit\Framework\isEmpty;
 use Illuminate\Log\Logger;
 
@@ -138,24 +140,51 @@ class InvitationController extends Controller
 
         }
 
-        $invitation = Invitation::create([
-            'male_name' => $request->get('mr'),
-            'female_name' => $request->get('mrs'),
-            'date' => $request->get('date'),
-            'template' => $request->get('template'),
-            'invitation_link' => $request->get('basic_url'),
-            'male_photo' => $request->get('male_photo'),
-            'female_photo' => $request->get('female_photo'),
-            'group_photo' => $request->get('group_photo'),
-            'restaurant_id' => $request->get('restaurant_id'),
-            'email' => $email,
-            'male_text' => $male_text,
-            'female_text' => $female_text,
-            'main_text' => $main_text,
-            'male_quote' => $male_quote,
-            'female_quote' => $female_quote,
-            'hash' => md5($email),
-        ]);
+
+        $user = User::where("email","=", $request->get('email'))->first();
+
+        if($user) {
+            $invitation = Invitation::create([
+                'male_name' => $request->get('mr'),
+                'female_name' => $request->get('mrs'),
+                'date' => $request->get('date'),
+                'template' => $request->get('template'),
+                'invitation_link' => $request->get('basic_url'),
+                'male_photo' => $request->get('male_photo'),
+                'female_photo' => $request->get('female_photo'),
+                'group_photo' => $request->get('group_photo'),
+                'restaurant_id' => $request->get('restaurant_id'),
+                'email' => $email,
+                'male_text' => $male_text,
+                'female_text' => $female_text,
+                'main_text' => $main_text,
+                'male_quote' => $male_quote,
+                'female_quote' => $female_quote,
+                'user_id' => $user->id,
+                'hash' => md5($email),
+            ]);
+        }  else {
+            $invitation = Invitation::create([
+                'male_name' => $request->get('mr'),
+                'female_name' => $request->get('mrs'),
+                'date' => $request->get('date'),
+                'template' => $request->get('template'),
+                'invitation_link' => $request->get('basic_url'),
+                'male_photo' => $request->get('male_photo'),
+                'female_photo' => $request->get('female_photo'),
+                'group_photo' => $request->get('group_photo'),
+                'restaurant_id' => $request->get('restaurant_id'),
+                'email' => $email,
+                'male_text' => $male_text,
+                'female_text' => $female_text,
+                'main_text' => $main_text,
+                'male_quote' => $male_quote,
+                'female_quote' => $female_quote,
+                'hash' => md5($email),
+            ]);
+        }
+
+
 
 
         $invitation = Invitation::where('invitation_link', $request->get('basic_url'))->first();
@@ -383,8 +412,13 @@ class InvitationController extends Controller
 
     public function checkHash($invitationUrl, $hash)
     {
+
         $invitation = Invitation::where('hash', $hash)->first();
+
+
         $user = User::where('email', $invitation->email)->first();
+
+
 
         if (!$user) {
             $data = [
@@ -394,6 +428,26 @@ class InvitationController extends Controller
         } else {
             return redirect()->route('frontend.invitations');
         }
+
+    }
+
+
+    public function storeUser(Request $request, Invitation $invitation)
+    {
+       $user =  User::create([
+            'name' => $request->get('name'),
+            'email' =>  $request->get('email'),
+            'category' =>  $request->get('category'),
+            'password' => Hash::make( $request->get('password')),
+        ]);
+
+        $invitation->user_id = $user->id;
+        $invitation->save();
+
+        Auth::login($user);
+        return redirect()->route('frontend.invitations');
+
+
 
     }
 }

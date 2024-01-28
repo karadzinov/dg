@@ -21,7 +21,7 @@
                                     <span
                                         class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
                                 </div>
-                                <form method="POST" action="{{ route('register') }}">
+                                <form method="POST" action="{{ route('invitation.store.user', $invitation->id) }}">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Име</label>
@@ -66,10 +66,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="category" class="form-label">Одбери категорија</label>
-                                        <select id="category" class="form-control" name="category" required>
+                                        <select id="category" class="form-control" name="category">
+                                            <option value="invitations" selected>Покани</option>
                                             <option value="restaurant">Ресторани</option>
                                             <option value="music">Музичари/Бендови</option>
                                             <option value="photo">Фотографи/Фотостудио</option>
+                                            <option value="other">Останато</option>
                                         </select>
                                     </div>
                                     <button type="submit"
