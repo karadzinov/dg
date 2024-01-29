@@ -270,7 +270,6 @@ class FrontEndController extends Controller
 
         $sender = [
             'firstName' => $request->get('firstName'),
-            'lastName' => $request->get('lastName'),
             'dateTime' => $request->get('dateTime'),
             'email' => 'contact@dragigosti.com',
             'phone' => $request->get('phone')
