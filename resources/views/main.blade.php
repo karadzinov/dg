@@ -194,20 +194,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label for="lastName" class="control-label">Презиме</label>
-                            <input type="text" id="lastName" name="lastName" class="form-control"
-                                   placeholder="Петровски" required>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="phone" class="control-label">Презиме</label>
+                            <label for="phone" class="control-label">Телефон</label>
                             <input type="tel" id="phone" name="phone" class="form-control"
                                    placeholder="070 555 555" required>
                         </div>
@@ -252,7 +244,6 @@
             e.preventDefault();
             let sendData = {
                 firstName: $("#firstName").val(),
-                lastName: $("#lastName").val(),
                 dateTime: $("#datetime-form").val(),
                 phone: $("#phone").val()
             }

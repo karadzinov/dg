@@ -261,7 +261,6 @@ class FrontEndController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'firstName' => 'required',
-            'lastName' => 'required',
             'phone' => 'required'
         ]);
 
@@ -279,7 +278,7 @@ class FrontEndController extends Controller
 
         $subject = "Contact from: ". $sender['firstName'];
 
-        $name = $sender['firstName']. ' ' . $sender['lastName'];
+        $name = $sender['firstName'];
 
         $dateTime = $sender['dateTime'];
 
