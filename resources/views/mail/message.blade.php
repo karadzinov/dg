@@ -17,7 +17,7 @@
 
 <br>
 <footer>
-    <h3>{{ $sender['firstName'] }} {{ $sender['lastName'] }}</h3>
+    <h3>{{ $sender['firstName'] }}</h3>
     <h4>{{ $sender['email'] }}</h4>
     <h4>{{ $sender['phone'] }}</h4>
 </footer>
