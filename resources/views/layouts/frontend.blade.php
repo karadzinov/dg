@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="handheldfriendly" content="true"/>
     <meta name="MobileOptimized" content="width"/>
-    <meta name="description" content="Modernize your love story. Stunning invitation templates & intuitive website builder let you create a unique wedding experience your guests will adore."/>
+    <meta name="description" content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
     <meta name="author" content=""/>
     <meta name="keywords" content="свадбен планер, онлајн покани, покани за свадба"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -21,22 +21,22 @@
 
 
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="Elegant & Easy Wedding Invitations: Create Yours on Dragigosti.com">
-    <meta itemprop="description" content="Modernize your love story. Stunning invitation templates & intuitive website builder let you create a unique wedding experience your guests will adore.">
+    <meta itemprop="name" content="Елегантни и Едноставни Свадбени Покани: Креирајте ги онлајн на: dragigosti.com">
+    <meta itemprop="description" content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство.">
     <meta itemprop="image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@dragigosti">
-    <meta name="twitter:title" content="Elegant & Easy Wedding Invitations: Create Yours on Dragigosti.com">
-    <meta name="twitter:description" content="Modernize your love story. Stunning invitation templates & intuitive website builder let you create a unique wedding experience your guests will adore.">
+    <meta name="twitter:title" content="Елегантни и Едноставни Свадбени Покани: Креирајте ги онлајн на: dragigosti.com">
+    <meta name="twitter:description" content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство.">
     <meta name="twitter:creator" content="@dragigosti">
     <meta name="twitter:image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png">
 
     <!-- Open Graph data -->
     <meta property="fb:app_id" content="812138039502601"/>
     <meta property="og:locale" content="mk_MK"/>
-    <meta property="og:title" content="Elegant & Easy Wedding Invitations: Create Yours on Dragigosti.com"/>
+    <meta property="og:title" content="Елегантни и Едноставни Свадбени Покани: Креирајте ги онлајн на: dragigosti.com"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{ env('APP_URL') }}"/>
     <meta property="og:image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png"/>
