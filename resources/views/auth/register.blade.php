@@ -75,7 +75,15 @@
                                     <div class="d-flex align-items-center">
                                         <p class="fs-4 mb-0 text-dark">Веќе имате профил?</p>
                                         <a class="text-primary fw-medium ms-2" href="{{ route('login') }}">Логирај се</a>
+
+                                        <div class="flex items-center justify-end mt-4">
+                                            <a href="{{ route('login.facebook') }}" class="underline text-sm text-gray-600 hover:text-gray-900">
+                                               Поврзи се со Facebook
+                                            </a>
+                                        </div>
                                     </div>
+
+
                                 </form>
                             </div>
                         </div>
