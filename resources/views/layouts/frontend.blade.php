@@ -495,7 +495,7 @@
             appId      : '1339434706768448',
             cookie     : true,
             xfbml      : true,
-            version    : '2'
+            version    : '19.0'
         });
 
         FB.AppEvents.logPageView();
