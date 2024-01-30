@@ -19,12 +19,14 @@ class SocialController extends Controller
     public function facebookCallback()
     {
         $fbuser = Socialite::driver('facebook')->user();
-
+        Log::info($fbuser->getId());
         $user = User::updateOrCreate([
-            'facebook_id' => $fbuser->getId(),
+            'email' => $fbuser->getEmail(),
         ], [
             'name' => $fbuser->getName(),
-            'email' => $fbuser->getEmail()
+            'email' => $fbuser->getEmail(),
+            'password' => Hash::make("temp12345"),
+            'facebook_id' => $fbuser->getId(),
         ]);
 
         Auth::login($user);
