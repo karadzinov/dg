@@ -35,7 +35,8 @@ class GuestController extends Controller
      */
     public function create(Invitation $invitation)
     {
-        $data = ['invitation' => $invitation];
+        $guests = $invitation->guests();
+        $data = ["guests" => $guests, "invitation" => $invitation];
         return view('guests.create')->with($data);
     }
 
@@ -65,7 +66,9 @@ class GuestController extends Controller
                 'invitation_id' => $invitation->id
             ]);
         }
-        return redirect()->back();
+        $msg["status"] = count($names) === 1 ? "Гостинот е успешно додаден"  : "Гостите се успешно  додадени";
+
+        return redirect()->back()->with($msg);
     }
 
     /**

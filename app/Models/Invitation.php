@@ -40,7 +40,7 @@ class Invitation extends Model
 
     public function guests()
     {
-        return $this->hasMany(Guests::class)->get();
+        return $this->hasMany(Guests::class)->orderBy('id', 'desc')->get();
     }
 
     public function guestsCount()

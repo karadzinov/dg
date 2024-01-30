@@ -279,6 +279,19 @@
                                                 @endif
                                         </div>
                                         <div class="d-grid py-4 px-7 pt-8">
+                                            <div class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <h5 class="fs-4 mb-3 w-50 fw-semibold">Bronze</h5>
+                                                        <a class="btn btn-primary" href="/invitation/package">Промени</a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="m-n4 unlimited-img">
+                                                            <img src="/dist/images/backgrounds/bronze.png" alt="" class="w-75">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <a href="{{ route('logout') }}"
                                                class="btn btn-outline-primary"
                                                onclick="event.preventDefault();

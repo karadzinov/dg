@@ -33,7 +33,7 @@
                                 <span class="text-muted">Уникатен домеин</span>
                             </li>
                         </ul>
-                        <button class="btn btn-primary fw-bolder py-6 w-100 text-capitalize">Избери</button>
+                        <button class="btn btn-primary fw-bolder py-6 w-100 text-capitalize @if(auth()->user()) disabled @endif">Избери</button>
                     </div>
                 </div>
             </div>
