@@ -18,6 +18,7 @@ class SocialController extends Controller
     public function facebookCallback()
     {
         $fbuser = Socialite::driver('facebook')->user();
+        Log::info($fbuser);
         $user = User::updateOrCreate([
             'email' => $fbuser->email,
         ], [
