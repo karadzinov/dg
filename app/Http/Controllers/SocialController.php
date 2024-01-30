@@ -20,18 +20,23 @@ class SocialController extends Controller
     {
         $fbuser = Socialite::driver('facebook')->user();
         Log::info($fbuser->getId());
-        $user = User::updateOrCreate([
-            'email' => $fbuser->getEmail(),
-        ], [
-            'name' => $fbuser->getName(),
-            'email' => $fbuser->getEmail(),
-            'password' => Hash::make("temp12345"),
-            'facebook_id' => $fbuser->getId(),
-        ]);
+
+        $user = User::where('email', '=', $fbuser->getEmail())->first();
+        if ($user) {
+            $user->facebook_id = $fbuser->getId();
+            $user->save();
+        } else {
+            $user = User::create([
+                "name" => $fbuser->getName(),
+                "email" => $fbuser->getEmail(),
+                "category" => "other",
+                "password" => Hash::make("temp12345")
+            ]);
+        }
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('frontend.invitations');
 
     }
 
