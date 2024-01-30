@@ -116,6 +116,8 @@ Route::middleware(['web'])->group(function () {
     Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
     Route::get('/sitemap', [App\Http\Controllers\FrontEndController::class, 'sitemap'])->name('sitemap');
 
+    Route::get('auth/facebook', [App\Http\Controllers\SocialController::class, 'facebookRedirect'])->name('login.facebook');
+    Route::get('auth/facebook/callback', [App\Http\Controllers\SocialController::class, 'facebookCallback']);
 
     //Payment routes
 
