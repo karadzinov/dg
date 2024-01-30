@@ -36,7 +36,7 @@
     <!-- Open Graph data -->
 
     <meta property="og:locale" content="mk_MK"/>
-    <meta property="og:fb:app_id" content="1339434706768448"/>
+    <meta property="ofb:app_id" content="1339434706768448"/>
     <meta property="og:title" content="Заштедете време и направете прекрасни свадбени покани на dragigosti.com"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{ env('APP_URL') }}"/>
