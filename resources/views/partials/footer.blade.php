@@ -66,7 +66,7 @@
 
 
             <div class="col-md-auto">
-                <p class="fs-4 text-white mb-0">© DragiGosti {{ date('Y') }}</p>
+                <p class="fs-4 text-white mb-0"><a href="https://pingdevs.com">© Пингдевс Дооел</a> {{ date('Y') }}</p>
             </div>
             <!-- End Col -->
         </div>
