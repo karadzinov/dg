@@ -42,7 +42,7 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
         Route::post('/{restaurant}/galleries', [\App\Http\Controllers\RestaurantController::class, 'storeGallery'])->name('restaurants.gallery.store');
         Route::post('/{restaurant}/video', [\App\Http\Controllers\RestaurantController::class, 'storeVideo'])->name('restaurants.gallery.video.store');
         Route::delete('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'destroyGallery'])->name('restaurants.gallery.destroy');
-        Route::get('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'albumView'])->name('restaurants.album.view');
+
     });
     Route::group(['prefix' => 'musicians'], function() {
         //Musicians CRUD
@@ -109,6 +109,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/terms', [\App\Http\Controllers\FrontEndController::class, 'terms'])->name('terms');
     Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
     Route::get('/restaurants/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileRestaurants'])->name('restaurants.profile');
+    Route::get('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'albumView'])->name('restaurants.album.view');
     Route::get('/musicians', [\App\Http\Controllers\FrontEndController::class, 'musicians'])->name('frontend.musicians');
     Route::get('/musicians/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileMusician'])->name('musicians.profile');
     Route::get('/photographers', [\App\Http\Controllers\FrontEndController::class, 'photographers'])->name('frontend.photographers');
