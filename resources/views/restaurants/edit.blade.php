@@ -86,7 +86,7 @@
                                     <div class="mb-3">
                                         <label for="description"> Повеќе за ресторанот : <span class="danger">*</span>
                                         </label>
-                                        <textarea class="quill-editor @error('description') is-invalid @enderror" rows="3"
+                                        <textarea class="ckeditor @error('description') is-invalid @enderror" rows="3"
                                                   name="description" id="description" >{{ $restaurant->description }}</textarea>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
@@ -350,5 +350,9 @@
         </div>
     </div>
 
+@endsection
+@section('scripts')
+    <script src="/plugins/ckeditor/ckeditor.js"></script>
+    <script src="/plugins/ckeditor/ckconfig.js"></script>
 @endsection
 
