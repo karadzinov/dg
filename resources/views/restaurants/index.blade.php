@@ -25,11 +25,7 @@
                                         <i class="ti ti-eye fs-5"></i>
                                         Капацитет {{ $restaurant->capacity }} гости
                                     </div>
-                                    <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
 
-                                        {{ $restaurant->menuDiscount }}<i class="ti ti-currency-euro fs-5"></i> / порција
-
-                                    </div>
                                     <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
 
                                     </div>
