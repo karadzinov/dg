@@ -388,11 +388,7 @@
                                     text-overflow: ellipsis;
                                     width: 300px;">
                                 <div id="map-canvas">
-                                    #searchmap {
-                                    }
-                                    #searchmap:focus {
-                                    border-color: #4d90fe;
-                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -413,7 +409,6 @@
     <script src="/plugins/ckeditor/ckeditor.js"></script>
     <script>
 
-        CKEDITOR.replace($("#description"), {skin: 'icy_orange'});
 
         $(document).ready(function () {
 // Google Maps
