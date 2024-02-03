@@ -46,7 +46,7 @@
                             <div class="d-flex align-items-center justify-content-center mb-2">
                                 <div
                                     class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
-                                    style="width: 110px; height: 110px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}');">
+                                    style="width: 110px; height: 110px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center;">
 
                                 </div>
                             </div>
