@@ -46,13 +46,8 @@
                             <div class="d-flex align-items-center justify-content-center mb-2">
                                 <div
                                     class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
-                                    style="width: 110px; height: 110px;" ;="">
-                                    <div
-                                        class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
-                                        style="width: 100px; height: 100px;" ;="">
-                                        <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}" alt=""
-                                             class="w-100 h-100">
-                                    </div>
+                                    style="width: 110px; height: 110px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}');">
+
                                 </div>
                             </div>
                             <div class="text-center">
