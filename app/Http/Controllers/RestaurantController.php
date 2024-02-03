@@ -159,40 +159,24 @@ class RestaurantController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'coverImg' => 'required',
-            'logo' => 'required',
-            'phone' => 'required',
-            'description' => 'required',
-            'subtitle' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'capacity' => 'required',
-        ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
+        $input = $request->all();
         $restaurant = Restaurant::FindorFail($id);
 
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
             $imageObj = new ImageStoreLogo($request, 'restaurants');
             $logo = $imageObj->imageStore();
+            $input['logo'] = $logo;
         }
         if ($request->hasFile('coverImg')) {
             $coverImg = $request['coverImg'];
             $imageObj = new ImageStoreCover($request, 'restaurants');
             $coverImg = $imageObj->imageStore();
+            $input['coverImg'] = $coverImg;
         }
 
-        $input = $request->all();
-        $input['logo'] = $logo;
-        $input['coverImg'] = $coverImg;
+
 
         $restaurant->fill($input)->save();
 
