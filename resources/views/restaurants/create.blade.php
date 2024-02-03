@@ -111,7 +111,7 @@
                                     <div class="mb-3">
                                         <label for="description"> Повеќе за ресторанот : <span class="danger">*</span>
                                         </label>
-                                        <textarea class="quill-editor @error('description') is-invalid @enderror"
+                                        <textarea class="ckeditor @error('description') is-invalid @enderror"
                                                   rows="3" placeholder="Text Here..."
                                                   name="description" id="description"></textarea>
                                         @error('description')
@@ -409,13 +409,15 @@
 @endsection
 @section('scripts')
     <!-- Google Maps -->
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
+    <script src="/plugins/ckeditor/ckeditor.js"></script>
     <script>
+
+        CKEDITOR.replace($("#description"), {skin: 'icy_orange'});
 
         $(document).ready(function () {
 // Google Maps
+
 
             map = new google.maps.Map(document.getElementById('map-canvas'), {
                 center: {lat: 41.9981294, lng: 21.4254355 },

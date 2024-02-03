@@ -24,10 +24,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     //User Profile
     Route::get('/' , [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+
 
     Route::group(['prefix' => 'restaurants'], function() {
         //Restaurants CRUD
@@ -95,9 +95,13 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
 });
 
 
+Route::any('/ckfinder/connector', [\CKSource\CKFinderBridge\Controller\CKFinderController::class,'requestAction'])->name('ckfinder_connector')->middleware('ckfinder');
+Route::any('/ckfinder/browser', [\CKSource\CKFinderBridge\Controller\CKFinderController::class, 'browserAction'])->name('ckfinder_browser')->middleware('ckfinder');
+
 
 
 Route::middleware(['web'])->group(function () {
+
 
     // Frontend routes
     Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
