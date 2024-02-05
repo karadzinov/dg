@@ -46,7 +46,7 @@
                             <div class="d-flex align-items-center justify-content-center mb-2">
                                 <div
                                     class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
-                                    style="width: 110px; height: 110px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center;">
+                                    style="width: 110px; height: 110px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center; background-color: #ffffff">
 
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                                        data-bs-toggle="tooltip" data-bs-placement="top"><i
                                             class="ti ti-eye fs-4"></i></a></div>
                                 <div class="card-body pt-3 p-4">
-                                    <h6 class="fw-semibold fs-4">{{ $album->name }}</h6>
+
                                 </div>
                             </div>
                         </div>

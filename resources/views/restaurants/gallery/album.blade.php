@@ -25,7 +25,7 @@
         </div>
 
         <div class="container py-3 py-lg-3">
-            <h5 class="mb-5">{{ $album->name }}</h5>
+
             <div class="swiper swiper-1 position-relative">
                 <div class="swiper-wrapper">
                     @foreach($pictures as $picture)

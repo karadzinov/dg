@@ -87,7 +87,7 @@
                         <br>
                         <br>
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary">Сочувај го контактот</button>
+                            <button type="submit" class="btn btn-primary">Прикачи</button>
                         </div>
                     </form>
                 </div>
