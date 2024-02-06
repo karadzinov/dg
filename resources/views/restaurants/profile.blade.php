@@ -117,7 +117,17 @@
             <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
                  aria-labelledby="pills-profile-tab" tabindex="0">
                 <div class="row">
-                    <div class="col-md-6">
+
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body border-bottom">
+                                <div class="col-12">
+                                    {!! $restaurant->description !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-body border-bottom">
                                 @foreach($contacts as $contact)
@@ -125,23 +135,14 @@
                                         <div class="col-sm-12 col-xl-12">
 
                                             <div class="card-body pt-3 p-4 text-center">
-                                                <h6 class="fw-semibold fs-4">{{ $contact->contactName }}</h6>
-                                                <p class="fw-semibold fs-4">{{ $contact->contactPosition }}</p>
-                                                <p class="fw-semibold fs-4 mb-0">{{ $contact->contactEmail }} </p>
-                                                <p class="fw-semibold fs-4 mb-0">{{ $contact->contactPhone }} </p>
+                                                <h6>{{ $contact->contactName }}</h6>
+                                                <p>{{ $contact->contactPosition }}</p>
+                                                <p>{{ $contact->contactEmail }} </p>
+                                                <p>{{ $contact->contactPhone }} </p>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body border-bottom">
-                                <div class="col-12">
-                                    {!! $restaurant->description !!}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -250,10 +251,9 @@
                                         <div class="text-center">
                                             <button
                                                 type="button"
-                                                class="btn btn-primary  btn-lg px-4 fs-4 font-medium"
+                                                class="btn bg-main text-white"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#login-modal">
-                                                <i class="ti ti-mail fs-5 text-center d-block"></i>
                                                 Побарај понуда
                                             </button>
                                         </div>
@@ -261,8 +261,8 @@
                                     <div class="col-md-6">
                                         <div class="text-center">
                                             <button
-                                                class="btn btn-primary  btn-lg px-4 fs-4 font-medium">
-                                                <i class="ti ti-phone-call fs-5 text-center d-block"></i>
+                                                class="btn bg-main text-white">
+                                                <i class="ti ti-phone-call fs-5 text-center"></i>
                                                 {{ $restaurant->phone }}
                                             </button>
                                         </div>
