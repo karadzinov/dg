@@ -134,7 +134,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-xl-12">
 
-                                            <div class="card-body pt-3 p-4 text-center">
+                                            <div class="text-center">
                                                 <h6>{{ $contact->contactName }}</h6>
                                                 <p>{{ $contact->contactPosition }}</p>
                                                 <p>{{ $contact->contactEmail }} </p>
