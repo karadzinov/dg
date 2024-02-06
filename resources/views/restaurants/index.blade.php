@@ -21,7 +21,7 @@
                                         <div class="fs-7 my-4 fw-semibold text-white d-block lh-sm">
 
 
-                                        <div class="box-1 scroll-to">
+                                        <div class="box-1">
                                             <div class="butt btn-one">
                                                 <span>{{ $restaurant->name }}</span>
                                             </div>
