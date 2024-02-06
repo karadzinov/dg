@@ -44,4 +44,9 @@ class Restaurant extends Model
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
+
+    public function  album()
+    {
+        return $this->hasMany(Album::class);
+    }
 }
