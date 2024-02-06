@@ -1,4 +1,33 @@
 @extends('layouts.frontend')
+@section('metadata')
+    <meta name="description"
+          content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{ $restaurant->name }} - Драги Гости">
+    <meta itemprop="description"
+          content="{{ Str::of($restaurant->description)->words(25)->stripTags() }}">
+    <meta itemprop="image" content="{{ env('APP_URL') }}/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@dragigosti">
+    <meta name="twitter:title" content="{{ $restaurant->name }} - Драги Гости">
+    <meta name="twitter:description" content="{{ Str::of($restaurant->description)->words(25)->stripTags() }}">
+    <meta name="twitter:creator" content="@dragigosti">
+    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }}">
+
+    <!-- Open Graph data -->
+
+    <meta property="og:locale" content="mk_MK"/>
+    <meta property="fb:app_id" content="1339434706768448"/>
+    <meta property="og:title" content="{{ $restaurant->name }} - Драги Гости"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{  url()->full()  }}"/>
+    <meta property="og:image" content="{{ env('APP_URL') }}/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }}"/>
+    <meta property="og:description"
+          content="{{ Str::of($restaurant->description)->words(25)->stripTags() }}"/>
+    <meta property="og:site_name" content="DragiGosti"/>
+@endsection
 @section('content')
 
     <div class="container-fluid">

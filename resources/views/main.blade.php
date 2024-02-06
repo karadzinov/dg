@@ -1,4 +1,34 @@
 @extends('layouts.frontend')
+@section('metadata')
+    <meta name="description"
+          content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Заштедете време и направете прекрасни свадбени покани на dragigosti.com">
+    <meta itemprop="description"
+          content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство.">
+    <meta itemprop="image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@dragigosti">
+    <meta name="twitter:title" content="Заштедете време и направете прекрасни свадбени покани на dragigosti.com">
+    <meta name="twitter:description"
+          content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство.">
+    <meta name="twitter:creator" content="@dragigosti">
+    <meta name="twitter:image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png">
+
+    <!-- Open Graph data -->
+
+    <meta property="og:locale" content="mk_MK"/>
+    <meta property="fb:app_id" content="1339434706768448"/>
+    <meta property="og:title" content="Заштедете време и направете прекрасни свадбени покани на dragigosti.com"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ env('APP_URL') }}"/>
+    <meta property="og:image" content="{{ env('APP_URL') }}/dist/images/logos/logo-main.png"/>
+    <meta property="og:description"
+          content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
+    <meta property="og:site_name" content="DragiGosti"/>
+@endsection
 @section('content')
     <div class="main-container">
         <div class="row">
@@ -42,7 +72,10 @@
             <div class="col-12 text-center">
 
                 <h1 class="title-gradient">Ваша е свадбената визија, а се останато е наша мисија</h1>
-                <p class="sub-title-gradient">Нашата посветеност ќе ја трансформира вашата свадба во реалност. Секој детаљ од вашето венчавање го планираме внимателно, почнувајќи од изборот на совршена локација, кетеринг, омилениот бенд за вашето венчавање, завршувајќи со фотографот и сè друго што може да посакате. Кликнете подолу за заедно да создадеме магичен момент за вашето свадбено патување.</p>
+                <p class="sub-title-gradient">Нашата посветеност ќе ја трансформира вашата свадба во реалност. Секој
+                    детаљ од вашето венчавање го планираме внимателно, почнувајќи од изборот на совршена локација,
+                    кетеринг, омилениот бенд за вашето венчавање, завршувајќи со фотографот и сè друго што може да
+                    посакате. Кликнете подолу за заедно да создадеме магичен момент за вашето свадбено патување.</p>
 
 
             </div>
@@ -105,7 +138,12 @@
                 <h1 class="title-gradient">
                     Кажете „Да” во стил – Креирајте уникатна свадбена покана</h1>
                 <p class="sub-title-gradient">
-                    Изразете ја вашата радост преку креативност! Одберете еден од нашите уникатни обрасци коишто може да ги видите подолу, додадете датум и место, напишете ја вашата љубовна приказна и додадете ги најубавите слики од вас во прекрасна дигитална покана. Споделете уникатен линк со сите кои сакате да бидат дел од вашиот специјален ден. На поканата ќе може да видите кои гости го потврдиле присуството и каква храна претпочитаат, а по свадбата гостите ќе имаат пристап до сликите и видеата од вашиот неповторлив момент.
+                    Изразете ја вашата радост преку креативност! Одберете еден од нашите уникатни обрасци коишто може да
+                    ги видите подолу, додадете датум и место, напишете ја вашата љубовна приказна и додадете ги
+                    најубавите слики од вас во прекрасна дигитална покана. Споделете уникатен линк со сите кои сакате да
+                    бидат дел од вашиот специјален ден. На поканата ќе може да видите кои гости го потврдиле присуството
+                    и каква храна претпочитаат, а по свадбата гостите ќе имаат пристап до сликите и видеата од вашиот
+                    неповторлив момент.
                 </p>
             </div>
 
@@ -164,8 +202,6 @@
         </section>
 
 
-
-
     </div>
 
 
@@ -210,18 +246,20 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="datetime-form" class="control-label">Датум и време за контант</label>
-                            <input type="datetime-local" id="datetime-form" value="{{ date('Y-m-d H:i',strtotime("-1 days")) }}" required min="{{ date('Y-m-d') }}" class="form-control" required>
+                            <input type="datetime-local" id="datetime-form"
+                                   value="{{ date('Y-m-d H:i',strtotime("-1 days")) }}" required
+                                   min="{{ date('Y-m-d') }}" class="form-control" required>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Испрати</button>
+                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Испрати
+                        </button>
                     </div>
                 </div>
             </form>
-
 
 
             <div class="row">
@@ -239,8 +277,7 @@
 @section('scripts')
 
     <script>
-        $("#main-page-contant").on("submit", function(e)
-        {
+        $("#main-page-contant").on("submit", function (e) {
             e.preventDefault();
             let sendData = {
                 firstName: $("#firstName").val(),
@@ -256,10 +293,9 @@
                     'X-CSRF-TOKEN': "{{ @csrf_token() }}"
                 },
                 success: function (response) {
-                   $("#messageForm").text("Ви благодариме, ќе бидете контактирани во избраното време од тимот на Драги Гости");
+                    $("#messageForm").text("Ви благодариме, ќе бидете контактирани во избраното време од тимот на Драги Гости");
                 },
-                error: function(response)
-                {
+                error: function (response) {
                     $("#messageForm").text("Се случи грешка при испраќање на барањето, Ве молиме пробајте подоцна");
                 }
             });
