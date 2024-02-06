@@ -89,8 +89,14 @@
                     <div class="col-lg-4 order-lg-1 order-2">
                         <div class="d-flex align-items-center justify-content-around m-4">
                             <div class="text-center">
-                                <i class="ti ti-phone-call fs-6 d-block mb-2"></i>
-                                <h4 class="mb-0 fw-semibold lh-1">{{ $restaurant->phone }}</h4>
+
+                               <button
+                                        type="button"
+                                        class="btn bg-main text-white"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#login-modal">
+                                        Побарај понуда
+                                    </button>
 
                             </div>
                         </div>
@@ -204,7 +210,6 @@
                                                                     type="text" required
                                                                     class="form-control"
                                                                     id="name" name="name"
-                                                                    placeholder="Вашето име"
                                                                 />
                                                             </div>
                                                         </div>
@@ -217,7 +222,6 @@
                                                                     type="email" required
                                                                     class="form-control"
                                                                     id="email" name="email"
-                                                                    placeholder="Вашиот е-маил"
                                                                 />
                                                             </div>
                                                         </div>
@@ -230,7 +234,6 @@
                                                                     type="text" required
                                                                     class="form-control"
                                                                     id="phone" name="phone"
-                                                                    placeholder="Вашиот телефон"
                                                                 />
                                                             </div>
                                                         </div>
@@ -241,7 +244,7 @@
                                                                 <label for="message">Вашата порака</label>
                                                                 <textarea
                                                                     type="text"
-                                                                    class="form-control quill-editor"
+                                                                    class="form-control"
                                                                     id="message" name="message" rows="6"
                                                                 ></textarea>
                                                             </div>
@@ -271,37 +274,7 @@
 
                     </div>
 
-                    <div class="card w-100">
-                        <div class="card-body">
-                            <div class="text-center">
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="text-center">
-                                            <button
-                                                type="button"
-                                                class="btn bg-main text-white"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#login-modal">
-                                                Побарај понуда
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="text-center">
-                                            <button
-                                                class="btn bg-main text-white">
-                                                <i class="ti ti-phone-call fs-5 text-center"></i>
-                                                {{ $restaurant->phone }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
