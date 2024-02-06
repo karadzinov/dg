@@ -127,9 +127,6 @@
                                             <div class="card-body pt-3 p-4 text-center">
                                                 <h6 class="fw-semibold fs-4">{{ $contact->contactName }}</h6>
                                                 <p class="fw-semibold fs-4">{{ $contact->contactPosition }}</p>
-                                                <br>
-                                                <p class="fw-semibold text-wrap fs-4 mb-0">{{ $contact->desc }}</p>
-                                                <br>
                                                 <p class="fw-semibold fs-4 mb-0">{{ $contact->contactEmail }} </p>
                                                 <p class="fw-semibold fs-4 mb-0">{{ $contact->contactPhone }} </p>
                                             </div>
@@ -151,9 +148,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="card w-100">
-                        <div class="card-body">
-                            <div class="button-group">
+
+
                                 <div id="login-modal"
                                      class="modal fade"
                                      tabindex="-1"
@@ -242,10 +238,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+
                     </div>
-                    <br>
+
                     <div class="card w-100">
                         <div class="card-body">
                             <div class="text-center">
