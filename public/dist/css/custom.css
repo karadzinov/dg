@@ -86,16 +86,17 @@
 }
 
 .carousel-caption h5 {
-    font-size: 3rem;
+    font-size: 4rem;
     color: #ffffff;
-    font-family: 'Playfair Display', serif;
+    font-weight: 100;
+
 
 }
 
 .carousel-caption h4 {
     font-size: 5rem;
     color: #ffffff;
-    font-family: 'Playfair Display', serif;
+
 }
 
 .carousel-control-next,
@@ -419,6 +420,7 @@ div[class*=box] {
 }
 .btn-one span {
     transition: all 0.3s;
+    font-weight: 100;
 }
 .btn-one::before {
     content: '';
