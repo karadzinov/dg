@@ -43,7 +43,8 @@
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="d-flex align-items-start justify-content-between">
 
-                                            <div class="d-flex align-items-center justify-content-center mb-1 text-center logo-top                                                <div
+                                            <div class="d-flex align-items-center justify-content-center mb-1 text-center logo-top">
+                                                <div
                                                     class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
                                                     style="z-index: 1; width: 60px; height: 60px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center; background-color: #ffffff">
 
