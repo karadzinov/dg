@@ -44,7 +44,7 @@
                                 <div class="card-body position-relative">
                                     <div class="d-flex flex-column justify-content-between h-100">
                                         <div class="d-flex align-items-start justify-content-between">
-                                            <div class="d-flex align-items-center justify-content-center mb-2" style="margin: 0 auto;">
+                                            <div class="d-flex align-items-center justify-content-center mb-2 logo-top">
                                                 <div
                                                     class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
                                                     style="z-index: 1; width: 60px; height: 60px; background-image: url('/images/logos/photographers/thumbnails/{{ $photographer->logo }}'); background-size: cover; background-position: center; background-color: #ffffff;">
