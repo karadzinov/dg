@@ -43,7 +43,7 @@ class FrontEndController extends Controller
 
     public function restaurants()
     {
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::orderBy('id', 'desc')->get();
 
         $data = [
             'restaurants' => $restaurants

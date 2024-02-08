@@ -34,8 +34,8 @@
     <!-- Page Start -->
     <div class="container-fluid">
         <div class="row">
-            @foreach($restaurants as $restaurant)
-                <div class="col-md-6 col-lg-4">
+            @foreach($restaurants as $index => $restaurant)
+                <div class="@if($index === 0) col-md-8 col-lg-8 @else col-md-6 col-lg-4 @endif">
                     <a href="{{ route('restaurants.profile', $restaurant->slug) }}">
                         <div class="card blog position-relative overflow-hidden hover-img"
                              style="background-image: url(images/cover_images/restaurants/originals/{{ $restaurant->coverImg }});">
