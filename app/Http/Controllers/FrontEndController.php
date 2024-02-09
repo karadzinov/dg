@@ -288,7 +288,9 @@ class FrontEndController extends Controller
         Log::debug($msg);
 
         try {
-            Mail::to("martin@pingdevs.com")->send(new MailSender($msg, $subject, $sender));
+            $bccEmails = ["filip@dragigosti.com", "boban@dragigosti.com", "martin@dragigosti.com"];
+            Mail::to("contact@dragigosti.com")
+                ->bcc($bccEmails)->send(new MailSender($msg, $subject, $sender));
         } catch (\Exception $e)
         {
             return response()->json(["errors" => $e->getMessage()], 400);
