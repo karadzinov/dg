@@ -526,7 +526,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Испрати
+                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Побарај понуда
                         </button>
                     </div>
                 </div>
