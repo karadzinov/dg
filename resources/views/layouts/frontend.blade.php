@@ -480,7 +480,7 @@
                                                     x</h6>
                                             </div>
                                         @endforeach
-                                        @eendif
+                                        @endif
 
 
                                 </div>
