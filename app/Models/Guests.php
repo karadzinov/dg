@@ -13,6 +13,7 @@ class Guests extends Model
         'name',
         'email',
         'link_id',
+        'menu_option',
         'plus_one',
         'confirmed',
         'invitation_id'

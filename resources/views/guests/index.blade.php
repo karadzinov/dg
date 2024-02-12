@@ -10,7 +10,25 @@
                     <div class="card">
                         <div class="card-header">Гости</div>
 
+
+
                         <div class="card-body">
+
+
+
+                            <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                <div class="mb-3 mb-sm-0">
+                                    <h5 class="card-title fw-semibold">Број на гости</h5>
+                                    <p class="card-subtitle mb-0">Вкупно: <span class="badge rounded-circle bg-primary rounded-pill fs-2">{{ $invitation->guestsCount() }}</span></p>
+                                </div>
+                                <div class="w-auto">
+                                Вегани: <span class="badge rounded-circle bg-primary rounded-pill fs-2"> {{ $invitation->countVegans() }}</span>
+                                Вегетаријанци: <span class="badge rounded-circle bg-primary rounded-pill fs-2"> {{ $invitation->countVegetarians() }}</span>
+                                Халал: <span class="badge rounded-circle bg-primary rounded-pill fs-2"> {{ $invitation->countHalal() }}</span>
+                                </div>
+                            </div>
+
+
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
@@ -37,6 +55,7 @@
                                 <th>Email</th>
                                 <th>Link</th>
                                 <th>Потврда</th>
+                                <th>Мени</th>
                                 <th>Избриши</th>
                             </tr>
                             </thead>
@@ -54,6 +73,11 @@
                                             <button class="btn btn-success">Потврдено</button>
                                         @else
                                             <button class="btn btn-default">Се чека на потврда</button>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($guest->menu_option !== "regular")
+                                            <button class="btn btn-sm btn-info">{{ $guest->menu_option }}</button>
                                         @endif
                                     </td>
                                     <td>

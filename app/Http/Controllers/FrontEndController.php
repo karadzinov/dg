@@ -184,6 +184,7 @@ class FrontEndController extends Controller
             $message = 'Еј фала!';
             Mail::to($guest->email)->send(new ConfirmInvitation($message));
         }
+        $guest->menu_option = $request->get('menu_option');
         $guest->save();
 
 

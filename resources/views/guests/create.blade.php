@@ -16,6 +16,8 @@
                                     href="/invitation/package">Промени</a>)</p></div>
 
                         <div class="card-body">
+
+
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
@@ -80,6 +82,7 @@
                                 <th>Email</th>
                                 <th>Link</th>
                                 <th>Потврда</th>
+                                <th>Мени</th>
                                 <th>Избриши</th>
                             </tr>
                             </thead>
@@ -101,6 +104,11 @@
                                             <button class="btn btn-success">Потврдено</button>
                                         @else
                                             <button class="btn btn-default">Се чека на потврда</button>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($guest->menu_option !== "regular")
+                                            <button class="btn btn-sm btn-info">{{ $guest->menu_option }}</button>
                                         @endif
                                     </td>
                                     <td>

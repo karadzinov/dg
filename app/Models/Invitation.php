@@ -58,6 +58,22 @@ class Invitation extends Model
         return $this->hasMany(Guests::class)->where('confirmed', '=', 0)->count();
     }
 
+
+    public function countVegans()
+    {
+        return  $this->hasMany(Guests::class)->where('menu_option', '=', 'vegan')->count();
+    }
+
+    public function countVegetarians()
+    {
+        return  $this->hasMany(Guests::class)->where('menu_option', '=', 'vegetarian')->count();
+    }
+
+    public function countHalal()
+    {
+        return  $this->hasMany(Guests::class)->where('menu_option', '=', 'halal')->count();
+    }
+
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id', 'id');
