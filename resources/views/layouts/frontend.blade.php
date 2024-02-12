@@ -316,7 +316,9 @@
                                     id="restaurant-list-trigger">
                                 <i class="ti ti-basket"></i>
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
-                                      id="countRestaurants">@if(session()->get('cart')) {{ count(session()->get('cart')) }} @endif</span>
+                                      id="countRestaurants">@if(session()->get('cart'))
+                                        {{ count(session()->get('cart')) }}
+                                    @endif</span>
                             </button>
                         </li>
 
@@ -456,25 +458,29 @@
 
 
                                 <div class="position-relative" id="display-list-restaurants">
-                                    <input type="hidden" name="restaurants" id="restaurants" value="true" />
-                                @foreach(session()->get('cart') as  $restaurant)
+                                    <input type="hidden" name="restaurants" id="restaurants" value="true"/>
+                                    @if(session()->get('cart'))
+                                        @foreach(session()->get('cart') as  $restaurant)
 
-                                        <div class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
-                                            <div class="d-flex">
-                                                <div class="p-8  d-flex align-items-center justify-content-center me-6">
-                                                    <div class="rounded-circle"
-                                                         style="width: 60px; height: 60px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
-                                                </div>
-                                                <div style="margin-top: 30px">
-                                                    <p class="fw-semibold"> {{ $restaurant->name }}</p>
+                                            <div
+                                                class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
+                                                <div class="d-flex">
+                                                    <div
+                                                        class="p-8  d-flex align-items-center justify-content-center me-6">
+                                                        <div class="rounded-circle"
+                                                             style="width: 60px; height: 60px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
+                                                    </div>
+                                                    <div style="margin-top: 30px">
+                                                        <p class="fw-semibold"> {{ $restaurant->name }}</p>
 
+                                                    </div>
                                                 </div>
+                                                <h6 class="mb-0 fw-semibold remove-restaurant-list"
+                                                    data-restaurant-id="{{ $restaurant->id }}" style="cursor:pointer;">
+                                                    x</h6>
                                             </div>
-                                            <h6 class="mb-0 fw-semibold remove-restaurant-list"
-                                                data-restaurant-id="{{ $restaurant->id }}" style="cursor:pointer;">
-                                                x</h6>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                        @eendif
 
 
                                 </div>
