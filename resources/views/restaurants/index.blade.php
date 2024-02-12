@@ -64,6 +64,13 @@
 
                                         </div>
 
+
+
+
+
+
+
+
                                         </div>
                                         <div class="d-flex align-items-center gap-4">
                                             <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
@@ -72,6 +79,8 @@
                                             </div>
 
                                             <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
+                                                <a class="restaurant-list btn bg-main btn-sm" data-restaurant-id="{{ $restaurant->id }}"><i class="ti ti-plus"></i></a>
+
 
                                             </div>
                                         </div>
@@ -80,6 +89,15 @@
                             </div>
                         </div>
                     </a>
+
+
+
+
+
+
+
+
+                    </div>
                 </div>
             @endforeach
 

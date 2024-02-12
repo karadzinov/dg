@@ -69,11 +69,19 @@
 
     </style>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TS8GHQQ2');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TS8GHQQ2');</script>
     <!-- End Google Tag Manager -->
 </head>
 
@@ -201,7 +209,7 @@
                                aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <div class="user-profile-img">
-                                       <span class="fa fa-user"></span>
+                                        <span class="fa fa-user"></span>
                                     </div>
                                 </div>
                             </a>
@@ -246,28 +254,31 @@
                                                         <span class="d-block text-dark">Подесувања</span>
                                                     </div>
                                                 </a>
-                                            <a href="{{ route('frontend.invitations') }}"
-                                               class="py-8 px-7 mt-8 d-flex align-items-center">
+                                                <a href="{{ route('frontend.invitations') }}"
+                                                   class="py-8 px-7 mt-8 d-flex align-items-center">
                           <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                             <img src="/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
                           </span>
-                                                <div class="w-75 d-inline-block v-middle ps-3">
-                                                    <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
-                                                    <span class="d-block text-dark">Погледни</span>
-                                                </div>
-                                            </a>
-                                                @endif
+                                                    <div class="w-75 d-inline-block v-middle ps-3">
+                                                        <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
+                                                        <span class="d-block text-dark">Погледни</span>
+                                                    </div>
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="d-grid py-4 px-7 pt-8">
-                                            <div class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
+                                            <div
+                                                class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <h5 class="fs-4 mb-3 w-50 fw-semibold">Bronze</h5>
-                                                        <a class="btn btn-primary" href="/invitation/package">Промени</a>
+                                                        <a class="btn btn-primary"
+                                                           href="/invitation/package">Промени</a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="m-n4 unlimited-img">
-                                                            <img src="/dist/images/backgrounds/bronze.png" alt="" class="w-75">
+                                                            <img src="/dist/images/backgrounds/bronze.png" alt=""
+                                                                 class="w-75">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -292,8 +303,24 @@
                                         </div>
                                     @endif
                                 </div>
+
+
                             </div>
+
                         </li>
+
+
+                        <li class="nav-item">
+                            <button class="nav-link position-relative nav-icon-hover" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRestaurants" aria-controls="offcanvasRestaurants"
+                                    id="restaurant-list-trigger">
+                                <i class="ti ti-basket"></i>
+                                <span class="popup-badge rounded-pill bg-danger text-white fs-2"
+                                      id="countRestaurants">{{ count(session()->get('cart')) }}</span>
+                            </button>
+                        </li>
+
+
                     </ul>
                 </div>
             </div>
@@ -408,6 +435,108 @@
     <div class="body-wrapper">
         @yield('content')
     </div>
+
+
+    <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasRestaurants"
+         aria-labelledby="offcanvasRestaurants">
+        <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
+            <h4 class="offcanvas-title fw-semibold" id="offcanvasRestaurants">
+                Листа на ресторани
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" data-simplebar style="height: calc(100vh - 80px)">
+            <form id="main-page-contant-list" method="post" action="/main-contant">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card w-100">
+                            <div class="card-body">
+
+
+                                <div class="position-relative" id="display-list-restaurants">
+                                    <input type="hidden" name="restaurants" id="restaurants" value="true" />
+                                @foreach(session()->get('cart') as  $restaurant)
+
+                                        <div class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
+                                            <div class="d-flex">
+                                                <div class="p-8  d-flex align-items-center justify-content-center me-6">
+                                                    <div class="rounded-circle"
+                                                         style="width: 60px; height: 60px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
+                                                </div>
+                                                <div style="margin-top: 30px">
+                                                    <p class="fw-semibold"> {{ $restaurant->name }}</p>
+
+                                                </div>
+                                            </div>
+                                            <h6 class="mb-0 fw-semibold remove-restaurant-list"
+                                                data-restaurant-id="{{ $restaurant->id }}" style="cursor:pointer;">
+                                                x</h6>
+                                        </div>
+                                    @endforeach
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="firstName" class="control-label">Име</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control"
+                                   placeholder="Петар" required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="phone" class="control-label">Телефон</label>
+                            <input type="tel" id="phone" name="phone" class="form-control"
+                                   placeholder="070 555 555" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="datetime-form" class="control-label">Датум и време за контант</label>
+                            <input type="datetime-local" id="datetime-form"
+                                   value="{{ date('Y-m-d H:i',strtotime("-1 days")) }}" required
+                                   min="{{ date('Y-m-d') }}" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Испрати
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p id="messageForm"></p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
     <!-- Main wrapper End -->
     @include('partials.footer')
 </div>
@@ -436,9 +565,6 @@
 <!-- ---------------------------------------------- -->
 
 
-
-
-
 <script src="/dist/js/app.init.js"></script>
 
 <script src="/js/wow.min.js"></script>
@@ -451,17 +577,76 @@
 <!-- ---------------------------------------------- -->
 
 
-
 @yield('scripts')
+
+
+<script>
+
+
+    $(".restaurant-list").one("click", function (e) {
+        e.preventDefault();
+        let id = $(this).data('restaurant-id');
+        $.ajax({
+            url: "{{ route('frontend.getRestaurant') }}",
+            method: 'post',
+            data: {
+                id: id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (response) {
+                $("#display-list-restaurants").append(response);
+                $("#restaurant-list-trigger").click();
+                $("#countRestaurants").html(parseInt($("#countRestaurants").html()) + 1);
+
+            }
+        });
+
+    });
+
+
+    $("#display-list-restaurants").on('click', ".remove-restaurant-list", function (e) {
+
+        e.preventDefault();
+
+        let elm = $(this);
+        let id = $(this).data('restaurant-id');
+
+        elm.parent().remove();
+        $.ajax({
+            url: "{{ route('frontend.removeRestaurant') }}",
+            method: 'post',
+            data: {
+                id: id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (response) {
+
+                elm.parent().remove();
+                $("#countRestaurants").html(parseInt($("#countRestaurants").html()) - 1);
+            }
+        });
+
+    });
+</script>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS8GHQQ2"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS8GHQQ2"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H7XM5SM8DV"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'G-H7XM5SM8DV');
@@ -469,22 +654,53 @@
 
 
 <script>
-    window.fbAsyncInit = function() {
+    $("#main-page-contant-list").on("submit", function (e) {
+        e.preventDefault();
+        let sendData = {
+            firstName: $("#firstName").val(),
+            dateTime: $("#datetime-form").val(),
+            phone: $("#phone").val(),
+            restaurants: $("#restaurants").val()
+        }
+
+        $.ajax({
+            url: "{{ route('main.contact') }}",
+            method: 'post',
+            data: sendData,
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (response) {
+                $("#messageForm").text("Ви благодариме, ќе бидете контактирани во избраното време од тимот на Драги Гости");
+            },
+            error: function (response) {
+                $("#messageForm").text("Се случи грешка при испраќање на барањето, Ве молиме пробајте подоцна");
+            }
+        });
+    });
+</script>
+
+
+<script>
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : '1339434706768448',
-            cookie     : true,
-            xfbml      : true,
-            version    : '19.0'
+            appId: '1339434706768448',
+            cookie: true,
+            xfbml: true,
+            version: '19.0'
         });
 
         FB.AppEvents.logPageView();
 
     };
 
-    (function(d, s, id){
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));

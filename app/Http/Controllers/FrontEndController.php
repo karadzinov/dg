@@ -36,7 +36,7 @@ class FrontEndController extends Controller
         $data = [
             "images" => $images,
             "photographers" => $photographers,
-            ];
+        ];
         return view('main')->with($data);
 
     }
@@ -110,6 +110,7 @@ class FrontEndController extends Controller
         return view('musicians.profile')->with($data);
 
     }
+
     public function profilePhotographer($slug)
     {
 
@@ -131,15 +132,13 @@ class FrontEndController extends Controller
     {
         $invitation = Invitation::where('invitation_link', '=', $invitation)->first();
 
-        if(!$invitation)
-        {
+        if (!$invitation) {
             return redirect()->route('frontend.index');
         }
 
         $link = Link::where('link', $link)->first();
 
-        if(!$link)
-        {
+        if (!$link) {
             return redirect()->route('frontend.index');
         }
         $guests = Guests::select('name')->where('link_id', '=', $link->id)->get()->toArray();
@@ -163,7 +162,6 @@ class FrontEndController extends Controller
         $guests = Guests::where('link_id', '=', $link->id)->get();
 
 
-
         $data = ['str' => $str, 'guests' => $guests, "link" => $link, "invitation" => $invitation];
 
         if ($invitation->template === 'template_a') {
@@ -175,7 +173,7 @@ class FrontEndController extends Controller
 
     public function confirm(Request $request)
     {
-        $guest = Guests::where('id', '=',$request->get('id'))->first();
+        $guest = Guests::where('id', '=', $request->get('id'))->first();
 
 
         $guest->confirmed = true;
@@ -258,7 +256,7 @@ class FrontEndController extends Controller
         return view('terms');
     }
 
-    public function mainContact(Request  $request)
+    public function mainContact(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'firstName' => 'required',
@@ -266,7 +264,7 @@ class FrontEndController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors'  => $validator->errors()]);
+            return response()->json(['errors' => $validator->errors()]);
         }
 
         $sender = [
@@ -276,7 +274,7 @@ class FrontEndController extends Controller
             'phone' => $request->get('phone')
         ];
 
-        $subject = "Contact from: ". $sender['firstName'];
+        $subject = "Contact from: " . $sender['firstName'];
 
         $name = $sender['firstName'];
 
@@ -286,19 +284,59 @@ class FrontEndController extends Controller
 
         $msg = "Имате порака од $name за да го контактирате во $dateTime на телефон: $phone";
 
+        if($request->get('restaurants'))
+        {
+
+            $msg .= " и да го контактирате за рестораните: ";
+            $ids = session()->get('cart', []);
+            foreach($ids as $id) {
+                $restaurant = Restaurant::where('id', '=', $id['id'])->first();
+               $msg .= $restaurant->name . ",\n";
+            }
+
+        }
+
+
+
         Log::debug($msg);
 
         try {
             $bccEmails = ["filip@dragigosti.com", "boban@dragigosti.com", "martin@dragigosti.com"];
             Mail::to("contact@dragigosti.com")
                 ->bcc($bccEmails)->send(new MailSender($msg, $subject, $sender));
-        } catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return response()->json(["errors" => $e->getMessage()], 400);
         }
 
         return response()->json(["success" => true], 200);
 
+    }
+
+    public function getRestaurant(Request $request)
+    {
+        $restaurant = Restaurant::FindOrFail($request->get('id'));
+
+        $cart = session()->get('cart', []);
+
+        if(!isset($cart[$restaurant->id])) {
+            $cart[$restaurant->id] = $restaurant;
+        }  else {
+            return response()->json(['success' => true, 200]);
+        }
+
+        session()->put('cart', $cart);
+        $data = ['restaurant' => $restaurant];
+        return view('partials.restaurants')->with($data);
+    }
+
+    public  function removeRestaurant(Request $request)
+    {
+        $restaurant = Restaurant::FindOrFail($request->get('id'));
+
+        $cart = session()->get('cart');
+        unset($cart[$restaurant->id]);
+        session()->put('cart', $cart);
+        session()->flash('success', 'Cart updated successfully');
     }
 
     public function sitemap()
@@ -325,9 +363,8 @@ class FrontEndController extends Controller
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
 
-        foreach($invitations as $invitation)
-        {
-            $sitemap->add(Url::create(env('APP_URL') . '/'. $invitation->invitation_link)
+        foreach ($invitations as $invitation) {
+            $sitemap->add(Url::create(env('APP_URL') . '/' . $invitation->invitation_link)
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1));
@@ -338,9 +375,8 @@ class FrontEndController extends Controller
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
 
-        foreach($restaurants as $restaurant)
-        {
-            $sitemap->add(Url::create(env('APP_URL') . '/restaurants/'. $restaurant->slug)
+        foreach ($restaurants as $restaurant) {
+            $sitemap->add(Url::create(env('APP_URL') . '/restaurants/' . $restaurant->slug)
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1));
@@ -352,9 +388,8 @@ class FrontEndController extends Controller
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
 
-        foreach($musicians as $musician)
-        {
-            $sitemap->add(Url::create(env('APP_URL') . '/musicians/'. $musicians->slug)
+        foreach ($musicians as $musician) {
+            $sitemap->add(Url::create(env('APP_URL') . '/musicians/' . $musicians->slug)
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1));
@@ -365,9 +400,8 @@ class FrontEndController extends Controller
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
 
-        foreach($photographers as $photographer)
-        {
-            $sitemap->add(Url::create(env('APP_URL') . '/photographers/'. $photographer->slug)
+        foreach ($photographers as $photographer) {
+            $sitemap->add(Url::create(env('APP_URL') . '/photographers/' . $photographer->slug)
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1));
