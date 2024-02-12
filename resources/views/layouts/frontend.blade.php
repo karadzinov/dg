@@ -316,7 +316,7 @@
                                     id="restaurant-list-trigger">
                                 <i class="ti ti-basket"></i>
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
-                                      id="countRestaurants">{{ count(session()->get('cart')) ?? 0 }}</span>
+                                      id="countRestaurants">@if(session()->get('cart')) {{ count(session()->get('cart')) }} @endif</span>
                             </button>
                         </li>
 
