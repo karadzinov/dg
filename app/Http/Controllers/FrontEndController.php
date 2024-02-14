@@ -215,6 +215,10 @@ class FrontEndController extends Controller
     public function question(Request $request)
     {
 
+        $firstName = $request->get('firstName');
+        $email = $request->get('email');
+        $phone = $request->get('phone');
+
         $sender = [
             'firstName' => $request->get('firstName'),
             'email' => $request->get('email'),
@@ -226,7 +230,11 @@ class FrontEndController extends Controller
         $msg = $request->get('description');
 
 
-        Mail::to('contact@dragigosti.com')->send(new MailSender($msg, $subject, $sender));
+        Log::info("Добивте прашање од $firstName со емаил: $email, телефон: $phone и наслов $subject. $msg");
+
+        $bccEmails = ["filip@dragigosti.com", "boban@dragigosti.com", "martin@dragigosti.com"];
+        Mail::to("contact@dragigosti.com")
+            ->bcc($bccEmails)->send(new MailSender($msg, $subject, $sender));
         Session::flash('message', 'Ви благодариме, наскоро ќе добиете повратен одговор');
         return redirect()->back();
     }
@@ -296,7 +304,7 @@ class FrontEndController extends Controller
 
 
 
-        Log::debug($msg);
+        Log::info($msg);
 
         try {
             $bccEmails = ["filip@dragigosti.com", "boban@dragigosti.com", "martin@dragigosti.com"];
