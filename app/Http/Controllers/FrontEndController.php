@@ -217,7 +217,6 @@ class FrontEndController extends Controller
 
         $sender = [
             'firstName' => $request->get('firstName'),
-            'lastName' => $request->get('lastName'),
             'email' => $request->get('email'),
             'phone' => $request->get('phone'),
         ];
@@ -228,9 +227,8 @@ class FrontEndController extends Controller
 
 
         Mail::to($email)->send(new MailSender($msg, $subject, $sender));
-        dd('DEFINE FLOW,
-        ->From which email,
-        ->to whom!!');
+        Session::flash('message', 'Ви благодариме, наскоро ќе добиете повратен одговор');
+        return redirect()->back();
     }
 
     public function invitations()
