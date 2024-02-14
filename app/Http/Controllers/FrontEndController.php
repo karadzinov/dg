@@ -226,7 +226,7 @@ class FrontEndController extends Controller
         $msg = $request->get('description');
 
 
-        Mail::to($email)->send(new MailSender($msg, $subject, $sender));
+        Mail::to('contact@dragigosti.com')->send(new MailSender($msg, $subject, $sender));
         Session::flash('message', 'Ви благодариме, наскоро ќе добиете повратен одговор');
         return redirect()->back();
     }
