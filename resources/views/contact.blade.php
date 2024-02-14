@@ -53,7 +53,7 @@
         </div>
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="mb-0 text-white">Контактирајте не (<i class="ti ti-phone fs-4"></i> 075 260 169)</h4>
+                <h4 class="mb-0 text-white">Контактирајте не (<i class="ti ti-phone fs-4"></i> 075 260 169)  (<i class="ti ti-phone fs-4"></i>076 454 318)  (<i class="ti ti-phone fs-4"></i>071 213 980)</h4>
             </div>
             <form action="{{ route('frontend.question') }}" method="post">
                 @csrf
