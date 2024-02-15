@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('metadata')
+    <title>{{ $photographer->name }} - Драги Гости</title>
     <meta name="description"
           content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
     <!-- Schema.org markup for Google+ -->
