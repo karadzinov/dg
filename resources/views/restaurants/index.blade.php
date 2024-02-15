@@ -75,8 +75,8 @@
                                             </div>
 
                                             <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
-                                                @if($index === 0) <span class="text-white">Додадете го во листата за понуда</span> @endif
-                                                <a class="restaurant-list btn bg-main btn-sm"
+                                                @if($index === 0) <span class="text-white text-thin">Додадете го во листата за понуда</span> @endif
+                                                <a class="restaurant-list btn btn-outline-light btn-sm"
                                                    data-restaurant-id="{{ $restaurant->id }}"><i class="ti ti-plus"></i></a>
 
 
