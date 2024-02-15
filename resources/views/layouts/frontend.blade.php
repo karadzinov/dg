@@ -315,7 +315,7 @@
                             <button class="nav-link position-relative nav-icon-hover" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasRestaurants" aria-controls="offcanvasRestaurants"
                                     id="restaurant-list-trigger">
-                                <i class="ti ti-basket"></i>
+                                <i class="ti ti-calendar-check"></i>
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
                                       id="countRestaurants">@if(session()->get('cart'))
                                         {{ count(session()->get('cart')) }} @else 0

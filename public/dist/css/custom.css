@@ -1088,5 +1088,11 @@ div[class*=box] {
         margin: 0 auto;
     }
 
+    .mobile-add {
+        text-align: center;
+        margin: 0 auto;
+        padding-bottom: 20px;
+    }
+
 
 }
