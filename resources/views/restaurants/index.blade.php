@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('metadata')
+    <title>Ресторани - Драги Гости</title>
     <meta name="description"
           content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
     <!-- Schema.org markup for Google+ -->
@@ -74,6 +75,7 @@
                                             </div>
 
                                             <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
+                                                @if($index === 0) <span class="text-white">Додадете го во листата за понуда</span> @endif
                                                 <a class="restaurant-list btn bg-main btn-sm"
                                                    data-restaurant-id="{{ $restaurant->id }}"><i class="ti ti-plus"></i></a>
 
