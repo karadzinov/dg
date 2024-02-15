@@ -317,7 +317,7 @@
                                 <i class="ti ti-basket"></i>
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
                                       id="countRestaurants">@if(session()->get('cart'))
-                                        {{ count(session()->get('cart')) }}
+                                        {{ count(session()->get('cart')) }} @else 0
                                     @endif</span>
                             </button>
                         </li>
