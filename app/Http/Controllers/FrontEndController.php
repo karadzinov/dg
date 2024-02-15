@@ -364,7 +364,7 @@ class FrontEndController extends Controller
             ->setLastModificationDate(Carbon::yesterday())
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
-        $sitemap->add(Url::create(env('APP_URL') . '/invitations')
+        $sitemap->add(Url::create(env('APP_URL') . '/invitation/create')
             ->setLastModificationDate(Carbon::yesterday())
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
