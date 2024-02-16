@@ -466,8 +466,8 @@
 
 
                                 <div class="position-relative" id="display-list-restaurants">
-                                    <input type="hidden" name="restaurants" id="restaurants" value="true"/>
                                     @if(session()->get('cart'))
+                                        <input type="hidden" name="restaurants" id="restaurants" value="true"/>
                                         @foreach(session()->get('cart') as  $restaurant)
 
                                             <div
@@ -494,8 +494,8 @@
                                 </div>
 
                                 <div class="position-relative" id="display-list-photographers">
-                                    <input type="hidden" name="photographers" id="photographers" value="true"/>
                                     @if(session()->get('cart-photo'))
+                                        <input type="hidden" name="photographers" id="photographers" value="true"/>
                                         @foreach(session()->get('cart-photo') as $photographer)
 
                                             <div
@@ -754,7 +754,8 @@
             firstName: $("#firstName").val(),
             dateTime: $("#datetime-form").val(),
             phone: $("#phone").val(),
-            restaurants: $("#restaurants").val()
+            restaurants: $("#restaurants").val(),
+            photographers: $("#photographers").val()
         }
 
         $.ajax({
