@@ -317,8 +317,15 @@
                                     id="restaurant-list-trigger">
                                 <i class="ti ti-calendar-check"></i>
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
-                                      id="countRestaurants">@if(session()->get('cart'))
-                                        {{ count(session()->get('cart')) }} @else 0
+                                      id="countRestaurants">
+                                    @if(session()->get('cart') &&  session()->get('cart-photo'))
+                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo')) }}
+                                    @elseif(session()->get('cart-photo'))
+                                        {{ count(session()->get('cart-photo')) }}
+                                    @elseif(session()->get('cart'))
+                                        {{ count(session()->get('cart')) }}
+                                    @else
+                                        0
                                     @endif</span>
                             </button>
                         </li>
@@ -444,7 +451,7 @@
          aria-labelledby="offcanvasRestaurants">
         <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
             <h4 class="offcanvas-title fw-semibold" id="offcanvasRestaurants">
-                Листа на ресторани
+                Листа за понуда
             </h4>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -481,7 +488,36 @@
                                                     x</h6>
                                             </div>
                                         @endforeach
-                                        @endif
+                                    @endif
+
+
+                                </div>
+
+                                <div class="position-relative" id="display-list-photographers">
+                                    <input type="hidden" name="photographers" id="photographers" value="true"/>
+                                    @if(session()->get('cart-photo'))
+                                        @foreach(session()->get('cart-photo') as $photographer)
+
+                                            <div
+                                                class="d-flex align-items-center justify-content-between mb-4 photographer-items">
+                                                <div class="d-flex">
+                                                    <div
+                                                        class="p-8  d-flex align-items-center justify-content-center me-6">
+                                                        <div class="rounded-circle"
+                                                             style="width: 60px; height: 60px; background-image: url('/images/logos/photographers/thumbnails/{{ $photographer->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
+                                                    </div>
+                                                    <div style="margin-top: 30px">
+                                                        <p class="fw-semibold"> {{ $photographer->name }}</p>
+
+                                                    </div>
+                                                </div>
+                                                <h6 class="mb-0 fw-semibold remove-photographer-list"
+                                                    data-photographer-id="{{ $photographer->id }}"
+                                                    style="cursor:pointer;">
+                                                    x</h6>
+                                            </div>
+                                        @endforeach
+                                    @endif
 
 
                                 </div>
@@ -527,7 +563,8 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Побарај понуда
+                        <button type="submit" id="form-submit" class="btn btn-block btn-primary  text-white">Побарај
+                            понуда
                         </button>
                     </div>
                 </div>
@@ -590,6 +627,28 @@
 <script>
 
 
+    $(".photographers-list").one("click", function (e) {
+        e.preventDefault();
+        let id = $(this).data('photographer-id');
+        $.ajax({
+            url: "{{ route('frontend.getPhotographer') }}",
+            method: 'post',
+            data: {
+                id: id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (response) {
+                $("#display-list-photographers").append(response);
+                $("#restaurant-list-trigger").click();
+                $("#countRestaurants").html(parseInt($("#countRestaurants").html()) + 1);
+
+            }
+        });
+
+    });
+
     $(".restaurant-list").one("click", function (e) {
         e.preventDefault();
         let id = $(this).data('restaurant-id');
@@ -623,6 +682,34 @@
         elm.parent().remove();
         $.ajax({
             url: "{{ route('frontend.removeRestaurant') }}",
+            method: 'post',
+            data: {
+                id: id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (response) {
+
+                elm.parent().remove();
+                $("#countRestaurants").html(parseInt($("#countRestaurants").html()) - 1);
+            }
+        });
+
+    });
+
+
+    $("#display-list-photographers").on('click', ".remove-photographer-list", function (e) {
+
+        e.preventDefault();
+
+        console.log("here");
+        let elm = $(this);
+        let id = $(this).data('photographer-id');
+
+        elm.parent().remove();
+        $.ajax({
+            url: "{{ route('frontend.removePhotographer') }}",
             method: 'post',
             data: {
                 id: id,

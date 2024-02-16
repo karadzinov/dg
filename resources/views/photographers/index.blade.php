@@ -66,13 +66,14 @@
                                                 </div>
 
                                             </div>
-                                            <div class="d-flex align-items-center gap-4">
-                                                <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
+                                            <div class="d-flex align-items-center">
 
 
-                                                </div>
+                                                <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto mobile-add">
+                                                    @if($index === 0) <span class="text-white text-thin">Додадете го во листата за понуда</span> @endif
+                                                    <a class="photographers-list btn btn-outline-light btn-sm"
+                                                       data-photographer-id="{{ $photographer->id }}"><i class="ti ti-plus"></i></a>
 
-                                                <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
 
                                                 </div>
                                             </div>

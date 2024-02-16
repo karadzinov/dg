@@ -302,6 +302,17 @@ class FrontEndController extends Controller
 
         }
 
+        if($request->get('photographers'))
+        {
+            $msg .= " и да го контактирате за фотографите: ";
+            $ids = session()->get('cart-photo', []);
+            foreach($ids as $id) {
+                $photographer = Photographer::where('id', '=', $id['id'])->first();
+                $msg .= $photographer->name . ",\n";
+            }
+
+        }
+
 
 
         Log::info($msg);
@@ -342,6 +353,33 @@ class FrontEndController extends Controller
         $cart = session()->get('cart');
         unset($cart[$restaurant->id]);
         session()->put('cart', $cart);
+        session()->flash('success', 'Cart updated successfully');
+    }
+
+    public function getPhotographer(Request $request)
+    {
+        $photographer = Photographer::FindOrFail($request->get('id'));
+
+        $cart = session()->get('cart-photo', []);
+
+        if(!isset($cart[$photographer->id])) {
+            $cart[$photographer->id] = $photographer;
+        }  else {
+            return response()->json(['success' => true, 200]);
+        }
+
+        session()->put('cart-photo', $cart);
+        $data = ['photographer' => $photographer];
+        return view('partials.photographers')->with($data);
+    }
+
+    public  function removePhotographer(Request $request)
+    {
+        $photographer = Photographer::FindOrFail($request->get('id'));
+
+        $cart = session()->get('cart-photo');
+        unset($cart[$photographer->id]);
+        session()->put('cart-photo', $cart);
         session()->flash('success', 'Cart updated successfully');
     }
 
