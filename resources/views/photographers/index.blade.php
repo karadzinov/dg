@@ -37,8 +37,8 @@
     <div class="container-fluid">
         <div class="row">
 
-                @foreach($photographers as $photographer)
-                    <div class="col-md-6 col-lg-4">
+                @foreach($photographers as $index  => $photographer)
+                    <div class="@if($index === 0) col-md-8 col-lg-8 @else col-md-6 col-lg-4 @endif">
                         <a href="{{ route('photographers.profile', $photographer->slug) }}">
                             <div class="card blog position-relative overflow-hidden hover-img"
                                  style="background-image: url(images/cover_images/photographers/originals/{{ $photographer->coverImg }});">

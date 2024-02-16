@@ -65,7 +65,7 @@ class FrontEndController extends Controller
 
     public function photographers()
     {
-        $photographers = Photographer::all();
+        $photographers = Photographer::orderBy('id', 'desc')->get();
 
         $data = [
             'photographers' => $photographers
