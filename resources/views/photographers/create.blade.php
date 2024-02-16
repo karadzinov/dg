@@ -96,7 +96,7 @@
                                     <div class="mb-3">
                                         <label for="description"> Повеќе за фотографот/студиото : <span class="danger">*</span>
                                         </label>
-                                        <textarea class="quill-editor @error('description') is-invalid @enderror"
+                                        <textarea class="ckeditor @error('description') is-invalid @enderror"
                                                   rows="3" placeholder="Text Here..."
                                                   name="description" id="description"></textarea>
                                         @error('description')
@@ -332,7 +332,8 @@
     <!-- Google Maps -->
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
-
+    <script src="/plugins/ckeditor/ckeditor.js"></script>
+    <script src="/plugins/ckeditor/ckconfig.js"></script>
     <script>
 
         $(document).ready(function () {

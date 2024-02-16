@@ -144,20 +144,6 @@ class PhotographerController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'coverImg' => 'required',
-            'logo' => 'required',
-            'phone' => 'required',
-            'subtitle' => 'required',
-            'description' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
 
         $photographer = Photographer::FindorFail($id);
 
