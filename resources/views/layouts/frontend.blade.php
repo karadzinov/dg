@@ -464,10 +464,10 @@
                         <div class="card w-100">
                             <div class="card-body">
 
-
+                                <input type="hidden" name="restaurants" id="restaurants" value="true"/>
                                 <div class="position-relative" id="display-list-restaurants">
                                     @if(session()->get('cart'))
-                                        <input type="hidden" name="restaurants" id="restaurants" value="true"/>
+
                                         @foreach(session()->get('cart') as  $restaurant)
 
                                             <div
@@ -492,10 +492,10 @@
 
 
                                 </div>
-
+                                <input type="hidden" name="photographers" id="photographers" value="true"/>
                                 <div class="position-relative" id="display-list-photographers">
                                     @if(session()->get('cart-photo'))
-                                        <input type="hidden" name="photographers" id="photographers" value="true"/>
+
                                         @foreach(session()->get('cart-photo') as $photographer)
 
                                             <div

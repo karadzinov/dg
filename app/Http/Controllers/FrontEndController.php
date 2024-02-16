@@ -292,8 +292,7 @@ class FrontEndController extends Controller
 
         if($request->get('restaurants'))
         {
-
-            $msg .= " и да го контактирате за рестораните: ";
+            $msg .= " и да го контактирате за рестораните: ;";
             $ids = session()->get('cart', []);
             foreach($ids as $id) {
                 $restaurant = Restaurant::where('id', '=', $id['id'])->first();

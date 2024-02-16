@@ -200,7 +200,7 @@
                                                     class="me-3" width="80"
                                                     alt=""/></span></a>
                                     </div>
-                                    <h5 class="mb-3 text-center">Испратете барање за состанок со {{ $photographer->name }}</h5>
+                                    <h5 class="mb-3 text-center">Испратете барање за понуда со {{ $photographer->name }}</h5>
                                     <form action="{{ route('messages.store', $photographer->id) }}" method="post">
                                         @csrf
                                         <div class="row">
