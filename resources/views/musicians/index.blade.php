@@ -36,45 +36,57 @@
     <!-- Page Start -->
     <div class="container-fluid">
         <div class="row">
-            @foreach($musicians as $musician)
-            <div class="col-md-6 col-lg-4">
-                <div class="card blog position-relative overflow-hidden hover-img"
-                     style="background-image: url(images/cover_images/musicians/originals/{{ $musician->coverImg }});">
-                    <div class="card-body position-relative">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                            <div class="d-flex align-items-start justify-content-between">
-                                <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
-                                     data-bs-title="Mollie Underwood">
-                                </div>
-                                <span class="badge text-bg-primary rounded-3 fs-2 fw-semibold">Топ понуда</span>
-                            </div>
-                            <div>
-                                <a href="{{ route('musicians.profile', $musician->slug) }}" class="fs-7 my-4 fw-semibold text-white d-block lh-sm"><h1
-                                        class="text-white">25ти Август</h1>
-                                    <p> {{ $musician->name }}</p></a>
-                                <div class="d-flex align-items-center gap-4">
-                                    <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
-                                        <i class="ti ti-eye fs-5"></i>
-                                        Капацитет {{ $musician->capacity }} гости
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2 text-white fs-3 fw-normal">
 
-                                        <i class="ti ti-currency-euro fs-5"></i> / порција
+            @foreach($musicians as $index  => $musician)
+                <div class="@if($index === 0) col-md-8 col-lg-8 @else col-md-6 col-lg-4 @endif">
+                    <a href="{{ route('musicians.profile', $musician->slug) }}">
+                        <div class="card blog position-relative overflow-hidden hover-img"
+                             style="background-image: url('/images/cover_images/musicians/originals/{{ $musician->coverImg }}'">
+                            <div class="card-body position-relative">
+                                <div class="d-flex flex-column justify-content-between h-100">
+                                    <div class="d-flex align-items-start justify-content-between">
+                                        <div class="d-flex align-items-center justify-content-center mb-2 logo-top">
+                                            <div
+                                                class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
+                                                style="z-index: 1; width: 60px; height: 60px; background-image: url('/images/logos/musicians/thumbnails/{{ $musician->logo }}'); background-size: cover; background-position: center; background-color: #ffffff;">
+
+                                            </div>
+                                        </div>
 
                                     </div>
-                                    <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto">
-                                        <i class="ti ti-point"></i>
-                                        <small>Петок, Август 25</small>
+                                    <div>
+                                        <div class="fs-7 my-4 fw-semibold text-white d-block lh-sm">
+
+
+                                            <div class="box-1">
+                                                <div class="butt btn-one">
+                                                    <span>{{ $musician->name }}</span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="d-flex align-items-center">
+
+
+                                            <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto mobile-add">
+                                                @if($index === 0) <span class="text-white text-thin">Додадете го во листата за понуда</span> @endif
+                                                <a class="musicians-list btn btn-outline-light btn-sm"
+                                                   data-musician-id="{{ $musician->id }}"><i class="ti ti-plus"></i></a>
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
             @endforeach
 
         </div>
+
 
     </div>
 @endsection
