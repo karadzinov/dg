@@ -101,10 +101,18 @@ class FrontEndController extends Controller
         $albums = Album::where('musician_id', $musician->id)->get();
         $contacts = Contact::where('musician_id', $musician->id)->get();
 
+        $pictures = [];
+        foreach($albums as $album)
+        {
+            $pictures[] = Picture::where('album_id', $album->id)->get();
+        }
+
+
+
         $data = [
             'musician' => $musician,
             'contacts' => $contacts,
-            'albums' => $albums
+            'pictures' => $pictures
         ];
 
         return view('musicians.profile')->with($data);

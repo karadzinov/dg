@@ -7,7 +7,8 @@
     <meta itemprop="name" content="{{ $musician->name }} - Драги Гости">
     <meta itemprop="description"
           content="{{ Str::of($musician->description)->words(25)->stripTags() }}">
-    <meta itemprop="image" content="{{ env('APP_URL') }}/images/cover_images/musicians/originals/{{ $musician->coverImg }}">
+    <meta itemprop="image"
+          content="{{ env('APP_URL') }}/images/cover_images/musicians/originals/{{ $musician->coverImg }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
@@ -15,7 +16,8 @@
     <meta name="twitter:title" content="{{ $musician->name }} - Драги Гости">
     <meta name="twitter:description" content="{{ Str::of($musician->description)->words(25)->stripTags() }}">
     <meta name="twitter:creator" content="@dragigosti">
-    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/cover_images/musicians/originals/{{ $musician->coverImg }}">
+    <meta name="twitter:image"
+          content="{{ env('APP_URL') }}/images/cover_images/musicians/originals/{{ $musician->coverImg }}">
 
     <!-- Open Graph data -->
 
@@ -24,7 +26,8 @@
     <meta property="og:title" content="{{ $musician->name }} - Драги Гости"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{  url()->full()  }}"/>
-    <meta property="og:image" content="{{ env('APP_URL') }}/images/cover_images/musicians/originals/{{ $musician->coverImg }}"/>
+    <meta property="og:image"
+          content="{{ env('APP_URL') }}/images/cover_images/musicians/originals/{{ $musician->coverImg }}"/>
     <meta property="og:description"
           content="{{ Str::of($musician->description)->words(25)->stripTags() }}"/>
     <meta property="og:site_name" content="DragiGosti"/>
@@ -173,7 +176,8 @@
                                                     class="me-3" width="80"
                                                     alt=""/></span></a>
                                     </div>
-                                    <h5 class="mb-3 text-center">Испратете барање за понуда со {{ $musician->name }}</h5>
+                                    <h5 class="mb-3 text-center">Испратете барање за понуда
+                                        со {{ $musician->name }}</h5>
                                     <form action="{{ route('messages.store', $musician->id) }}" method="post">
                                         @csrf
                                         <div class="row">
@@ -252,25 +256,47 @@
             </div>
 
             <div class="row">
-                @foreach($albums as $album)
-                    <div class="col-sm-6 col-xl-4">
-                        <div class="card hover-img overflow-hidden rounded-2">
-                            <div class="position-relative">
-                                <a href="{{ route('musicians.album.view', $album->id) }}"><img src="/images/cover_images/musicians/thumbnails/{{ $album->coverImg }}"
-                                                                                               class="card-img-top rounded-0" alt="..." style="max-height: 400px"></a>
-                                <a
-                                    class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                    data-bs-toggle="tooltip" data-bs-placement="top"><i
-                                        class="ti ti-eye fs-4"></i></a></div>
-                            <div class="card-body pt-3 p-4">
-                                <h6 class="fw-semibold fs-4">{{ $album->name }}</h6>
+
+                @foreach($pictures as $picture)
+                    @if(isset($picture->youtube_link))
+                        <div class="swiper-slide">
+                            <div
+                                class="vh-75 d-flex w-100  text-white align-items-center justify-content-center">
+                                <iframe width="1300" height="650"
+                                        src="{{$picture->youtube_link}}?autoplay=1"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
+
+
+
+
+
+                <div class="row">
+                @foreach($pictures as $pictures)
+
+                    @foreach($pictures as $picture)
+                        @if(isset($picture->youtube_link))
+
+                            <div class="col-md-4">
+                            <iframe
+                                    src="{{$picture->youtube_link}}?autoplay=1"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                            </div>
+                        @endif
+                    @endforeach
+                @endforeach
+                </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-md-12">
                     <div class="form-group">
                         <div id="map-canvas"></div>
@@ -279,14 +305,7 @@
             </div>
 
 
-
-
         </div>
-
-
-
-
-
 
 
     </div>
@@ -298,7 +317,6 @@
             src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
 
     <script>
-
 
 
         $(document).ready(function () {

@@ -88,7 +88,7 @@
                         <br>
                         <br>
                         <div class="text-end">
-                            <button type="submit" class="btn btn-primary">Сочувај го контактот</button>
+                            <button type="submit" class="btn btn-primary">Сочувај го видеото</button>
                         </div>
                     </form>
                 </div>

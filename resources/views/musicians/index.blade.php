@@ -74,8 +74,9 @@
                                                 <a class="musicians-list btn btn-outline-light btn-sm"
                                                    data-musician-id="{{ $musician->id }}"><i class="ti ti-plus"></i></a>
 
-                    -->
+
                                             </div>
+                                               -->
                                         </div>
                                     </div>
                                 </div>
