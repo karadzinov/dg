@@ -54,7 +54,7 @@ class FrontEndController extends Controller
 
     public function musicians()
     {
-        $musicians = Musician::all();
+        $musicians = Musician::orderBy('id', 'desc')->get();
 
         $data = [
             'musicians' => $musicians
