@@ -130,7 +130,7 @@
                  aria-labelledby="pills-profile-tab" tabindex="0">
                 <div class="row">
 
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body border-bottom">
                                 <div class="col-12">
@@ -139,25 +139,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body border-bottom">
-                                @foreach($contacts as $contact)
-                                    <div class="row">
-                                        <div class="col-sm-12 col-xl-12">
 
-                                            <div class="text-center">
-                                                <h6>{{ $contact->contactName }}</h6>
-                                                <p>{{ $contact->contactPosition }}</p>
-                                                <p>{{ $contact->contactEmail }} </p>
-                                                <p>{{ $contact->contactPhone }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="row">
