@@ -245,9 +245,9 @@
                             <div
                                 class="vh-75 d-flex w-100  text-white align-items-center justify-content-center">
                                 <iframe width="1300" height="650"
-                                        src="{{$picture->youtube_link}}?autoplay=1"
+                                        src="{{$picture->youtube_link}}"
                                         title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         allowfullscreen></iframe>
 
                             </div>
