@@ -320,6 +320,17 @@ class FrontEndController extends Controller
 
         }
 
+        if($request->get('musicians'))
+        {
+            $msg .= " и да го контактирате за музичарите: ";
+            $ids = session()->get('cart-musician', []);
+            foreach($ids as $id) {
+                $musician = Musician::where('id', '=', $id['id'])->first();
+                $msg .= $musician->name . ",\n";
+            }
+
+        }
+
 
 
         Log::info($msg);
