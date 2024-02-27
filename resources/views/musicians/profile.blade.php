@@ -264,13 +264,7 @@
                 </div>
             </div>
 
-            <div class="row mt-4">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <div id="map-canvas"></div>
-                    </div>
-                </div>
-            </div>
+
 
 
         </div>
@@ -279,29 +273,4 @@
     </div>
 
 @endsection
-@section('scripts')
-    <!-- Google Maps -->
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
 
-    <script>
-
-
-        $(document).ready(function () {
-// Google Maps
-
-            map = new google.maps.Map(document.getElementById('map-canvas'), {
-                center: {lat: {{ $musician->lat }}, lng: {{ $musician->lng }}},
-                zoom: 15
-            });
-
-            var marker = new google.maps.Marker({
-                position: {lat: {{ $musician->lat }}, lng: {{ $musician->lng }}},
-                map: map,
-                draggable: false
-            });
-
-        });
-
-    </script>
-@endsection
