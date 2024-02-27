@@ -113,6 +113,10 @@ Route::middleware(['web'])->group(function () {
     Route::post('/get-photographer', [\App\Http\Controllers\FrontEndController::class, 'getPhotographer'])->name('frontend.getPhotographer');
     Route::post('/remove-photographer', [\App\Http\Controllers\FrontEndController::class, 'removePhotographer'])->name('frontend.removePhotographer');
 
+    Route::post('/get-musician', [\App\Http\Controllers\FrontEndController::class, 'getMusician'])->name('frontend.getMusician');
+    Route::post('/remove-musician', [\App\Http\Controllers\FrontEndController::class, 'removeMusician'])->name('frontend.removeMusician');
+
+
     Route::get('/restaurants/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profileRestaurants'])->name('restaurants.profile');
     Route::get('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'albumView'])->name('restaurants.album.view');
     Route::get('/musicians', [\App\Http\Controllers\FrontEndController::class, 'musicians'])->name('frontend.musicians');

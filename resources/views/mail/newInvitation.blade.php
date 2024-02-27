@@ -41,7 +41,7 @@
 <br>
 <footer>
     <h3>Тимот на Драги Гости</h3>
-    <img src="https://demo.dragigosti.com/dist/images/logo.svg" alt="Your Image" style="max-width: 170px; height: auto; display: block;">
+     <img src="http://dg.test/dist/images/logos/logo-main.png" alt="Your Image" style="max-width: 170px; height: auto; display: block;">
 </footer>
 </body>
 

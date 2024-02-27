@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="d-flex align-items-center">
 
-                    <!--
+
                                             <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto mobile-add">
                                                 @if($index === 0) <span class="text-white text-thin">Додадете го во листата за понуда</span> @endif
                                                 <a class="musicians-list btn btn-outline-light btn-sm"
@@ -76,7 +76,7 @@
 
 
                                             </div>
-                                               -->
+
                                         </div>
                                     </div>
                                 </div>

@@ -318,15 +318,12 @@
                                 <i class="ti ti-calendar-check"></i>
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
                                       id="countRestaurants">
-                                    @if(session()->get('cart') &&  session()->get('cart-photo'))
-                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo')) }}
-                                    @elseif(session()->get('cart-photo'))
-                                        {{ count(session()->get('cart-photo')) }}
-                                    @elseif(session()->get('cart'))
-                                        {{ count(session()->get('cart')) }}
+                                    @if(session()->get('cart') ||  session()->get('cart-photo') || session()->get('cart-musician'))
+                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo'))  + count(session()->get('cart-musician'))}}
                                     @else
                                         0
-                                    @endif</span>
+                                    @endif
+                                </span>
                             </button>
                         </li>
 
@@ -485,6 +482,35 @@
                                                 </div>
                                                 <h6 class="mb-0 fw-semibold remove-restaurant-list"
                                                     data-restaurant-id="{{ $restaurant->id }}" style="cursor:pointer;">
+                                                    x</h6>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+
+                                </div>
+
+                                <input type="hidden" name="musicians" id="musicians" value="true"/>
+                                <div class="position-relative" id="display-list-musicians">
+                                    @if(session()->get('cart-musician'))
+
+                                        @foreach(session()->get('cart-musician') as  $musician)
+
+                                            <div
+                                                class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
+                                                <div class="d-flex">
+                                                    <div
+                                                        class="p-8  d-flex align-items-center justify-content-center me-6">
+                                                        <div class="rounded-circle"
+                                                             style="width: 60px; height: 60px; background-image: url('/images/logos/musicians/thumbnails/{{ $musician->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
+                                                    </div>
+                                                    <div style="margin-top: 30px">
+                                                        <p class="fw-semibold"> {{ $musician->name }}</p>
+
+                                                    </div>
+                                                </div>
+                                                <h6 class="mb-0 fw-semibold remove-musician-list"
+                                                    data-musician-id="{{ $musician->id }}" style="cursor:pointer;">
                                                     x</h6>
                                             </div>
                                         @endforeach
@@ -672,6 +698,29 @@
     });
 
 
+    $(".musicians-list").one("click", function (e) {
+        e.preventDefault();
+        let id = $(this).data('musician-id');
+        $.ajax({
+            url: "{{ route('frontend.getMusician') }}",
+            method: 'post',
+            data: {
+                id: id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (response) {
+                $("#display-list-photographers").append(response);
+                $("#restaurant-list-trigger").click();
+                $("#countRestaurants").html(parseInt($("#countRestaurants").html()) + 1);
+
+            }
+        });
+
+    });
+
+
     $("#display-list-restaurants").on('click', ".remove-restaurant-list", function (e) {
 
         e.preventDefault();
@@ -682,6 +731,32 @@
         elm.parent().remove();
         $.ajax({
             url: "{{ route('frontend.removeRestaurant') }}",
+            method: 'post',
+            data: {
+                id: id,
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+            },
+            success: function (response) {
+
+                elm.parent().remove();
+                $("#countRestaurants").html(parseInt($("#countRestaurants").html()) - 1);
+            }
+        });
+
+    });
+
+    $("#display-list-musicians").on('click', ".remove-musician-list", function (e) {
+
+        e.preventDefault();
+
+        let elm = $(this);
+        let id = $(this).data('musician-id');
+
+        elm.parent().remove();
+        $.ajax({
+            url: "{{ route('frontend.removeMusician') }}",
             method: 'post',
             data: {
                 id: id,

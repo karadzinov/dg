@@ -380,6 +380,33 @@ class FrontEndController extends Controller
         return view('partials.photographers')->with($data);
     }
 
+    public function getMusician(Request $request)
+    {
+        $musician = Musician::FindOrFail($request->get('id'));
+
+        $cart = session()->get('cart-musician', []);
+
+        if(!isset($cart[$musician->id])) {
+            $cart[$musician->id] = $musician;
+        }  else {
+            return response()->json(['success' => true, 200]);
+        }
+
+        session()->put('cart-musician', $cart);
+        $data = ['musician' => $musician];
+        return view('partials.musicians')->with($data);
+    }
+
+    public function removeMusician(Request $request)
+    {
+        $musician = Musician::FindOrFail($request->get('id'));
+
+        $cart = session()->get('cart-musician');
+        unset($cart[$musician->id]);
+        session()->put('cart-musician', $cart);
+        session()->flash('success', 'Cart updated successfully');
+    }
+
     public  function removePhotographer(Request $request)
     {
         $photographer = Photographer::FindOrFail($request->get('id'));
@@ -389,6 +416,8 @@ class FrontEndController extends Controller
         session()->put('cart-photo', $cart);
         session()->flash('success', 'Cart updated successfully');
     }
+
+
 
     public function sitemap()
     {
