@@ -464,7 +464,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body" data-simplebar style="height: calc(100vh - 80px)">
-            <form id="main-page-contant-list" method="post" action="/main-contant">
+            <form id="main-page-contant-list" method="post">
 
 
                 <div class="row">
@@ -500,8 +500,7 @@
 
 
                                 </div>
-
-                                <input type="hidden" name="musicians" id="musicians" value="true"/>
+                                <input type="hidden" name="musicianss" id="musicianss" value="true"/>
                                 <div class="position-relative" id="display-list-musicians">
                                     @if(session()->get('cart-musician'))
 
@@ -569,8 +568,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="firstName" class="control-label">Име</label>
-                            <input type="text" id="firstName" name="firstName" class="form-control"
+                            <label for="fullName" class="control-label">Име</label>
+                            <input type="text" id="fullName" name="fullName" class="form-control"
                                    placeholder="Петар" required>
                         </div>
                     </div>
@@ -580,8 +579,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="phone" class="control-label">Телефон</label>
-                            <input type="tel" id="phone" name="phone" class="form-control"
+                            <label for="phoneNum" class="control-label">Телефон</label>
+                            <input type="tel" id="phoneNum" name="phoneNum" class="form-control"
                                    placeholder="070 555 555" required>
                         </div>
                     </div>
@@ -660,6 +659,40 @@
 
 @yield('scripts')
 
+
+<script>
+    $(document).ready(function() {
+        $("#main-page-contant-list").on("submit", function (e) {
+            e.preventDefault();
+            let sendData = {
+                firstName: $("#fullName").val(),
+                dateTime: $("#datetime-form").val(),
+                phone: $("#phoneNum").val(),
+                restaurants: $("#restaurants").val(),
+                photographers: $("#photographers").val(),
+                musicians: $("#musicianss").val(),
+            }
+
+            console.log(sendData);
+
+            $.ajax({
+                url: "{{ route('main.contact') }}",
+                method: 'post',
+                data: sendData,
+                headers: {
+                    'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                },
+                success: function (response) {
+                    $("#messageForm").text("Ви благодариме, ќе бидете контактирани во избраното време од тимот на Драги Гости");
+                },
+                error: function (response) {
+                    $("#messageForm").text("Се случи грешка при испраќање на барањето, Ве молиме пробајте подоцна");
+                }
+            });
+        });
+    });
+
+</script>
 
 <script>
 
@@ -833,33 +866,7 @@
 </script>
 
 
-<script>
-    $("#main-page-contant-list").on("submit", function (e) {
-        e.preventDefault();
-        let sendData = {
-            firstName: $("#firstName").val(),
-            dateTime: $("#datetime-form").val(),
-            phone: $("#phone").val(),
-            restaurants: $("#restaurants").val(),
-            photographers: $("#photographers").val()
-        }
 
-        $.ajax({
-            url: "{{ route('main.contact') }}",
-            method: 'post',
-            data: sendData,
-            headers: {
-                'X-CSRF-TOKEN': "{{ @csrf_token() }}"
-            },
-            success: function (response) {
-                $("#messageForm").text("Ви благодариме, ќе бидете контактирани во избраното време од тимот на Драги Гости");
-            },
-            error: function (response) {
-                $("#messageForm").text("Се случи грешка при испраќање на барањето, Ве молиме пробајте подоцна");
-            }
-        });
-    });
-</script>
 
 
 <script>
