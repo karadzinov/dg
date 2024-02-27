@@ -91,13 +91,13 @@
 <!-- Body Wrapper -->
 <!-- --------------------------------------------------- -->
 <div
-    class="page-wrapper"
-    id="main-wrapper"
-    data-layout="horizontal"
-    data-navbarbg="skin6"
-    data-sidebartype="full"
-    data-sidebar-position="fixed"
-    data-header-position="fixed"
+        class="page-wrapper"
+        id="main-wrapper"
+        data-layout="horizontal"
+        data-navbarbg="skin6"
+        data-sidebartype="full"
+        data-sidebar-position="fixed"
+        data-header-position="fixed"
 >
     <!-- Header Start -->
     <header class="app-header" style="background-color: white">
@@ -122,7 +122,7 @@
                 </li>
                 <li class="nav-item dropdown hover-dd d-none d-lg-block">
                     <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
-                                class="ti ti-chevron-down"></i></span></a>
+                                    class="ti ti-chevron-down"></i></span></a>
                     <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0"
                          style="max-width: 250px;">
                         <div class="col-12">
@@ -269,7 +269,7 @@
                                         </div>
                                         <div class="d-grid py-4 px-7 pt-8">
                                             <div
-                                                class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
+                                                    class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <h5 class="fs-4 mb-3 w-50 fw-semibold">Bronze</h5>
@@ -318,12 +318,23 @@
                                 <i class="ti ti-calendar-check"></i>
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
                                       id="countRestaurants">
-                                    @if(session()->get('cart') ||  session()->get('cart-photo') || session()->get('cart-musician'))
-                                        {{  (count(session()->get('cart')) ?? 0) + (count(session()->get('cart-photo')) ?? 0) + (count(session()->get('cart-musician')) ?? 0) }}
+                                    @if(session()->get('cart') &&  session()->get('cart-photo')  && session()->get('cart-musician'))
+                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo'))  + count(session()->get('cart-musician'))}}
+                                    @elseif(session()->get('cart') &&  session()->get('cart-photo'))
+                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo')) }}
+                                    @elseif(session()->get('cart') &&  session()->get('cart-musician'))
+                                        {{  count(session()->get('cart')) + count(session()->get('cart-musician')) }}
+                                    @elseif(session()->get('cart-musician') &&  session()->get('cart-photo'))
+                                        {{  count(session()->get('cart-musician')) + count(session()->get('cart-photo')) }}
+                                    @elseif(session()->get('cart-photo'))
+                                        {{ count(session()->get('cart-photo')) }}
+                                    @elseif(session()->get('cart-musician'))
+                                        {{ count(session()->get('cart-musician')) }}
+                                    @elseif(session()->get('cart'))
+                                        {{ count(session()->get('cart')) }}
                                     @else
                                         0
-                                    @endif
-                                </span>
+                                    @endif</span>
                             </button>
                         </li>
 
@@ -468,10 +479,10 @@
                                         @foreach(session()->get('cart') as  $restaurant)
 
                                             <div
-                                                class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
+                                                    class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
                                                 <div class="d-flex">
                                                     <div
-                                                        class="p-8  d-flex align-items-center justify-content-center me-6">
+                                                            class="p-8  d-flex align-items-center justify-content-center me-6">
                                                         <div class="rounded-circle"
                                                              style="width: 60px; height: 60px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
                                                     </div>
@@ -497,10 +508,10 @@
                                         @foreach(session()->get('cart-musician') as  $musician)
 
                                             <div
-                                                class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
+                                                    class="d-flex align-items-center justify-content-between mb-4 restaurant-items">
                                                 <div class="d-flex">
                                                     <div
-                                                        class="p-8  d-flex align-items-center justify-content-center me-6">
+                                                            class="p-8  d-flex align-items-center justify-content-center me-6">
                                                         <div class="rounded-circle"
                                                              style="width: 60px; height: 60px; background-image: url('/images/logos/musicians/thumbnails/{{ $musician->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
                                                     </div>
@@ -525,10 +536,10 @@
                                         @foreach(session()->get('cart-photo') as $photographer)
 
                                             <div
-                                                class="d-flex align-items-center justify-content-between mb-4 photographer-items">
+                                                    class="d-flex align-items-center justify-content-between mb-4 photographer-items">
                                                 <div class="d-flex">
                                                     <div
-                                                        class="p-8  d-flex align-items-center justify-content-center me-6">
+                                                            class="p-8  d-flex align-items-center justify-content-center me-6">
                                                         <div class="rounded-circle"
                                                              style="width: 60px; height: 60px; background-image: url('/images/logos/photographers/thumbnails/{{ $photographer->logo }}'); background-size: cover; background-position: center; background-color: #ffffff"></div>
                                                     </div>
