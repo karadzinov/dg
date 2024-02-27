@@ -147,20 +147,24 @@ class PhotographerController extends Controller
 
         $photographer = Photographer::FindorFail($id);
 
+        $input = $request->all();
+
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
             $imageObj = new ImageStoreLogo($request, 'photographers');
             $logo = $imageObj->imageStore();
+            $input['logo'] = $logo;
         }
         if ($request->hasFile('coverImg')) {
             $coverImg = $request['coverImg'];
             $imageObj = new ImageStoreCover($request, 'photographers');
             $coverImg = $imageObj->imageStore();
+            $input['coverImg'] = $coverImg;
         }
 
-        $input = $request->all();
-        $input['logo'] = $logo;
-        $input['coverImg'] = $coverImg;
+
+
+
 
         $photographer->fill($input)->save();
 
