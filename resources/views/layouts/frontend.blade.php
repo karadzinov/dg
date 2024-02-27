@@ -319,7 +319,7 @@
                                 <span class="popup-badge rounded-pill bg-danger text-white fs-2"
                                       id="countRestaurants">
                                     @if(session()->get('cart') ||  session()->get('cart-photo') || session()->get('cart-musician'))
-                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo'))  + count(session()->get('cart-musician'))}}
+                                        {{  (count(session()->get('cart')) ?? 0) + (count(session()->get('cart-photo')) ?? 0) + (count(session()->get('cart-musician')) ?? 0) }}
                                     @else
                                         0
                                     @endif
