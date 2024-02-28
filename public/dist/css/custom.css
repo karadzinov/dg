@@ -1100,5 +1100,9 @@ div[class*=box] {
         padding-bottom: 20px;
     }
 
+    .hover-img {
+        background-position:  center;
+    }
+
 
 }
