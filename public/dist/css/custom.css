@@ -1102,6 +1102,7 @@ div[class*=box] {
 
     .hover-img {
         background-position:  center;
+        max-height: 250px;
     }
 
 
