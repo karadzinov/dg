@@ -93,7 +93,7 @@
 
                                <button
                                         type="button"
-                                        class="btn bg-main text-white"
+                                        class="glow-on-hover"
                                         data-bs-toggle="modal"
                                         data-bs-target="#login-modal">
                                         Побарај понуда
@@ -277,6 +277,20 @@
 
 
                 </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">
+                        <button
+                            type="button"
+                            class="glow-on-hover"
+                            data-bs-toggle="modal"
+                            data-bs-target="#login-modal">
+                            Побарај понуда
+                        </button>
+                    </p>
+                </div>
+            </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
