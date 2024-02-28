@@ -141,37 +141,25 @@ class MusicianController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'coverImg' => 'required',
-            'logo' => 'required',
-            'phone' => 'required',
-            'subtitle' => 'required',
-            'description' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
+        $input = $request->all();
         $musician = Musician::FindorFail($id);
 
         if ($request->hasFile('logo')) {
-            $logo = $request['logo'];
+
             $imageObj = new ImageStoreLogo($request, 'musicians');
             $logo = $imageObj->imageStore();
+            $input['logo'] = $logo;
         }
         if ($request->hasFile('coverImg')) {
-            $coverImg = $request['coverImg'];
+
             $imageObj = new ImageStoreCover($request, 'musicians');
             $coverImg = $imageObj->imageStore();
+            $input['coverImg'] = $coverImg;
         }
 
-        $input = $request->all();
-        $input['logo'] = $logo;
-        $input['coverImg'] = $coverImg;
+
+
+
 
         $musician->fill($input)->save();
 

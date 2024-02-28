@@ -100,7 +100,7 @@
                                         </label>
                                         <textarea class="ckeditor @error('description') is-invalid @enderror"
                                                   rows="3" placeholder="Text Here..."
-                                                  name="description" id="description">{!! $photographer->description !!}"</textarea>
+                                                  name="description" id="description">{!! $photographer->description !!}</textarea>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
