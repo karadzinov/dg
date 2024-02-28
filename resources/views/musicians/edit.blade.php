@@ -250,7 +250,7 @@
                                         <input type="text"
                                                class="form-control form-horizontal"
                                                id="facebook"
-                                               name="facebook"/>
+                                               name="facebook" value="{{ $musician->facebook }}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -260,7 +260,7 @@
                                         <input type="text"
                                                class="form-control form-horizontal"
                                                id="instagram"
-                                               name="instagram"/>
+                                               name="instagram" value="{{ $musician->instagram }}"/>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +272,7 @@
                                         <input type="text"
                                                class="form-control form-horizontal"
                                                id="twitter"
-                                               name="twitter"/>
+                                               name="twitter" value="{{ $musician->twitter }}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -282,7 +282,7 @@
                                         <input type="text"
                                                class="form-control form-horizontal"
                                                id="youtube"
-                                               name="youtube"/>
+                                               name="youtube" value="{{ $musician->youtube }}"/>
                                     </div>
                                 </div>
                             </div>
