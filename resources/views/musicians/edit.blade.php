@@ -294,7 +294,7 @@
                                         <input type="text"
                                                class="form-control form-horizontal"
                                                id="weblink"
-                                               name="weblink"/>
+                                               name="weblink" value="{{ $musician->weblink }}"/>
                                     </div>
                                 </div>
                             </div>
