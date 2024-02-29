@@ -2,7 +2,7 @@
 @section('content')
     <div class="card w-100 position-relative overflow-hidden">
         <div class="px-4 py-3 border-bottom">
-            <h5 class="card-title fw-semibold mb-0 lh-sm">Users Table</h5>
+            <h5 class="card-title fw-semibold mb-0 lh-sm">Restaurants Table</h5>
         </div>
         <div class="card-body p-4">
 
@@ -11,42 +11,38 @@
                     <thead class="text-dark fs-4">
                     <tr>
                         <th>
-                            <h6 class="fs-4 fw-semibold mb-0">User</h6>
+                            <h6 class="fs-4 fw-semibold mb-0">Name</h6>
                         </th>
 
                         <th>
-                            <h6 class="fs-4 fw-semibold mb-0">Category</h6>
+                            <h6 class="fs-4 fw-semibold mb-0">User</h6>
                         </th>
                         <th>
-                            <h6 class="fs-4 fw-semibold mb-0">Login As...</h6>
+                            <h6 class="fs-4 fw-semibold mb-0">Info</h6>
                         </th>
                         <th><h6 class="fs-4 fw-semibold mb-0">Action</h6></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($users as $user)
+                    @foreach($restaurants as $restaurant)
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="../assets/images/profile/user-2.jpg" class="rounded-circle" width="40"
+                                    <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}" class="rounded-circle" width="40"
                                          height="40">
                                     <div class="ms-3">
-                                        <h6 class="fs-4 fw-semibold mb-0">{{ $user->name }}</h6>
+                                        <h6 class="fs-4 fw-semibold mb-0">{{ $restaurant->name }}</h6>
                                     </div>
                                 </div>
                             </td>
 
                             <td>
-                                <p class="mb-0 fw-normal">{{ $user->category }}</p>
+                                <p class="mb-0 fw-normal">{{ $restaurant->user->name }}</p>
+                                <p class="mb-0 fw-normal">{{ $restaurant->user->email }}</p>
                             </td>
                             <td>
-                                <form method="post" action="{{ route('admin.users.login') }}">
-                                    @csrf
-                                    <input type="hidden" name="email" value="{{ $user->email }}">
-
-                                    <button type="submit"
-                                            class="btn btn-primary btn-sm ms-auto">{{ $user->email }}</button>
-                                </form>
+                                <p class="mb-0 fw-normal">{{ $restaurant->city->city }}</p>
+                                <p class="mb-0 fw-normal">{{ $restaurant->address }}</p>
                             </td>
                             <td>
                                 <div class="dropdown dropstart">

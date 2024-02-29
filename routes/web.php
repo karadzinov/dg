@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function() {
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->names('admin.users');
     Route::post('users/login', [\App\Http\Controllers\Admin\UserController::class, 'loginAs'])->name('admin.users.login');
+    Route::resource('restaurants', \App\Http\Controllers\Admin\RestaurantsController::class)->names('admin.restaurants');
 });
 
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {

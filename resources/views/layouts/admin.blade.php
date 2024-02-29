@@ -84,6 +84,15 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('admin.restaurants.index') }}" aria-expanded="false">
+        <span>
+          <i class="ti ti-salad"></i>
+        </span>
+                            <span class="hide-menu">Restaurants</span>
+                        </a>
+                    </li>
+
 
         </div>
     </aside>
