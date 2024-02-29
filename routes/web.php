@@ -23,6 +23,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/guests/{guest}', [\App\Http\Controllers\GuestController::class, 'destroy'])->name('guests.destroy');
 });
 
+Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function() {
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->names('admin.users');
+    Route::post('users/login', [\App\Http\Controllers\Admin\UserController::class, 'loginAs'])->name('admin.users.login');
+});
 
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     //User Profile
@@ -168,5 +172,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/plus_one', [\App\Http\Controllers\FrontEndController::class, 'plusOne'])->name('plus_one');
 
 });
+
+
 
 

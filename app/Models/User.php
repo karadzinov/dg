@@ -73,4 +73,9 @@ class User extends Authenticatable
         return ['totalGuests' => $guestCount, 'totalInvitations' => $countInvitations];
 
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
