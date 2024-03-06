@@ -70,9 +70,9 @@
 
 
                                             <button type="button" class="dropdown-item d-flex align-items-center gap-3"
-                                                    data-bs-userid="{{ $user->id }}"
-                                                    data-bs-user-name="{{ $user->name }}" data-bs-toggle="modal"
-                                                    data-bs-target="#userDelete">
+                                                    data-bs-id="{{ $user->id }}"
+                                                    data-bs-name="{{ $user->name }}" data-bs-toggle="modal"
+                                                    data-bs-target="#delete">
                                                 <i class="fs-4 ti ti-trash"></i>Delete
                                             </button>
 
@@ -94,7 +94,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="userDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -108,7 +108,6 @@
                     <form method="post" class="deleteUser">
                         @csrf
                         @method('DELETE')
-                        <input type="hidden" name="deleteUser" class="deleteUser">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
@@ -116,23 +115,24 @@
             </div>
         </div>
     </div>
+    <!-- Modal End -->
 @endsection
 @section('scripts')
-
     <script>
-        const deleteModal = document.getElementById('userDelete')
+        const deleteModal = document.getElementById('delete')
         deleteModal.addEventListener('show.bs.modal', event => {
             // Button that triggered the modal
             const button = event.relatedTarget
             // Extract info from data-bs-* attributes
-            const userId = button.getAttribute('data-bs-userid')
-            const userName = button.getAttribute('data-bs-user-name')
+            const id = button.getAttribute('data-bs-id')
 
-            let action = "/admin/users/" + userId;
+            const name = button.getAttribute('data-bs-name')
+
+
+            let action = "/admin/users/" + id;
             deleteModal.querySelector('form').setAttribute('action', action);
-            deleteModal.querySelector('#deleteMessage').innerHTML = 'Are you sure you want to delete ' + userName + '?';
+            deleteModal.querySelector('#deleteMessage').innerHTML = 'Are you sure you want to delete ' + name + '?';
 
         })
     </script>
-
 @endsection
