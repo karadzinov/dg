@@ -3,8 +3,14 @@
     <div class="card w-100 position-relative overflow-hidden">
         <div class="px-4 py-3 border-bottom">
             <h5 class="card-title fw-semibold mb-0 lh-sm">Users Table</h5>
+
+
         </div>
         <div class="card-body p-4">
+            <p>
+                <a class="btn btn-default" href="{{ route('admin.users.create') }}"><i
+                        class="fs-4 ti ti-plus"></i>Create new user</a>
+            </p>
 
             <div class="table-responsive mb-4">
                 <table class="table border text-nowrap mb-0 align-middle">
@@ -56,16 +62,21 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
                                         <li>
-                                            <a class="dropdown-item d-flex align-items-center gap-3" href="#"><i
-                                                    class="fs-4 ti ti-plus"></i>Add</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item d-flex align-items-center gap-3" href="#"><i
+                                            <a class="dropdown-item d-flex align-items-center gap-3"
+                                               href="{{ route('admin.users.edit', $user->id) }}"><i
                                                     class="fs-4 ti ti-edit"></i>Edit</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item d-flex align-items-center gap-3" href="#"><i
-                                                    class="fs-4 ti ti-trash"></i>Delete</a>
+
+
+                                            <button type="button" class="dropdown-item d-flex align-items-center gap-3"
+                                                    data-bs-userid="{{ $user->id }}"
+                                                    data-bs-user-name="{{ $user->name }}" data-bs-toggle="modal"
+                                                    data-bs-target="#userDelete">
+                                                <i class="fs-4 ti ti-trash"></i>Delete
+                                            </button>
+
+
                                         </li>
                                     </ul>
                                 </div>
@@ -79,4 +90,49 @@
 
         </div>
     </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="userDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Are you sure?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="deleteMessage"></div>
+                </div>
+                <div class="modal-footer">
+                    <form method="post" class="deleteUser">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="deleteUser" class="deleteUser">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('scripts')
+
+    <script>
+        const deleteModal = document.getElementById('userDelete')
+        deleteModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const userId = button.getAttribute('data-bs-userid')
+            const userName = button.getAttribute('data-bs-user-name')
+
+            let action = "/admin/users/" + userId;
+            deleteModal.querySelector('form').setAttribute('action', action);
+            deleteModal.querySelector('#deleteMessage').innerHTML = 'Are you sure you want to delete ' + userName + '?';
+
+        })
+    </script>
+
 @endsection

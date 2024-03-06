@@ -25,20 +25,7 @@
 </head>
 
 <body>
-<div class="toast toast-onload align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-body hstack align-items-start gap-6">
-        <i class="ti ti-alert-circle fs-6"></i>
-        <div>
-            <h5 class="text-white fs-3 mb-1">Welcome {{ auth()->user()->name }}</h5>
 
-        </div>
-        <button type="button" class="btn-close btn-close-white fs-2 m-0 ms-auto shadow-none" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-</div>
-<!-- Preloader -->
-<div class="preloader">
-    <img src="/assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
-</div>
 <div id="main-wrapper">
     <!-- Sidebar Start -->
     <aside class="left-sidebar with-vertical">
@@ -357,82 +344,20 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="message-body">
-                                                <a
-                                                    href="../main/page-user-profile.html"
-                                                    class="py-8 px-7 mt-8 d-flex align-items-center"
-                                                >
-      <span
-          class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6"
-      >
-        <img
-            src="/assets/images/svgs/icon-account.svg"
-            alt=""
-            width="24"
-            height="24"
-        />
-      </span>
-                                                    <div class="w-75 d-inline-block v-middle ps-3">
-                                                        <h6 class="mb-1 fs-3 fw-semibold lh-base">My Profile</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Account Settings</span>
-                                                    </div>
-                                                </a>
-                                                <a href="../main/app-email.html" class="py-8 px-7 d-flex align-items-center">
-      <span
-          class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6"
-      >
-        <img
-            src="/assets/images/svgs/icon-inbox.svg"
-            alt=""
-            width="24"
-            height="24"
-        />
-      </span>
-                                                    <div class="w-75 d-inline-block v-middle ps-3">
-                                                        <h6 class="mb-1 fs-3 fw-semibold lh-base">My Inbox</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Messages & Emails</span>
-                                                    </div>
-                                                </a>
-                                                <a href="../main/app-notes.html" class="py-8 px-7 d-flex align-items-center">
-      <span
-          class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6"
-      >
-        <img
-            src="/assets/images/svgs/icon-tasks.svg"
-            alt=""
-            width="24"
-            height="24"
-        />
-      </span>
-                                                    <div class="w-75 d-inline-block v-middle ps-3">
-                                                        <h6 class="mb-1 fs-3 fw-semibold lh-base">My Task</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">To-do and Daily Tasks</span>
-                                                    </div>
-                                                </a>
-                                            </div>
+
                                             <div class="d-grid py-4 px-7 pt-8">
-                                                <div
-                                                    class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9"
-                                                >
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <h5 class="fs-4 mb-3 fw-semibold">Unlimited Access</h5>
-                                                            <button class="btn btn-primary">Upgrade</button>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="m-n4 unlimited-img">
-                                                                <img
-                                                                    src="/assets/images/backgrounds/unlimited-bg.png"
-                                                                    alt=""
-                                                                    class="w-100"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="../main/authentication-login.html" class="btn btn-outline-primary"
-                                                >Log Out</a
-                                                >
+
+
+
+                                                <a class="btn btn-outline-primary" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
                                             </div>
                                         </div>
 
@@ -2646,5 +2571,7 @@
 <script src="/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
 <script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
 <script src="/assets/js/dashboards/dashboard.js"></script>
+
+@yield('scripts')
 </body>
 </html>
