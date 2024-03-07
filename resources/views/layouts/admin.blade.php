@@ -123,17 +123,14 @@
                     </ul>
 
                     <div class="d-block d-lg-none">
-                        <a href="../main/index.html" class="text-nowrap logo-img">
+                        <a href="{{ route('admin.users.index') }}" class="text-nowrap logo-img">
                             <img
-                                src="/assets/images/logos/dark-logo.svg"
-                                class="dark-logo"
+                                src="/dist/images/logos/logo-main.png"
+                                class="dark-logo "
                                 alt="Logo-Dark"
+                                style="max-width: 100px;"
                             />
-                            <img
-                                src="/assets/images/logos/light-logo.svg"
-                                class="light-logo"
-                                alt="Logo-light"
-                            />
+
                         </a>
                     </div>
                     <a
@@ -151,16 +148,7 @@
                     </a>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <div class="d-flex align-items-center justify-content-between">
-                            <a
-                                href="javascript:void(0)"
-                                class="nav-link d-flex d-lg-none align-items-center justify-content-center"
-                                type="button"
-                                data-bs-toggle="offcanvas"
-                                data-bs-target="#mobilenavbar"
-                                aria-controls="offcanvasWithBothOptions"
-                            >
-                                <i class="ti ti-align-justified fs-7"></i>
-                            </a>
+
                             <ul
                                 class="navbar-nav flex-row ms-auto align-items-center justify-content-center"
                             >
@@ -388,272 +376,8 @@
                 <!-- ------------------------------- -->
                 <!-- apps Dropdown in Small screen -->
                 <!-- ------------------------------- -->
-                <!--  Mobilenavbar -->
-                <div
-                    class="offcanvas offcanvas-start"
-                    data-bs-scroll="true"
-                    tabindex="-1"
-                    id="mobilenavbar"
-                    aria-labelledby="offcanvasWithBothOptionsLabel"
-                >
-                    <nav class="sidebar-nav scroll-sidebar">
-                        <div class="offcanvas-header justify-content-between">
-                            <img src="/assets/images/logos/favicon.ico" alt="" class="img-fluid" />
-                            <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="offcanvas"
-                                aria-label="Close"
-                            ></button>
-                        </div>
-                        <div
-                            class="offcanvas-body h-n80"
-                            data-simplebar=""
-                            data-simplebar
-                        >
-                            <ul id="sidebarnav">
-                                <li class="sidebar-item">
-                                    <a
-                                        class="sidebar-link has-arrow"
-                                        href="javascript:void(0)"
-                                        aria-expanded="false"
-                                    >
-            <span>
-              <i class="ti ti-apps"></i>
-            </span>
-                                        <span class="hide-menu">Apps</span>
-                                    </a>
-                                    <ul aria-expanded="false" class="collapse first-level my-3">
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/app-chat.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-chat.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">Chat Application</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >New messages arrived</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/app-invoice.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-invoice.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">Invoice App</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >Get latest invoice</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/app-cotact.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-mobile.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">Contact Application</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >2 Unsaved Contacts</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/app-email.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-message-box.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">Email App</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >Get new emails</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/page-user-profile.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-cart.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">User Profile</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >learn more information</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/app-calendar.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-date.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">Calendar App</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >Get dates</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/app-contact2.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-lifebuoy.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">Contact List Table</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >Add new contact</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-item py-2">
-                                            <a href="../main/app-notes.html" class="d-flex align-items-center">
-                                                <div
-                                                    class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
-                                                >
-                                                    <img
-                                                        src="/assets/images/svgs/icon-dd-application.svg"
-                                                        alt=""
-                                                        class="img-fluid"
-                                                        width="24"
-                                                        height="24"
-                                                    />
-                                                </div>
-                                                <div class="d-inline-block">
-                                                    <h6 class="mb-1 bg-hover-primary">Notes Application</h6>
-                                                    <span class="fs-2 d-block fw-normal text-muted"
-                                                    >To-do and Daily tasks</span
-                                                    >
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <ul class="px-8 mt-7 mb-4">
-                                            <li class="sidebar-item mb-3">
-                                                <h5 class="fs-5 fw-semibold">Quick Links</h5>
-                                            </li>
-                                            <li class="sidebar-item py-2">
-                                                <a class="fw-semibold text-dark" href="../main/page-pricing.html">Pricing Page</a>
-                                            </li>
-                                            <li class="sidebar-item py-2">
-                                                <a class="fw-semibold text-dark" href="../main/authentication-login.html"
-                                                >Authentication Design</a
-                                                >
-                                            </li>
-                                            <li class="sidebar-item py-2">
-                                                <a class="fw-semibold text-dark" href="../main/authentication-register.html">Register Now</a>
-                                            </li>
-                                            <li class="sidebar-item py-2">
-                                                <a class="fw-semibold text-dark" href="../main/authentication-error.html">404 Error Page</a>
-                                            </li>
-                                            <li class="sidebar-item py-2">
-                                                <a class="fw-semibold text-dark" href="../main/app-notes.html">Notes App</a>
-                                            </li>
-                                            <li class="sidebar-item py-2">
-                                                <a class="fw-semibold text-dark" href="../main/page-user-profile.html">User Application</a>
-                                            </li>
-                                            <li class="sidebar-item py-2">
-                                                <a class="fw-semibold text-dark" href="../main/page-account-settings.html">Account Settings</a>
-                                            </li>
-                                        </ul>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="../main/app-chat.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-message-dots"></i>
-            </span>
-                                        <span class="hide-menu">Chat</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a
-                                        class="sidebar-link"
-                                        href="../main/app-calendar.html"
-                                        aria-expanded="false"
-                                    >
-            <span>
-              <i class="ti ti-calendar"></i>
-            </span>
-                                        <span class="hide-menu">Calendar</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a class="sidebar-link" href="../main/app-email.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-mail"></i>
-            </span>
-                                        <span class="hide-menu">Email</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+
+
 
             </div>
             <div class="app-header with-horizontal">

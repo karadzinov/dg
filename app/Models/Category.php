@@ -14,7 +14,8 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'parent_id'
+        'parent_id',
+        'slug'
     ];
 
     protected static $depth = 0;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -37,6 +38,7 @@ class CategoryController extends Controller
     {
         Category::create([
             "name" => $request->get('name'),
+            "slug" => Str::slug($request->get('name')),
             "parent_id" => $request->get('parent_id')
         ]);
 
@@ -70,6 +72,8 @@ class CategoryController extends Controller
     {
         $input = $request->all();
 
+        $input['slug'] = Str::slug($request->get('name'));
+
         $category->fill($input)->save();
 
         return redirect()->route('admin.categories.index');
@@ -97,6 +101,7 @@ class CategoryController extends Controller
                         'parent_id' => $parent_id,
                         '_lft' => ++$left,
                         '_rgt' => ++$left + (isset($category['children']) ? count($category['children']) : 0),
+                        'slug' => Str::slug($categoryModel->name)
                     ]);
 
                     if (isset($category['children']) && is_array($category['children'])) {
