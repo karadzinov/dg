@@ -22,6 +22,8 @@
         rel="stylesheet"
         href="/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css"
     />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.css" />
 </head>
 
 <body>
@@ -77,6 +79,15 @@
           <i class="ti ti-salad"></i>
         </span>
                             <span class="hide-menu">Restaurants</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('admin.categories.index') }}" aria-expanded="false">
+        <span>
+          <i class="ti ti-aperture"></i>
+        </span>
+                            <span class="hide-menu">Categories</span>
                         </a>
                     </li>
 
