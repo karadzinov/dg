@@ -21,12 +21,17 @@
     <script src="/assets/libs/nestable/jquery.nestable.js"></script>
     <script>
         $(document).ready(function () {
-            // Initialize the drag-and-drop
-            $('.dd').nestable();
 
-            // Handle the change event when the list is updated
-            $('.dd').on('change', function () {
-                // Get the new order
+            var updateOutput = function (e) {
+                var list = e.length ? e : $(e.target),
+                    output = list.data("output");
+                if (window.JSON) {
+                    output.val(window.JSON.stringify(list.nestable("serialize"))); //, null, 2));
+                } else {
+                    output.val("JSON browser support required for this demo.");
+                }
+
+
                 var order = $('.dd').nestable('serialize');
 
 
@@ -46,7 +51,26 @@
                         console.log(error); // Handle the error
                     }
                 });
-            });
+            };
+
+
+           // $("#nestable2").nestable().on("change", updateOutput);
+
+
+            $("#nestable")
+                .nestable({
+                    group: 1,
+                })
+                .on("change", updateOutput);
+
+            updateOutput($("#nestable").data("output", $("#nestable-output")));
+
+
+
+
+
+
+
         });
     </script>
 @endsection

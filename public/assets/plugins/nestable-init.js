@@ -10,7 +10,7 @@ $(function () {
         }
     };
 
-    $("#nestable-menu")
+    $("#nestable")
         .nestable({
             group: 1,
         })
@@ -36,8 +36,5 @@ $(function () {
         }
     });
 
-
-
-
-
+    $("#nestable-menu").nestable();
 });

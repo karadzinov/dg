@@ -23,7 +23,7 @@
         href="/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css"
     />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.css" />
+    <link rel="stylesheet" href="/assets/css/custom.css" />
 </head>
 
 <body>
