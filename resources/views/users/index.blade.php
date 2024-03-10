@@ -124,14 +124,14 @@
                                                 <a href="javascript:void(0)">
 
                                                 </a>
-                                                <a href="{{ route('restaurants.destroy', $restaurant->id) }}"
+
+                                                <a href=""
                                                    class="text-dark delete ms-2"
                                                    onclick="event.preventDefault();
-                                  document.getElementById('delete-form').submit();">
+                                  document.getElementById('delete-form-{{  $restaurant->id }}').submit();">
                                                     <i class="ti ti-trash fs-5"></i>
                                                 </a>
-                                                <form id="delete-form" method="post"
-                                                      action="{{ route('restaurants.destroy', $restaurant->id) }}">
+                                                <form id="delete-form-{{ $restaurant->id }}" method="post" action="{{ route('restaurants.destroy', $restaurant->id) }}">
                                                     @method('DELETE')
                                                     @csrf
                                                 </form>

@@ -59,6 +59,21 @@ class Category extends Model
         return $listItem;
     }
 
+
+    public static function getListFrom($cat)
+    {
+
+        $categories = self::where('parent_id', '=', $cat->id)->get();
+
+        $lists = '';
+        foreach ($categories as $category) {
+
+                $lists .= self::renderOption($category);
+
+        }
+        return $lists;
+    }
+
     public static function getList()
     {
         $categories = self::all();
@@ -93,5 +108,11 @@ class Category extends Model
             $dash .= ' - ';
         }
         return $dash;
+    }
+
+
+    public function restaurants()
+    {
+        return $this->belongsToMany(Restaurant::class)->withTimestamps();
     }
 }

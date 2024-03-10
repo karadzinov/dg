@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\ImageStoreCover;
 use App\Http\Controllers\Helpers\ImageStoreLogo;
 use App\Models\Album;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Contact;
 use App\Models\Musician;
@@ -24,8 +25,13 @@ class RestaurantController extends Controller
     {
         $cities = City::all();
 
+        $category = Category::where('slug', '=', 'restaurants')->first();
+
+        $categories = Category::getListFrom($category);
+
         $data = [
-            'cities' => $cities
+            'cities' => $cities,
+            'categories' => $categories
         ];
         return view('restaurants.create')->with($data);
     }
@@ -83,7 +89,7 @@ class RestaurantController extends Controller
 
         $user = Auth::user();
 
-        Restaurant::create([
+        $restaurant =  Restaurant::create([
             'name' => $name,
             'slug' => $slug,
             'phone' => $phone,
@@ -107,7 +113,10 @@ class RestaurantController extends Controller
             'lng' => $lng,
         ]);
 
-        $restaurant = Restaurant::where('logo', $logo)->first();
+
+        $restaurant->categories()->sync($request->get('category_id'));
+
+
         $contactName = $request->get('contactName');
         $contactPosition = $request->get('contactPosition');
         $contactEmail = $request->get('contactEmail');
@@ -126,7 +135,7 @@ class RestaurantController extends Controller
                 'restaurant_id' => $restaurant->id,
             ]);
 
-        };
+        }
 
         $restaurants = Restaurant::where('user_id', Auth::user()->id)->get();
         $musicians = Musician::where('user_id', Auth::user()->id)->get();
@@ -146,11 +155,15 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::FindorFail($id);
         $cities = City::all();
         $contacts = Contact::where('restaurant_id', $id)->get();
+        $category = Category::where('slug', '=', 'restaurants')->first();
+
+        $categories = Category::getListFrom($category);
 
         $data = [
             'restaurant' => $restaurant,
             'cities' => $cities,
-            'contacts' => $contacts
+            'contacts' => $contacts,
+            'categories' => $categories
         ];
 
         return view('restaurants.edit')->with($data);
@@ -176,6 +189,10 @@ class RestaurantController extends Controller
             $input['coverImg'] = $coverImg;
         }
 
+
+        $restaurant->categories()->sync($request->get('category_id'));
+
+        unset($input['category_id']);
 
 
         $restaurant->fill($input)->save();

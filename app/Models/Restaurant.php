@@ -32,7 +32,8 @@ class Restaurant extends Model
         'youtube',
         'weblink',
         'lat',
-        'lng'
+        'lng',
+        'category_id'
     ];
 
     public function user()
@@ -48,5 +49,10 @@ class Restaurant extends Model
     public function  album()
     {
         return $this->hasMany(Album::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 }

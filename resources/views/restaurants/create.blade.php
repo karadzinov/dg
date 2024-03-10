@@ -109,6 +109,17 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">
+                                        <label for="category_id"> Категорија : <span class="danger">*</span></label>
+                                        <select class="form-control @error('category_id') is-invalid @enderror"
+                                                name="category_id" id="category_id">
+                                            {!! $categories !!}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
                                         <label for="description"> Повеќе за ресторанот : <span class="danger">*</span>
                                         </label>
                                         <textarea class="ckeditor @error('description') is-invalid @enderror"
