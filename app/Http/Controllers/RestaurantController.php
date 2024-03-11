@@ -25,7 +25,7 @@ class RestaurantController extends Controller
     {
         $cities = City::all();
 
-        $category = Category::where('slug', '=', 'restaurants')->first();
+        $category = Category::where('slug', '=', 'hoteli-restorani')->first();
 
         $categories = Category::getListFrom($category);
 
@@ -155,7 +155,7 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::FindorFail($id);
         $cities = City::all();
         $contacts = Contact::where('restaurant_id', $id)->get();
-        $category = Category::where('slug', '=', 'restaurants')->first();
+        $category = Category::where('slug', '=', 'hoteli-restorani')->first();
 
         $categories = Category::getListFrom($category);
 
