@@ -489,6 +489,11 @@ class FrontEndController extends Controller
         session()->flash('success', 'Cart updated successfully');
     }
 
+    public function simon()
+    {
+        return view('simon');
+    }
+
 
 
     public function sitemap()

@@ -112,6 +112,7 @@ Route::middleware(['web'])->group(function () {
 
     // Frontend routes
     Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
+    Route::get('/simon', [\App\Http\Controllers\FrontEndController::class, 'simon'])->name('frontend.simon');
     Route::get('/privacy', [\App\Http\Controllers\FrontEndController::class, 'privacy'])->name('privacy');
     Route::get('/terms', [\App\Http\Controllers\FrontEndController::class, 'terms'])->name('terms');
     Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
