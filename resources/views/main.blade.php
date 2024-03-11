@@ -30,6 +30,9 @@
           content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
     <meta property="og:site_name" content="DragiGosti"/>
 @endsection
+@section('menu')
+    {!! $categories !!}
+@endsection
 @section('content')
     <div class="main-container">
         <div class="row">
@@ -103,10 +106,10 @@
                     </video>
                 </div>
                 <div>
-                    <p class="hex-title">Ресторани</p>
+                    <p class="hex-title">Хотели & Ресторани</p>
                     <img
                         src="/images/restorants.jpg"
-                        alt="Restaurants" data-link="restaurants">
+                        alt="Restaurants" data-link="category/hoteli-restorani">
                 </div>
                 <div>
                     <p class="hex-title">Фотографи</p>

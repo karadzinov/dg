@@ -110,6 +110,51 @@ class Category extends Model
         return $dash;
     }
 
+    public static function getTreeHP() {
+        $categories = self::where('parent_id', '=', null)->get()->toTree();
+        $lists = '<li class="nav-item dropdown hover-dd d-none d-lg-block">
+                <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i class="ti ti-chevron-down"></i></span></a>
+                <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0" style="max-width: 250px;">
+                    <div class="col-12">
+                        <div class="ps-7 pt-7">
+                            <div class="border-bottom">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="position-relative">';
+        foreach ($categories as $category) {
+            $lists .= self::renderNodeHP($category);
+        }
+        $lists .= '                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>';
+        return $lists;
+    }
+
+    public static function renderNodeHP($node) {
+        $list = '<a href="' . route('frontend.category', ['slug' => $node->slug]) . '" class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
+                <div class="d-inline-block">
+                    <h6 class="mb-1 fw-semibold bg-hover-primary"><span><i class="' . $node->icon_class . '"></i></span>
+                        <span class="hide-menu">&nbsp;' . $node->name . '</span>
+                    </h6>
+                </div>
+            </a>';
+
+        if ($node->children()->count() > 0) {
+            $list .= '<div class="position-relative">';
+            foreach ($node->children as $child) {
+                $list .= self::renderNodeHP($child);
+            }
+            $list .= '</div>';
+        }
+
+        return $list;
+    }
+
 
     public function restaurants()
     {

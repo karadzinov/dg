@@ -32,6 +32,9 @@
           content="{{ Str::of($musician->description)->words(25)->stripTags() }}"/>
     <meta property="og:site_name" content="DragiGosti"/>
 @endsection
+@section('menu')
+    {!! $categoriesMenu !!}
+@endsection
 @section('content')
 
     <div class="container-fluid">

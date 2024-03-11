@@ -120,62 +120,9 @@
                     </div>
 
                 </li>
-                <li class="nav-item dropdown hover-dd d-none d-lg-block">
-                    <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i
-                                    class="ti ti-chevron-down"></i></span></a>
-                    <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0"
-                         style="max-width: 250px;">
-                        <div class="col-12">
-                            <div class=" ps-7 pt-7">
-                                <div class="border-bottom">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="position-relative">
-                                                <a href="{{ route('frontend.restaurants') }}"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-home-2"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Ресторани</span></h6>
-                                                    </div>
-                                                </a>
-                                                <a href="{{ route('frontend.musicians') }}"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-music"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Музичари</span></h6>
-                                                    </div>
-                                                </a>
-                                                <a href="{{ route('frontend.photographers') }}"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-camera"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Фотографи</span></h6>
-                                                    </div>
-                                                </a>
-                                                <a href="/"
-                                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                                    <div class="d-inline-block">
-                                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-hotel-service"></i>
-                  </span>
-                                                            <span class="hide-menu">&nbsp;Останато</span></h6>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                @yield('menu')
 
-                    </div>
-                </li>
+
                 <li class="nav-item dropdown-hover d-none d-lg-block">
                     <a class="nav-link" href="/">За нас</a>
                 </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ConfirmInvitation;
 use App\Mail\MailSender;
 use App\Models\Album;
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Invitation;
 use App\Models\Musician;
@@ -32,10 +33,12 @@ class FrontEndController extends Controller
         $images = \File::allFiles(public_path('images/guests'));
 
         $photographers = Photographer::all();
+        $categories = Category::getTreeHP();
 
         $data = [
             "images" => $images,
             "photographers" => $photographers,
+            "categories" => $categories
         ];
         return view('main')->with($data);
 
@@ -43,10 +46,56 @@ class FrontEndController extends Controller
 
     public function restaurants()
     {
+        $categoriesMenu = Category::getTreeHP();
         $restaurants = Restaurant::orderBy('id', 'desc')->get();
 
         $data = [
-            'restaurants' => $restaurants
+            'restaurants' => $restaurants,
+            'categoriesMenu' => $categoriesMenu
+        ];
+
+        return view('restaurants.index')->with($data);
+    }
+
+
+    public function category($slug)
+    {
+        $categoriesMenu = Category::getTreeHP();
+
+        if($slug === "muzicari-djs")
+        {
+            return redirect()->route('frontend.musicians');
+        }
+        if($slug === "fotografi")
+        {
+            return redirect()->route('frontend.photographers');
+        }
+
+
+        if($slug === "ostanato")
+        {
+            return redirect()->route('frontend.index');
+        }
+
+
+        if($slug  ===  "hoteli-restorani")  {
+            $category = Category::where('slug', '=', 'restorani')->first();
+        } else {
+            $category = Category::where('slug', '=', $slug)->first();
+        }
+
+
+
+        $mainCategory = Category::where('slug', '=', 'hoteli-restorani')->first();
+        $categories = Category::where('parent_id', '=', $mainCategory->id)->get();
+
+
+       // $restaurants = Restaurant::where('category_id', '=', $categoryDefault->id)->orderBy('id', 'desc')->get();
+
+        $data = [
+            'restaurants' => $category->restaurants()->get(),
+            'categories' =>  $categories,
+            'categoriesMenu' => $categoriesMenu
         ];
 
         return view('restaurants.index')->with($data);
@@ -54,10 +103,12 @@ class FrontEndController extends Controller
 
     public function musicians()
     {
+        $categoriesMenu = Category::getTreeHP();
         $musicians = Musician::orderBy('id', 'desc')->get();
 
         $data = [
-            'musicians' => $musicians
+            'musicians' => $musicians,
+            'categoriesMenu' => $categoriesMenu
         ];
 
         return view('musicians.index')->with($data);
@@ -65,10 +116,12 @@ class FrontEndController extends Controller
 
     public function photographers()
     {
+        $categoriesMenu = Category::getTreeHP();
         $photographers = Photographer::orderBy('id', 'desc')->get();
 
         $data = [
-            'photographers' => $photographers
+            'photographers' => $photographers,
+            'categoriesMenu' => $categoriesMenu
         ];
 
         return view('photographers.index')->with($data);
@@ -83,11 +136,13 @@ class FrontEndController extends Controller
         $albums = Album::where('restaurant_id', $restaurant->id)->get();
         $pictures = Picture::where('restaurant_id', $restaurant->id)->get();
 
+        $categoriesMenu = Category::getTreeHP();
         $data = [
             'restaurant' => $restaurant,
             'contacts' => $contacts,
             'albums' => $albums,
             'pictures' => $pictures,
+            'categoriesMenu'  => $categoriesMenu
         ];
 
         return view('restaurants.profile')->with($data);
@@ -107,12 +162,13 @@ class FrontEndController extends Controller
             $pictures[] = Picture::where('album_id', $album->id)->get();
         }
 
-
+        $categoriesMenu = Category::getTreeHP();
 
         $data = [
             'musician' => $musician,
             'contacts' => $contacts,
-            'pictures' => $pictures
+            'pictures' => $pictures,
+            'categoriesMenu'  => $categoriesMenu
         ];
 
         return view('musicians.profile')->with($data);
@@ -122,6 +178,8 @@ class FrontEndController extends Controller
     public function profilePhotographer($slug)
     {
 
+        $categoriesMenu = Category::getTreeHP();
+
         $photographer = Photographer::where('slug', $slug)->latest()->first();
         $contacts = Contact::where('photographer_id', $photographer->id)->get();
         $albums = Album::where('photographer_id', $photographer->id)->get();
@@ -129,7 +187,8 @@ class FrontEndController extends Controller
         $data = [
             'photographer' => $photographer,
             'contacts' => $contacts,
-            'albums' => $albums
+            'albums' => $albums,
+            'categoriesMenu'  => $categoriesMenu
         ];
 
         return view('photographers.profile')->with($data);
@@ -217,7 +276,9 @@ class FrontEndController extends Controller
 
     public function contact()
     {
-        return view('contact');
+        $categoriesMenu = Category::getTreeHP();
+        $data = ['categoriesMenu'  => $categoriesMenu];
+        return view('contact')->with($data);
     }
 
     public function question(Request $request)

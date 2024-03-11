@@ -38,7 +38,7 @@ class CategoryController extends Controller
     {
         Category::create([
             "name" => $request->get('name'),
-            "slug" => Str::slug($request->get('name')),
+            "slug" => $request->get('slug'),
             "parent_id" => $request->get('parent_id')
         ]);
 
@@ -72,7 +72,6 @@ class CategoryController extends Controller
     {
         $input = $request->all();
 
-        $input['slug'] = Str::slug($request->get('name'));
 
         $category->fill($input)->save();
 
@@ -100,8 +99,7 @@ class CategoryController extends Controller
                     $categoryModel->update([
                         'parent_id' => $parent_id,
                         '_lft' => ++$left,
-                        '_rgt' => ++$left + (isset($category['children']) ? count($category['children']) : 0),
-                        'slug' => Str::slug($categoryModel->name)
+                        '_rgt' => ++$left + (isset($category['children']) ? count($category['children']) : 0)
                     ]);
 
                     if (isset($category['children']) && is_array($category['children'])) {

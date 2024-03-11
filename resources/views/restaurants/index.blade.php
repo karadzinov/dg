@@ -30,16 +30,26 @@
           content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
     <meta property="og:site_name" content="DragiGosti"/>
 @endsection
+@section('menu')
+    {!! $categoriesMenu !!}
+@endsection
 @section('content')
 
     <!-- Page Start -->
     <div class="container-fluid">
         <div class="row">
+            <p class="text-center">
+                @foreach($categories as $category)
+                <a class="btn btn-outline-dark" href="/category/{{ $category->slug }}">{{ $category->name }}</a>
+             @endforeach
+            </p>
+        </div>
+        <div class="row">
             @foreach($restaurants as $index => $restaurant)
                 <div class="@if($index === 0) col-md-8 col-lg-8 @else col-md-6 col-lg-4 @endif">
                     <a href="{{ route('restaurants.profile', $restaurant->slug) }}">
                         <div class="card blog position-relative overflow-hidden hover-img"
-                             style="background-image: url(images/cover_images/restaurants/originals/{{ $restaurant->coverImg }});">
+                             style="background-image: url(/images/cover_images/restaurants/originals/{{ $restaurant->coverImg }});">
                             <div class="card-body position-relative">
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="d-flex align-items-start justify-content-between">

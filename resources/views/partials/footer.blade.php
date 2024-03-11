@@ -24,7 +24,7 @@
                 <!-- List -->
                 <ul class=" list-px-2 mb-0">
                     <li class="listing-item"><a class="link link-light link-light-75" href="/invitation/create"> <i class="ti ti-mail"></i> Покани</a></li>
-                    <li class="listing-item"><a class="link link-light link-light-75" href="/restaurants"><i class="ti ti-salad"></i> Ресторани</a></li>
+                    <li class="listing-item"><a class="link link-light link-light-75" href="/category/hoteli-restorani"><i class="ti ti-salad"></i>Хотели & Ресторани</a></li>
 
                     <li class="listing-item"><a class="link link-light link-light-75" href="/musicians"><i class="ti ti-music"></i> Музичари</a></li>
                     <li class="listing-item"><a class="link link-light link-light-75" href="/photographers"><i class="ti ti-camera"></i>  Фотографи</a></li>
