@@ -75,6 +75,8 @@ class RestaurantController extends Controller
         $weblink = $request->get('weblink');
         $lat = $request->get('lat');
         $lng = $request->get('lng');
+        $lastRestaurant = Restaurant::latest();
+        $position = $lastRestaurant->position + 1;
 
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
@@ -111,6 +113,7 @@ class RestaurantController extends Controller
             'weblink' => $weblink,
             'lat' => $lat,
             'lng' => $lng,
+            'position' => $position
         ]);
 
 

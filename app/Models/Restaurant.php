@@ -33,7 +33,8 @@ class Restaurant extends Model
         'weblink',
         'lat',
         'lng',
-        'category_id'
+        'category_id',
+        'position'
     ];
 
     public function user()

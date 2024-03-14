@@ -47,7 +47,7 @@ class FrontEndController extends Controller
     public function restaurants()
     {
         $categoriesMenu = Category::getTreeHP();
-        $restaurants = Restaurant::orderBy('id', 'desc')->get();
+        $restaurants = Restaurant::orderBy('position', 'asc')->get();
 
         $data = [
             'restaurants' => $restaurants,
@@ -93,7 +93,7 @@ class FrontEndController extends Controller
        // $restaurants = Restaurant::where('category_id', '=', $categoryDefault->id)->orderBy('id', 'desc')->get();
 
         $data = [
-            'restaurants' => $category->restaurants()->get(),
+            'restaurants' => $category->restaurants()->orderBy('position', 'asc')->get(),
             'categories' =>  $categories,
             'categoriesMenu' => $categoriesMenu
         ];

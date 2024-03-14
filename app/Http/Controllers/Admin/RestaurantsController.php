@@ -13,10 +13,21 @@ class RestaurantsController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::orderBy('position', 'asc')->get();
         $data = ['restaurants' => $restaurants];
 
         return view('admin.restaurants.index')->with($data);
+    }
+
+    public function position(Request $request)
+    {
+        $restaurant = Restaurant::where('position', '=', $request->get('fromindex'))->first();
+        $restaurant->update(['position' => $request->get('toindex')]);
+
+
+        $restaurant = Restaurant::where('position', '=', $request->get('toindex'))->first();
+        $restaurant->update(['position' => $request->get('fromindex')]);
+        return response()->json("success", 200);
     }
 
     /**

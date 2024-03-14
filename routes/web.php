@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function() {
     Route::resource('restaurants', \App\Http\Controllers\Admin\RestaurantsController::class)->names('admin.restaurants');
     Route::resource('/categories', App\Http\Controllers\Admin\CategoryController::class)->names('admin.categories');
     Route::post('/categories/order/update', [App\Http\Controllers\Admin\CategoryController::class, 'updateCategoryOrder'])->name('admin.categories.order');
+    Route::post('/restaurants/position', [App\Http\Controllers\Admin\RestaurantsController::class, 'position'])->name('admin.restaurants.position');
 });
 
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {

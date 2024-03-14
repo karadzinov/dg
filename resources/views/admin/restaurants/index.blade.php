@@ -7,9 +7,12 @@
         <div class="card-body p-4">
 
             <div class="table-responsive mb-4">
-                <table class="table border text-nowrap mb-0 align-middle">
+                <table class="table border text-nowrap mb-0 align-middle" id="qatable">
                     <thead class="text-dark fs-4">
                     <tr>
+                        <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Position</h6>
+                        </th>
                         <th>
                             <h6 class="fs-4 fw-semibold mb-0">Name</h6>
                         </th>
@@ -27,6 +30,13 @@
                     @foreach($restaurants as $restaurant)
                         <tr>
                             <td>
+                                <div class="d-flex align-items-center">
+
+                                    <div class="ms-3">
+                                        <h6 class="fs-4 fw-semibold mb-0 position position{{ $restaurant->position }}">{{ $restaurant->position }}</h6>
+                                    </div>
+                                </div>
+                            </td><td>
                                 <div class="d-flex align-items-center">
                                     <img src="/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}" class="rounded-circle" width="40"
                                          height="40">
@@ -102,6 +112,7 @@
     <!-- Modal End -->
 @endsection
 @section('scripts')
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
     <script>
         const deleteModal = document.getElementById('delete')
         deleteModal.addEventListener('show.bs.modal', event => {
@@ -118,5 +129,65 @@
             deleteModal.querySelector('#deleteMessage').innerHTML = 'Are you sure you want to delete ' + name + '?';
 
         })
+    </script>
+    <script>
+        $(document).ready(function(e) {
+            $('.position').draggable({
+                axis: 'y',
+                opacity: 0.5,
+                containment: $('#qatable'),
+                revert: true,
+                revertDuration: 0,
+                distance: 10,
+                cursor: 'pointer'
+            }).droppable({
+                accept: '.position',
+                tolerance: 'pointer',
+                drop: function(event, ui) {
+                    ui.droppable = $(this);
+                    var answers = $('#qatable').find('.position');
+                    toindex = answers.index(ui.droppable);
+
+
+                    fromindex = answers.index(ui.draggable);
+
+                    var placeholder = $('<div id="placeholder">&nbsp;</div>').insertBefore(ui.droppable); // Placeholder
+                    if (toindex < fromindex) { // Moving an answer up
+                        for (var i=toindex;i<fromindex;i++) {
+                            answers.eq(i).insertBefore(answers.eq(i+1)); // Shift everything down
+                        }
+                        ui.draggable.insertBefore(placeholder); // Move the draggable answer to where the other one was
+                        placeholder.remove();
+                    } else { // Moving the answer down
+                        for (var i=toindex;i>fromindex;i--) {
+                            answers.eq(i).insertBefore(answers.eq(i-1)); // Shift everything up
+                        }
+                        ui.draggable.insertBefore(placeholder); // Move the draggable answer to where the other one was
+                        placeholder.remove();
+                    }
+
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('admin.restaurants.position') }}',
+                        data: { fromindex: fromindex+1,  toindex: toindex+1},
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ @csrf_token() }}"
+                        },
+                        success: function (response) {
+                            location.reload();
+                        },
+                        error: function (error) {
+                            console.log(error); // Handle the error
+                        }
+                    });
+
+                    console.log("Go mrdam: ", fromindex+1);
+                    console.log("Na pozicija: ",  toindex+1);
+                }
+            });
+        });
     </script>
 @endsection
