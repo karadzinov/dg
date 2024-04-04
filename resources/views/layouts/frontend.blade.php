@@ -842,5 +842,13 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+<script>
+    $(".scroll-to").click(function () {
+        window.scrollTo({
+            top: 800,
+            behavior: "smooth",
+        });
+    })
+</script>
 </body>
 </html>

@@ -388,12 +388,7 @@
         });
 
 
-        $(".scroll-to").click(function () {
-            window.scrollTo({
-                top: 800,
-                behavior: "smooth",
-            });
-        })
+
 
 
         $(".image1").on("click", function () {
