@@ -546,7 +546,7 @@ class FrontEndController extends Controller
             ->setPriority(0.1));
 
         foreach ($musicians as $musician) {
-            $sitemap->add(Url::create(env('APP_URL') . '/musicians/' . $musicians->slug)
+            $sitemap->add(Url::create(env('APP_URL') . '/musicians/' . $musician->slug)
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1));
