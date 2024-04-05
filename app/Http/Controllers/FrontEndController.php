@@ -527,7 +527,7 @@ class FrontEndController extends Controller
                 ->setPriority(0.1));
         }
 
-        $sitemap->add(Url::create(env('APP_URL') . '/restaurants')
+        $sitemap->add(Url::create(env('APP_URL') . '/category/hoteli-restorani')
             ->setLastModificationDate(Carbon::yesterday())
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
