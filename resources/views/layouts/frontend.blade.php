@@ -368,13 +368,13 @@
                                 </a>
                             </li>
                             <li class="sidebar-item py-2">
-                                <a href="#"
+                                <a href="/profile"
                                    class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
                                     <div class="d-inline-block">
                                         <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
                     <i class="ti ti-hotel-service"></i>
                   </span>
-                                            <span class="hide-menu">&nbsp;Останато</span></h6>
+                                            <span class="hide-menu">&nbsp;Декорации</span></h6>
                                     </div>
                                 </a>
                             </li>
