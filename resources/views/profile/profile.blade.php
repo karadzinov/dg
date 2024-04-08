@@ -1,32 +1,32 @@
 @extends('layouts.frontend')
 @section('metadata')
-    <title>{{ $photographer->name }} - Драги Гости</title>
+    <title>{{ $profile->name }} - Драги Гости</title>
     <meta name="description"
           content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="{{ $photographer->name }} - Драги Гости">
+    <meta itemprop="name" content="{{ $profile->name }} - Драги Гости">
     <meta itemprop="description"
-          content="{{ Str::of($photographer->description)->words(25)->stripTags() }}">
-    <meta itemprop="image" content="{{ env('APP_URL') }}/images/cover_images/photographers/originals/{{ $photographer->coverImg }}">
+          content="{{ Str::of($profile->description)->words(25)->stripTags() }}">
+    <meta itemprop="image" content="{{ env('APP_URL') }}/images/cover_images/profiles/originals/{{ $profile->coverImg }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@dragigosti">
-    <meta name="twitter:title" content="{{ $photographer->name }} - Драги Гости">
-    <meta name="twitter:description" content="{{ Str::of($photographer->description)->words(25)->stripTags() }}">
+    <meta name="twitter:title" content="{{ $profile->name }} - Драги Гости">
+    <meta name="twitter:description" content="{{ Str::of($profile->description)->words(25)->stripTags() }}">
     <meta name="twitter:creator" content="@dragigosti">
-    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/cover_images/photographers/originals/{{ $photographer->coverImg }}">
+    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/cover_images/profiles/originals/{{ $profile->coverImg }}">
 
     <!-- Open Graph data -->
 
     <meta property="og:locale" content="mk_MK"/>
     <meta property="fb:app_id" content="1339434706768448"/>
-    <meta property="og:title" content="{{ $photographer->name }} - Драги Гости"/>
+    <meta property="og:title" content="{{ $profile->name }} - Драги Гости"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{  url()->full()  }}"/>
-    <meta property="og:image" content="{{ env('APP_URL') }}/images/cover_images/photographers/originals/{{ $photographer->coverImg }}"/>
+    <meta property="og:image" content="{{ env('APP_URL') }}/images/cover_images/profiles/originals/{{ $profile->coverImg }}"/>
     <meta property="og:description"
-          content="{{ Str::of($photographer->description)->words(25)->stripTags() }}"/>
+          content="{{ Str::of($profile->description)->words(25)->stripTags() }}"/>
     <meta property="og:site_name" content="DragiGosti"/>
 @endsection
 @section('menu')
@@ -43,11 +43,11 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="slider-image"
-                                 style="background-image: url('/images/cover_images/photographers/originals/{{ $photographer->coverImg }}');"></div>
+                                 style="background-image: url('/images/cover_images/profile/originals/{{ $profile->coverImg }}');"></div>
 
                             <div class="carousel-caption">
 
-                                <h5>{{ $photographer->name }}</h5>
+                                <h5>{{ $profile->name }}</h5>
                                 <div class="box-1 scroll-to">
                                     <div class="butt btn-one">
                                         <span>ПОБАРАЈ ПОНУДА</span>
@@ -58,34 +58,8 @@
 
                             </div>
                         </div>
-                        @foreach($photographer->album as $album)
-                            @foreach($album->pictures  as $picture)
-                                <div class="carousel-item">
-                                    <div class="slider-image"
-                                         style="background-image: url('/images/gallery/photographers/{{$photographer->name}}/{{$picture->image}}');"></div>
-                                    <div class="carousel-caption">
-
-                                        <h5>{{ $photographer->name }}</h5>
-                                        <div class="box-1 scroll-to">
-                                            <div class="butt btn-one">
-                                                <span>ПОБАРАЈ ПОНУДА</span>
-                                            </div>
-                                            <div class="arrow scroll-to" style="margin-top: -200px"></div>
-                                        </div>
 
 
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endforeach
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselRestaurant" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselRestaurant" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
 
                 </div>
@@ -110,13 +84,13 @@
                             <div class="d-flex align-items-center justify-content-center mb-2">
                                 <div
                                     class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
-                                    style="z-index: 1; width: 110px; height: 110px; background-image: url('/images/logos/photographers/thumbnails/{{ $photographer->logo }}'); background-size: cover; background-position: center; background-color: #ffffff">
+                                    style="z-index: 1; width: 110px; height: 110px; background-image: url('/images/logos/profile/thumbnails/{{ $profile->logo }}'); background-size: cover; background-position: center; background-color: #ffffff">
 
                                 </div>
                             </div>
                             <div class="text-center">
-                                <h5 class="fs-5 mb-0 fw-semibold">{{ $photographer->name }}</h5>
-                                <p class="mb-0 fs-4">{{ $photographer->subtitle }}</p>
+                                <h5 class="fs-5 mb-0 fw-semibold">{{ $profile->name }}</h5>
+                                <p class="mb-0 fs-4">{{ $profile->subtitle }}</p>
                             </div>
                         </div>
                     </div>
@@ -124,25 +98,25 @@
                         <ul class="list-unstyled d-flex align-items-center justify-content-center justify-content-lg-center my-3 gap-3">
                             <li class="position-relative">
                                 <a class="text-white d-flex align-items-center justify-content-center bg-primary p-2 fs-4 rounded-circle"
-                                   href="{{ $photographer->facebook }}" width="30" height="30" target="_blank">
+                                   href="{{ $profile->facebook }}" width="30" height="30" target="_blank">
                                     <i class="ti ti-brand-facebook"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="{{ $photographer->instagram }}" target="_blank">
+                                   href="{{ $profile->instagram }}" target="_blank">
                                     <i class="ti ti-brand-instagram"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-secondary d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="{{ $photographer->weblink }}" target="_blank">
+                                   href="{{ $profile->weblink }}" target="_blank">
                                     <i class="ti ti-world-www"></i>
                                 </a>
                             </li>
                             <li class="position-relative">
                                 <a class="text-white bg-danger d-flex align-items-center justify-content-center p-2 fs-4 rounded-circle "
-                                   href="{{ $photographer->youtube }}" target="_blank">
+                                   href="{{ $profile->youtube }}" target="_blank">
                                     <i class="ti ti-brand-youtube"></i>
                                 </a>
                             </li>
@@ -161,7 +135,7 @@
                         <div class="card">
                             <div class="card-body border-bottom">
                                 <div class="col-12">
-                                    {!! $photographer->description !!}
+                                    {!! $profile->description !!}
                                 </div>
                             </div>
                         </div>
@@ -199,12 +173,12 @@
                                 <div class="modal-body">
                                     <div class="text-center mt-2 mb-4">
                                         <a href="" class="text-success"><span><img
-                                                    src="/images/logos/photographers/thumbnails/{{ $photographer->logo }}"
+                                                    src="/images/logos/profiles/thumbnails/{{ $profile->logo }}"
                                                     class="me-3" width="80"
                                                     alt=""/></span></a>
                                     </div>
-                                    <h5 class="mb-3 text-center">Испратете барање за понуда со {{ $photographer->name }}</h5>
-                                    <form action="{{ route('messages.store', $photographer->id) }}" method="post">
+                                    <h5 class="mb-3 text-center">Испратете барање за понуда со {{ $profile->name }}</h5>
+                                    <form action="{{ route('messages.store', $profile->id) }}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-12">
@@ -328,12 +302,12 @@
 // Google Maps
 
             map = new google.maps.Map(document.getElementById('map-canvas'), {
-                center: {lat: {{ $photographer->lat }}, lng: {{ $photographer->lng }}},
+                center: {lat: {{ $profile->lat }}, lng: {{ $profile->lng }}},
                 zoom: 15
             });
 
             var marker = new google.maps.Marker({
-                position: {lat: {{ $photographer->lat }}, lng: {{ $photographer->lng }}},
+                position: {lat: {{ $profile->lat }}, lng: {{ $profile->lng }}},
                 map: map,
                 draggable: false
             });

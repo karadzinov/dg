@@ -11,6 +11,7 @@ use App\Models\Invitation;
 use App\Models\Musician;
 use App\Models\Photographer;
 use App\Models\Picture;
+use App\Models\Profile;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -72,9 +73,9 @@ class FrontEndController extends Controller
         }
 
 
-        if($slug === "ostanato")
+        if($slug === "profile")
         {
-            return redirect()->route('frontend.index');
+            return redirect()->route('frontend.profiles');
         }
 
 
@@ -112,6 +113,38 @@ class FrontEndController extends Controller
         ];
 
         return view('musicians.index')->with($data);
+    }
+
+    public function profiles()
+    {
+        $categoriesMenu = Category::getTreeHP();
+        $profiles = Profile::orderBy('id', 'desc')->get();
+
+        $data = [
+            'profiles' => $profiles,
+            'categoriesMenu' => $categoriesMenu
+        ];
+
+        return view('profile.index')->with($data);
+    }
+
+    public function profile($slug)
+    {
+
+        $profile = Profile::where('slug', $slug)->first();
+
+        $contacts = Contact::where('profile_id', $profile->id)->get();
+
+
+        $categoriesMenu = Category::getTreeHP();
+        $data = [
+            'profile' => $profile,
+            'contacts' => $contacts,
+            'categoriesMenu'  => $categoriesMenu
+        ];
+
+        return view('profile.profile')->with($data);
+
     }
 
     public function photographers()

@@ -122,6 +122,8 @@ Route::middleware(['web'])->group(function () {
     Route::get('/privacy', [\App\Http\Controllers\FrontEndController::class, 'privacy'])->name('privacy');
     Route::get('/terms', [\App\Http\Controllers\FrontEndController::class, 'terms'])->name('terms');
     Route::get('/restaurants', [\App\Http\Controllers\FrontEndController::class, 'restaurants'])->name('frontend.restaurants');
+    Route::get('/profile', [\App\Http\Controllers\FrontEndController::class, 'profiles'])->name('frontend.profiles');
+    Route::get('/profile/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile.profile');
     Route::get('/category/{slug}', [\App\Http\Controllers\FrontEndController::class, 'category'])->name('frontend.category');
     Route::post('/get-restaurants', [\App\Http\Controllers\FrontEndController::class, 'getRestaurant'])->name('frontend.getRestaurant');
     Route::post('/remove-restaurants', [\App\Http\Controllers\FrontEndController::class, 'removeRestaurant'])->name('frontend.removeRestaurant');

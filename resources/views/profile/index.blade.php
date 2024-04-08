@@ -40,18 +40,18 @@
     <div class="container-fluid">
         <div class="row">
 
-                @foreach($photographers as $index  => $photographer)
+                @foreach($profiles as $index  => $profile)
                     <div class="@if($index === 0) col-md-8 col-lg-8 @else col-md-6 col-lg-4 @endif">
-                        <a href="{{ route('photographers.profile', $photographer->slug) }}">
+                        <a href="{{ route('profile.profile', $profile->slug) }}">
                             <div class="card blog position-relative overflow-hidden hover-img"
-                                 style="background-image: url(images/cover_images/photographers/originals/{{ $photographer->coverImg }});">
+                                 style="background-image: url(images/cover_images/profile/originals/{{ $profile->coverImg }});">
                                 <div class="card-body position-relative">
                                     <div class="d-flex flex-column justify-content-between h-100">
                                         <div class="d-flex align-items-start justify-content-between">
                                             <div class="d-flex align-items-center justify-content-center mb-2 logo-top">
                                                 <div
                                                     class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
-                                                    style="z-index: 1; width: 60px; height: 60px; background-image: url('/images/logos/photographers/thumbnails/{{ $photographer->logo }}'); background-size: cover; background-position: center; background-color: #ffffff;">
+                                                    style="z-index: 1; width: 60px; height: 60px; background-image: url('/images/logos/profile/thumbnails/{{ $profile->logo }}'); background-size: cover; background-position: center; background-color: #ffffff;">
 
                                                 </div>
                                             </div>
@@ -63,22 +63,11 @@
 
                                                 <div class="box-1">
                                                     <div class="butt btn-one">
-                                                        <span>{{ $photographer->name }}</span>
+                                                        <span>{{ $profile->name }}</span>
                                                     </div>
 
                                                 </div>
 
-                                            </div>
-                                            <div class="d-flex align-items-center">
-
-
-                                                <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto mobile-add">
-                                                    @if($index === 0) <span class="text-white text-thin">Додадете го во листата за понуда</span> @endif
-                                                    <a class="photographers-list btn btn-outline-light btn-sm"
-                                                       data-photographer-id="{{ $photographer->id }}"><i class="ti ti-plus"></i></a>
-
-
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
