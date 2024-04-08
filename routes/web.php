@@ -87,8 +87,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
     //Profile CRUD
     Route::resource('profile', \App\Http\Controllers\ProfileController::class);
-    Route::get('profile/{gallery}', [\App\Http\Controllers\ProfileController::class, 'gallery'])->name('profile.gallery');
-
+    Route::get('profile/gallery/{profile}', [\App\Http\Controllers\ProfileController::class, 'gallery'])->name('profile.gallery');
+    Route::post('profile/gallery/{profile}', [\App\Http\Controllers\ProfileController::class, 'galleryStore'])->name('profile.gallery.store');
+    Route::delete('profile/gallery/{gallery}', [\App\Http\Controllers\ProfileController::class, 'galleryDestroy'])->name('profile.gallery.destroy');
+    Route::post('profile/gallery/position/{profile}', [App\Http\Controllers\ProfileController::class, 'galleryPosition'])->name('profile.gallery.position');
 
     //Contacts CRUD
     Route::get('/{slug}/contacts', [\App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');

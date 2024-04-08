@@ -161,6 +161,37 @@
                     </div>
                 </div>
 
+
+                <section class="wide-tb-80">
+                    <div class="container">
+                        <div id="js-styl2-mosaic" class="cbp" style="display: none;">
+                            <div class="cbp-item" style="display: none;">
+                            </div>
+                        </div>
+                        <div id="js-styl2-mosaic" class="masonry">
+
+                            @foreach($profile->gallery  as $image)
+                                <div class="item">
+
+                                    <a href="/images/gallery/originals/{{ $image->image }}" class="cbp-caption cbp-lightbox" data-title="">
+                                        <div class="cbp-caption-defaultWrap">
+                                            <img src="/images/gallery/medium/{{ $image->image }}" alt="{{  $profile->name }} - Gallery Image{{$image->position}}">
+                                        </div>
+                                        <div class="cbp-caption-activeWrap">
+                                            <div class="cbp-l-caption-alignCenter">
+                                                <div class="cbp-l-caption-body">
+                                                    <i class="icofont-search icofont-2x txt-white"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </section>
+
                 <div class="row">
 
 
@@ -286,7 +317,7 @@
 
 
     </div>
-    </div>
+
 
 @endsection
 @section('scripts')
@@ -294,11 +325,53 @@
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
 
+    <script type="text/javascript"  src="/assets/js/jquery.cubeportfolio.min.js"></script>
     <script>
 
 
 
         $(document).ready(function () {
+
+            (function($, window, document, undefined) {
+                'use strict';
+
+                // init cubeportfolio
+                $('#js-styl2-mosaic').cubeportfolio({
+                    filters: '#js-filters-full-width',
+                    loadMore: '#js-loadMore-full-width',
+                    loadMoreAction: 'auto',
+                    layoutMode: 'mosaic',
+                    sortToPreventGaps: true,
+                    defaultFilter: '*',
+                    animationType: 'fadeOutTop',
+                    gapHorizontal: 0,
+                    gapVertical: 0,
+                    gridAdjustment: 'responsive',
+                    mediaQueries: [{
+                        width: 999,
+                        cols: 4
+                    }, {
+                        width: 767,
+                        cols: 3
+                    }, {
+                        width: 480,
+                        cols: 2
+                    }, {
+                        width: 320,
+                        cols: 1
+                    }],
+                    caption: 'zoom',
+                    displayType: 'fadeIn',
+                    displayTypeSpeed: 100,
+
+                    // lightbox
+                    lightboxDelegate: '.cbp-lightbox',
+                    lightboxGallery: true,
+                    lightboxTitleSrc: 'data-title',
+
+                });
+            })(jQuery, window, document);
+
 // Google Maps
 
             map = new google.maps.Map(document.getElementById('map-canvas'), {

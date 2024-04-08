@@ -31,6 +31,7 @@
     <link rel="icon" type="image/x-icon" href="/dist/images/2.svg">
     <link rel="stylesheet" href="/dist/libs/quill/dist/quill.snow.css">
     <link href="/dist/libs/quill/quill.snow.css" rel="stylesheet">
+    <link href="/assets/css/popup.css" rel="stylesheet">
 
     <!-- --------------------------------------------------- -->
     <link href="/start/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
@@ -54,7 +55,11 @@
     <!-- --------------------------------------------------- -->
     <link id="themeColors" rel="stylesheet" href="/dist/css/style.min.css"/>
     <link id="themeColors" rel="stylesheet" href="/dist/css/datepicker.min.css"/>
+
+    <link rel="stylesheet" href="/assets/css/cubeportfolio.min.css">
+
     <link rel="stylesheet" href="/dist/css/custom.css"/>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -586,6 +591,7 @@
 <script src="/dist/js/custom.js"></script>
 <script src="/dist/libs/prismjs/prism.js"></script>
 <script src="/dist/libs/quill/dist/quill.min.js"></script>
+<script src="/assets/js/jquery.popup.js"></script>
 
 <!-- ---------------------------------------------- -->
 <!-- current page js files -->

@@ -39,4 +39,10 @@ class Photographer extends Model
     {
         return $this->hasMany(Album::class);
     }
+
+
+    public function gallery()
+    {
+        return $this->hasMany(Gallery::class, 'photographer_id', 'id');
+    }
 }

@@ -38,4 +38,10 @@ class Musician extends Model
     {
         return $this->hasMany(Album::class);
     }
+
+
+    public function gallery()
+    {
+        return $this->hasMany(Gallery::class, 'musician_id', 'id');
+    }
 }

@@ -52,6 +52,39 @@ class ImageStore
         return false;
     }
 
+
+
+    public function imagesStore($image)
+    {
+
+        $imageName = Str::random(10) . '.' . $image->getClientOriginalExtension();
+        $paths = $this->makePaths();
+
+
+        File::makeDirectory($paths['original'], $mode = 0755, true, true);
+        File::makeDirectory($paths['thumbnail'], $mode = 0755, true, true);
+        File::makeDirectory($paths['medium'], $mode = 0755, true, true);
+
+
+        $image->move($paths['original'], $imageName);
+
+        $findimage = $paths['original'] . $imageName;
+        $imagethumb = Image::make($findimage)->resize(200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $imagemedium = Image::make($findimage)->resize(600, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $imagethumb->save($paths['thumbnail'] . $imageName);
+        $imagemedium->save($paths['medium'] . $imageName);
+
+        return $imageName;
+
+
+
+    }
+
+
     public function makePaths()
     {
         $original = public_path() . '/images/' . $this->path . '/originals/';;

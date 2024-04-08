@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Helpers\ImageStoreCover;
 use App\Http\Controllers\Helpers\ImageStoreLogo;
+use App\Http\Controllers\Helpers\ImageStore;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Contact;
+use App\Models\Gallery;
 use App\Models\Profile;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
+
 
 class ProfileController extends Controller
 {
@@ -196,6 +200,69 @@ class ProfileController extends Controller
         }
 
         return redirect()->route('users.index');
+    }
+
+    public function gallery(Profile $profile)
+    {
+
+        return view('profile.gallery')->with(['profile' => $profile]);
+    }
+
+    public function galleryStore(Request $request, Profile $profile)
+    {
+        $imageObj = new ImageStore($request, 'gallery');
+
+
+
+
+
+        foreach($request->images as $image) {
+
+            $image = $imageObj->imagesStore($image);
+
+
+            $gallery = Gallery::where('profile_id', '=', $profile->id)->orderBy('id', 'desc')->first();
+            if(!$gallery) {
+                $position = 1;
+            }  else {
+                $position = $gallery->position + 1;
+            }
+
+
+            Gallery::create([
+                'image'  => $image,
+                'profile_id' => $profile->id,
+                'position' =>  $position
+            ]);
+        }
+        Session::flash('flash_message', 'Images successfully uploaded!');
+        return view('profile.gallery')->with(['profile' => $profile]);
+    }
+
+    public function galleryPosition(Request $request, Profile $profile)
+    {
+        $image = Gallery::where('position', '=', $request->get('fromindex'))->where('profile_id', '=', $profile->id)->first();
+        $image->update(['position' => $request->get('toindex')]);
+
+
+        $image = Gallery::where('position', '=', $request->get('toindex'))->where('profile_id', '=', $profile->id)->first();
+        $image->update(['position' => $request->get('fromindex')]);
+        return response()->json("success", 200);
+    }
+
+    public function galleryDestroy(Request $request, Gallery $gallery)
+    {
+        try {
+            unlink(public_path() . '/images/gallery/medium/' . $gallery->image);
+            unlink(public_path() . '/images/gallery/originals/' . $gallery->image);
+            unlink(public_path() . '/images/gallery/thumbnails/' . $gallery->image);
+        } catch (\Exception $e) {
+            Log::info($e->getMessage());
+        }
+
+        $gallery->delete();
+
+        return redirect()->back();
     }
 
     /**

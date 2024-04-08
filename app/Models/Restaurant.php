@@ -56,4 +56,10 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
+
+
+    public function gallery()
+    {
+        return $this->hasMany(Gallery::class, 'restaurant_id', 'id');
+    }
 }
