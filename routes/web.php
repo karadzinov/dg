@@ -23,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/guests/{guest}', [\App\Http\Controllers\GuestController::class, 'destroy'])->name('guests.destroy');
 });
 
-Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->names('admin.users');
     Route::post('users/login', [\App\Http\Controllers\Admin\UserController::class, 'loginAs'])->name('admin.users.login');
     Route::resource('restaurants', \App\Http\Controllers\Admin\RestaurantsController::class)->names('admin.restaurants');
@@ -32,12 +32,12 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function() {
     Route::post('/restaurants/position', [App\Http\Controllers\Admin\RestaurantsController::class, 'position'])->name('admin.restaurants.position');
 });
 
-Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     //User Profile
-    Route::get('/' , [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
 
-    Route::group(['prefix' => 'restaurants'], function() {
+    Route::group(['prefix' => 'restaurants'], function () {
         //Restaurants CRUD
         Route::get('/create', [\App\Http\Controllers\RestaurantController::class, 'create'])->name('restaurants.create');
         Route::post('/', [\App\Http\Controllers\RestaurantController::class, 'store'])->name('restaurants.store');
@@ -52,7 +52,7 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
         Route::delete('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'destroyGallery'])->name('restaurants.gallery.destroy');
 
     });
-    Route::group(['prefix' => 'musicians'], function() {
+    Route::group(['prefix' => 'musicians'], function () {
         //Musicians CRUD
         Route::get('/create', [\App\Http\Controllers\MusicianController::class, 'create'])->name('musicians.create');
         Route::post('/', [\App\Http\Controllers\MusicianController::class, 'store'])->name('musicians.store');
@@ -67,7 +67,7 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
         Route::delete('/galleries/{gallery}', [\App\Http\Controllers\MusicianController::class, 'destroyGallery'])->name('musicians.gallery.destroy');
 
     });
-    Route::group(['prefix' => 'photographers'], function() {
+    Route::group(['prefix' => 'photographers'], function () {
         //Photographers CRUD
         Route::get('/create', [\App\Http\Controllers\PhotographerController::class, 'create'])->name('photographers.create');
         Route::post('/', [\App\Http\Controllers\PhotographerController::class, 'store'])->name('photographers.store');
@@ -84,6 +84,12 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
 
     });
 
+
+    //Profile CRUD
+    Route::resource('profile', \App\Http\Controllers\ProfileController::class);
+    Route::get('profile/{gallery}', [\App\Http\Controllers\ProfileController::class, 'gallery'])->name('profile.gallery');
+
+
     //Contacts CRUD
     Route::get('/{slug}/contacts', [\App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
     Route::get('/{slug}/contacts/create', [\App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
@@ -98,14 +104,13 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function() {
     Route::delete('/galleries/{gallery}', [\App\Http\Controllers\AlbumController::class, 'destroy'])->name('gallery.destroy');
 
     //Invitations CRUD
-    Route::get('/invitations' , [\App\Http\Controllers\InvitationController::class, 'invitations'])->name('frontend.invitations');
+    Route::get('/invitations', [\App\Http\Controllers\InvitationController::class, 'invitations'])->name('frontend.invitations');
     Route::delete('/invitations/{invitation}', [App\Http\Controllers\InvitationController::class, 'destroy'])->name('invitation.destroy');
 });
 
 
-Route::any('/ckfinder/connector', [\CKSource\CKFinderBridge\Controller\CKFinderController::class,'requestAction'])->name('ckfinder_connector')->middleware('ckfinder');
+Route::any('/ckfinder/connector', [\CKSource\CKFinderBridge\Controller\CKFinderController::class, 'requestAction'])->name('ckfinder_connector')->middleware('ckfinder');
 Route::any('/ckfinder/browser', [\CKSource\CKFinderBridge\Controller\CKFinderController::class, 'browserAction'])->name('ckfinder_browser')->middleware('ckfinder');
-
 
 
 Route::middleware(['web'])->group(function () {
@@ -153,8 +158,8 @@ Route::middleware(['web'])->group(function () {
 
     //Invitation routes
     Route::post('/invitation/store/{invitation}', [\App\Http\Controllers\InvitationController::class, 'storeUser'])->name('invitation.store.user');
-    Route::get('/invitation/create' , [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
-    Route::get('/invitation/package' , [\App\Http\Controllers\InvitationController::class, 'package'])->name('invitations.package');
+    Route::get('/invitation/create', [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
+    Route::get('/invitation/package', [\App\Http\Controllers\InvitationController::class, 'package'])->name('invitations.package');
     Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
     Route::post('/invitations/{invitation}/save', [\App\Http\Controllers\InvitationController::class, 'saveRestaurantToInvitations'])->name('invitations.saveRestaurant');
     Route::get('/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');

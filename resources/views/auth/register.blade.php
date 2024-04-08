@@ -67,7 +67,7 @@
                                             <option value="restaurant">Ресторани</option>
                                             <option value="music">Музичари/Бендови</option>
                                             <option value="photo">Фотографи/Фотостудио</option>
-                                            <option value="other">Останато</option>
+                                            <option value="profile">Останато</option>
                                         </select>
                                     </div>
                                     <button type="submit"

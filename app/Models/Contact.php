@@ -19,7 +19,8 @@ class Contact extends Model
         'desc',
         'restaurant_id',
         'musician_id',
-        'photographer_id'
+        'photographer_id',
+        'profile_id'
     ];
 
     public function restaurant()
@@ -37,4 +38,8 @@ class Contact extends Model
         return $this->belongsTo(Photographer::class, 'photographer_id', 'id');
     }
 
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class, 'profile_id', 'id');
+    }
 }

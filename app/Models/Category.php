@@ -160,4 +160,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Restaurant::class)->withTimestamps();
     }
+
+    public function profile()
+    {
+        return $this->belongsToMany(Profile::class)->withTimestamps();
+    }
 }

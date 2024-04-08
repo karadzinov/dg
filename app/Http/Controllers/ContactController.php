@@ -16,6 +16,7 @@ class ContactController extends Controller
 
         $contacts = Contact::where('restaurant_id', $restaurant->id)->get();
 
+
         $data = [
             'restaurant' => $restaurant,
             'contacts' => $contacts

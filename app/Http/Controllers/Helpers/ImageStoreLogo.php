@@ -19,10 +19,10 @@ class ImageStoreLogo
         $this->path = $path;
     }
 
-    public function imageStore()
+    public function imageStore($image = 'image')
     {
-        if ($this->request->hasFile('logo')) {
-            $image = $this->request->file('logo');
+        if ($this->request->hasFile($image)) {
+            $image = $this->request->file($image);
 
             $imageName = rand(1000, 100000) . '-' .  $image->getClientOriginalName();
 
