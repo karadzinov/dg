@@ -32,6 +32,8 @@ class ImageStore
             File::makeDirectory($paths['original'], $mode = 0755, true, true);
             File::makeDirectory($paths['thumbnail'], $mode = 0755, true, true);
             File::makeDirectory($paths['medium'], $mode = 0755, true, true);
+            File::makeDirectory($paths['large'], $mode = 0755, true, true);
+
 
 
             $image->move($paths['original'], $imageName);
@@ -68,6 +70,7 @@ class ImageStore
         File::makeDirectory($paths['original'], $mode = 0755, true, true);
         File::makeDirectory($paths['thumbnail'], $mode = 0755, true, true);
         File::makeDirectory($paths['medium'], $mode = 0755, true, true);
+        File::makeDirectory($paths['large'], $mode = 0755, true, true);
 
 
         $image->move($paths['original'], $imageName);
@@ -86,6 +89,7 @@ class ImageStore
         $imagethumb->save($paths['thumbnail'] . $imageName);
         $imagemedium->save($paths['medium'] . $imageName);
         $imagelarge->save($paths['large'] . $imageName);
+
 
         return $imageName;
 
