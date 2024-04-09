@@ -7,7 +7,7 @@
     <meta itemprop="name" content="{{ $profile->name }} - Драги Гости">
     <meta itemprop="description"
           content="{{ Str::of($profile->description)->words(25)->stripTags() }}">
-    <meta itemprop="image" content="{{ env('APP_URL') }}/images/cover_images/profiles/originals/{{ $profile->coverImg }}">
+    <meta itemprop="image" content="{{ env('APP_URL') }}/images/cover_images/profile/originals/{{ $profile->coverImg }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="{{ $profile->name }} - Драги Гости">
     <meta name="twitter:description" content="{{ Str::of($profile->description)->words(25)->stripTags() }}">
     <meta name="twitter:creator" content="@dragigosti">
-    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/cover_images/profiles/originals/{{ $profile->coverImg }}">
+    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/cover_images/profile/originals/{{ $profile->coverImg }}">
 
     <!-- Open Graph data -->
 
@@ -24,7 +24,7 @@
     <meta property="og:title" content="{{ $profile->name }} - Драги Гости"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{  url()->full()  }}"/>
-    <meta property="og:image" content="{{ env('APP_URL') }}/images/cover_images/profiles/originals/{{ $profile->coverImg }}"/>
+    <meta property="og:image" content="{{ env('APP_URL') }}/images/cover_images/profile/originals/{{ $profile->coverImg }}"/>
     <meta property="og:description"
           content="{{ Str::of($profile->description)->words(25)->stripTags() }}"/>
     <meta property="og:site_name" content="DragiGosti"/>
