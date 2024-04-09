@@ -43,8 +43,12 @@ class ImageStore
             $imagemedium = Image::make($findimage)->resize(1200, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
+            $imagelarge = Image::make($findimage)->resize(1200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
             $imagethumb->save($paths['thumbnail'] . $imageName);
             $imagemedium->save($paths['medium'] . $imageName);
+            $imagelarge->save($paths['large'] . $imageName);
 
             return $imageName;
         }
@@ -75,8 +79,13 @@ class ImageStore
         $imagemedium = Image::make($findimage)->resize(600, null, function ($constraint) {
             $constraint->aspectRatio();
         });
+        $imagelarge = Image::make($findimage)->resize(1200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
         $imagethumb->save($paths['thumbnail'] . $imageName);
         $imagemedium->save($paths['medium'] . $imageName);
+        $imagelarge->save($paths['large'] . $imageName);
 
         return $imageName;
 
@@ -90,7 +99,8 @@ class ImageStore
         $original = public_path() . '/images/' . $this->path . '/originals/';;
         $thumbnail = public_path() . '/images/' . $this->path . '/thumbnails/';
         $medium = public_path() . '/images/' . $this->path . '/medium/';
-        $paths = ['original' => $original, 'thumbnail' => $thumbnail, 'medium' => $medium];
+        $large = public_path() . '/images/' . $this->path . '/large/';
+        $paths = ['original' => $original, 'thumbnail' => $thumbnail, 'medium' => $medium,  'large' =>  $large];
         return $paths;
     }
 }

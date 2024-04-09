@@ -173,7 +173,7 @@
                             @foreach($profile->gallery  as $image)
                                 <div class="item">
 
-                                    <a href="/images/gallery/originals/{{ $image->image }}" class="cbp-caption cbp-lightbox" data-title="">
+                                    <a href="/images/gallery/large/{{ $image->image }}" class="cbp-caption cbp-lightbox" data-title="">
                                         <div class="cbp-caption-defaultWrap">
                                             <img src="/images/gallery/medium/{{ $image->image }}" alt="{{  $profile->name }} - Gallery Image{{$image->position}}">
                                         </div>
