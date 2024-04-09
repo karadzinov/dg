@@ -463,6 +463,7 @@ div[class*=box-1] {
     text-align: center;
     width: 280px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 /*
