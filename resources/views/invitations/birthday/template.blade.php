@@ -47,12 +47,13 @@
     <!-- Styles -->
     <link href="/css/all.css" rel="stylesheet">
 
-    <!-- Web Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic'
-          rel='stylesheet' type='text/css'>
+
     <link href='https://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -69,10 +70,31 @@
         })(window, document, 'script', 'dataLayer', 'GTM-TS8GHQQ2');</script>
     <!-- End Google Tag Manager -->
     <style>
+
+        body {
+            font-family:  "Montserrat", sans-serif;
+        }
         .logo-font {
-            font-family: 'Roboto', sans-serif;
+            font-family:  "Montserrat", sans-serif;
             font-weight: 100;
         }
+
+        #footer {
+            overflow: hidden !important;
+        }
+
+        .site-slogan {
+            font-size: 16px;
+        }
+
+        a:hover {
+            color: #333f55;
+        }
+
+        .page-title {
+            font-size: 32px !important;
+        }
+
 
 
         .cake {
@@ -290,7 +312,7 @@
                     <div class="object-non-visible pv-40" data-animation-effect="fadeIn" data-effect-delay="100">
                         <h1 class="page-title text-center logo-font">Здраво @isset($str)
                                 {{ $str }}
-                            @endisset!</h1>
+                            @endisset</h1>
                         <h1 class="page-title text-center logo-font">Време е за мојот роденден</h1>
                         <div class="separator"></div>
                         <?php \Carbon\Carbon::setLocale('MK');
