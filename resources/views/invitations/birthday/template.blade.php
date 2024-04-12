@@ -83,6 +83,10 @@
             overflow: hidden !important;
         }
 
+        .page-wrapper {
+            overflow: hidden !important;
+        }
+
         .site-slogan {
             font-size: 16px;
         }
