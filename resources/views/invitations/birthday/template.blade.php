@@ -114,6 +114,7 @@
             left: 50%;
             margin-top: -70px;
             margin-left: -125px;
+            z-index: 10;
         }
 
         .plate {
