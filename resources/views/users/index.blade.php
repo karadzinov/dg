@@ -110,7 +110,7 @@
                                         <td>
                                             <div class="text-center align-items-center">
                                                 <div class="action-btn ">
-                                                    <a href="{{ route('restaurants.gallery', $restaurant->id) }}"
+                                                    <a href="{{ route('restaurant.gallery', $restaurant->id) }}"
                                                        class="text-info edit">
                                                         <i class="ti ti-photo-plus fs-5"></i> Види галерија
                                                     </a>

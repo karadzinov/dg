@@ -8,11 +8,14 @@ use App\Models\Album;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Contact;
+use App\Models\Gallery;
 use App\Models\Musician;
 use App\Models\Photographer;
 use App\Models\Picture;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Helpers\ImageStore;
@@ -229,17 +232,6 @@ class RestaurantController extends Controller
         return view('users.index')->with($data);
     }
 
-    public function gallery($id)
-    {
-
-        $restaurant = Restaurant::FindorFail($id);
-        $albums = Album::where('restaurant_id', $restaurant->id)->get();
-        $data = [
-            'restaurant' => $restaurant,
-            'albums' => $albums,
-        ];
-        return view('restaurants.gallery.index')->with($data);
-    }
 
     public function createGallery($id)
     {
@@ -326,6 +318,70 @@ class RestaurantController extends Controller
 
         return view('restaurants.gallery.index')->with($data);
 
+    }
+
+
+
+    public function gallery(Restaurant $restaurant)
+    {
+
+        return view('restaurants.gallery')->with(['restaurant' => $restaurant]);
+    }
+
+    public function galleryStore(Request $request, Restaurant $restaurant)
+    {
+        $imageObj = new ImageStore($request, 'gallery');
+
+
+        foreach($request->images as $image) {
+
+            $image = $imageObj->imagesStore($image);
+
+
+            $gallery = Gallery::where('restaurant_id', '=', $restaurant->id)->orderBy('id', 'desc')->first();
+            if(!$gallery) {
+                $position = 1;
+            }  else {
+                $position = $gallery->position + 1;
+            }
+
+
+            Gallery::create([
+                'image'  => $image,
+                'restaurant_id' => $restaurant->id,
+                'position' =>  $position
+            ]);
+        }
+        Session::flash('flash_message', 'Images successfully uploaded!');
+        return view('restaurants.gallery')->with(['restaurant' => $restaurant]);
+    }
+
+    public function galleryPosition(Request $request, Restaurant $restaurant)
+    {
+        $image = Gallery::where('position', '=', $request->get('fromindex'))->where('restaurant_id', '=', $restaurant->id)->first();
+        $image->update(['position' => $request->get('toindex')]);
+
+
+        $image = Gallery::where('position', '=', $request->get('toindex'))->where('restaurant_id', '=', $restaurant->id)->first();
+        $image->update(['position' => $request->get('fromindex')]);
+        return response()->json("success", 200);
+    }
+
+    public function galleryDestroy($id)
+    {
+        $gallery = Gallery::Find($id);
+        try {
+            unlink(public_path() . '/images/gallery/medium/' . $gallery->image);
+            unlink(public_path() . '/images/gallery/originals/' . $gallery->image);
+            unlink(public_path() . '/images/gallery/thumbnails/' . $gallery->image);
+            unlink(public_path() . '/images/gallery/large/' . $gallery->image);
+        } catch (\Exception $e) {
+            Log::info($e->getMessage());
+        }
+
+        $gallery->delete();
+
+        return redirect()->back();
     }
 
     public function createVideo($id)

@@ -44,12 +44,16 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/{restaurant}/edit', [\App\Http\Controllers\RestaurantController::class, 'edit'])->name('restaurants.edit');
         Route::put('/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'update'])->name('restaurants.update');
         Route::delete('/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'destroy'])->name('restaurants.destroy');
-        Route::get('/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'gallery'])->name('restaurants.gallery');
-        Route::get('/{restaurant}/galleries/create', [\App\Http\Controllers\RestaurantController::class, 'createGallery'])->name('restaurants.gallery.create');
+       // Route::get('/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'gallery'])->name('restaurants.gallery');
+      //  Route::get('/{restaurant}/galleries/create', [\App\Http\Controllers\RestaurantController::class, 'createGallery'])->name('restaurants.gallery.create');
         Route::get('/{restaurant}/video/create', [\App\Http\Controllers\RestaurantController::class, 'createVideo'])->name('restaurants.gallery.video.create');
-        Route::post('/{restaurant}/galleries', [\App\Http\Controllers\RestaurantController::class, 'storeGallery'])->name('restaurants.gallery.store');
+      //  Route::post('/{restaurant}/galleries', [\App\Http\Controllers\RestaurantController::class, 'storeGallery'])->name('restaurants.gallery.store');
         Route::post('/{restaurant}/video', [\App\Http\Controllers\RestaurantController::class, 'storeVideo'])->name('restaurants.gallery.video.store');
-        Route::delete('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'destroyGallery'])->name('restaurants.gallery.destroy');
+      //  Route::delete('/galleries/{gallery}', [\App\Http\Controllers\RestaurantController::class, 'destroyGallery'])->name('restaurants.gallery.destroy');
+        Route::get('/gallery/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'gallery'])->name('restaurant.gallery');
+        Route::post('/gallery/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'galleryStore'])->name('restaurant.gallery.store');
+        Route::delete('/gallery/{restaurant}', [\App\Http\Controllers\RestaurantController::class, 'galleryDestroy'])->name('restaurant.gallery.destroy');
+        Route::post('/gallery/position/{restaurant}', [App\Http\Controllers\RestaurantController::class, 'galleryPosition'])->name('restaurant.gallery.position');
 
     });
     Route::group(['prefix' => 'musicians'], function () {
