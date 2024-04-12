@@ -12,6 +12,8 @@ class Invitation extends Model
     protected $table = 'invitations';
 
     protected $fillable = [
+        'name',
+        'years',
         'male_name',
         'female_name',
         'male_text',

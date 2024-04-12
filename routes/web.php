@@ -170,8 +170,10 @@ Route::middleware(['web'])->group(function () {
     //Invitation routes
     Route::post('/invitation/store/{invitation}', [\App\Http\Controllers\InvitationController::class, 'storeUser'])->name('invitation.store.user');
     Route::get('/invitation/create', [\App\Http\Controllers\InvitationController::class, 'create'])->name('invitations.create');
+    Route::get('/invitation/create/birthday', [\App\Http\Controllers\InvitationController::class, 'createBirthday'])->name('invitations.create.birthday');
     Route::get('/invitation/package', [\App\Http\Controllers\InvitationController::class, 'package'])->name('invitations.package');
     Route::post('/invitations', [\App\Http\Controllers\InvitationController::class, 'store'])->name('invitations.store');
+    Route::post('/invitations/birthday', [\App\Http\Controllers\InvitationController::class, 'storeBirthday'])->name('invitations.store.birthday');
     Route::post('/invitations/{invitation}/save', [\App\Http\Controllers\InvitationController::class, 'saveRestaurantToInvitations'])->name('invitations.saveRestaurant');
     Route::get('/{invitation}', [\App\Http\Controllers\InvitationController::class, 'show'])->name('invitation.show');
     Route::post('/invitations/{invitation}/update', [\App\Http\Controllers\InvitationController::class, 'update'])->name('invitations.update');

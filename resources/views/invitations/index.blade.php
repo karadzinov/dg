@@ -14,9 +14,11 @@
                                     </a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('users.index') }}">Поканети гости {{ auth()->user()->packageInfo()['totalGuests'] }} / 300</a></li>
+                                    <a href="{{ route('users.index') }}">Поканети
+                                        гости {{ auth()->user()->packageInfo()['totalGuests'] }} / 300</a></li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                    <a href="{{ route('frontend.invitations') }}">Покани {{ auth()->user()->packageInfo()['totalInvitations'] }} / 10</a>
+                                    <a href="{{ route('frontend.invitations') }}">Покани {{ auth()->user()->packageInfo()['totalInvitations'] }}
+                                        / 10</a>
                                 </li>
                             </ol>
                         </nav>
@@ -37,8 +39,8 @@
                         <table class="table search-table align-middle text-nowrap">
                             <thead class="header-item">
                             <th class="text-center">Покана</th>
-                            <th class="text-center">Име на невестата</th>
-                            <th class="text-center">Име на младоженецот</th>
+                            <th class="text-center">Наслов</th>
+
                             <th class="text-center">Додади гости</th>
                             <th class="text-center">Прегледај листа на гости</th>
                             <th class="text-center">Промени текст</th>
@@ -57,15 +59,18 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="text-center align-items-center">
-                                            {{strip_tags($invitation->female_name) }}
-                                        </div>
+                                        @if($invitation->template != "birthday")
+                                            <div class="text-center align-items-center">
+                                                {{strip_tags($invitation->female_name) }}
+                                                & {{ strip_tags($invitation->male_name) }}
+                                            </div>
+                                        @else
+                                            <div class="text-center align-items-center">
+                                                {{strip_tags($invitation->name) }}
+                                            </div>
+                                        @endif
                                     </td>
-                                    <td>
-                                        <div class="text-center align-items-center">
-                                            {{ strip_tags($invitation->male_name) }}
-                                        </div>
-                                    </td>
+
 
                                     <td>
                                         <div class="text-center align-items-center">
@@ -84,11 +89,17 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="text-center align-items-center">
-                                            <a href="{{ route('invitation.editText', $invitation->id) }}">
-                                                <i class="ti ti-edit fs-5"></i>Промени текст/слики
-                                            </a>
-                                        </div>
+                                        @if($invitation->template != "birthday")
+                                            <div class="text-center align-items-center">
+                                                <a href="{{ route('invitation.editText', $invitation->id) }}">
+                                                    <i class="ti ti-edit fs-5"></i>Промени текст/слики
+                                                </a>
+                                            </div>
+                                        @else
+                                            <div class="text-center align-items-center">
+
+                                            </div>
+                                        @endif
                                     </td>
                                     <td class="text-end">
                                         <div class="action-btn">

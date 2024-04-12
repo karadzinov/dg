@@ -47,6 +47,11 @@ class InvitationController extends Controller
         return view('invitations.create');
     }
 
+    public function createBirthday()
+    {
+        return view('invitations.create-birthday');
+    }
+
     public function package()
     {
         return view('invitations.package');
@@ -81,7 +86,7 @@ class InvitationController extends Controller
         }
 
         $mrs = $request->get('mrs');
-        $mr  = $request->get('mr');
+        $mr = $request->get('mr');
 
         $male_text = "<p>На секој човек му е потребен животен сопатник, многу љубов и разбирање.</p>
 <p>Ако сонцето ја има месечината, денот ја има ноќта, планината го има морето, животот ја има смртта, длабочината ја има висината, галамата ја има тишината, среќата ја има тагата, доброто го има злото - јас ја имам $mrs . Таа е сè што недостасуваше во мојот живот, а заедно сме енергијата, земјата, водата, воздухот и огнот. Ви благодарам што сте дел од нашиот живот.</p>
@@ -141,9 +146,9 @@ class InvitationController extends Controller
         }
 
 
-        $user = User::where("email","=", $request->get('email'))->first();
+        $user = User::where("email", "=", $request->get('email'))->first();
 
-        if($user) {
+        if ($user) {
             $invitation = Invitation::create([
                 'male_name' => $request->get('mr'),
                 'female_name' => $request->get('mrs'),
@@ -163,7 +168,7 @@ class InvitationController extends Controller
                 'user_id' => $user->id,
                 'hash' => md5($email),
             ]);
-        }  else {
+        } else {
             $invitation = Invitation::create([
                 'male_name' => $request->get('mr'),
                 'female_name' => $request->get('mrs'),
@@ -185,8 +190,6 @@ class InvitationController extends Controller
         }
 
 
-
-
         $invitation = Invitation::where('invitation_link', $request->get('basic_url'))->first();
         $restaurants = Restaurant::all();
 
@@ -202,6 +205,70 @@ class InvitationController extends Controller
         } else {
             return redirect()->route('frontend.index');
         }
+    }
+
+    public function storeBirthday(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'date' => 'required',
+            'years' => 'required',
+            'basic_url' => 'required',
+            'template' => 'required',
+            'group_photo' => 'required',
+            'email' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+
+        $user = auth()->user() ? auth()->user() : User::where("email", "=", $request->get('email'))->first();
+
+        if ($user) {
+            $invitation = Invitation::create([
+                'name' => $request->get('name'),
+                'years' => $request->get('years'),
+                'date' => $request->get('date'),
+                'template' => $request->get('template'),
+                'invitation_link' => $request->get('basic_url'),
+                'group_photo' => $request->get('group_photo'),
+                'email' => $user->email,
+                'main_text' => $request->get('main_text'),
+                'user_id' => $user->id,
+                'lat' => $request->get('lat'),
+                'lng' => $request->get('lng'),
+            ]);
+        } else {
+            $hash = md5($request->get('email'));
+            $invitation = Invitation::create([
+                'name' => $request->get('name'),
+                'years' => $request->get('years'),
+                'date' => $request->get('date'),
+                'template' => $request->get('template'),
+                'invitation_link' => $request->get('basic_url'),
+                'group_photo' => $request->get('group_photo'),
+                'email' => $user->email,
+                'main_text' => $request->get('main_text'),
+                'user_id' => $user->id,
+                'lat' => $request->get('lat'),
+                'lng' => $request->get('lng'),
+                'hash' => $hash,
+            ]);
+
+            $subject = 'Креирана Покана';
+
+            Mail::to($invitation->email)->send(new MailSenderNewInvitation($subject, $invitation, $hash));
+
+
+        }
+
+
+        $data = ['invitation' =>  $invitation];
+        return view('invitations.birthday.template')->with($data);
     }
 
     public function saveRestaurantToInvitations(Request $request, $id)
@@ -235,7 +302,7 @@ class InvitationController extends Controller
 
         $invitation = Invitation::where('invitation_link', $invitation_link)->first();
 
-        if($invitation) {
+        if ($invitation) {
             $data = [
                 'invitation' => $invitation,
             ];
@@ -243,6 +310,11 @@ class InvitationController extends Controller
             if ($invitation->template === 'template_a') {
 
                 return view('invitations.template_a.view')->with($data);
+            }
+
+            if ($invitation->template === 'birthday') {
+
+                return view('invitations.birthday.template')->with($data);
             }
         }
 
@@ -419,7 +491,6 @@ class InvitationController extends Controller
         $user = User::where('email', $invitation->email)->first();
 
 
-
         if (!$user) {
             $data = [
                 'invitation' => $invitation,
@@ -434,11 +505,11 @@ class InvitationController extends Controller
 
     public function storeUser(Request $request, Invitation $invitation)
     {
-       $user =  User::create([
+        $user = User::create([
             'name' => $request->get('name'),
-            'email' =>  $request->get('email'),
-            'category' =>  $request->get('category'),
-            'password' => Hash::make( $request->get('password')),
+            'email' => $request->get('email'),
+            'category' => $request->get('category'),
+            'password' => Hash::make($request->get('password')),
         ]);
 
         $invitation->user_id = $user->id;
@@ -446,7 +517,6 @@ class InvitationController extends Controller
 
         Auth::login($user);
         return redirect()->route('frontend.invitations');
-
 
 
     }

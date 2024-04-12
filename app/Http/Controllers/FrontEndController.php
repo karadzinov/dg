@@ -269,6 +269,12 @@ class FrontEndController extends Controller
             return view('invitations.template_a.view')->with($data);
         }
 
+
+        if ($invitation->template === 'birthday') {
+
+            return view('invitations.birthday.template')->with($data);
+        }
+
     }
 
     public function confirm(Request $request)

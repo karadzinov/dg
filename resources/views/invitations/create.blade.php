@@ -38,7 +38,18 @@
                 <!-- Card -->
                 <div class="card">
                     <div class="card-body">
-                        <h3>Креирајте ја вашата покана...</h3>
+
+                        <div class="row">
+                            <div class="col-md-6 text-center">
+                                <a href="/invitation/create/birthday" class="btn btn-block btn-outline-info">Роденден</a>
+                            </div>
+
+                            <div class="col-md-6 text-center">
+                                <a href="/invitation/create" class="btn btn-block btn-default">Свадба</a>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
