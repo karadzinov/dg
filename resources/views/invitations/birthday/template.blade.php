@@ -100,6 +100,11 @@
         }
 
 
+        .footer-content {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
 
         .cake {
             position: relative;
@@ -336,7 +341,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="footer-content">
                 @isset($guests)
-                    <h2 class="title text-default">RSVP</h2>
+                    <h2 class="title">RSVP</h2>
                     <div class="separator-2 mt-10"></div>
                     <p>Доколку сакате да го потврдите Вашето присуство, Ве молиме пополнете ги полињата
                         подолу.</p>
