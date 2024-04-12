@@ -337,6 +337,24 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="footer-content">
@@ -412,9 +430,9 @@
                                     </label>
                                 </div>
                                 @if(!$guest->confirmed)
-                                    <input type="submit" value="Потврди" class="submit-button btn btn-default">
+                                    <input type="submit" value="Потврди" class="btn btn-primary">
                                 @else
-                                    <input type="submit" value="Потврдено" class="success btn btn-default" disabled>
+                                    <input type="submit" value="Потврдено" class="btn btn-primary" disabled>
                                 @endif
                             </form>
 
@@ -491,23 +509,7 @@
     <section class="light-gray-bg pv-30 clearfix">
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="cake">
-                        <div class="plate"></div>
-                        <div class="layer layer-bottom"></div>
-                        <div class="layer layer-middle"></div>
-                        <div class="layer layer-top"></div>
-                        <div class="icing"></div>
-                        <div class="drip drip1"></div>
-                        <div class="drip drip2"></div>
-                        <div class="drip drip3"></div>
-                        <div class="candle">
-                            <div class="flame"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
 
