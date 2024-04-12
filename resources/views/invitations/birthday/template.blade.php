@@ -515,7 +515,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="text-center">Copyright © 2023 by <a target="_blank"
+                        <p class="text-center">Copyright © {{ date('Y') }} by <a target="_blank"
                                                                       href="https://dragigosti.com">Драги Гости</a>.
                             All Rights Reserved</p>
                     </div>
