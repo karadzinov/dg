@@ -6,7 +6,7 @@
 
         <div class="card">
             <div class="border-bottom title-part-padding">
-                <h1 class="card-title mb-0">Додадете фотографии за:  {{ $restaurant->name }}</h1>
+                <h1 class="card-title mb-0">Додадете фотографии за:  {{ $photographer->name }}</h1>
 
 
             </div>
@@ -14,7 +14,7 @@
                 @if(Session::has('flash_message'))
                     <p class="alert alert-success">{{ Session::get('flash_message') }}</p>
                 @endif
-                <form class="needs-validation" novalidate="" action="{{ route('restaurant.gallery.store',  $restaurant->id) }}"
+                <form class="needs-validation" novalidate="" action="{{ route('photographer.gallery.store',  $photographer->id) }}"
                       method="post"
                       enctype="multipart/form-data">
                     @csrf
@@ -43,11 +43,11 @@
 
 
 
-        @if($restaurant->gallery())
+        @if($photographer->gallery())
 
             <div class="card">
                 <div class="border-bottom title-part-padding">
-                    <h1 class="card-title mb-0">{{ $restaurant->gallery()->count() }} Фотографии</h1>
+                    <h1 class="card-title mb-0">{{ $photographer->gallery()->count() }} Фотографии</h1>
 
 
                 </div>
@@ -58,7 +58,7 @@
                     @endif
 
                     <div class="row" id="qatable">
-                        @foreach($restaurant->gallery()->orderBy('position', 'asc')->get() as $image)
+                        @foreach($photographer->gallery()->orderBy('position', 'asc')->get() as $image)
                             <div class="col-md-4">
                                 <div class="card position position{{$image->position}} pointer-cursor">
                                     <div class="card-body">
@@ -126,7 +126,7 @@
                     const name = button.getAttribute('data-bs-name')
 
 
-                    let action = "/user/restaurants/gallery/" + id;
+                    let action = "/user/photographers/gallery/" + id;
                     deleteModal.querySelector('form').setAttribute('action', action);
                     deleteModal.querySelector('#deleteMessage').innerHTML = 'Ве молиме потврдете за бришење на ' + name + '?';
 
@@ -171,7 +171,7 @@
 
                             $.ajax({
                                 type: 'POST',
-                                url: '{{ route('restaurant.gallery.position', $restaurant->id) }}',
+                                url: '{{ route('photographer.gallery.position', $photographer->id) }}',
                                 data: {fromindex: fromindex + 1, toindex: toindex + 1},
                                 dataType: 'json',
                                 headers: {

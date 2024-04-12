@@ -58,34 +58,7 @@
 
                             </div>
                         </div>
-                        @foreach($photographer->album as $album)
-                            @foreach($album->pictures  as $picture)
-                                <div class="carousel-item">
-                                    <div class="slider-image"
-                                         style="background-image: url('/images/gallery/photographers/{{$photographer->name}}/{{$picture->image}}');"></div>
-                                    <div class="carousel-caption">
 
-                                        <h5>{{ $photographer->name }}</h5>
-                                        <div class="box-1 scroll-to">
-                                            <div class="butt btn-one">
-                                                <span>ПОБАРАЈ ПОНУДА</span>
-                                            </div>
-                                            <div class="arrow scroll-to" style="margin-top: -200px"></div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endforeach
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselRestaurant" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselRestaurant" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
 
                 </div>
@@ -282,6 +255,37 @@
             </div>
 
 
+            <section class="wide-tb-80">
+                <div class="container">
+                    <div id="js-styl2-mosaic" class="cbp" style="display: none;">
+                        <div class="cbp-item" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="masonry">
+
+                        @foreach($photographer->gallery()->orderBy('position', 'asc')->get()  as $image)
+                            <div class="item">
+
+                                <a href="/images/gallery/large/{{ $image->image }}" class="cbp-caption cbp-lightbox" data-title="">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="/images/gallery/medium/{{ $image->image }}" alt="{{  $photographer->name }} - Gallery Image{{$image->position}}">
+                                    </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
+                                                <i class="icofont-search icofont-2x txt-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </section>
+
+
             <div class="row">
                 <div class="col-md-12">
                     <p class="text-center">
@@ -319,12 +323,53 @@
     <!-- Google Maps -->
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
-
+    <script type="text/javascript"  src="/assets/js/jquery.cubeportfolio.min.js"></script>
     <script>
 
 
 
         $(document).ready(function () {
+
+            (function($, window, document, undefined) {
+                'use strict';
+
+                // init cubeportfolio
+                $('#js-styl2-mosaic').cubeportfolio({
+                    filters: '#js-filters-full-width',
+                    loadMore: '#js-loadMore-full-width',
+                    loadMoreAction: 'auto',
+                    layoutMode: 'mosaic',
+                    sortToPreventGaps: true,
+                    defaultFilter: '*',
+                    animationType: 'fadeOutTop',
+                    gapHorizontal: 0,
+                    gapVertical: 0,
+                    gridAdjustment: 'responsive',
+                    mediaQueries: [{
+                        width: 999,
+                        cols: 4
+                    }, {
+                        width: 767,
+                        cols: 3
+                    }, {
+                        width: 480,
+                        cols: 2
+                    }, {
+                        width: 320,
+                        cols: 1
+                    }],
+                    caption: 'zoom',
+                    displayType: 'fadeIn',
+                    displayTypeSpeed: 100,
+
+                    // lightbox
+                    lightboxDelegate: '.cbp-lightbox',
+                    lightboxGallery: true,
+                    lightboxTitleSrc: 'data-title',
+
+                });
+            })(jQuery, window, document);
+
 // Google Maps
 
             map = new google.maps.Map(document.getElementById('map-canvas'), {

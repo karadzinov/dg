@@ -263,7 +263,7 @@
                     </div>
                     <div class="masonry">
 
-                        @foreach($restaurant->gallery  as $image)
+                        @foreach($restaurant->gallery()->orderBy('position', 'asc')->get()  as $image)
                             <div class="item">
 
                                 <a href="/images/gallery/large/{{ $image->image }}" class="cbp-caption cbp-lightbox" data-title="aaa">

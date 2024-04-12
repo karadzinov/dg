@@ -168,9 +168,9 @@
                             <div class="cbp-item" style="display: none;">
                             </div>
                         </div>
-                        <div id="js-styl2-mosaic" class="masonry">
+                        <div class="masonry">
 
-                            @foreach($profile->gallery  as $image)
+                            @foreach($profile->gallery()->orderBy('position', 'asc')->get()  as $image)
                                 <div class="item">
 
                                     <a href="/images/gallery/large/{{ $image->image }}" class="cbp-caption cbp-lightbox" data-title="">

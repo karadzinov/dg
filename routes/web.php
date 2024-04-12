@@ -78,14 +78,17 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
         Route::get('/{photographer}/edit', [\App\Http\Controllers\PhotographerController::class, 'edit'])->name('photographers.edit');
         Route::put('/{photographer}', [\App\Http\Controllers\PhotographerController::class, 'update'])->name('photographers.update');
         Route::delete('/{photographer}', [\App\Http\Controllers\PhotographerController::class, 'destroy'])->name('photographers.destroy');
-        Route::get('/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'gallery'])->name('photographers.gallery');
+       # Route::get('/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'gallery'])->name('photographers.gallery');
         Route::get('/{photographer}/galleries/create', [\App\Http\Controllers\PhotographerController::class, 'createGallery'])->name('photographers.gallery.create');
         Route::get('/{photographer}/video/create', [\App\Http\Controllers\PhotographerController::class, 'createVideo'])->name('photographers.gallery.video.create');
-        Route::post('/{photographer}/galleries', [\App\Http\Controllers\PhotographerController::class, 'storeGallery'])->name('photographers.gallery.store');
+      #  Route::post('/{photographer}/galleries', [\App\Http\Controllers\PhotographerController::class, 'storeGallery'])->name('photographers.gallery.store');
         Route::post('/{photographer}/video', [\App\Http\Controllers\PhotographerController::class, 'storeVideo'])->name('photographers.gallery.video.store');
-        Route::delete('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'destroyGallery'])->name('photographers.gallery.destroy');
-        Route::get('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'albumView'])->name('photographers.album.view');
-
+      #  Route::delete('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'destroyGallery'])->name('photographers.gallery.destroy');
+      #  Route::get('/galleries/{gallery}', [\App\Http\Controllers\PhotographerController::class, 'albumView'])->name('photographers.album.view');
+        Route::get('/gallery/{photographer}', [\App\Http\Controllers\PhotographerController::class, 'gallery'])->name('photographer.gallery');
+        Route::post('/gallery/{photographer}', [\App\Http\Controllers\PhotographerController::class, 'galleryStore'])->name('photographer.gallery.store');
+        Route::delete('/gallery/{photographer}', [\App\Http\Controllers\PhotographerController::class, 'galleryDestroy'])->name('photographer.gallery.destroy');
+        Route::post('/gallery/position/{photographer}', [App\Http\Controllers\PhotographerController::class, 'galleryPosition'])->name('photographer.gallery.position');
     });
 
 
