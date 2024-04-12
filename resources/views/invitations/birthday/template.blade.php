@@ -397,38 +397,7 @@
                                 </div>
 
 
-                                <p> Избор на мени </p>
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="menu_option" id="regular"
-                                           value="regular" @if($guest->menu_option === "regular") checked @endif>
-                                    <label class="form-check-label" for="regular">
-                                        Регуларно
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="menu_option" id="vegetarian"
-                                           value="vegetarian" @if($guest->menu_option === "vegetarian") checked @endif>
-                                    <label class="form-check-label" for="vegetarian">
-                                        Вегетаријанец
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="menu_option" id="vegan"
-                                           value="vegan" @if($guest->menu_option === "vegan") checked @endif>
-                                    <label class="form-check-label" for="vegan">
-                                        Веган
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="menu_option" id="halal"
-                                           value="halal" @if($guest->menu_option === "halal") checked @endif>
-                                    <label class="form-check-label" for="halal">
-                                        Халал
-                                    </label>
-                                </div>
                                 @if(!$guest->confirmed)
                                     <input type="submit" value="Потврди" class="btn btn-primary">
                                 @else
