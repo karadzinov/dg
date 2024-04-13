@@ -131,7 +131,7 @@ class InvitationController extends Controller
             ];
 
             if ($invitation->template === 'template_a') {
-                return view('templates.text-add-templates.template_a')->with($data);
+                return view('templates.text-add-templates.template_b')->with($data);
             } else if ($invitation->template === 'template_b') {
                 return view('templates.text-add-templates.template_b')->with($data);
             } else {
@@ -196,7 +196,7 @@ class InvitationController extends Controller
         ];
 
         if ($invitation->template === 'template_a') {
-            return view('templates.text-add-templates.template_a')->with($data);
+            return view('templates.text-add-templates.template_b')->with($data);
         } else if ($invitation->template === 'template_b') {
             return view('templates.text-add-templates.template_b')->with($data);
         } else {
@@ -368,6 +368,10 @@ class InvitationController extends Controller
         if ($invitation->template === 'template_a') {
 
             return view('invitations.template_a.edit')->with($data);
+        }
+        if ($invitation->template === 'template_b') {
+
+            return view('invitations.template_b.edit')->with($data);
         }
         dd('so far');
     }

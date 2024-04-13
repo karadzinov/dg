@@ -53,40 +53,31 @@
                             <div class="card-body position-relative">
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="d-flex align-items-start justify-content-between">
-
                                         <div
                                             class="d-flex align-items-center justify-content-center mb-1 text-center logo-top">
                                             <div
                                                 class="linear-gradient d-flex align-items-center justify-content-center rounded-circle"
                                                 style="z-index: 1; width: 60px; height: 60px; background-image: url('/images/logos/restaurants/thumbnails/{{ $restaurant->logo }}'); background-size: cover; background-position: center; background-color: #ffffff">
-
                                             </div>
                                         </div>
-
-
                                     </div>
                                     <div>
                                         <div class="fs-7 my-4 fw-semibold text-white d-block lh-sm">
-
-
                                             <div class="box-1">
                                                 <div class="butt btn-one">
                                                     <span>{{ $restaurant->name }}</span>
                                                 </div>
-
                                             </div>
-
-
                                         </div>
                                         <div class="d-flex align-items-center">
-
-
-                                            <div class="d-flex align-items-center gap-1 text-white fw-normal ms-auto mobile-add">
-                                                @if($index === 0) <span class="text-white text-thin">Додадете го во листата за понуда</span> @endif
+                                            <div
+                                                class="d-flex align-items-center gap-1 text-white fw-normal ms-auto mobile-add">
+                                                @if($index === 0)
+                                                    <span
+                                                        class="text-white text-thin">Додадете го во листата за понуда</span>
+                                                @endif
                                                 <a class="restaurant-list btn btn-outline-light btn-sm"
                                                    data-restaurant-id="{{ $restaurant->id }}"><i class="ti ti-plus"></i></a>
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -94,15 +85,8 @@
                             </div>
                         </div>
                     </a>
-
-
                 </div>
-
-
-        @endforeach
-
-    </div>
-
-
+            @endforeach
+        </div>
     </div>
 @endsection
