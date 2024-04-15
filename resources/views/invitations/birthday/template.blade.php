@@ -546,7 +546,7 @@
         function initAutocomplete() {
             map = new google.maps.Map(document.getElementById('map-canvas'), {
                 center: {lat: {{ $invitation->lat }}, lng: {{ $invitation->lng }}},
-                zoom: 15
+                zoom: 18
             });
 
             var marker = new google.maps.Marker({
