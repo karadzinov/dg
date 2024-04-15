@@ -428,39 +428,7 @@
 
                                     </div>
 
-                                    <p> Избор на мени </p>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="menu_option" id="regular-1"
-                                               value="regular" @if($guest->menu_option === "regular") checked @endif>
-                                        <label class="form-check-label" for="regular-1">
-                                            Регуларно
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="menu_option"
-                                               id="vegetarian-1" value="vegetarian"
-                                               @if($guest->menu_option === "vegetarian") checked @endif>
-                                        <label class="form-check-label" for="vegetarian-1">
-                                            Вегетаријанец
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="menu_option" id="vegan-1"
-                                               value="vegan" @if($guest->menu_option === "vegan") checked @endif>
-                                        <label class="form-check-label" for="vegan-1">
-                                            Веган
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="menu_option" id="halal-1"
-                                               value="halal" @if($guest->menu_option === "halal") checked @endif>
-                                        <label class="form-check-label" for="halal-1">
-                                            Халал
-                                        </label>
-                                    </div>
                                     <input type="submit" value="Додади" class="submit-button btn btn-default">
                                 </form>
                             @endif
