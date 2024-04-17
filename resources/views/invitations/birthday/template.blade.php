@@ -8,7 +8,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Драги Гости</title>
+    <title>Покана за роденден на {{ $invitation->name }} | Драги Гости</title>
     <meta name="description" content="Покана за роденден на {{ $invitation->name }}">
     <meta name="author" content="Martin Karadzinov">
     <meta charset="utf-8"/>
@@ -54,6 +54,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H7XM5SM8DV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-H7XM5SM8DV');
+    </script>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || [];
