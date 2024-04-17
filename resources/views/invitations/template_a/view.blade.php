@@ -8,7 +8,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Драги Гости</title>
+    <title>Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }} | Драги Гости</title>
     <meta name="description" content="Покана за свадбата на {{ explode(' ', $invitation->male_name)[0] }} и {{ explode(' ', $invitation->female_name)[0] }}">
     <meta name="author" content="Martin Karadzinov">
     <meta charset="utf-8"/>
