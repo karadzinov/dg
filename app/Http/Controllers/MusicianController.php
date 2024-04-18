@@ -147,7 +147,7 @@ class MusicianController extends Controller
         if ($request->hasFile('logo')) {
 
             $imageObj = new ImageStoreLogo($request, 'musicians');
-            $logo = $imageObj->imageStore();
+            $logo = $imageObj->imageStore('logo');
             $input['logo'] = $logo;
         }
         if ($request->hasFile('coverImg')) {
