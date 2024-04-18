@@ -11,6 +11,11 @@ iframe {
 
 }
 
+.musicians-bg {
+    background-position: center center;
+    background-size: cover;
+}
+
 .text-thin {
     font-weight: 100;
 }

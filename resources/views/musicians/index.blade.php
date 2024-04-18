@@ -43,8 +43,8 @@
             @foreach($musicians as $index  => $musician)
                 <div class="@if($index === 0) col-md-8 col-lg-8 @else col-md-6 col-lg-4 @endif">
                     <a href="{{ route('musicians.profile', $musician->slug) }}">
-                        <div class="card blog position-relative overflow-hidden hover-img"
-                             style="background-image: url('/images/cover_images/musicians/originals/{{ $musician->coverImg }}'">
+                        <div class="card blog position-relative overflow-hidden hover-img  musicians-bg"
+                             style="background-image: url('/images/cover_images/musicians/originals/{{ $musician->coverImg }}');">
                             <div class="card-body position-relative">
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="d-flex align-items-start justify-content-between">
