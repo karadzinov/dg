@@ -50,9 +50,13 @@ class FrontEndController extends Controller
         $categoriesMenu = Category::getTreeHP();
         $restaurants = Restaurant::orderBy('position', 'asc')->get();
 
+        $mainCategory = Category::where('slug', '=', 'hoteli-restorani')->first();
+        $categories = Category::where('parent_id', '=', $mainCategory->id)->get();
+
         $data = [
             'restaurants' => $restaurants,
-            'categoriesMenu' => $categoriesMenu
+            'categoriesMenu' => $categoriesMenu,
+            'categories' => $categories
         ];
 
         return view('restaurants.index')->with($data);
