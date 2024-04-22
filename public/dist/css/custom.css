@@ -111,7 +111,6 @@ iframe {
 
 .slider-image {
     width: 100%;
-    min-height: 600px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1178,8 +1177,8 @@ div[class*=box-1] {
 
     .carousel-item .slider-image {
         width: auto;
-        height: 600px;
-        margin-left: -300px;
+        height: 300px;
+
     }
 
 
