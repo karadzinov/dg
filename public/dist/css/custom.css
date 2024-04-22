@@ -120,7 +120,7 @@ iframe {
 .slider-image {
     width: 100%;
     min-height: 300px;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     overflow: hidden;
 }
