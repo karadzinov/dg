@@ -119,10 +119,11 @@ iframe {
 
 .slider-image {
     width: 100%;
-    min-height: 300px;
-    background-size: contain;
+    min-height: 250px;
+    background-size: cover;
     background-position: center;
     overflow: hidden;
+    background-repeat: no-repeat;
 }
 
 
