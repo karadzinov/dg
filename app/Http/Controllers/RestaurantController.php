@@ -84,7 +84,7 @@ class RestaurantController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
             $imageObj = new ImageStoreLogo($request, 'restaurants');
-            $logo = $imageObj->imageStore();
+            $logo = $imageObj->imageStore('logo');
         }
         if ($request->hasFile('coverImg')) {
             $coverImg = $request['coverImg'];
@@ -185,7 +185,7 @@ class RestaurantController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request['logo'];
             $imageObj = new ImageStoreLogo($request, 'restaurants');
-            $logo = $imageObj->imageStore();
+            $logo = $imageObj->imageStore('logo');
             $input['logo'] = $logo;
         }
         if ($request->hasFile('coverImg')) {
