@@ -119,7 +119,7 @@ iframe {
 
 .slider-image {
     width: 100%;
-    min-height: 250px;
+    min-height: 600px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1174,6 +1174,11 @@ div[class*=box-1] {
 
 
 
+    .slider-image {
+
+        min-height: 250px;
+
+    }
 
 
 
