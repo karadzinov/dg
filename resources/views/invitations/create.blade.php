@@ -30,6 +30,9 @@
           content="Дигитализирај ја твојата љубовна приказна. Одбери еден од многуте темплејти на нашата веб страна, додадте ја Вашата оригиналност  преку слики, видео или текст и изненадете ги сите гости со уникатно искуство."/>
     <meta property="og:site_name" content="DragiGosti"/>
 @endsection
+@section('menu')
+    {!! $categories !!}
+@endsection
 @section('content')
 
     <div class="container-fluid">

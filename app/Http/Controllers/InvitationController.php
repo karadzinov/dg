@@ -8,6 +8,7 @@ use App\Http\Controllers\Helpers\ImageStoreLogo;
 use App\Http\Controllers\Helpers\ImageStoreMalePhoto;
 use App\Mail\MailSender;
 use App\Mail\MailSenderNewInvitation;
+use App\Models\Category;
 use App\Models\Guests;
 use App\Models\Invitation;
 use App\Models\Restaurant;
@@ -44,7 +45,9 @@ class InvitationController extends Controller
 
     public function create()
     {
-        return view('invitations.create');
+        $categoriesMenu = Category::getTreeHP();
+        $data = ['categories' => $categoriesMenu];
+        return view('invitations.create')->with($data);
     }
 
     public function createBirthday()
