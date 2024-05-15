@@ -1011,7 +1011,7 @@ div[class*=box-1] {
     }
 
     .gallery {
-        --s: 200px; /* control the size */
+        --s: 120px; /* control the size */
         --g: 2px; /* control the gap */
         display: grid;
         margin: calc(var(--s) + var(--g));
@@ -1029,7 +1029,7 @@ div[class*=box-1] {
         width: var(--s);
         aspect-ratio: 0.866;
         object-fit: cover;
-        height: 230px;
+        height: 140px;
         clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0);
         transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1));
         cursor: pointer;
@@ -1131,7 +1131,7 @@ div[class*=box-1] {
 
 
         font-family: 'Poiret One', cursive;
-        font-size: 18px;
+        font-size: 12px;
         width: 100%;
         text-align: center;
 
@@ -1149,7 +1149,7 @@ div[class*=box-1] {
         top: 50%;
     }
     .mob-hex-title {
-        font-size: 16px;
+        font-size: 14px;
 
     }
 

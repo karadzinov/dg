@@ -95,8 +95,8 @@
 
             <div class="gallery none-mobile">
                 <div>
-
-                    <img src="/images/dj.jpg" alt="DJs">
+                    <p class="hex-title">DJ's</p>
+                    <img src="/images/dj.jpg" alt="DJs"  data-link="musicians">
                 </div>
 
                 <div class="active" id="invitations">
@@ -117,18 +117,21 @@
                         src="/images/photo.jpg"
                         alt="Photographers" data-link="photographers">
                 </div>
-                <div><img
+                <div>
+                    <p class="hex-title">Накит</p>
+                    <img
                         src="/images/wedding-rings.jpg"
-                        alt="Wedding rings">
+                        alt="Wedding rings" data-link="profile">
                 </div>
                 <div id="services">
+                    <p class="hex-title">Декорации</p>
                     <img
                         src="/images/services.jpg"
-                        alt="Services">
+                        alt="Services" data-link="profile">
                 </div>
                 <div id="musicians">
                     <p class="hex-title">Музичари</p>
-                    <img src="https://i.ytimg.com/vi/ePUHdvzNOVs/hqdefault.jpg"
+                    <img src="/images/harmonika.jpg"
                          alt="Musicians" data-link="musicians"></div>
 
             </div>

@@ -63,8 +63,7 @@
                             <tr class="search-items">
                                 <td class="text-start">
                                     <div class="d-flex align-items-center">
-                                        <img
-                                            src="/images/cover_images/musicians/thumbnails/{{ $album->coverImg }}"
+                                        <img src="/images/cover_images/musicians/thumbnails/{{ $album->coverImg }}"
                                             alt="avatar" class="rounded-circle"
                                             width="40"/>
                                         <div class="ms-3 align-items-center">
