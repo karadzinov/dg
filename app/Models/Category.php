@@ -112,7 +112,7 @@ class Category extends Model
 
     public static function getTreeHP() {
         $categories = self::where('parent_id', '=', null)->get()->toTree();
-        $lists = '<li class="nav-item dropdown hover-dd d-none d-lg-block">
+        $lists = '<li class="nav-item dropdown hover-dd">
                 <a class="nav-link" data-bs-toggle="dropdown">Услуги<span class="mt-1"><i class="ti ti-chevron-down"></i></span></a>
                 <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0" style="max-width: 250px;">
                     <div class="col-12">

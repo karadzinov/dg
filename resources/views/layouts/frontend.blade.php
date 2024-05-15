@@ -100,300 +100,213 @@
 >
     <!-- Header Start -->
     <header class="app-header" style="background-color: white">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <ul class="navbar-nav quick-links d-none d-lg-flex">
-                <li class="nav-item d-none d-lg-block">
-                    <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
-                        <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="60" alt=""/>
+        <nav class="header-fullpage navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand rounded-bottom light-bg" href="/">
+                        <img src="/dist/images/logos/logo-main.png" width="80" alt="" class="img-fluid">
                     </a>
-                </li>
-
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
-                </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-
-                    <div id="button">
-                        <span class="scali"></span>
-                        <span class="clicki">  <a class="btn bg-main pokani" href="{{ route('invitations.create') }}">Креирајте покани</a>  </span>
-                    </div>
-
-                </li>
-                @yield('menu')
+                </div>
+                <!-- Topbar Request Quote Start -->
+                <div class="d-inline-flex request-btn order-lg-last">
 
 
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="/">За нас</a>
-                </li>
-                <li class="nav-item dropdown-hover d-none d-lg-block">
-                    <a class="nav-link" href="{{ route('frontend.contact') }}">Контакт</a>
-                </li>
-            </ul>
-            <div class="d-block d-lg-none">
-                <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
-                    <img src="/dist/images/logos/logo-main.png" class="dark-logo" width="60" alt=""/>
-                </a>
-
-            </div>
-            <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-              <span class="p-2">
-                <i class="ti ti-dots fs-7"></i>
-              </span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <div class="d-flex align-items-center justify-content-between">
-                    <a href="javascript:void(0)"
-                       class="nav-link d-flex d-lg-none align-items-center justify-content-center" type="button"
-                       data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar"
-                       aria-controls="offcanvasWithBothOptions">
-                        <i class="ti ti-align-justified fs-7"></i>
-                    </a>
-                    <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                <div class="d-flex align-items-center">
-                                    <div class="user-profile-img">
-                                        <span class="fa fa-user"></span>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up"
-                                 aria-labelledby="drop1">
-                                <div class="profile-dropdown position-relative" data-simplebar>
-                                    @if(Auth::user())
-                                        <div class="py-3 px-7 pb-0">
-                                            <h5 class="mb-0 fs-5 fw-semibold">Профил на корисникот</h5>
-                                        </div>
-                                        <div class="d-flex align-items-center py-9 mx-7 border-bottom">
+                    <div class="col-sm  d-block ">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link pe-0" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-profile-img">
                                             <span class="fa fa-user"></span>
-                                            <div class="ms-3">
-                                                <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
-                                                <p class="mb-0 d-flex text-dark align-items-center gap-2">
-                                                    <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
-                                                </p>
-                                            </div>
                                         </div>
-                                        <div class="message-body">
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-down"
+                                     aria-labelledby="drop2">
+                                    <div class="profile-dropdown position-relative" data-simplebar>
+                                        @if(Auth::user())
+                                            <div class="py-3 px-7 pb-0">
+                                                <h5 class="mb-0 fs-5 fw-semibold">Профил на корисникот</h5>
+                                            </div>
+                                            <div class="d-flex align-items-center py-9 mx-7 border-bottom">
+                                                <span class="fa fa-user"></span>
+                                                <div class="ms-3">
+                                                    <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
+                                                    <p class="mb-0 d-flex text-dark align-items-center gap-2">
+                                                        <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="message-body">
 
-                                            @if(auth()->user()->category === "invitations")
-                                                <a href="{{ route('frontend.invitations') }}"
-                                                   class="py-8 px-7 mt-8 d-flex align-items-center">
+                                                @if(auth()->user()->category === "invitations")
+                                                    <a href="{{ route('frontend.invitations') }}"
+                                                       class="py-8 px-7 mt-8 d-flex align-items-center">
                           <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                             <img src="/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
                           </span>
-                                                    <div class="w-75 d-inline-block v-middle ps-3">
-                                                        <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
-                                                        <span class="d-block text-dark">Погледни</span>
-                                                    </div>
-                                                </a>
+                                                        <div class="w-75 d-inline-block v-middle ps-3">
+                                                            <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
+                                                            <span class="d-block text-dark">Погледни</span>
+                                                        </div>
+                                                    </a>
 
-                                            @else
-                                                <a href="{{ route('users.index') }}"
-                                                   class="py-8 px-7 mt-8 d-flex align-items-center">
+                                                @else
+                                                    <a href="{{ route('users.index') }}"
+                                                       class="py-8 px-7 mt-8 d-flex align-items-center">
                           <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                             <img src="/dist/images/svgs/icon-tasks.svg" alt="" width="24" height="24">
                           </span>
-                                                    <div class="w-75 d-inline-block v-middle ps-3">
-                                                        <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои услуги </h6>
-                                                        <span class="d-block text-dark">Подесувања</span>
-                                                    </div>
-                                                </a>
-                                                <a href="{{ route('frontend.invitations') }}"
-                                                   class="py-8 px-7 mt-8 d-flex align-items-center">
+                                                        <div class="w-75 d-inline-block v-middle ps-3">
+                                                            <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои услуги </h6>
+                                                            <span class="d-block text-dark">Подесувања</span>
+                                                        </div>
+                                                    </a>
+                                                    <a href="{{ route('frontend.invitations') }}"
+                                                       class="py-8 px-7 mt-8 d-flex align-items-center">
                           <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                             <img src="/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
                           </span>
-                                                    <div class="w-75 d-inline-block v-middle ps-3">
-                                                        <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
-                                                        <span class="d-block text-dark">Погледни</span>
-                                                    </div>
-                                                </a>
-                                            @endif
-                                        </div>
-                                        <div class="d-grid py-4 px-7 pt-8">
-                                            <div
+                                                        <div class="w-75 d-inline-block v-middle ps-3">
+                                                            <h6 class="mb-1 bg-hover-primary fw-semibold"> Мои покани </h6>
+                                                            <span class="d-block text-dark">Погледни</span>
+                                                        </div>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="d-grid py-4 px-7 pt-8">
+                                                <div
                                                     class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <h5 class="fs-4 mb-3 w-50 fw-semibold">Bronze</h5>
-                                                        <a class="btn btn-primary"
-                                                           href="/invitation/package">Промени</a>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="m-n4 unlimited-img">
-                                                            <img src="/dist/images/backgrounds/bronze.png" alt=""
-                                                                 class="w-75">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <h5 class="fs-4 mb-3 w-50 fw-semibold">Bronze</h5>
+                                                            <a class="btn btn-primary"
+                                                               href="/invitation/package">Промени</a>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="m-n4 unlimited-img">
+                                                                <img src="/dist/images/backgrounds/bronze.png" alt=""
+                                                                     class="w-75">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <a href="{{ route('logout') }}"
-                                               class="btn btn-outline-primary"
-                                               onclick="event.preventDefault();
+                                                <a href="{{ route('logout') }}"
+                                                   class="btn btn-outline-primary"
+                                                   onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    @else
-                                        <div class="d-grid py-4 px-7 pt-8">
-                                            <div class="text-center">
-                                                <p>Логирајте се за пристап до вашиот профил</p>
+                                                    {{ __('Logout') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                    @csrf
+                                                </form>
                                             </div>
-                                            <a href="{{ route('login') }}" class="btn btn-outline-primary">Логирај
-                                                се</a>
-                                        </div>
-                                    @endif
+                                        @else
+                                            <div class="d-grid py-4 px-7 pt-8">
+                                                <div class="text-center">
+                                                    <p>Логирајте се за пристап до вашиот профил</p>
+                                                </div>
+                                                <a href="{{ route('login') }}" class="btn btn-outline-primary">Логирај се</a>
+
+                                                <hr />
+                                                <a href="{{ route('register') }}" class="btn btn-outline-primary">Креирај профил</a>
+                                            </div>
+                                        @endif
+                                    </div>
+
+
                                 </div>
 
-
-                            </div>
-
-                        </li>
+                            </li>
 
 
-                        <li class="nav-item">
-                            <button class="nav-link position-relative nav-icon-hover" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRestaurants" aria-controls="offcanvasRestaurants"
-                                    id="restaurant-list-trigger">
-                                <i class="ti ti-calendar-check"></i>
-                                <span class="popup-badge rounded-pill bg-danger text-white fs-2"
-                                      id="countRestaurants">
+                            <li class="nav-item">
+                                <button class="nav-link position-relative nav-icon-hover" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRestaurants" aria-controls="offcanvasRestaurants"
+                                        id="restaurant-list-trigger">
+                                    <i class="ti ti-calendar-check"></i>
+                                    <span class="popup-badge rounded-pill bg-danger text-white fs-2"
+                                          id="countRestaurants">
                                     @if(session()->get('cart') &&  session()->get('cart-photo')  && session()->get('cart-musician'))
-                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo'))  + count(session()->get('cart-musician'))}}
-                                    @elseif(session()->get('cart') &&  session()->get('cart-photo'))
-                                        {{  count(session()->get('cart')) + count(session()->get('cart-photo')) }}
-                                    @elseif(session()->get('cart') &&  session()->get('cart-musician'))
-                                        {{  count(session()->get('cart')) + count(session()->get('cart-musician')) }}
-                                    @elseif(session()->get('cart-musician') &&  session()->get('cart-photo'))
-                                        {{  count(session()->get('cart-musician')) + count(session()->get('cart-photo')) }}
-                                    @elseif(session()->get('cart-photo'))
-                                        {{ count(session()->get('cart-photo')) }}
-                                    @elseif(session()->get('cart-musician'))
-                                        {{ count(session()->get('cart-musician')) }}
-                                    @elseif(session()->get('cart'))
-                                        {{ count(session()->get('cart')) }}
-                                    @else
-                                        0
-                                    @endif</span>
-                            </button>
-                        </li>
+                                            {{  count(session()->get('cart')) + count(session()->get('cart-photo'))  + count(session()->get('cart-musician'))}}
+                                        @elseif(session()->get('cart') &&  session()->get('cart-photo'))
+                                            {{  count(session()->get('cart')) + count(session()->get('cart-photo')) }}
+                                        @elseif(session()->get('cart') &&  session()->get('cart-musician'))
+                                            {{  count(session()->get('cart')) + count(session()->get('cart-musician')) }}
+                                        @elseif(session()->get('cart-musician') &&  session()->get('cart-photo'))
+                                            {{  count(session()->get('cart-musician')) + count(session()->get('cart-photo')) }}
+                                        @elseif(session()->get('cart-photo'))
+                                            {{ count(session()->get('cart-photo')) }}
+                                        @elseif(session()->get('cart-musician'))
+                                            {{ count(session()->get('cart-musician')) }}
+                                        @elseif(session()->get('cart'))
+                                            {{ count(session()->get('cart')) }}
+                                        @else
+                                            0
+                                        @endif</span>
+                                </button>
+                            </li>
 
 
-                    </ul>
+                        </ul>
+                    </div>
+                    <!-- Toggle Button Start -->
+                    <button class="navbar-toggler  collapsed" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                            aria-label="Toggle navigation" style="border: none;">
+                        <i class="ti ti-align-right fs-7"></i>
+                    </button>
+                    <!-- Toggle Button End -->
                 </div>
+                <!-- Topbar Request Quote End -->
+
+                <div class="navbar-collapse offcanvas offcanvas-start offcanvas-collapse" id="navbarCollapse">
+                    <div class="offcanvas-header">
+                        <a class="navbar-brand" href="/" style="padding-left: 40px;"><img src="/dist/images/logos/logo-main.png" width="80" alt="" class="img-fluid"></a>
+                        <button class="navbar-toggler x collapsed offcanvas-end" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#navbarCollapse"
+                                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" style="border:  none;">
+                            <i class="ti ti-x fs-7"></i>
+                        </button>
+                    </div>
+                    <div class="offcanvas-body w-100">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0 quick-links">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('frontend.index') }}">Почетна</a>
+                            </li>
+                            <li class="nav-item">
+
+                                <div id="button">
+                                    <span class="scali"></span>
+                                    <span class="clicki">  <a class="btn bg-main pokani" href="{{ route('invitations.create') }}">Креирајте покани</a>  </span>
+                                </div>
+
+                            </li>
+                            @yield('menu')
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('frontend.contact') }}">Контакт</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                </div>
+
             </div>
         </nav>
+
     </header>
     <!-- Header End -->
-    <!--  Mobilenavbar -->
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar"
-         aria-labelledby="offcanvasWithBothOptionsLabel">
-        <nav class="sidebar-nav scroll-sidebar">
-            <div class="offcanvas-header justify-content-between">
-                <a href="{{ route('frontend.index') }}" class="text-nowrap nav-link">
-                    <img src="/dist/images/logos/logo-main.png" width="160" alt="" class="img-fluid">
-                </a>
 
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body profile-dropdown mobile-navbar" data-simplebar="" data-simplebar>
-                <ul id="sidebarnav">
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('frontend.index') }}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-home"></i>
-                </span>
-                            <span class="hide-menu">Почетна</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="/invitation/create" aria-expanded="false">
-                <span>
-                  <i class="ti ti-photo"></i>
-                </span>
-                            <span class="hide-menu">Креирајте покани</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow" aria-expanded="false">
-                <span>
-                  <i class="ti ti-apps"></i>
-                </span>
-                            <span class="hide-menu">Услуги</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse first-level my-3">
-                            <li class="sidebar-item py-2">
-                                <a href="{{ route('frontend.restaurants') }}"
-                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                    <div class="d-inline-block">
-                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-home-2"></i>
-                  </span>
-                                            <span class="hide-menu">&nbsp;Ресторани</span></h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="sidebar-item py-2">
-                                <a href="{{ route('frontend.musicians') }}"
-                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                    <div class="d-inline-block">
-                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-music"></i>
-                  </span>
-                                            <span class="hide-menu">&nbsp;Музичари</span></h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="sidebar-item py-2">
-                                <a href="{{ route('frontend.photographers') }}"
-                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                    <div class="d-inline-block">
-                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-camera"></i>
-                  </span>
-                                            <span class="hide-menu">&nbsp;Фотографи</span></h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="sidebar-item py-2">
-                                <a href="/profile"
-                                   class="d-flex align-items-center pb-9 position-relative text-decoration-none text-decoration-none text-decoration-none text-decoration-none">
-                                    <div class="d-inline-block">
-                                        <h6 class="mb-1 fw-semibold bg-hover-primary"><span>
-                    <i class="ti ti-hotel-service"></i>
-                  </span>
-                                            <span class="hide-menu">&nbsp;Декорации</span></h6>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('frontend.contact') }}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-message-dots"></i>
-                </span>
-                            <span class="hide-menu">Контакт</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="" aria-expanded="false">
-                <span>
-                  <i class="ti ti-info-square"></i>
-                </span>
-                            <span class="hide-menu">За нас</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+
 
     <!-- Main wrapper -->
     <div class="body-wrapper">
