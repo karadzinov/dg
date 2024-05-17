@@ -248,7 +248,7 @@ class InvitationController extends Controller
         } else {
             $hash = md5($request->get('email'));
 
-            $user = User::create(['email' => $request->get('email')]);
+            $user = User::create(['name' => $request->get('name'), 'email' => $request->get('email')]);
             $invitation = Invitation::create([
                 'name' => $request->get('name'),
                 'years' => $request->get('years'),
