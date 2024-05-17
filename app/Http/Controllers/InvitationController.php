@@ -252,7 +252,8 @@ class InvitationController extends Controller
                 [
                     'name' => $request->get('name'),
                     'email' => $request->get('email'),
-                    'password' => Hash::make(rand(100, 2000))
+                    'password' => Hash::make(rand(100, 2000)),
+                    'category' => 'invitations'
                 ]
             );
             $invitation = Invitation::create([
