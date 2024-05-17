@@ -509,6 +509,7 @@ class InvitationController extends Controller
             ];
             return view('auth.registerNew')->with($data);
         } else {
+            Auth::login($user);
             return redirect()->route('frontend.invitations');
         }
 
