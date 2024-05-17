@@ -256,7 +256,6 @@ class InvitationController extends Controller
                 'group_photo' => $request->get('group_photo'),
                 'email' => $request->get('email'),
                 'main_text' => $request->get('main_text'),
-                'user_id' => $user->id,
                 'lat' => $request->get('lat'),
                 'lng' => $request->get('lng'),
                 'hash' => $hash,
