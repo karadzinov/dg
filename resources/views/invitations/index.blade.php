@@ -107,10 +107,10 @@
                                             <a href="{{ route('invitation.destroy', $invitation->id) }}"
                                                class="text-dark delete ms-2"
                                                onclick="event.preventDefault();
-                                  document.getElementById('delete-form').submit();">
+                                  document.getElementById('delete-form-{{ $invitation->id }}').submit();">
                                                 <i class="ti ti-trash fs-5"></i>
                                             </a>
-                                            <form id="delete-form" method="post"
+                                            <form id="delete-form-{{ $invitation->id }}" method="post"
                                                   action="{{ route('invitation.destroy', $invitation->id) }}">
                                                 @method('DELETE')
                                                 @csrf
