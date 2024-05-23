@@ -344,7 +344,7 @@ class FrontEndController extends Controller
 
         Log::info("Добивте прашање од $firstName со емаил: $email, телефон: $phone и наслов $subject. $msg");
 
-        $bccEmails = ["filip@dragigosti.com", "boban@dragigosti.com", "martin@dragigosti.com"];
+        $bccEmails = ["martin@pingdevs.com"];
         Mail::to("contact@dragigosti.com")
             ->bcc($bccEmails)->send(new MailSender($msg, $subject, $sender));
         Session::flash('message', 'Ви благодариме, наскоро ќе добиете повратен одговор');
@@ -440,7 +440,7 @@ class FrontEndController extends Controller
         Log::info($msg);
 
         try {
-            $bccEmails = ["filip@dragigosti.com", "boban@dragigosti.com", "martin@dragigosti.com"];
+            $bccEmails = ["martin@pingdevs.com"];
             Mail::to("contact@dragigosti.com")
                 ->bcc($bccEmails)->send(new MailSender($msg, $subject, $sender));
         } catch (\Exception $e) {
