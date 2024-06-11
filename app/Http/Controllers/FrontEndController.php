@@ -189,26 +189,33 @@ class FrontEndController extends Controller
     public function profileMusician($slug)
     {
 
-        $musician = Musician::where('slug', $slug)->latest()->first();
-        $albums = Album::where('musician_id', $musician->id)->get();
-        $contacts = Contact::where('musician_id', $musician->id)->get();
+        $musician = Musician::where('slug', $slug)->first();
+        if($musician) {
 
-        $pictures = [];
-        foreach($albums as $album)
-        {
-            $pictures[] = Picture::where('album_id', $album->id)->get();
+
+            // $albums = Album::where('musician_id', $musician->id)->get();
+            $contacts = Contact::where('musician_id', $musician->id)->get();
+
+            // $pictures = [];
+            /*
+            foreach($albums as $album)
+            {
+                $pictures[] = Picture::where('album_id', $album->id)->get();
+            }
+            */
+
+            $categoriesMenu = Category::getTreeHP();
+
+            $data = [
+                'musician' => $musician,
+                'contacts' => $contacts,
+                'categoriesMenu' => $categoriesMenu
+            ];
+
+            return view('musicians.profile')->with($data);
+        } else {
+            return redirect()->route('frontend.index');
         }
-
-        $categoriesMenu = Category::getTreeHP();
-
-        $data = [
-            'musician' => $musician,
-            'contacts' => $contacts,
-            'pictures' => $pictures,
-            'categoriesMenu'  => $categoriesMenu
-        ];
-
-        return view('musicians.profile')->with($data);
 
     }
 
