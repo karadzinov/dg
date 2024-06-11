@@ -193,22 +193,25 @@ class FrontEndController extends Controller
         if($musician) {
 
 
-            // $albums = Album::where('musician_id', $musician->id)->get();
+            $albums = Album::where('musician_id', $musician->id)->get();
             $contacts = Contact::where('musician_id', $musician->id)->get();
 
-            // $pictures = [];
-            /*
-            foreach($albums as $album)
-            {
-                $pictures[] = Picture::where('album_id', $album->id)->get();
+             $pictures = [];
+            if($albums) {
+                foreach($albums as $album)
+                {
+                    $pictures[] = Picture::where('album_id', $album->id)->get();
+                }
             }
-            */
+
+
 
             $categoriesMenu = Category::getTreeHP();
 
             $data = [
                 'musician' => $musician,
                 'contacts' => $contacts,
+                'pictures' => $pictures,
                 'categoriesMenu' => $categoriesMenu
             ];
 
