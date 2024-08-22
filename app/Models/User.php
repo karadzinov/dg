@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'category'
     ];
 
     /**
@@ -42,4 +43,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function restaurants()
+    {
+        return $this->hasMany(Restaurant::class, 'user_id');
+    }
+
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class, 'user_id', 'id');
+    }
+
+
+
+    public function packageInfo()
+    {
+
+
+        $countInvitations = $this->invitations()->count();
+
+        $guestCount = 0;
+
+        foreach($this->invitations()->get() as $invitation)
+        {
+            $guestCount += $invitation->guestsCount();
+        }
+
+        return ['totalGuests' => $guestCount, 'totalInvitations' => $countInvitations];
+
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

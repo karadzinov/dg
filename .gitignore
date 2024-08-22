@@ -3,6 +3,9 @@
 /public/build
 /public/hot
 /public/storage
+/public/.htaccess
+public/images
+public/sitemap.xml
 /storage/*.key
 /vendor
 .env
