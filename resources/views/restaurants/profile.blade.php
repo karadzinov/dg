@@ -320,7 +320,7 @@
 @section('scripts')
     <!-- Google Maps -->
     <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAS05zxYcZTGI-KfGAk8l0xNC2eCWfNsPw"></script>
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDq46a51kTANyyLxxx1uhp4o6RleQC9iIY"></script>
 
     <script type="text/javascript"  src="/assets/js/jquery.cubeportfolio.min.js"></script>
     <script>
