@@ -4,7 +4,7 @@
 /public/hot
 /public/storage
 /public/.htaccess
-#public/images
+public/images
 public/sitemap.xml
 /storage/*.key
 /vendor
@@ -22,3 +22,4 @@ yarn-error.log
 /.vscode
 /.vite
 /.idx/.data
+demo.sql
