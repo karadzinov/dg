@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -16,8 +17,11 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'string|max:255',
-            'email' => 'email|unique:users,email',
-            'password' => 'string|min:8',
+            'email' => [
+                'email',
+                Rule::unique('users', 'email')->ignore($this->route('user')), // Allow same email for the user being updated
+            ],
+            'password' => 'nullable|string|min:8', // Optional for updating
             'category' => 'string',
             'role_id' => 'integer|exists:roles,id',
         ];
