@@ -17,11 +17,8 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'string|max:255',
-            'email' => [
-                'email',
-                Rule::unique('users', 'email')->ignore($this->route('user')), // Allow same email for the user being updated
-            ],
-            'password' => 'nullable|string|min:8', // Optional for updating
+            'email' => 'required|email|unique:users,email',
+            'password' => 'string|min:8',
             'category' => 'string',
             'role_id' => 'integer|exists:roles,id',
         ];
