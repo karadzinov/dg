@@ -13,6 +13,7 @@
         "intervention/image": "^2.7",
         "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^10.10",
+        "laravel/passport": "^12.4",
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.11",
         "laravel/tinker": "^2.8",
@@ -40,7 +41,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "classmap": [
+            "database/seeders"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [
@@ -69,7 +73,10 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
-        }
+        },
+            "platform": {
+                "php": "8.2.0"
+            }
     },
     "minimum-stability": "stable",
     "prefer-stable": true
