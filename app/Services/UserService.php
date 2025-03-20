@@ -31,7 +31,6 @@ class UserService
             $user->password = Hash::make($data['password']);
         }
 
-        $user->category = $data['category'];
         $user->role_id = $data['role_id'];
 
         $user->save();
