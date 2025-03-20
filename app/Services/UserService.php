@@ -25,7 +25,6 @@ class UserService
     {
         // Update user attributes
         $user->name = $data['name'];
-        $user->email = $data['email'];
 
         // Only update password if it's provided in the data
         if (isset($data['password']) && !empty($data['password'])) {
