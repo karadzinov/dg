@@ -151,10 +151,10 @@ Route::middleware(['web'])->group(function () {
     Route::get('/photographers', [\App\Http\Controllers\FrontEndController::class, 'photographers'])->name('frontend.photographers');
     Route::get('/photographers/{slug}', [\App\Http\Controllers\FrontEndController::class, 'profilePhotographer'])->name('photographers.profile');
     Route::get('/contact', [\App\Http\Controllers\FrontEndController::class, 'contact'])->name('frontend.contact');
-    Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question');
-    Route::post('/contact-main', [\App\Http\Controllers\FrontEndController::class, 'mainContact'])->name('main.contact');
+    Route::post('/contact', [\App\Http\Controllers\FrontEndController::class, 'question'])->name('frontend.question')->middleware('throttle:5,1');;
+    Route::post('/contact-main', [\App\Http\Controllers\FrontEndController::class, 'mainContact'])->name('main.contact')->middleware('throttle:5,1');
     Route::get('/template-a', [\App\Http\Controllers\InvitationController::class, 'template_a'])->name('invitations.template_a');
-    Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
+    Route::post('/messages/{message}', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store')->middleware('throttle:5,1');;
     Route::get('/sitemap', [App\Http\Controllers\FrontEndController::class, 'sitemap'])->name('sitemap');
 
     Route::get('auth/facebook', [App\Http\Controllers\SocialController::class, 'facebookRedirect'])->name('login.facebook');
