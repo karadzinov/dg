@@ -4,6 +4,7 @@ use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DropzoneController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,8 @@ use App\Http\Controllers\DropzoneController;
 */
 
 Auth::routes();
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/guests/create/{invitation}', [\App\Http\Controllers\GuestController::class, 'create'])->name('guests.create');
     Route::get('/guests/{invitation}', [\App\Http\Controllers\GuestController::class, 'index'])->name('guests.index');
@@ -125,6 +128,7 @@ Route::any('/ckfinder/browser', [\CKSource\CKFinderBridge\Controller\CKFinderCon
 Route::middleware(['web'])->group(function () {
 
 
+    Route::get('/chat', [\App\Http\Controllers\FrontEndController::class, 'chat'])->name('frontend.chat');;
     // Frontend routes
     Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');
     Route::get('/simon', [\App\Http\Controllers\FrontEndController::class, 'simon'])->name('frontend.simon');

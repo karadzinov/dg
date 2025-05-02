@@ -45,6 +45,17 @@ class FrontEndController extends Controller
 
     }
 
+    public function chat()
+    {
+        $categories = Category::getTreeHP();
+
+        $data = [
+            "categories" => $categories
+        ];
+        return view('chat')->with($data);
+
+    }
+
     public function restaurants()
     {
         $categoriesMenu = Category::getTreeHP();
@@ -568,17 +579,21 @@ class FrontEndController extends Controller
             ->setLastModificationDate(Carbon::yesterday())
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
+
         $sitemap->add(Url::create(env('APP_URL') . '/invitation/create')
             ->setLastModificationDate(Carbon::yesterday())
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1));
 
+
+        /*
         foreach ($invitations as $invitation) {
             $sitemap->add(Url::create(env('APP_URL') . '/' . $invitation->invitation_link)
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1));
         }
+        */
 
         $sitemap->add(Url::create(env('APP_URL') . '/category/hoteli-restorani')
             ->setLastModificationDate(Carbon::yesterday())
