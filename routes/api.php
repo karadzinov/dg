@@ -36,6 +36,9 @@ Route::prefix('v1')->middleware('auth:api')->group(function () {
     Route::apiResource('roles', \App\Http\Controllers\Api\RoleController::class)->names('api.roles');
     Route::apiResource('users', \App\Http\Controllers\Api\UserController::class)->names('api.users');
     Route::apiResource('blogs', \App\Http\Controllers\Api\BlogController::class)->names('api.blogs');
+
+    Route::apiResource('ai-content', App\Http\Controllers\Api\WebsiteContentController::class);
+
 });
 
 

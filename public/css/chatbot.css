@@ -1,0 +1,39 @@
+/* Floating Chatbot Button */
+#chatbot-btn-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+#chatbot-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#chatbot-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Modal Styling */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-body {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.modal-footer {
+    background-color: #f8f9fa;
+}

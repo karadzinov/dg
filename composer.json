@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "martink/chatgpt-site-assistant": "^1.0",
+        "openai-php/laravel": "^0.11.0",
         "spatie/laravel-sitemap": "^7.0",
         "srmklive/paypal": "^3.0"
     },

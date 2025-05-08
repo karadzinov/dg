@@ -128,6 +128,9 @@ Route::any('/ckfinder/browser', [\CKSource\CKFinderBridge\Controller\CKFinderCon
 Route::middleware(['web'])->group(function () {
 
 
+    Route::get('/chatbot', [App\Http\Controllers\AssistantController::class, 'index']);
+    Route::post('api/assistant-chat', [App\Http\Controllers\AssistantController::class, 'chat']);
+
     Route::get('/chat', [\App\Http\Controllers\FrontEndController::class, 'chat'])->name('frontend.chat');;
     // Frontend routes
     Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('frontend.index');

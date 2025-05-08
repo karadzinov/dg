@@ -2,127 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Chat Assistant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .chat-box {
-            max-height: 500px;
-            overflow-y: auto;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-        }
-
-        .chat-bubble {
-            padding: 10px 15px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-            max-width: 80%;
-        }
-
-        .chat-bubble.user {
-            background-color: #d1e7dd;
-            align-self: flex-end;
-            text-align: right;
-        }
-
-        .chat-bubble.assistant {
-            background-color: #e2e3e5;
-            align-self: flex-start;
-        }
-
-        .chat-output {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-footer {
-            margin-top: 15px;
-        }
-
-        .chat-container {
-            max-width: 700px;
-            margin: 30px auto;
-        }
-
-        .message-meta {
-            font-size: 0.8em;
-            color: #888;
-        }
-    </style>
+    <title>Chat Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/dist/css/custom.css"/>
 </head>
-<body>
+<body class="m-0 p-0 bg-white text-sm font-sans">
+<div class="flex flex-col h-full max-h-[500px]">
+    <div id="chat-log" class="flex-1 overflow-auto p-4 space-y-2"></div>
 
-<div class="container chat-container">
-    <h3 class="text-center mb-4">🤖 Site Assistant Chat</h3>
-
-    <div id="chat-output" class="chat-box chat-output d-flex flex-column mb-3">
-        <!-- Messages will be dynamically inserted here -->
+    <div class="flex border-t">
+        <input
+            id="user-input"
+            type="text"
+            placeholder="Како можеме да ви помогнеме?"
+            class="flex-1 p-2 outline-none"
+            onkeydown="if(event.key==='Enter') sendMessage();"
+        >
+        <button
+            onclick="sendMessage()"
+            class="bg-gray-900 text-white px-4"
+        >Send</button>
     </div>
-
-    <form id="chat-form" class="d-flex chat-footer">
-        <input type="text" id="user-message" class="form-control me-2" placeholder="Type your message..." required>
-        <button type="submit" class="btn btn-primary">Send</button>
-    </form>
 </div>
 
 <script>
-    document.getElementById('chat-form').addEventListener('submit', function (e) {
-        e.preventDefault();
+    const chatLog = document.getElementById('chat-log');
+    const userInput = document.getElementById('user-input');
 
-        const messageBox = document.getElementById('user-message');
-        const userMessage = messageBox.value.trim();
-        if (!userMessage) return;
+    const appendMessage = (text, role) => {
+        const div = document.createElement('div');
+        div.className = `p-2 rounded-lg ${role === 'user' ? 'bg-pink-100 text-right ml-12' : 'bg-gray-100 mr-12'}`;
+        div.innerText = text;
+        chatLog.appendChild(div);
+        chatLog.scrollTop = chatLog.scrollHeight;
+    };
 
-        messageBox.value = '';
-        const loadingId = addMessage('assistant', 'Thinking...');
-        addMessage('user', userMessage);
+    const sendMessage = async () => {
+        const text = userInput.value.trim();
+        if (!text) return;
+        appendMessage(text, 'user');
+        userInput.value = '';
 
-        fetch('/api/chat', {
+        appendMessage('Typing...', 'assistant');
+
+        const res = await fetch('/api/assistant-chat', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ question: userMessage })
-        })
-            .then(res => res.json())
-            .then(data => {
-                const answer = (data.answer || 'Sorry, no response.')
-                    // Markdown links
-                    .replace(/\*\*\[([^\]]+)\]\(([^)]+)\)\*\*/g, '<strong><a href="$2" target="_blank">$1</a></strong>')
-                    // Plain URLs
-                    .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank">$1</a>')
-                    // Line breaks
-                    .replace(/\n/g, '<br>');
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            body: JSON.stringify({ message: text })
+        });
+        const data = await res.json();
 
-                updateMessage(loadingId, `<div>${answer}</div>`);
-            })
-            .catch(() => {
-                updateMessage(loadingId, 'There was an error. Please try again later.');
-            });
-    });
-
-    function addMessage(type, content) {
-        const message = document.createElement('div');
-        const id = 'msg-' + Date.now();
-        message.id = id;
-        message.className = `chat-bubble ${type}`;
-        message.innerHTML = content;
-        document.getElementById('chat-output').appendChild(message);
-        document.getElementById('chat-output').scrollTop = document.getElementById('chat-output').scrollHeight;
-        return id;
-    }
-
-    function updateMessage(id, newContent) {
-        const message = document.getElementById(id);
-        if (message) {
-            message.innerHTML = newContent;
-        }
-    }
+        // Remove typing...
+        chatLog.lastChild.remove();
+        appendMessage(data.reply, 'assistant');
+    };
 </script>
-
 </body>
 </html>

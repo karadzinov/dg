@@ -555,7 +555,7 @@
     });
 
 </script>
-
+@include('partials.chat-widget')
 <script>
 
 
