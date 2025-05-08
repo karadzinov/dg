@@ -32,7 +32,6 @@ class AssistantController extends Controller
 
         // 4. Poll for the response (simplified, not production-safe)
         do {
-            sleep(1);  // Wait for a response
             $run = OpenAI::threads()->runs()->retrieve($thread->id, $run->id);
         } while ($run->status !== 'completed');
 
