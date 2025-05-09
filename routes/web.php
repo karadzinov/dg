@@ -3,6 +3,7 @@
 use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DropzoneController;
+use App\Http\Controllers\ChatController;
 
 
 /*
@@ -127,6 +128,12 @@ Route::any('/ckfinder/browser', [\CKSource\CKFinderBridge\Controller\CKFinderCon
 
 Route::middleware(['web'])->group(function () {
 
+
+
+    Route::get('/chat', function () {
+        return view('chat');
+    });
+    Route::post('/chat/send', [ChatController::class, 'sendMessage']);
 
     Route::get('/chatbot', [App\Http\Controllers\AssistantController::class, 'index']);
     Route::post('api/assistant-chat', [App\Http\Controllers\AssistantController::class, 'chat']);

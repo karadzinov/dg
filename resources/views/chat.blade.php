@@ -32,7 +32,20 @@
     const appendMessage = (text, role) => {
         const div = document.createElement('div');
         div.className = `p-2 rounded-lg ${role === 'user' ? 'bg-pink-100 text-right ml-12' : 'bg-gray-100 mr-12'}`;
-        div.innerText = text;
+
+        // Parse URLs and markdown links
+        if (role === 'assistant') {
+            // Convert markdown-style links to HTML
+            text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" class="text-blue-600 underline" target="_blank">$1</a>');
+
+            // Convert plain URLs into clickable links
+            text = text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" class="text-blue-600 underline" target="_blank">$1</a>');
+
+            div.innerHTML = text;  // Use innerHTML to render HTML links
+        } else {
+            div.innerText = text;
+        }
+
         chatLog.appendChild(div);
         chatLog.scrollTop = chatLog.scrollHeight;
     };
@@ -57,5 +70,6 @@
         appendMessage(data.reply, 'assistant');
     };
 </script>
+
 </body>
 </html>
