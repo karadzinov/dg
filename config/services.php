@@ -36,5 +36,8 @@ return [
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect' => env('FACEBOOK_CLIENT_REDIRECT'),
     ],
+    'openai_tool' => [
+        'secret' => env('DRAGI_GOSTI_API_TOKEN'),
+    ],
 
 ];

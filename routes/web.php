@@ -4,7 +4,7 @@ use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DropzoneController;
 use App\Http\Controllers\ChatController;
-
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,6 +128,23 @@ Route::any('/ckfinder/browser', [\CKSource\CKFinderBridge\Controller\CKFinderCon
 
 Route::middleware(['web'])->group(function () {
 
+    Route::get('/test-ai-submit', function () {
+        $response = Http::post(url('/ai-invitation/submit'), [
+            'mr' => 'Игор',
+            'mrs' => 'Елена',
+            'email' => 'igor.elena@example.com',
+            'date' => '2025-05-25',
+            'basic_url' => 'igor-i-elena',
+            'template' => 'template_a',
+            'male_photo' => '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg',
+            'female_photo' => '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg',
+            'group_photo' => '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg',
+            'restaurant_id' => null,
+
+        ]);
+
+        return $response->json();
+    });
 
 
     Route::get('/chat', function () {
@@ -208,6 +225,8 @@ Route::middleware(['web'])->group(function () {
 
     Route::post('/confirm', [\App\Http\Controllers\FrontEndController::class, 'confirm'])->name('confirm');
     Route::post('/plus_one', [\App\Http\Controllers\FrontEndController::class, 'plusOne'])->name('plus_one');
+
+
 
 });
 

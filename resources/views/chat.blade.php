@@ -2,60 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Assistant</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/dist/css/custom.css"/>
 </head>
-<body class="m-0 p-0 bg-white text-sm font-sans">
-<div class="flex flex-col h-full max-h-[500px]">
-    <div id="chat-log" class="flex-1 overflow-auto p-4 space-y-2"></div>
+<body class="bg-white text-gray-900 font-sans h-screen flex flex-col">
 
-    <div class="flex border-t">
+<!-- Chat Log -->
+<main id="chat-log" class="flex-1 overflow-y-auto p-4 space-y-4">
+    <!-- Messages injected here dynamically -->
+</main>
+
+<!-- Input Section -->
+<footer class="border-t p-4">
+    <div class="flex items-center gap-2">
         <input
             id="user-input"
             type="text"
             placeholder="Како можеме да ви помогнеме?"
-            class="flex-1 p-2 outline-none"
+            class="flex-1 rounded-full border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400 transition"
             onkeydown="if(event.key==='Enter') sendMessage();"
         >
         <button
             onclick="sendMessage()"
-            class="bg-gray-900 text-white px-4"
-        >Send</button>
+            class="bg-gray-900 text-white rounded-full px-4 py-2 hover:bg-gray-700 transition flex items-center gap-1">
+            <!-- Upward white paper plane icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white transform" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+            </svg>
+        </button>
     </div>
-</div>
+</footer>
 
+<!-- Chat Script -->
 <script>
     const chatLog = document.getElementById('chat-log');
     const userInput = document.getElementById('user-input');
 
-    const appendMessage = (text, role) => {
-        const div = document.createElement('div');
-        div.className = `p-2 rounded-lg ${role === 'user' ? 'bg-pink-100 text-right ml-12' : 'bg-gray-100 mr-12'}`;
+    const createMessageElement = (text, role) => {
+        const container = document.createElement('div');
+        container.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'} items-start gap-2 animate-fade-in`;
+
+        const avatar = document.createElement('div');
+        avatar.className = `w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${role === 'user' ? 'bg-blue-500' : 'bg-gray-500'}`;
+        avatar.textContent = role === 'user' ? 'U' : 'A';
+
+        const bubble = document.createElement('div');
+        bubble.className = `${role === 'user' ? 'bg-blue-100 text-right' : 'bg-gray-100 text-left'} p-3 rounded-xl max-w-xs whitespace-pre-wrap text-sm shadow`;
 
         if (role === 'assistant') {
-            // Remove citation markers like
-            text = text.replace(/【\d+:\d+†response\.json】/g, '');
-
-            // Convert markdown-style links to HTML <a> tags
+            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" class="text-blue-600 underline" target="_blank">$1</a>');
-
-            // Also convert any remaining plain URLs into links (if not already part of markdown)
-            text = text.replace(/(?<!["'=\]])(https?:\/\/[^\s<]+)/g, '<a href="$1" class="text-blue-600 underline" target="_blank">$1</a>');
-
-            div.innerHTML = text;
+            text = text.replace(/(?<![">])(https?:\/\/[^\s<]+)/g, '<a href="$1" class="text-blue-600 underline" target="_blank">$1</a>');
+            bubble.innerHTML = text;
         } else {
-            div.innerText = text;
+            bubble.textContent = text;
         }
 
-        chatLog.appendChild(div);
-        chatLog.scrollTop = chatLog.scrollHeight;
+        if (role === 'user') {
+            container.appendChild(bubble);
+            container.appendChild(avatar);
+        } else {
+            container.appendChild(avatar);
+            container.appendChild(bubble);
+        }
+
+        return container;
     };
 
+    const appendMessage = (text, role) => {
+        const messageEl = createMessageElement(text, role);
+        chatLog.appendChild(messageEl);
+        chatLog.scrollTop = chatLog.scrollHeight;
+    };
 
     const sendMessage = async () => {
         const text = userInput.value.trim();
         if (!text) return;
+
         appendMessage(text, 'user');
         userInput.value = '';
 
@@ -68,11 +92,19 @@
         });
         const data = await res.json();
 
-        // Remove typing...
-        chatLog.lastChild.remove();
+        chatLog.lastChild.remove(); // Remove "Typing..."
         appendMessage(data.reply, 'assistant');
     };
 </script>
 
+<style>
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
 </body>
 </html>
