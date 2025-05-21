@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use App\Models\Restaurant;
 
 class OpenAIService
 {
@@ -15,7 +16,7 @@ class OpenAIService
     public function __construct()
     {
         $this->apiKey = config('openai.api_key');
-        $this->threadId = 'thread_vSSO5i6GGphalTFXasOx8avY';
+        $this->threadId = 'thread_vSSO5i6GGphalTFXasOx8avY';  // Fixed threadId as requested
         $this->assistantId = 'asst_GrQszIzxMiN24k1OHIvrAUmY';
         $this->vectorStoreId = 'vs_681c61fde4c88191ba75ab5c23fce9bb';
     }
@@ -126,6 +127,8 @@ class OpenAIService
 
             if ($function === 'submit_invitation_form') {
                 $this->handleInvitationTool($runId, $toolCallId, $args);
+            } elseif ($function === 'list_restaurants') {
+                $this->handleListRestaurantsTool($runId, $toolCallId);
             }
         }
     }
@@ -144,13 +147,9 @@ class OpenAIService
         $response = Http::withToken(env('DRAGI_GOSTI_API_TOKEN'))
             ->post('https://dragigosti.com/api/v1/ai-submit-invitation', $args);
 
-        if ($response->ok()) {
-            $responseData = $response->json();
-            $url = isset($responseData['basic_url']) ? "https://dragigosti.com/{$responseData['basic_url']}" : null;
-            $output = "🎉 Поканата е успешно креирана!\n🔗 Линк: {$url}";
-        } else {
-            $output = '❌ Се случи грешка при креирање на поканата.';
-        }
+        $output = $response->ok()
+            ? '🎉 Поканата е успешно креирана! ' . ($response->json('basic_url') ? 'URL: https://dragigosti.com/' . $response->json('basic_url') : '')
+            : '❌ Се случи грешка при креирање на поканата.';
 
         Log::info('Submitting tool output to OpenAI', [
             'tool_call_id' => $toolCallId,
@@ -164,6 +163,31 @@ class OpenAIService
                     'tool_call_id' => $toolCallId,
                     'output' => $output,
                 ]]
+            ]);
+    }
+
+    protected function handleListRestaurantsTool(string $runId, string $toolCallId): void
+    {
+        $restaurants = Restaurant::all(['id', 'name'])
+            ->map(fn($r) => "{$r->id}: {$r->name}")
+            ->implode("\n");
+
+        $output = $restaurants;
+
+        Log::info('Submitting restaurant list to OpenAI', [
+            'tool_call_id' => $toolCallId,
+            'output' => $output,
+        ]);
+
+        Http::withToken($this->apiKey)
+            ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
+            ->post("https://api.openai.com/v1/threads/{$this->threadId}/runs/{$runId}/submit_tool_outputs", [
+                'tool_outputs' => [
+                    [
+                        'tool_call_id' => $toolCallId,
+                        'output' => $output,
+                    ],
+                ],
             ]);
     }
 
