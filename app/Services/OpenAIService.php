@@ -61,7 +61,8 @@ class OpenAIService
             ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
             ->post("https://api.openai.com/v1/threads/{$this->threadId}/runs", [
                 'assistant_id' => $this->assistantId,
-                'tools' => [['type' => 'submit_invitation_form']],
+                // Replace invalid tool type with one supported or empty array if none needed
+                'tools' => [['type' => 'code_interpreter']],
             ]);
 
         if (!$response->ok()) {
@@ -127,7 +128,24 @@ class OpenAIService
 
     protected function handleInvitationTool(string $runId, string $toolCallId, array $args): void
     {
-        // Assuming $args has fields needed to create invitation
+        // Set defaults for basic_url and photos if not set
+        if (empty($args['basic_url'])) {
+            $args['basic_url'] = 'mr-and-mrs';
+        }
+
+        if (empty($args['male_photo'])) {
+            $args['male_photo'] = '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg';
+        }
+        if (empty($args['female_photo'])) {
+            $args['female_photo'] = '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg';
+        }
+        if (empty($args['group_photo'])) {
+            $args['group_photo'] = '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg';
+        }
+
+        // Always set template to 'template_a'
+        $args['template'] = 'template_a';
+
         $response = Http::withToken(env('DRAGI_GOSTI_API_TOKEN'))
             ->post('https://dragigosti.com/api/v1/ai-submit-invitation', $args);
 
@@ -147,9 +165,6 @@ class OpenAIService
 
     protected function checkRestaurantInVectorStore($restaurantId): bool
     {
-        // This function would query your vector store for the restaurant ID
-        // Example: Return true if found in the vector store, false otherwise
-
         $vectorStore = json_decode(file_get_contents(storage_path('app/vector_store/restaurants.json')), true);
 
         foreach ($vectorStore as $restaurant) {
