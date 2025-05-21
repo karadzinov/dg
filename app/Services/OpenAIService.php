@@ -61,15 +61,8 @@ class OpenAIService
             ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
             ->post("https://api.openai.com/v1/threads/{$this->threadId}/runs", [
                 'assistant_id' => $this->assistantId,
-                'tools' => [['type' => 'file_search']],
-                'tool_resources' => [
-                    'file_search' => [
-                        'vector_store_ids' => [$this->vectorStoreId]
-                    ]
-                ]
+                'tools' => [['type' => 'submit_invitation_form']],
             ]);
-
-        Log::info("Run Response:", ['response' => $response->json()]);
 
         if (!$response->ok()) {
             throw new \Exception("Run start failed: " . json_encode($response->json()));
@@ -134,40 +127,22 @@ class OpenAIService
 
     protected function handleInvitationTool(string $runId, string $toolCallId, array $args): void
     {
-        // Check if the restaurant_id exists in the Vector Store (simulate vector store query)
-        $restaurantId = $args['restaurant_id'];
+        // Assuming $args has fields needed to create invitation
+        $response = Http::withToken(env('DRAGI_GOSTI_API_TOKEN'))
+            ->post('https://dragigosti.com/api/v1/ai-submit-invitation', $args);
 
-        // Make a call to your Vector Store (this is just a simulation, adapt based on your setup)
-        $restaurantExists = $this->checkRestaurantInVectorStore($restaurantId);
+        $output = $response->ok()
+            ? ['message' => '🎉 Поканата е успешно креирана!']
+            : ['message' => '❌ Се случи грешка при креирање на поканата.'];
 
-        if ($restaurantExists) {
-            // Proceed to create the invitation
-            $response = Http::withToken(env('DRAGI_GOSTI_API_TOKEN'))
-                ->post('http://localhost/api/v1/ai-submit-invitation', $args);
-
-            $output = $response->ok()
-                ? '🎉 Поканата е успешно креирана!'
-                : '❌ Се случи грешка при креирање на поканата.';
-
-            Http::withToken($this->apiKey)
-                ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
-                ->post("https://api.openai.com/v1/threads/{$this->threadId}/runs/{$runId}/submit_tool_outputs", [
-                    'tool_outputs' => [[
-                        'tool_call_id' => $toolCallId,
-                        'output' => $output,
-                    ]]
-                ]);
-        } else {
-            // Return error message if the restaurant ID is invalid
-            Http::withToken($this->apiKey)
-                ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
-                ->post("https://api.openai.com/v1/threads/{$this->threadId}/runs/{$runId}/submit_tool_outputs", [
-                    'tool_outputs' => [[
-                        'tool_call_id' => $toolCallId,
-                        'output' => '❌ Не може да се пронајде ресторан со овој ID. Проверете дали е валиден.',
-                    ]]
-                ]);
-        }
+        Http::withToken($this->apiKey)
+            ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
+            ->post("https://api.openai.com/v1/threads/{$this->threadId}/runs/{$runId}/submit_tool_outputs", [
+                'tool_outputs' => [[
+                    'tool_call_id' => $toolCallId,
+                    'output' => $output,
+                ]]
+            ]);
     }
 
     protected function checkRestaurantInVectorStore($restaurantId): bool
