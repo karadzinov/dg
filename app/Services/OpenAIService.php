@@ -8,20 +8,20 @@ use Illuminate\Support\Facades\Log;
 class OpenAIService
 {
     protected string $apiKey;
+    protected string $threadId;
     protected string $assistantId;
     protected string $vectorStoreId;
-    protected string $threadId;
 
     public function __construct()
     {
         $this->apiKey = config('openai.api_key');
+        $this->threadId = 'thread_vSSO5i6GGphalTFXasOx8avY';
         $this->assistantId = 'asst_GrQszIzxMiN24k1OHIvrAUmY';
         $this->vectorStoreId = 'vs_681c61fde4c88191ba75ab5c23fce9bb';
     }
 
     public function sendMessageAndGetReply(string $userMessage): string
     {
-        $this->createThread();
         $this->sendMessage($userMessage);
         $runId = $this->startRun();
 
@@ -37,19 +37,6 @@ class OpenAIService
         }
 
         return $this->getAssistantReply();
-    }
-
-    protected function createThread(): void
-    {
-        $response = Http::withToken($this->apiKey)
-            ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
-            ->post("https://api.openai.com/v1/threads");
-
-        if (!$response->ok()) {
-            throw new \Exception("Thread creation failed: " . json_encode($response->json()));
-        }
-
-        $this->threadId = $response->json('id');
     }
 
     protected function sendMessage(string $message): void
@@ -145,6 +132,7 @@ class OpenAIService
 
     protected function handleInvitationTool(string $runId, string $toolCallId, array $args): void
     {
+        // Set defaults
         $args['template'] = 'template_a';
         $args['basic_url'] = $args['basic_url'] ?? 'mr-and-mrs';
         $args['male_photo'] = $args['male_photo'] ?? 'default_male.jpg';
@@ -157,9 +145,9 @@ class OpenAIService
             ->post('https://dragigosti.com/api/v1/ai-submit-invitation', $args);
 
         if ($response->ok()) {
-            $basicUrl = $response->json('basic_url');
-            $url = "https://dragigosti.com/{$basicUrl}";
-            $output = "🎉 Поканата е успешно креирана!\nПогледнете ја тука: $url";
+            $responseData = $response->json();
+            $url = isset($responseData['basic_url']) ? "https://dragigosti.com/{$responseData['basic_url']}" : null;
+            $output = "🎉 Поканата е успешно креирана!\n🔗 Линк: {$url}";
         } else {
             $output = '❌ Се случи грешка при креирање на поканата.';
         }
