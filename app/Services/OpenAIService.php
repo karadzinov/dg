@@ -10,12 +10,14 @@ class OpenAIService
     protected string $apiKey;
     protected string $threadId;
     protected string $assistantId;
+    protected string $vectorStoreId;
 
     public function __construct()
     {
         $this->apiKey = config('openai.api_key');
         $this->threadId = 'thread_vSSO5i6GGphalTFXasOx8avY';
         $this->assistantId = 'asst_GrQszIzxMiN24k1OHIvrAUmY';
+        $this->vectorStoreId = 'vs_681c61fde4c88191ba75ab5c23fce9bb';
     }
 
     public function sendMessageAndGetReply(string $userMessage): string
@@ -46,7 +48,7 @@ class OpenAIService
                 'content' => $message,
             ]);
 
-        Log::info("Message Response", $response->json());
+        Log::info("Message Response:", ['response' => $response->json()]);
 
         if (!$response->ok()) {
             throw new \Exception("Message failed: " . json_encode($response->json()));
@@ -58,10 +60,8 @@ class OpenAIService
         $response = Http::withToken($this->apiKey)
             ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
             ->post("https://api.openai.com/v1/threads/{$this->threadId}/runs", [
-                'assistant_id' => $this->assistantId
+                'assistant_id' => $this->assistantId,
             ]);
-
-        Log::info("Run Start Response", $response->json());
 
         if (!$response->ok()) {
             throw new \Exception("Run start failed: " . json_encode($response->json()));
@@ -72,7 +72,7 @@ class OpenAIService
 
     protected function pollRunStatus(string $runId): string
     {
-        $maxAttempts = 20;
+        $maxAttempts = 10;
         $attempt = 0;
         $delay = 1;
 
@@ -82,7 +82,7 @@ class OpenAIService
                 ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
                 ->get("https://api.openai.com/v1/threads/{$this->threadId}/runs/{$runId}");
 
-            Log::info("Polling Run Status", $response->json());
+            Log::info("Polling Run Status:", ['response' => $response->json()]);
 
             if (!$response->ok()) {
                 throw new \Exception("Run status failed: " . json_encode($response->json()));
@@ -107,7 +107,7 @@ class OpenAIService
             ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
             ->get("https://api.openai.com/v1/threads/{$this->threadId}/runs/{$runId}/steps");
 
-        Log::info("Run Steps", $response->json());
+        Log::info("Run Steps:", ['response' => $response->json()]);
 
         $toolCalls = collect($response->json('data'))
             ->filter(fn($step) => $step['type'] === 'tool_calls')
@@ -118,6 +118,12 @@ class OpenAIService
             $args = json_decode($toolCall['function']['arguments'], true);
             $toolCallId = $toolCall['id'];
 
+            Log::info("Tool Call Detected", [
+                'function' => $function,
+                'args' => $args,
+                'tool_call_id' => $toolCallId,
+            ]);
+
             if ($function === 'submit_invitation_form') {
                 $this->handleInvitationTool($runId, $toolCallId, $args);
             }
@@ -126,21 +132,26 @@ class OpenAIService
 
     protected function handleInvitationTool(string $runId, string $toolCallId, array $args): void
     {
-        // Provide defaults
-        $args = array_merge([
-            'basic_url' => 'mr-and-mrs',
-            'template' => 'template_a',
-            'male_photo' => '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg',
-            'female_photo' => '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg',
-            'group_photo' => '1747209206.TFYNPQ3U0-UFZLWUUTF-72803dfe69f6-512.jpeg',
-        ], $args);
+        // Set defaults
+        $args['template'] = 'template_a';
+        $args['basic_url'] = $args['basic_url'] ?? 'mr-and-mrs';
+        $args['male_photo'] = $args['male_photo'] ?? 'default_male.jpg';
+        $args['female_photo'] = $args['female_photo'] ?? 'default_female.jpg';
+        $args['group_photo'] = $args['group_photo'] ?? 'default_group.jpg';
+
+        Log::info('Submitting invitation form to DragiGosti API', ['args' => $args]);
 
         $response = Http::withToken(env('DRAGI_GOSTI_API_TOKEN'))
             ->post('https://dragigosti.com/api/v1/ai-submit-invitation', $args);
 
         $output = $response->ok()
-            ? ['message' => '🎉 Поканата е успешно креирана!']
-            : ['message' => '❌ Се случи грешка при креирање на поканата.'];
+            ? '🎉 Поканата е успешно креирана!'
+            : '❌ Се случи грешка при креирање на поканата.';
+
+        Log::info('Submitting tool output to OpenAI', [
+            'tool_call_id' => $toolCallId,
+            'output' => $output,
+        ]);
 
         Http::withToken($this->apiKey)
             ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
@@ -158,7 +169,7 @@ class OpenAIService
             ->withHeaders(['OpenAI-Beta' => 'assistants=v2'])
             ->get("https://api.openai.com/v1/threads/{$this->threadId}/messages");
 
-        Log::info("Messages Response", $response->json());
+        Log::info("Messages Response:", ['response' => $response->json()]);
 
         if (!$response->ok()) {
             throw new \Exception("Fetch failed: " . json_encode($response->json()));
