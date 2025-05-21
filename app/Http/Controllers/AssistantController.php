@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Services\OpenAIService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AssistantController extends Controller
 {
