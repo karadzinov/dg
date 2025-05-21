@@ -26,7 +26,6 @@
         <button
             onclick="sendMessage()"
             class="bg-gray-900 text-white rounded-full px-4 py-2 hover:bg-gray-700 transition flex items-center gap-1">
-            <!-- Upward white paper plane icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white transform" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
             </svg>
@@ -74,6 +73,26 @@
         const messageEl = createMessageElement(text, role);
         chatLog.appendChild(messageEl);
         chatLog.scrollTop = chatLog.scrollHeight;
+
+        // Auto-generate buttons if assistant response matches format "1: Камник"
+        if (role === 'assistant') {
+            const matches = [...text.matchAll(/^(\d+):\s(.+)$/gm)];
+            if (matches.length > 0) {
+                const btnWrapper = document.createElement('div');
+                btnWrapper.className = "flex flex-wrap gap-2 pt-2";
+
+                matches.forEach(([_, id, name]) => {
+                    const btn = document.createElement('button');
+                    btn.className = "bg-pink-100 text-pink-800 rounded-full px-4 py-2 text-sm hover:bg-pink-200 transition";
+                    btn.textContent = name;
+                    btn.onclick = () => sendQuickMessage(`Избирам ресторан ${name} (${id})`);
+                    btnWrapper.appendChild(btn);
+                });
+
+                chatLog.appendChild(btnWrapper);
+                chatLog.scrollTop = chatLog.scrollHeight;
+            }
+        }
     };
 
     const sendMessage = async () => {
@@ -94,6 +113,11 @@
 
         chatLog.lastChild.remove(); // Remove "Typing..."
         appendMessage(data.reply, 'assistant');
+    };
+
+    const sendQuickMessage = (text) => {
+        userInput.value = text;
+        sendMessage();
     };
 </script>
 
