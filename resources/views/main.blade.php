@@ -90,6 +90,14 @@
         <!-- Page Start -->
 
 
+        <iframe
+            src="https://chatgpt.com/g/g-68321794542c8191a58127c0f3fd6419-dragi-gosti"
+            width="100%"
+            height="700"
+            style="border:none;border-radius:16px;overflow:hidden;"
+            allow="clipboard-write; clipboard-read; microphone; camera"
+        ></iframe>
+
         <div class="row hexa">
 
 
