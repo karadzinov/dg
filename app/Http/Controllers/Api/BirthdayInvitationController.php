@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateBirthdayInvitationRequest;
 use App\Services\BirthdayInvitationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Exception;
 
 class BirthdayInvitationController extends Controller
 {
