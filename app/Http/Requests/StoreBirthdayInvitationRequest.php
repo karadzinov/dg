@@ -7,14 +7,11 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Str;
 
-/**
- * @property-read mixed $group_photo
- */
 class StoreBirthdayInvitationRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // Change as needed
+        return true;
     }
 
     public function rules(): array
@@ -23,6 +20,8 @@ class StoreBirthdayInvitationRequest extends FormRequest
             'name' => 'required|string',
             'date' => 'required|string',
             'years' => 'required|string',
+            'email' => 'required|email',
+            'main_text' => 'required|string',
             'group_photo' => [
                 'required',
                 function ($attribute, $value, $fail) {
@@ -36,22 +35,23 @@ class StoreBirthdayInvitationRequest extends FormRequest
                         }
                         return;
                     }
-                    // Accept OpenAI upload tokens (e.g., "upload://...")
-                    if (is_string($value) && Str::startsWith($value, 'upload://')) {
+                    // Accept a public URL to image
+                    if (is_string($value) && filter_var($value, FILTER_VALIDATE_URL)) {
+                        // Optionally check for image extension/type
+                        $allowedExt = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                        $ext = strtolower(pathinfo(parse_url($value, PHP_URL_PATH), PATHINFO_EXTENSION));
+                        if (!in_array($ext, $allowedExt)) {
+                            $fail('The group photo URL must be a jpg, jpeg, png, gif, or webp image.');
+                        }
                         return;
                     }
-                    // Otherwise fail
-                    $fail('group_photo must be an image file upload or a valid upload:// token.');
+                    // Block upload:// or anything else
+                    $fail('group_photo must be an image file upload or a public image URL.');
                 }
             ],
-            'email' => 'required|email',
-            'main_text' => 'required|string',
         ];
     }
 
-    /**
-     * Handle a failed validation attempt.
-     */
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
