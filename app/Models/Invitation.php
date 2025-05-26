@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Invitation extends Model
 {
@@ -79,6 +80,19 @@ class Invitation extends Model
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id', 'id');
+    }
+
+    public static function generateUniqueInvitationLink($base)
+    {
+        $slug = Str::slug($base);
+        $original = $slug;
+        $counter = 1;
+
+        while (self::where('invitation_link', $slug)->exists()) {
+            $slug = $original . '-' . $counter;
+            $counter++;
+        }
+        return $slug;
     }
 
     public static function createInvitation($data)
