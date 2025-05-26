@@ -7,25 +7,28 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Str;
 
+/**
+ * @property-read mixed $group_photo
+ */
 class StoreBirthdayInvitationRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;  // Change based on your authorization logic
+        return true; // Change as needed
     }
 
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'date' => 'required',
-            'years' => 'required',
+            'name' => 'required|string',
+            'date' => 'required|string',
+            'years' => 'required|string',
             'group_photo' => [
                 'required',
                 function ($attribute, $value, $fail) {
                     // Accept file upload
-                    if (request()->hasFile('group_photo')) {
-                        $file = request()->file('group_photo');
+                    if ($this->hasFile('group_photo')) {
+                        $file = $this->file('group_photo');
                         $ext = strtolower($file->getClientOriginalExtension());
                         $allowed = ['jpg', 'jpeg', 'png', 'gif'];
                         if (!in_array($ext, $allowed)) {
@@ -41,11 +44,14 @@ class StoreBirthdayInvitationRequest extends FormRequest
                     $fail('group_photo must be an image file upload or a valid upload:// token.');
                 }
             ],
-            'email' => 'required',
-            'main_text' => 'required',
+            'email' => 'required|email',
+            'main_text' => 'required|string',
         ];
     }
 
+    /**
+     * Handle a failed validation attempt.
+     */
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
@@ -54,5 +60,4 @@ class StoreBirthdayInvitationRequest extends FormRequest
             ], 422)
         );
     }
-
 }
