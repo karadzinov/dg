@@ -67,7 +67,7 @@ class BirthdayInvitationController extends Controller
     }
 
 
-    public function generateInvitationImage(string $prompt, string $size = '512x512'): string
+    public function generateInvitationImage(string $prompt, string $size = '1024x1792'): string
     {
         $client = new Client([
             'base_uri' => 'https://api.openai.com/v1/',
