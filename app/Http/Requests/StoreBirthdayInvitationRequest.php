@@ -35,7 +35,7 @@ class StoreBirthdayInvitationRequest extends FormRequest
                         }
                         return;
                     }
-                    // Accept a public URL to image
+                    // Accept a public image URL
                     if (is_string($value) && filter_var($value, FILTER_VALIDATE_URL)) {
                         $allowedExt = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
                         $ext = strtolower(pathinfo(parse_url($value, PHP_URL_PATH), PATHINFO_EXTENSION));
@@ -52,7 +52,6 @@ class StoreBirthdayInvitationRequest extends FormRequest
                         }
                         return;
                     }
-                    // Fallback: invalid value
                     $fail('group_photo must be an image file upload, a public image URL, or a valid base64 image string.');
                 }
             ],

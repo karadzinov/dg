@@ -28,17 +28,19 @@ class BirthdayInvitationController extends Controller
     {
         $data = $request->validated();
 
-        // Case 1: File upload
+        // 1. Handle file upload
         if ($request->hasFile('group_photo')) {
             $image = $request->file('group_photo');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images/invitations'), $imageName);
             $data['group_photo'] = $imageName;
 
-            // Case 2: Public image URL
+            // 2. Handle public image URL (like from OpenAI DALL-E)
         } elseif (filter_var($data['group_photo'], FILTER_VALIDATE_URL)) {
             $url = $data['group_photo'];
             $extension = strtolower(pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION)) ?: 'jpg';
+
+            // Use @ for silent error handling if image is not downloadable
             $imageContents = @file_get_contents($url);
 
             if ($imageContents === false) {
@@ -52,7 +54,7 @@ class BirthdayInvitationController extends Controller
             file_put_contents(public_path('images/invitations/' . $imageName), $imageContents);
             $data['group_photo'] = $imageName;
 
-            // Case 3: Base64-encoded image
+            // 3. Handle base64-encoded image
         } elseif (is_string($data['group_photo']) && preg_match('/^data:image\/(\w+);base64,/', $data['group_photo'], $type)) {
             $dataString = substr($data['group_photo'], strpos($data['group_photo'], ',') + 1);
             $imageContents = base64_decode($dataString);
@@ -70,14 +72,13 @@ class BirthdayInvitationController extends Controller
             $data['group_photo'] = $imageName;
 
         } else {
-            // No valid image provided
             return response()->json([
                 'success' => false,
                 'error' => 'No valid image provided for group_photo.'
             ], 400);
         }
 
-        // At this point $data['group_photo'] is the filename of the stored image.
+        // Now $data['group_photo'] is the filename of the stored image.
         return $this->BirthdayInvitationService->create($data);
     }
 
