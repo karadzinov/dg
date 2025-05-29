@@ -37,7 +37,6 @@ class StoreBirthdayInvitationRequest extends FormRequest
                     }
                     // Accept a public URL to image
                     if (is_string($value) && filter_var($value, FILTER_VALIDATE_URL)) {
-                        // Optionally check for image extension/type
                         $allowedExt = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
                         $ext = strtolower(pathinfo(parse_url($value, PHP_URL_PATH), PATHINFO_EXTENSION));
                         if (!in_array($ext, $allowedExt)) {
@@ -45,8 +44,16 @@ class StoreBirthdayInvitationRequest extends FormRequest
                         }
                         return;
                     }
-                    // Block upload:// or anything else
-                    $fail('group_photo must be an image file upload or a public image URL.');
+                    // Accept base64-encoded image
+                    if (is_string($value) && preg_match('/^data:image\/(png|jpg|jpeg|gif|webp);base64,/', $value)) {
+                        $data = substr($value, strpos($value, ',') + 1);
+                        if (base64_decode($data, true) === false) {
+                            $fail('The group photo base64 data is invalid.');
+                        }
+                        return;
+                    }
+                    // Fallback: invalid value
+                    $fail('group_photo must be an image file upload, a public image URL, or a valid base64 image string.');
                 }
             ],
         ];

@@ -31,7 +31,7 @@ class BirthdayInvitationController extends Controller
         // Case 1: File upload
         if ($request->hasFile('group_photo')) {
             $image = $request->file('group_photo');
-            $imageName = time() . '.' . $image->getClientOriginalName();
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images/invitations'), $imageName);
             $data['group_photo'] = $imageName;
 
@@ -51,11 +51,36 @@ class BirthdayInvitationController extends Controller
             $imageName = time() . '_url.' . $extension;
             file_put_contents(public_path('images/invitations/' . $imageName), $imageContents);
             $data['group_photo'] = $imageName;
+
+            // Case 3: Base64-encoded image
+        } elseif (is_string($data['group_photo']) && preg_match('/^data:image\/(\w+);base64,/', $data['group_photo'], $type)) {
+            $dataString = substr($data['group_photo'], strpos($data['group_photo'], ',') + 1);
+            $imageContents = base64_decode($dataString);
+
+            if ($imageContents === false) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'Invalid base64 image data.'
+                ], 400);
+            }
+
+            $extension = strtolower($type[1]) === 'jpeg' ? 'jpg' : strtolower($type[1]);
+            $imageName = time() . '_base64.' . $extension;
+            file_put_contents(public_path('images/invitations/' . $imageName), $imageContents);
+            $data['group_photo'] = $imageName;
+
+        } else {
+            // No valid image provided
+            return response()->json([
+                'success' => false,
+                'error' => 'No valid image provided for group_photo.'
+            ], 400);
         }
 
-        // (At this point $data['group_photo'] is the filename of the stored image.)
+        // At this point $data['group_photo'] is the filename of the stored image.
         return $this->BirthdayInvitationService->create($data);
     }
+
 
 
     public function show($id)
