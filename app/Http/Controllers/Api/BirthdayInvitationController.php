@@ -9,6 +9,7 @@ use App\Services\BirthdayInvitationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Exception;
+use GuzzleHttp\Client;
 
 class BirthdayInvitationController extends Controller
 {
@@ -28,58 +29,71 @@ class BirthdayInvitationController extends Controller
     {
         $data = $request->validated();
 
-        // 1. Handle file upload
-        if ($request->hasFile('group_photo')) {
-            $image = $request->file('group_photo');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/invitations'), $imageName);
-            $data['group_photo'] = $imageName;
 
-            // 2. Handle public image URL (like from OpenAI DALL-E)
-        } elseif (filter_var($data['group_photo'], FILTER_VALIDATE_URL)) {
-            $url = $data['group_photo'];
-            $extension = strtolower(pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION)) ?: 'jpg';
+        $name = $data['name'];       // e.g., "Maria"
+        $years = $data['years'];     // e.g., "3"
+        $theme = $data['theme'];     // e.g., "unicorns and balloons" or "Cars cartoon"
+        $location = $data['location'] ?? null; // optional, e.g., "City Park"
 
-            // Use @ for silent error handling if image is not downloadable
-            $imageContents = @file_get_contents($url);
+        $prompt = "A fun, colorful cartoon-style birthday invitation for {$name}'s {$years} birthday";
+        if (!empty($theme)) {
+            $prompt .= " with a theme of {$theme}";
+        }
+        if (!empty($location)) {
+            $prompt .= ", with illustration of {$location}";
+        }
+        $prompt .= ". Do not include real people. Use only friendly illustrations, balloons, and a festive atmosphere. Leave space for event details.";
 
-            if ($imageContents === false) {
-                return response()->json([
-                    'success' => false,
-                    'error' => 'Could not download the image from the provided URL.'
-                ], 400);
-            }
 
-            $imageName = time() . '_url.' . $extension;
-            file_put_contents(public_path('images/invitations/' . $imageName), $imageContents);
-            $data['group_photo'] = $imageName;
+        // Call OpenAI DALL-E to generate the image based on the prompt
+        $imageUrl = $this->generateInvitationImage($prompt);
 
-            // 3. Handle base64-encoded image
-        } elseif (is_string($data['group_photo']) && preg_match('/^data:image\/(\w+);base64,/', $data['group_photo'], $type)) {
-            $dataString = substr($data['group_photo'], strpos($data['group_photo'], ',') + 1);
-            $imageContents = base64_decode($dataString);
-
-            if ($imageContents === false) {
-                return response()->json([
-                    'success' => false,
-                    'error' => 'Invalid base64 image data.'
-                ], 400);
-            }
-
-            $extension = strtolower($type[1]) === 'jpeg' ? 'jpg' : strtolower($type[1]);
-            $imageName = time() . '_base64.' . $extension;
-            file_put_contents(public_path('images/invitations/' . $imageName), $imageContents);
-            $data['group_photo'] = $imageName;
-
-        } else {
+        // Immediately download and save the image
+        $imageContents = @file_get_contents($imageUrl);
+        if ($imageContents === false) {
             return response()->json([
                 'success' => false,
-                'error' => 'No valid image provided for group_photo.'
+                'error' => 'Could not download the image from OpenAI (expired URL).'
             ], 400);
         }
+        $imageName = time() . '_openai.png';
+        file_put_contents(public_path('images/invitations/' . $imageName), $imageContents);
 
-        // Now $data['group_photo'] is the filename of the stored image.
+        // Update data with the stored image name
+        $data['group_photo'] = $imageName;
+
+        // Proceed to invitation creation
         return $this->BirthdayInvitationService->create($data);
+    }
+
+
+    public function generateInvitationImage(string $prompt, string $size = '1024x512'): string
+    {
+        $client = new Client([
+            'base_uri' => 'https://api.openai.com/v1/',
+            'headers' => [
+                'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
+                'Content-Type'  => 'application/json',
+            ],
+            'timeout' => 60,
+        ]);
+
+        $response = $client->post('images/generations', [
+            'json' => [
+                'model' => 'dall-e-3', // Or 'dall-e-2' if you want smaller cost or image
+                'prompt' => $prompt,
+                'n' => 1,
+                'size' => $size, // Can be '1024x1024', '512x512', or '256x256'
+            ]
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if (isset($data['data'][0]['url'])) {
+            return $data['data'][0]['url'];
+        }
+
+        throw new \Exception('Failed to generate image from OpenAI.');
     }
 
 
